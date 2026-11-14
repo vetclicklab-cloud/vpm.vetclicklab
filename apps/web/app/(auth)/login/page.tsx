@@ -210,7 +210,7 @@ function LoginPageInner() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 maxLength={AUTH_PASSWORD_MAX_LENGTH}
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="min-h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 placeholder="Enter your password"
               />
             </div>
@@ -235,7 +235,7 @@ function LoginPageInner() {
           <p className="mt-4 text-center text-sm text-muted-foreground">
             <Link
               href="/forgot-password"
-              className="text-primary hover:underline"
+              className="inline-flex min-h-11 items-center text-primary hover:underline"
             >
               Forgot your password?
             </Link>
@@ -258,7 +258,7 @@ function LoginPageInner() {
                   path: "/login",
                 })
               }
-              className="text-primary hover:underline"
+              className="inline-flex min-h-11 items-center text-primary hover:underline"
             >
               Start my clinic
             </a>
@@ -269,7 +269,7 @@ function LoginPageInner() {
                   ? "/register"
                   : `/register?next=${encodeURIComponent(nextPath)}`
               }
-              className="text-primary hover:underline"
+              className="inline-flex min-h-11 items-center text-primary hover:underline"
             >
               Register your practice
             </Link>

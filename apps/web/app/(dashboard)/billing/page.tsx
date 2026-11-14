@@ -1069,8 +1069,10 @@ function InvoiceRow({
                 disabled={isMutating}
                 onClick={(e) => onConvertEstimate(e, invoice.id)}
                 title="Convert to Invoice"
+                className="gap-1.5"
               >
                 <ArrowRightLeft className="h-3.5 w-3.5" />
+                Convert
               </Button>
             )}
             {canManageBilling &&
@@ -1082,8 +1084,10 @@ function InvoiceRow({
                 disabled={isMutating}
                 onClick={(e) => onStatusChange(e, invoice.id, "sent")}
                 title="Mark as Sent"
+                className="gap-1.5"
               >
                 <Send className="h-3.5 w-3.5" />
+                Mark sent
               </Button>
             )}
             {canManageBilling &&
@@ -1097,8 +1101,10 @@ function InvoiceRow({
                       disabled={isMutating}
                       onClick={(e) => onStatusChange(e, invoice.id, "sent")}
                       title="Mark as Sent"
+                      className="gap-1.5"
                     >
                       <Send className="h-3.5 w-3.5" />
+                      Mark sent
                     </Button>
                   )}
                 </>
@@ -1112,8 +1118,10 @@ function InvoiceRow({
                   disabled={isMutating}
                   onClick={(e) => onVoidInvoice(e, invoice.id)}
                   title="Void Invoice"
+                  className="gap-1.5 text-destructive hover:bg-destructive/5 hover:text-destructive"
                 >
                   <Ban className="h-3.5 w-3.5" />
+                  Void
                 </Button>
               )}
           </div>

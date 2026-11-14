@@ -149,7 +149,7 @@ describe("messaging settings UI", () => {
     expect(tabSource).toContain("setAppointmentReminderSettings");
     expect(tabSource).toContain("Off by default");
     expect(tabSource).toContain("confirmReminderCatchUp");
-    expect(tabSource).toContain('!confirmReminderCatchUp("expand", leadHours)');
+    expect(tabSource).toContain('!(await confirmReminderCatchUp("expand", leadHours))');
     expect(tabSource).toContain(
       "Enabling reminders or increasing this window may send reminders for",
     );

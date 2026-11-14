@@ -59,7 +59,7 @@ export function CalendarSubscribe() {
   return (
     <Popover onOpenChange={() => setConfirmRotate(false)}>
       <PopoverTrigger asChild>
-        <Button variant="outline" size="sm" data-tour="calendar-subscribe">
+        <Button variant="outline" size="sm" className="h-11 sm:h-9" data-tour="calendar-subscribe">
           <CalendarPlus className="mr-1.5 h-3.5 w-3.5" />
           Add to your calendar
         </Button>

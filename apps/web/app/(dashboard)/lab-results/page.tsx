@@ -1,5 +1,6 @@
 "use client";
 
+import { FilterChips } from "@/components/ui/filter-chips";
 import Link from "next/link";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -313,25 +314,12 @@ function LabResultsInboxContent() {
       ) : null}
 
       {!isFrontDesk && !selectedResultId ? (
-        <div
-          className="flex gap-2 overflow-x-auto pb-1"
-          role="group"
-          aria-label="Filter lab results"
-        >
-          {FILTERS.map((item) => (
-            <Button
-              key={item.value}
-              type="button"
-              size="sm"
-              variant={filter === item.value ? "default" : "outline"}
-              aria-pressed={filter === item.value}
-              onClick={() => setFilter(item.value)}
-              className="shrink-0"
-            >
-              {item.label}
-            </Button>
-          ))}
-        </div>
+        <FilterChips
+          label="Filter lab results"
+          value={filter}
+          onChange={setFilter}
+          options={FILTERS}
+        />
       ) : null}
 
       {inbox.error ? (

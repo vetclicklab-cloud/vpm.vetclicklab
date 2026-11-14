@@ -124,7 +124,7 @@ export function TopBar({
           type="button"
           onClick={onMenuOpen}
           aria-label="Open navigation"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:bg-accent hover:text-foreground lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md text-muted-foreground hover:bg-accent hover:text-foreground lg:hidden"
         >
           <Menu className="h-5 w-5" />
         </button>
@@ -140,7 +140,7 @@ export function TopBar({
           type="button"
           onClick={onSearchOpen}
           aria-label="Open search"
-          className="flex h-9 items-center gap-2 rounded-md border border-input bg-background px-2 text-sm text-muted-foreground transition-colors hover:bg-accent sm:w-64 sm:px-3 md:w-80"
+          className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-input bg-background px-2 text-sm sm:h-9 sm:justify-start text-muted-foreground transition-colors hover:bg-accent sm:w-64 sm:px-3 md:w-80"
         >
           <Search className="h-4 w-4 shrink-0" />
           <span className="hidden sm:inline">Search...</span>
@@ -153,8 +153,9 @@ export function TopBar({
           <div className="relative" ref={newMenuRef}>
             <Button
               size="sm"
-              className="gap-1"
+              className="h-11 min-w-11 gap-1 sm:h-9"
               onClick={() => setNewMenuOpen((v) => !v)}
+              aria-label="New"
               aria-haspopup="menu"
               aria-expanded={newMenuOpen}
             >

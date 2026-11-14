@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useEffect, useRef } from "react";
 
 const activeGuards = new Map<symbol, string>();
@@ -151,15 +152,19 @@ function handleDocumentClick(event: MouseEvent) {
     replaceSentinelHash(anchor.href);
     return;
   }
-  if (window.confirm(activeMessage())) {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    bypassBeforeUnload = true;
-    window.location.assign(anchor.href);
-    return;
-  }
   event.preventDefault();
-  event.stopPropagation();
+  event.stopImmediatePropagation();
+  const href = anchor.href;
+  void confirmAction({
+    title: "Leave without saving?",
+    description: activeMessage(),
+    confirmLabel: "Leave page",
+    destructive: true,
+  }).then((ok) => {
+    if (!ok) return;
+    bypassBeforeUnload = true;
+    window.location.assign(href);
+  });
 }
 
 function handlePopState(event: PopStateEvent) {
@@ -169,6 +174,8 @@ function handlePopState(event: PopStateEvent) {
     pendingAction: pendingPopAction,
     guardActive: activeGuards.size > 0,
     sentinelActive,
+    // Back/forward needs a synchronous answer to keep the history sentinel
+    // consistent, so this one path still uses the browser dialog.
     confirmed: needsDecision ? window.confirm(activeMessage()) : false,
   });
   if (effect === "cleanup") {

@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -570,8 +571,16 @@ function WellnessEnrollmentPanel({
     },
   });
 
-  const handleCancelEnrollment = (enrollmentId: string) => {
-    if (!window.confirm("Cancel this wellness enrollment?")) return;
+  const handleCancelEnrollment = async (enrollmentId: string) => {
+    if (
+      !(await confirmAction({
+        title: "Cancel wellness enrollment?",
+        description: "The client's wellness plan enrollment will be cancelled.",
+        confirmLabel: "Cancel enrollment",
+        destructive: true,
+      }))
+    )
+      return;
     cancelEnrollment.mutate({ enrollmentId });
   };
   const canCreateEnrollment =

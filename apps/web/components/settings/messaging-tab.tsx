@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
@@ -51,9 +52,11 @@ function confirmReminderCatchUp(
     action === "enable"
       ? "Enabling automatic reminders"
       : `Increasing the reminder window to ${leadHours} hours`;
-  return window.confirm(
-    `${actionLabel} may send reminders for existing eligible confirmed appointments on the next hourly run. Continue?`,
-  );
+  return confirmAction({
+    title: "Send reminders for existing appointments?",
+    description: `${actionLabel} may send reminders for existing eligible confirmed appointments on the next hourly run.`,
+    confirmLabel: "Continue",
+  });
 }
 
 function hasConfiguredSender(
@@ -180,14 +183,14 @@ export function MessagingTab() {
             aria-label="Enable automatic appointment reminders"
             checked={reminderSettings.enabled}
             disabled={updateReminderSettings.isPending}
-            onChange={(event) => {
+            onChange={async (event) => {
               const enabled = event.target.checked;
               if (
                 enabled &&
-                !confirmReminderCatchUp(
+                !(await confirmReminderCatchUp(
                   "enable",
                   reminderSettings.leadHours as 24 | 48 | 72,
-                )
+                ))
               ) {
                 return;
               }
@@ -205,12 +208,12 @@ export function MessagingTab() {
             className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
             value={reminderSettings.leadHours}
             disabled={updateReminderSettings.isPending}
-            onChange={(event) => {
+            onChange={async (event) => {
               const leadHours = Number(event.target.value) as 24 | 48 | 72;
               if (
                 reminderSettings.enabled &&
                 leadHours > reminderSettings.leadHours &&
-                !confirmReminderCatchUp("expand", leadHours)
+                !(await confirmReminderCatchUp("expand", leadHours))
               ) {
                 return;
               }

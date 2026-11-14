@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useMemo, useState } from "react";
 import {
   AlertTriangle,
@@ -888,7 +889,7 @@ export function SmsRecoveryConsole() {
             type="button"
             className="mt-3"
             disabled={!canResolveProviderEvent}
-            onClick={() => {
+            onClick={async () => {
               if (
                 !providerEventOperationId ||
                 !providerEventResolution ||
@@ -897,9 +898,7 @@ export function SmsRecoveryConsole() {
                 return;
               }
               if (
-                !window.confirm(
-                  `Apply ${label(providerEventResolution)} to exact provider event ${providerEventSelection.eventId}${providerEventSelection.conflictId ? ` and conflict ${providerEventSelection.conflictId}` : ""}? This appends immutable audited evidence.`,
-                )
+                !(await confirmAction({ title: "Apply provider event resolution?", description: `Apply ${label(providerEventResolution)} to exact provider event ${providerEventSelection.eventId}${providerEventSelection.conflictId ? ` and conflict ${providerEventSelection.conflictId}` : ""}? This appends immutable audited evidence.` }))
               ) {
                 return;
               }
@@ -1414,7 +1413,7 @@ export function SmsRecoveryConsole() {
                     type="button"
                     className="mt-3"
                     disabled={!canReconcileAttempt}
-                    onClick={() => {
+                    onClick={async () => {
                       if (
                         !attemptSelection ||
                         !attemptReconciliationId ||
@@ -1428,9 +1427,7 @@ export function SmsRecoveryConsole() {
                           ? reviewedProviderMessageId
                           : undefined;
                       if (
-                        !window.confirm(
-                          `Record ${label(reviewedAttemptOutcome)} for exact attempt ${attemptSelection.attemptId}? This writes immutable reconciliation evidence.`,
-                        )
+                        !(await confirmAction({ title: "Record attempt outcome?", description: `Record ${label(reviewedAttemptOutcome)} for exact attempt ${attemptSelection.attemptId}? This writes immutable reconciliation evidence.` }))
                       ) {
                         return;
                       }
@@ -1494,12 +1491,10 @@ export function SmsRecoveryConsole() {
                       resendCompleted ||
                       resendAttempt.isPending
                     }
-                    onClick={() => {
+                    onClick={async () => {
                       if (!resendId) return;
                       if (
-                        !window.confirm(
-                          `Send one new SMS for definitively failed attempt ${attemptSelection.attemptId}? This is an external side effect.`,
-                        )
+                        !(await confirmAction({ title: "Send a new SMS?", description: `Send one new SMS for definitively failed attempt ${attemptSelection.attemptId}? This is an external side effect.` }))
                       ) {
                         return;
                       }
@@ -1744,7 +1739,7 @@ export function SmsRecoveryConsole() {
                     !canReconcileDelivery ||
                     deliveryDetail.data.candidateAttemptsTruncated
                   }
-                  onClick={() => {
+                  onClick={async () => {
                     if (
                       !deliveryReason ||
                       !deliveryReconciliationId ||
@@ -1753,9 +1748,7 @@ export function SmsRecoveryConsole() {
                       return;
                     }
                     if (
-                      !window.confirm(
-                        `Apply ${label(deliveryReason)} to exact delivery event ${deliverySelection.eventId}? This appends immutable operator evidence.`,
-                      )
+                      !(await confirmAction({ title: "Apply delivery reconciliation?", description: `Apply ${label(deliveryReason)} to exact delivery event ${deliverySelection.eventId}? This appends immutable operator evidence.` }))
                     ) {
                       return;
                     }

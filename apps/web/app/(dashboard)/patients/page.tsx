@@ -102,6 +102,7 @@ export default function PatientsPage() {
         <div className="relative w-full min-w-0 sm:max-w-sm sm:flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
+            aria-label="Search patients or owners"
             placeholder="Search patients or owners..."
             value={search}
             maxLength={PATIENT_SEARCH_MAX_LENGTH}
@@ -110,6 +111,7 @@ export default function PatientsPage() {
           />
         </div>
         <select
+          aria-label="Filter by species"
           value={species}
           onChange={(e) => setSpecies(e.target.value as SpeciesFilter)}
           className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:h-10 sm:w-auto"

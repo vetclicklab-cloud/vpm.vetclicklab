@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { Suspense, useState, useRef, useEffect, useId, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
@@ -2685,11 +2686,15 @@ function SchedulePageContent() {
     rescheduleAppointment.mutate(input);
   };
 
-  const handleCancelRecurringSeries = (seriesId: string) => {
+  const handleCancelRecurringSeries = async (seriesId: string) => {
     if (
-      !window.confirm(
-        "Cancel future appointments in this recurring series? Past, completed, and in-progress appointments will stay unchanged."
-      )
+      !(await confirmAction({
+        title: "Cancel recurring series?",
+        description:
+          "Future appointments in this series will be cancelled. Past, completed, and in-progress appointments will stay unchanged.",
+        confirmLabel: "Cancel future appointments",
+        destructive: true,
+      }))
     ) {
       return;
     }
@@ -2881,6 +2886,7 @@ function SchedulePageContent() {
           <div className="relative min-w-0 flex-1 sm:flex-none">
             <Filter className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground pointer-events-none" />
             <select
+              aria-label="Filter by doctor"
               value={doctorFilter}
               onChange={(e) => setDoctorFilter(e.target.value)}
               className="h-11 w-full min-w-0 appearance-none rounded-md border border-input bg-background pl-8 pr-8 text-xs focus:outline-none focus:ring-2 focus:ring-ring sm:h-9 sm:w-auto"

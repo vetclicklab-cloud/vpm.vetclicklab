@@ -1,5 +1,6 @@
 "use client";
 
+import { FilterChips } from "@/components/ui/filter-chips";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -623,48 +624,31 @@ export default function CareRemindersPage() {
               identity so retrying a migration cannot duplicate them.
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Button
-              size="sm"
-              variant={status === "open" ? "default" : "outline"}
-              onClick={() => setStatus("open")}
-            >
-              Open
-            </Button>
-            <Button
-              size="sm"
-              variant={status === "completed" ? "default" : "outline"}
-              onClick={() => {
-                setStatus("completed");
-                setDue("all");
+          <div className="flex flex-col items-start gap-2 sm:items-end">
+            <FilterChips
+              label="Reminder status"
+              value={status}
+              onChange={(next) => {
+                setStatus(next);
+                if (next !== "open") setDue("all");
               }}
-            >
-              Completed
-            </Button>
-            <Button
-              size="sm"
-              variant={status === "dismissed" ? "default" : "outline"}
-              onClick={() => {
-                setStatus("dismissed");
-                setDue("all");
-              }}
-            >
-              Dismissed
-            </Button>
+              options={[
+                { value: "open", label: "Open" },
+                { value: "completed", label: "Completed" },
+                { value: "dismissed", label: "Dismissed" },
+              ]}
+            />
             {status === "open" ? (
-              <>
-                {(["all", "overdue", "upcoming"] as const).map((value) => (
-                  <Button
-                    key={value}
-                    size="sm"
-                    variant={due === value ? "secondary" : "ghost"}
-                    onClick={() => setDue(value)}
-                    className="capitalize"
-                  >
-                    {value}
-                  </Button>
-                ))}
-              </>
+              <FilterChips
+                label="Due date"
+                value={due}
+                onChange={setDue}
+                options={[
+                  { value: "all", label: "All due dates" },
+                  { value: "overdue", label: "Overdue" },
+                  { value: "upcoming", label: "Upcoming" },
+                ]}
+              />
             ) : null}
           </div>
         </CardHeader>
