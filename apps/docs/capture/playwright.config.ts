@@ -1,13 +1,13 @@
 import { defineConfig } from "@playwright/test";
 
-// Captures guide screenshots from a locally running, freshly seeded OpenVPM.
+// Captures guide screenshots from a locally running, freshly seeded VetClickLab.
 // See capture/README.md for the full run.
 const baseURL = process.env.DOCS_CAPTURE_URL ?? "http://localhost:3100";
 
 // The run changes data (it turns on a calendar feed and uploads a document),
 // so it only ever points at an app on this machine.
 if (!["localhost", "127.0.0.1", "[::1]"].includes(new URL(baseURL).hostname)) {
-  throw new Error(`Refusing to capture from ${baseURL}. Captures only run against a local, seeded OpenVPM.`);
+  throw new Error(`Refusing to capture from ${baseURL}. Captures only run against a local, seeded VetClickLab.`);
 }
 
 export default defineConfig({

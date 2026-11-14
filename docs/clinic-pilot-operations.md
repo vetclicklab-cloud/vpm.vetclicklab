@@ -3,7 +3,7 @@
 This runbook turns the [clinic pilot readiness boundary](clinic-pilot-readiness.md)
 into a repeatable operating process. The first cohort is limited to connected,
 single-location United States general-practice and house-call pilots. It is not
-approval to market OpenVPM as a universal PIMS replacement.
+approval to market VetClickLab as a universal PIMS replacement.
 
 The platform-admin pilot workspace keeps two kinds of evidence separate:
 
@@ -134,7 +134,7 @@ review date.
 ## 6. Evidence and retention
 
 Retain the source export until migration acceptance, preserve reconciliation
-counts, and take an OpenVPM export after acceptance. Pilot operations should
+counts, and take an VetClickLab export after acceptance. Pilot operations should
 contain only non-sensitive codes and timestamps. Product records, billing
 evidence, and provider evidence remain in their authoritative ledgers.
 
@@ -147,13 +147,13 @@ sessions cannot read any pilot-cohort state.
 
 ## Escalation
 
-- **Patient or record safety:** pause clinic work in OpenVPM and preserve all
+- **Patient or record safety:** pause clinic work in VetClickLab and preserve all
   evidence.
 - **Billing or payment integrity:** stop the affected checkout flow; do not
   retry charges blindly.
 - **Data isolation or security:** treat as an incident and follow the security
   process.
-- **Connectivity:** use the agreed connected-mode fallback; OpenVPM does not
+- **Connectivity:** use the agreed connected-mode fallback; VetClickLab does not
   offer offline charting.
 - **SMS:** disable clinic sending and use email until carrier and consent
   evidence are reviewed.

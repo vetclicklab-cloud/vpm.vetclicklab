@@ -48,12 +48,7 @@ function funnelEventEndpoint(request: Request): URL {
     }
   }
 
-  const requestUrl = new URL(request.url);
-  const origin =
-    requestUrl.hostname === "demo.vetclicklab.com"
-      ? "https://app.vetclicklab.com"
-      : requestUrl.origin;
-  return new URL("/api/funnel-event", origin);
+  return new URL("/api/funnel-event", new URL(request.url).origin);
 }
 
 async function recordAcceptedDemoGate(

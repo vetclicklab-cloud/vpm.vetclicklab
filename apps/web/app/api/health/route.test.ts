@@ -1012,7 +1012,7 @@ describe("health route", () => {
   it("requires the canonical platform preference origin", async () => {
     mocks.billingEnforced.mockReturnValue(true);
     stubHostedRequiredEnvs();
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://demo.vetclicklab.com");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://preview.vetclicklab.com");
 
     const response = await GET();
     const json = await response.json();
@@ -1022,7 +1022,7 @@ describe("health route", () => {
       ok: false,
       detail: "1 required hosted configuration value is invalid",
     });
-    expect(JSON.stringify(json)).not.toContain("demo.vetclicklab.com");
+    expect(JSON.stringify(json)).not.toContain("preview.vetclicklab.com");
   });
 
   it("fails readiness when the persisted email identity key does not match", async () => {

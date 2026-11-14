@@ -116,7 +116,7 @@ describe("/api/funnel-event", () => {
     );
   });
 
-  it("accepts events from the hosted demo origin", async () => {
+  it("accepts events from the hosted app origin", async () => {
     const response = await POST(
       request(
         {
@@ -125,19 +125,19 @@ describe("/api/funnel-event", () => {
           path: "/login",
           source: undefined,
         },
-        "https://demo.vetclicklab.com",
+        "https://app.vetclicklab.com",
       ),
     );
 
     expect(response.status).toBe(202);
     expect(response.headers.get("access-control-allow-origin")).toBe(
-      "https://demo.vetclicklab.com",
+      "https://app.vetclicklab.com",
     );
     expect(mocks.insertFunnelEvent).toHaveBeenCalledWith(
       {},
       expect.objectContaining({
         eventName: "demo_gate_viewed",
-        origin: "https://demo.vetclicklab.com",
+        origin: "https://app.vetclicklab.com",
         path: "/login",
       }),
     );

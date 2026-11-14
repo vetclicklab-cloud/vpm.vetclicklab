@@ -1,7 +1,7 @@
-# Getting Started with OpenVPM
+# Getting Started with VetClickLab
 
 Welcome! This is the quick look at your new practice. When you first sign in,
-OpenVPM adds a few sample pets so the app feels real while you look around.
+VetClickLab adds a few sample pets so the app feels real while you look around.
 You can remove them any time in **Settings → Data → Remove sample data**.
 
 ## Your day, at a glance
@@ -49,9 +49,9 @@ connect by API when you are ready. See
 ## Keep exploring
 
 - [Your day sheet](your-day.md)
-- [Ask the Agent about your clinic](https://docs.openvpm.com/guides/ask-the-agent)
+- [Ask the Agent about your clinic](https://docs.vetclicklab.com/guides/ask-the-agent)
 - [Give every client a portal](client-portal.md)
-- [See the schedule in your own calendar](https://docs.openvpm.com/guides/see-the-schedule-in-your-calendar)
+- [See the schedule in your own calendar](https://docs.vetclicklab.com/guides/see-the-schedule-in-your-calendar)
 - [Review clinic pilot fit and launch limits](../clinic-pilot-readiness.md)
 
 Every guide here also runs inside the app with your own data: open

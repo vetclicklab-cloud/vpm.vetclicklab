@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import type { AreaId } from "@/content/types";
 
-/** The same icon each area has in the OpenVPM sidebar (apps/web/components/layout/sidebar.tsx). */
+/** The same icon each area has in the VetClickLab sidebar (apps/web/components/layout/sidebar.tsx). */
 export const areaIcons: Record<AreaId, LucideIcon> = {
   dashboard: LayoutDashboard,
   patients: PawPrint,

@@ -11,7 +11,7 @@ migrated.
 ## Private workspace
 
 Use an encrypted, clinic-authorized workstation. Create a private directory
-outside the OpenVPM repository and outside cloud-synced folders. Keep the
+outside the VetClickLab repository and outside cloud-synced folders. Keep the
 original archives there with permissions limited to the current user. The tool
 enforces that the containing private directory, manifest, and archives are
 owned by the current user and grant no permissions to group or other users. Use

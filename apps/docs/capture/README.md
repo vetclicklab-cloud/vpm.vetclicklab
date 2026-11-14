@@ -1,7 +1,7 @@
 # Guide screenshots
 
 Every product image on the help site comes from this folder's capture run. It
-signs into a freshly seeded OpenVPM, opens each screen in `shots.ts`, saves a
+signs into a freshly seeded VetClickLab, opens each screen in `shots.ts`, saves a
 JPEG to `public/screens/`, and records where each named part of the screen sits
 in `public/screens/manifest.json`. Guides point at those names, so the numbered
 callouts follow the real interface rather than hand-placed coordinates.
@@ -11,7 +11,7 @@ points at a screenshot or part that no longer exists.
 
 ## Run it
 
-You need the local OpenVPM services (PostgreSQL and object storage) from the
+You need the local VetClickLab services (PostgreSQL and object storage) from the
 root README.
 
 1. **Use a database just for captures.** Export `DATABASE_URL` for the whole
@@ -47,7 +47,7 @@ root README.
 
    ```sh
    export NEXTAUTH_SECRET="$(openssl rand -base64 32)"
-   NEXT_PUBLIC_APP_URL=https://app.openvpm.com pnpm --filter @openpims/web build
+   NEXT_PUBLIC_APP_URL=https://app.vetclicklab.com pnpm --filter @openpims/web build
    NODE_OPTIONS="--import $PWD/apps/docs/capture/clock.mjs" \
      pnpm --filter @openpims/web exec next start -p 3100
    ```

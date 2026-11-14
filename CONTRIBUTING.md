@@ -1,14 +1,14 @@
-# Contributing to OpenVPM
+# Contributing to VetClickLab
 
-Thank you for your interest in contributing to OpenVPM!
+Thank you for your interest in contributing to VetClickLab!
 
 ## Development Setup
 
 1. **Prerequisites**: Node.js 24.22.1 or a newer Node.js 24 patch, pnpm 9+, Docker
 2. **Clone and install**:
    ```bash
-   git clone https://github.com/evangauer/openvpm.git
-   cd openvpm
+   git clone https://github.com/vetclicklab-cloud/vpm.vetclicklab.git
+   cd vpm.vetclicklab
    nvm use # when using nvm; see .nvmrc
    cp .env.example .env
    # set NEXTAUTH_SECRET in .env to the output of: openssl rand -base64 32
@@ -54,7 +54,7 @@ Thank you for your interest in contributing to OpenVPM!
 
 ## Adding a compatibility endpoint or target
 
-The public REST API ([docs/api](docs/api/README.md)) is OpenVPM's integration
+The public REST API ([docs/api](docs/api/README.md)) is VetClickLab's integration
 moat: integrators (and AI agents) plug into a frozen, vendor-shaped contract.
 The layout makes adding endpoints — and entire vendor-compatible "targets" —
 repeatable:
@@ -79,7 +79,7 @@ public contract.
 ## Good first issues
 
 New here? These are scoped, self-contained, and well-tested — great first PRs.
-Comment on the matching [issue](https://github.com/evangauer/openvpm/issues) (or
+Comment on the matching [issue](https://github.com/vetclicklab-cloud/vpm.vetclicklab/issues) (or
 open one) to claim it.
 
 - **Expand the drug dosing formulary** — add drugs with species-specific reference
@@ -94,8 +94,8 @@ open one) to claim it.
 - **Embeddable booking widget** — an iframe/script version of the client-portal
   booking flow (`apps/web/app/portal/[token]/book`).
 
-Want to help but unsure where to start? Open a
-[Discussion](https://github.com/evangauer/openvpm/discussions) and say hello.
+Want to help but unsure where to start? Open an
+[issue](https://github.com/vetclicklab-cloud/vpm.vetclicklab/issues) and say hello.
 
 ## License
 

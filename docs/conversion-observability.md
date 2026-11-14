@@ -1,6 +1,6 @@
 # Conversion evidence and reconciliation
 
-OpenVPM’s clinic conversion funnel uses exact, locally auditable evidence. The
+VetClickLab’s clinic conversion funnel uses exact, locally auditable evidence. The
 canonical repairable projection is `practice_conversion_milestones`; browser
 journey telemetry remains in `funnel_events` and is not a business-stage source
 of truth.

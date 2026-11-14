@@ -33,12 +33,8 @@ export function trackFunnelEvent(
     const eventId = globalThis.crypto?.randomUUID?.();
     if (!anonymousId || !eventId || typeof window === "undefined") return;
 
-    const hostedFunnelOrigin =
-      window.location.hostname === "demo.vetclicklab.com"
-        ? "https://app.vetclicklab.com"
-        : window.location.origin;
     const configuredOrigin =
-      process.env.NEXT_PUBLIC_FUNNEL_ENDPOINT?.trim() || hostedFunnelOrigin;
+      process.env.NEXT_PUBLIC_FUNNEL_ENDPOINT?.trim() || window.location.origin;
     const endpoint = new URL("/api/funnel-event", configuredOrigin).toString();
     const path =
       typeof cleaned.path === "string"

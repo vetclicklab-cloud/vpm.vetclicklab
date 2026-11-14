@@ -1,7 +1,7 @@
 # Turning on the ambulatory workspace
 
 The solo veterinarian guide moved to the help site:
-[Run a solo practice](https://docs.openvpm.com/guides/run-a-solo-practice).
+[Run a solo practice](https://docs.vetclicklab.com/guides/run-a-solo-practice).
 
 This page keeps the one step that only a server operator can do.
 

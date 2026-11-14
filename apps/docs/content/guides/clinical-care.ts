@@ -362,11 +362,11 @@ export const clinicalCare: Guide[] = [
         body: [
           "The file appears in the list below the form. Use the **Lab reports** filter to see only outside lab files, and **View** or **Download** to open one.",
         ],
-        important: "A lab report is saved as the original file. OpenVPM doesn't read the results out of it, so enter any values you need to track in [Lab results](/guides/record-lab-results).",
+        important: "A lab report is saved as the original file. VetClickLab doesn't read the results out of it, so enter any values you need to track in [Lab results](/guides/record-lab-results).",
       },
     ],
     faq: [
-      ["The upload stopped or I'm not sure it worked", "Choose [[Retry upload]] and keep the page open. OpenVPM checks and finishes the same upload, so you won't end up with two copies."],
+      ["The upload stopped or I'm not sure it worked", "Choose [[Retry upload]] and keep the page open. VetClickLab checks and finishes the same upload, so you won't end up with two copies."],
       ["Who can upload?", "Anyone on the team who can make changes. Viewer accounts can open and download documents but can't add them."],
     ],
     next: "record-lab-results",

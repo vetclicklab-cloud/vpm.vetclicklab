@@ -6,7 +6,7 @@ in the repository, issues, pull requests, CI logs, or test fixtures.
 
 ## Goal
 
-Move the operational record a clinic needs to work in OpenVPM while preserving
+Move the operational record a clinic needs to work in VetClickLab while preserving
 source identity and documenting every record that was imported, deferred,
 reviewed manually, or excluded. The same pipeline must work for another
 Shepherd clinic. Other PIMS vendors plug into the same normalized domain plan.
@@ -69,10 +69,10 @@ code or fixtures.
 
 - Vendor authentication, credentials, runtime settings, audit logs, and staff
   accounts are never portable.
-- Historical invoices and payments are reference-only until OpenVPM can prove
+- Historical invoices and payments are reference-only until VetClickLab can prove
   the opening balance without altering live accounts receivable or inventory.
 - A source lab panel is kept as a typed document when its structure cannot be
-  represented by OpenVPM's scalar lab result without losing meaning.
+  represented by VetClickLab's scalar lab result without losing meaning.
 - Communication history never restores SMS consent, provider delivery state,
   or an outbound send queue.
 - Historical stock quantities, lots, and expirations are not trusted as current

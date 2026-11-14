@@ -165,7 +165,7 @@ describe("self-hosting operations docs", () => {
     expect(hostedRunbook).toContain("STRIPE_TAX_ENABLED=true");
     expect(hostedRunbook).toContain("Stripe Tax gates hosted readiness");
     expect(hostedRunbook).toContain(
-      "Client invoice payments stay on OpenVPM's already-totaled invoice amounts",
+      "Client invoice payments stay on VetClickLab's already-totaled invoice amounts",
     );
     expect(envExample).toContain(
       "Required for hosted production readiness after",
@@ -201,7 +201,7 @@ describe("self-hosting operations docs", () => {
     ];
 
     expect(emailSection).toContain(
-      "https://app.openvpm.com/api/webhooks/resend",
+      "https://app.vetclicklab.com/api/webhooks/resend",
     );
     expect(emailSection).toContain("RESEND_WEBHOOK_SECRET");
     expect(emailSection).toContain("EMAIL_SUPPORT_ADDRESS");
@@ -246,12 +246,12 @@ describe("self-hosting operations docs", () => {
     ];
 
     expect(clientInvoiceSection).toContain(
-      "https://app.openvpm.com/api/webhooks/stripe",
+      "https://app.vetclicklab.com/api/webhooks/stripe",
     );
     expect(clientInvoiceSection).toContain("- `checkout.session.completed`");
     expect(clientInvoiceSection).not.toContain("invoice.payment_succeeded");
     expect(subscriptionSection).toContain(
-      "https://app.openvpm.com/api/webhooks/stripe-subscription",
+      "https://app.vetclicklab.com/api/webhooks/stripe-subscription",
     );
 
     for (const event of subscriptionEvents) {

@@ -6,7 +6,7 @@ import { getTour } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Screens",
-  description: "What every part of each OpenVPM screen does, in the same order as the app's sidebar.",
+  description: "What every part of each VetClickLab screen does, in the same order as the app's sidebar.",
   alternates: { canonical: "/screens" },
 };
 
@@ -14,7 +14,7 @@ export default function ScreensIndex() {
   return (
     <div className="page pb-12 pt-10">
       <h1 className="text-[34px] font-bold">Screens</h1>
-      <p className="lede max-w-2xl">Not sure what you&apos;re looking at? Pick the screen from the OpenVPM sidebar to see what each part does.</p>
+      <p className="lede max-w-2xl">Not sure what you&apos;re looking at? Pick the screen from the VetClickLab sidebar to see what each part does.</p>
       <div className="mt-8 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
         {areas.map((area) => {
           const tour = getTour(area.id);

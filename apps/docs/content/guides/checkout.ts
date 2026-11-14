@@ -119,7 +119,7 @@ export const checkout: Guide[] = [
         title: "Choose how they're paying",
         body: [
           "For cash, check, your own card terminal, or a payment taken somewhere else, choose [[Record Payment]] ((1)). Enter the amount and method, and add a note like a check number if you want.",
-          "To take a card in OpenVPM, choose [[Take Card]] ((2)). This only works once card payments are set up.",
+          "To take a card in VetClickLab, choose [[Take Card]] ((2)). This only works once card payments are set up.",
         ],
         shot: {
           id: "invoice-sent",

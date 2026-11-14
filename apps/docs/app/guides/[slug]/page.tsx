@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: guide.summary,
     alternates: { canonical: `/guides/${guide.slug}` },
     openGraph: {
-      siteName: "OpenVPM Help",
+      siteName: "VetClickLab Help",
       type: "article",
       url: `/guides/${guide.slug}`,
       title: guide.title,

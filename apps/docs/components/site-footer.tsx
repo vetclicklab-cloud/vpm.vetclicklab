@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CircleHelp, Mail } from "lucide-react";
 import { SUPPORT_EMAIL } from "@/content/catalog";
-import { PawMark } from "./brand";
+import { BrandMark } from "./brand";
 
 export function SiteFooter() {
   return (
@@ -20,9 +20,9 @@ export function SiteFooter() {
           <Link href="/guides" className="hover:text-foreground">Guides</Link>
           <Link href="/training" className="hover:text-foreground">Team training</Link>
           <Link href="/screens" className="hover:text-foreground">Screens</Link>
-          <a href="https://github.com/evangauer/openvpm" className="hover:text-foreground">Source on GitHub</a>
+          <a href="https://github.com/vetclicklab-cloud/vpm.vetclicklab" className="hover:text-foreground">Source on GitHub</a>
           <span className="flex items-center gap-1.5">
-            <PawMark className="h-3.5 w-3.5 text-[color:var(--mark)]" /> OpenVPM is free, open-source software
+            <BrandMark className="h-3.5 w-3.5 text-[color:var(--mark)]" /> VetClickLab · source available under AGPLv3
           </span>
         </nav>
       </div>

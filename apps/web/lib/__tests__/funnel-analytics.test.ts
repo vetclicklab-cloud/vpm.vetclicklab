@@ -129,10 +129,11 @@ describe("buildClinicFitSignupUrl", () => {
           next: "https://attacker.example",
         }),
       ),
+      "https://app.vetclicklab.com",
     );
 
     expect(`${url.origin}${url.pathname}`).toBe(
-      "https://demo.vetclicklab.com/login",
+      "https://app.vetclicklab.com/login",
     );
     expect(Object.fromEntries(url.searchParams)).toEqual({
       source: "homepage_pricing",

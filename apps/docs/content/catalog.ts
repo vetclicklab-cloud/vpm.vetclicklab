@@ -9,7 +9,7 @@ export const categories: { id: CategoryId; title: string; summary: string }[] = 
   { id: "administration", title: "Practice setup", summary: "Set up the clinic, your team, payments, and your data." },
 ];
 
-/** The OpenVPM sidebar, in order. Every item gets a screen tour. */
+/** The VetClickLab sidebar, in order. Every item gets a screen tour. */
 export const areas: { id: AreaId; label: string }[] = [
   { id: "dashboard", label: "Dashboard" },
   { id: "patients", label: "Patients" },
@@ -84,6 +84,6 @@ export const firstDay = [
   { label: "Get paid", guide: "take-a-payment" },
 ] as const;
 
-export const APP_URL = "https://app.openvpm.com";
-export const DEMO_URL = "https://demo.openvpm.com/login";
-export const SUPPORT_EMAIL = "hello@openvpm.com";
+export const APP_URL = "https://app.vetclicklab.com";
+export const DEMO_URL = "https://app.vetclicklab.com/login";
+export const SUPPORT_EMAIL = "hello@vetclicklab.com";

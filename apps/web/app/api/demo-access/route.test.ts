@@ -45,7 +45,7 @@ const { POST } = await import("./route");
 const ANONYMOUS_ID = "00000000-0000-4000-8000-000000000001";
 
 function request(body: unknown, headers: HeadersInit = {}) {
-  return new Request("https://demo.vetclicklab.com/api/demo-access", {
+  return new Request("https://app.vetclicklab.com/api/demo-access", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -111,7 +111,7 @@ describe("POST /api/demo-access", () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Origin: "https://demo.vetclicklab.com",
+          Origin: "https://app.vetclicklab.com",
         },
       }),
     );

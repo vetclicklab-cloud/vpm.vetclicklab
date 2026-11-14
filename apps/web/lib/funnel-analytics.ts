@@ -165,7 +165,8 @@ export function buildClinicFitDemoUrl(
   searchParams: SearchParamsReader,
 ): string {
   const params = clinicFitAttributionParams(searchParams);
-  return `https://demo.vetclicklab.com/login?${params.toString()}`;
+  // Same host as clinic-fit (app.vetclicklab.com), so this also works on staging.
+  return `/login?${params.toString()}`;
 }
 
 function clinicFitAttributionParams(

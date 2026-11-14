@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { guides, tours, trainings } from "@/lib/content";
 
-const SITE = "https://docs.openvpm.com";
+const SITE = "https://docs.vetclicklab.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

@@ -1,23 +1,23 @@
-# OpenVPM Cloud Production Runbook
+# VetClickLab Production Runbook
 
 Clinic onboarding and graduation are governed by the
 [controlled clinic pilot operations runbook](clinic-pilot-operations.md) and
 the [clinic readiness boundary](clinic-pilot-readiness.md).
 
-OpenVPM has two operating modes:
+VetClickLab has two operating modes:
 
 - **Self-host / OSS:** leave `HOSTED_BILLING_ENABLED` unset. Hosted billing gates and usage metering are disabled, and Stripe subscription envs are optional.
-- **OpenVPM Cloud:** set `HOSTED_BILLING_ENABLED=true`. Hosted billing, trials, read-only lapsed state, usage metering, and Stripe subscription management are active.
+- **VetClickLab:** set `HOSTED_BILLING_ENABLED=true`. Hosted billing, trials, read-only lapsed state, usage metering, and Stripe subscription management are active.
 
 This boundary is intentional. Do not add hosted-only requirements to the self-host path.
 
 ## Public Website Flow
 
-`openvpm.com` should route clinics clearly:
+`vetclicklab.com` should route clinics clearly:
 
 - `Start Cloud Trial` -> `${NEXT_PUBLIC_APP_URL}/register?intent=cloud`
 - `Try the Live Demo` -> `${NEXT_PUBLIC_DEMO_URL}/login`
-- `Self-host OpenVPM` -> `/install` and GitHub
+- `Self-host VetClickLab` -> `/install` and GitHub
 
 Cloud signup creates a practice, a primary location, the owner admin user, default configuration, and hosted first-run demo data. By default, signup sends the owner to secure Stripe Checkout to collect payment details. The 14-day free trial starts only after Stripe confirms checkout through the signed subscription webhook. There is no subscription charge today; Stripe charges $79 USD/month per active location after the trial unless cancelled in Plan & Billing (plus applicable taxes and usage overages). Email verification remains a soft prompt. `HOSTED_NO_CARD_TRIAL=true` explicitly opts into the legacy immediate no-card trial. Existing trials keep their expiry; shared-demo access remains free.
 
@@ -32,13 +32,13 @@ First run greets the new admin (and every invited staff member, once) with the v
 Set the marketing deployment envs to:
 
 ```env
-NEXT_PUBLIC_APP_URL=https://app.openvpm.com
-NEXT_PUBLIC_DEMO_URL=https://demo.openvpm.com
+NEXT_PUBLIC_APP_URL=https://app.vetclicklab.com
+NEXT_PUBLIC_DEMO_URL=https://app.vetclicklab.com
 ```
 
 ## Tenant Database Model
 
-OpenVPM Cloud uses one hosted Postgres database cluster, not one physical database per clinic. A fresh clinic never has to create or configure a database.
+VetClickLab uses one hosted Postgres database cluster, not one physical database per clinic. A fresh clinic never has to create or configure a database.
 
 On signup, the app creates:
 
@@ -86,8 +86,8 @@ LEAD_ALERT_WEBHOOK_URL=    # optional Slack-style webhook for hand-raises
 DEMO_FOLLOWUP_ENABLED=false
 DEMO_FOLLOWUP_ROLLOUT_AT=
 LEAD_CAPTURE_SECRET=...    # same 32+ byte value on the app and demo projects
-NEXTAUTH_URL=https://app.openvpm.com
-NEXT_PUBLIC_APP_URL=https://app.openvpm.com
+NEXTAUTH_URL=https://app.vetclicklab.com
+NEXT_PUBLIC_APP_URL=https://app.vetclicklab.com
 NEXTAUTH_SECRET=... # `openssl rand -base64 32`; production refuses published or <32-char values
 DATABASE_URL=...
 # Transitional production release lock. Set only to the exact approved
@@ -97,7 +97,7 @@ PRODUCTION_RELEASE_SHA=
 STRIPE_SECRET_KEY=...
 STRIPE_WEBHOOK_SECRET=...
 STRIPE_CONNECT_WEBHOOK_SECRET=...
-# Optional; leave unset/0 for v1 if OpenVPM does not take a fee on clinic client payments.
+# Optional; leave unset/0 for v1 if VetClickLab does not take a fee on clinic client payments.
 STRIPE_CONNECT_APPLICATION_FEE_BPS=
 STRIPE_SUBSCRIPTION_WEBHOOK_SECRET=...
 STRIPE_PRICE_CLOUD_LOCATION=...
@@ -134,8 +134,8 @@ EMAIL_PREFERENCE_IDENTITY_SECRET=... # current `openssl rand -base64 32` recipie
 EMAIL_PREFERENCE_IDENTITY_SECRET_PREVIOUS= # exact former key only during a registered identity rotation
 EMAIL_PREFERENCE_SIGNING_SECRET=... # rotatable `openssl rand -base64 32`; do not reuse another secret
 EMAIL_PREFERENCE_SIGNING_SECRET_PREVIOUS= # comma-separated former signing keys retained for delivered links
-EMAIL_PREFERENCE_BASE_URL=https://app.openvpm.com
-EMAIL_SUPPORT_ADDRESS=support@openvpm.com
+EMAIL_PREFERENCE_BASE_URL=https://app.vetclicklab.com
+EMAIL_SUPPORT_ADDRESS=support@vetclicklab.com
 EMAIL_COMPANY_ADDRESS=...
 MESSAGING_PROVIDER=telnyx
 TELNYX_API_KEY=...
@@ -262,7 +262,7 @@ operator queue, and budget controls have been verified; changing it to `true`
 opens the explicitly confirmed fee-bearing provisioning actions. Hosted
 number orders additionally require the clinic's practice UUID in
 `MESSAGING_PROVISIONING_PRACTICE_IDS`, so a controlled pilot does not expose
-purchases to every clinic admin. New OpenVPM-created messaging profiles enforce
+purchases to every clinic admin. New VetClickLab-created messaging profiles enforce
 a `$10.00` daily Telnyx spend limit and smart encoding; review that cap before
 expanding beyond a design-partner pilot.
 
@@ -309,7 +309,7 @@ purchase or carrier submission. Use the platform admin queue in this order:
 
 1. Reconcile the brand as `VERIFIED` or `VETTED_VERIFIED`, the campaign as
    `ACTIVE` or `MNO_PROVISIONED`, and the exact number assignment as `ASSIGNED`.
-2. Select **Inspect profile**. OpenVPM reads the exact profile, owned number,
+2. Select **Inspect profile**. VetClickLab reads the exact profile, owned number,
    brand, campaign, and assignment. The profile must have the canonical v2
    webhook, a US-only destination allowlist, smart encoding, and the enforced
    `$10.00` daily cap. A new profile may still report its clinic-specific
@@ -318,10 +318,10 @@ purchase or carrier submission. Use the platform admin queue in this order:
    passes, confirm the every-five-minute `sms-provider-events` writer heartbeat,
    an empty redacted provider-event queue, and a healthy read-only
    `sms-operations` heartbeat. Then set `MESSAGING_INBOUND_ENABLED=true`, select
-   **Enable provider profile**, and confirm the provider mutation. OpenVPM
+   **Enable provider profile**, and confirm the provider mutation. VetClickLab
    first installs and reads back the exact clinic-branded US START, STOP, and
    HELP rules using the registered clinic name and support phone. Missing,
-   duplicate, wildcard, paginated, or changed rules block activation. OpenVPM
+   duplicate, wildcard, paginated, or changed rules block activation. VetClickLab
    then reads every provider prerequisite back after the update and deliberately
    leaves the clinic database sender off. Provider activation remains blocked
    if exact or identity-matched pending, retry, recovery-blocked, quarantined,
@@ -341,7 +341,7 @@ purchase or carrier submission. Use the platform admin queue in this order:
 The kill sequence is global sending off first, then clear both sending
 allowlists, disable the clinic database sender, and finally select **Disable
 provider profile**. Provider deactivation always closes the database gate before
-contacting Telnyx, so an uncertain carrier response cannot leave OpenVPM sending.
+contacting Telnyx, so an uncertain carrier response cannot leave VetClickLab sending.
 
 ### Texting operations response
 
@@ -453,7 +453,7 @@ Backups age out under the same closure policy. Provider identifiers and
 platform-operator identities in these ledgers are part of that purge scope.
 
 Self-hosted external SMS must also set `MESSAGING_REGISTERED_DISPLAY_NAME` to
-the exact clinic name approved on that provider's active campaign. OpenVPM
+the exact clinic name approved on that provider's active campaign. VetClickLab
 snapshots that identity on every durable send attempt and adds the canonical
 STOP/HELP footer. Hosted sends do not use this override: they require an active,
 provider-matching `messaging_registrations` row. Console-only local testing may
@@ -462,12 +462,12 @@ use the practice name because it never contacts a carrier.
 Hosted AI defaults to stable `gemini-3.5-flash` through Google Cloud Vertex AI.
 Set the project and workload-identity values shown above; `/api/health` fails
 closed when any one is absent. Configure Vercel's team-mode OIDC issuer and bind
-only `owner:evangauers-projects:project:openvpm-app:environment:production` to a
+only `owner:<team>:project:<web-project>:environment:production` to a
 dedicated service account with the Vertex AI invocation role. The app exchanges
 Vercel's signed runtime token for short-lived Google credentials; do not create
 or store a Google private key in Vercel. Configure the Google Cloud
 data-governance controls required by the clinic-data policy before enabling AI.
-Do not substitute an AI Studio / Gemini Developer API key: OpenVPM sends
+Do not substitute an AI Studio / Gemini Developer API key: VetClickLab sends
 veterinary chart context and that API's terms do not permit use in clinical
 practice. If an operator explicitly selects a Claude `AI_MODEL`,
 `ANTHROPIC_API_KEY` remains supported for self-hosted or separately approved
@@ -477,7 +477,7 @@ For local or staging signup tests without real email delivery, set `OPENVPM_EXPO
 
 ## Email Setup
 
-Resend sends transactional email and posts delivery lifecycle callbacks back to OpenVPM so bounces, spam complaints, and provider suppressions can fail closed before future client email sends.
+Resend sends transactional email and posts delivery lifecycle callbacks back to VetClickLab so bounces, spam complaints, and provider suppressions can fail closed before future client email sends.
 
 `EMAIL_SUPPORT_ADDRESS` is used as lifecycle email Reply-To and footer contact
 address. `EMAIL_COMPANY_ADDRESS` is rendered in hosted email footers. Both gate
@@ -531,7 +531,7 @@ link retention period is over and a separately reviewed retirement migration
 is ready; simply deleting it causes readiness to fail closed.
 
 `EMAIL_PREFERENCE_BASE_URL` must be the canonical HTTPS origin
-`https://app.openvpm.com` in every hosted deployment. This ensures demo and
+`https://app.vetclicklab.com` in every hosted deployment. This ensures demo and
 campaign email writes recipient choices to the canonical hosted database rather
 than a deployment-local database. Optional platform email fails closed when the
 required preference configuration is missing or invalid; security, receipt,
@@ -581,7 +581,7 @@ and prospective: set `CUSTOMER_LIFECYCLE_ENABLED=true` and an exact
 `CUSTOMER_LIFECYCLE_ROLLOUT_AT`, and each campaign only reaches clinics whose
 trigger happened after it.
 
-- **Team invite.** A trialing or paying clinic that is using OpenVPM for real
+- **Team invite.** A trialing or paying clinic that is using VetClickLab for real
   (activated) but still has a single user, 3 to 21 days after its trial
   started, gets one note pointing to staff settings.
 - **Trial win-back.** A trial that ended without billing gets up to three
@@ -664,7 +664,7 @@ so registrations are attributed to the email that produced them.
 Webhook endpoint:
 
 ```text
-https://app.openvpm.com/api/webhooks/resend
+https://app.vetclicklab.com/api/webhooks/resend
 ```
 
 Subscribe to:
@@ -687,7 +687,7 @@ card-only method list in Dashboard rules. Invoice Checkout still uses manual
 capture, so Stripe automatically filters out methods that cannot support the
 authorization-and-capture flow.
 
-Create one Stripe product for OpenVPM Cloud with these recurring prices:
+Create one Stripe product for VetClickLab with these recurring prices:
 
 - Cloud location: `$79/month`, env `STRIPE_PRICE_CLOUD_LOCATION` (flat per active location, unlimited staff).
 - Cloud location annual: `$790/year`, env `STRIPE_PRICE_CLOUD_LOCATION_ANNUAL` (two months free, flat per active location, unlimited staff).
@@ -704,14 +704,14 @@ The Cloud plan includes **1,000 AI actions + 1,000 SMS per month**, then bills *
 1. Create two meters — `openvpm_ai_run` and `openvpm_sms` — with sum aggregation, value payload key `value`, and customer mapping by `stripe_customer_id`. The event names must match `lib/billing/stripe-meters.ts`.
 2. Create a graduated metered price per meter with the included allowance as the $0 first tier: tiers `[{ up_to: 1000, unit_amount: 0 }, { up_to: inf, unit_amount: 5 }]` for AI (cents) and `… unit_amount: 3` for SMS, each with `recurring.usage_type=metered` and `recurring.meter=<meter id>`. Wire to `STRIPE_PRICE_AI_OVERAGE` / `STRIPE_PRICE_SMS_OVERAGE`.
 
-Monthly and annual Checkout each show one customer-facing OpenVPM Cloud item (quantity = active non-deleted locations, kept current by quantity sync). Monthly subscription sync can attach configured quantity-less metered items after Checkout; annual founding subscriptions remain flat-rate so the first purchase and invoice stay simple. `recordUsage()` writes the local `usage_records` row (display/reconcile source of truth) and, once the practice has a Stripe customer, reports a meter event where metered billing is active. Before the conversion Stripe checkout completes, there is no customer to meter against, so any pre-checkout usage stays local. Leaving the overage price envs unset keeps usage recorded but unbilled.
+Monthly and annual Checkout each show one customer-facing VetClickLab item (quantity = active non-deleted locations, kept current by quantity sync). Monthly subscription sync can attach configured quantity-less metered items after Checkout; annual founding subscriptions remain flat-rate so the first purchase and invoice stay simple. `recordUsage()` writes the local `usage_records` row (display/reconcile source of truth) and, once the practice has a Stripe customer, reports a meter event where metered billing is active. Before the conversion Stripe checkout completes, there is no customer to meter against, so any pre-checkout usage stays local. Leaving the overage price envs unset keeps usage recorded but unbilled.
 
-Stripe Tax gates hosted readiness. Complete Stripe Tax registrations and origin-address setup in Stripe, then set `STRIPE_TAX_ENABLED=true` so subscription checkout collects billing address/tax IDs and lets Stripe calculate tax on the Cloud subscription. Client invoice payments stay on OpenVPM's already-totaled invoice amounts and do not add Stripe Tax again.
+Stripe Tax gates hosted readiness. Complete Stripe Tax registrations and origin-address setup in Stripe, then set `STRIPE_TAX_ENABLED=true` so subscription checkout collects billing address/tax IDs and lets Stripe calculate tax on the Cloud subscription. Client invoice payments stay on VetClickLab's already-totaled invoice amounts and do not add Stripe Tax again.
 
 Client invoice payment webhook endpoint:
 
 ```text
-https://app.openvpm.com/api/webhooks/stripe
+https://app.vetclicklab.com/api/webhooks/stripe
 ```
 
 Subscribe to:
@@ -722,18 +722,18 @@ Store this endpoint secret as `STRIPE_WEBHOOK_SECRET`.
 
 ### Stripe Connect for clinic-owned client payments
 
-OpenVPM Cloud uses controller-configured connected accounts with a full Stripe
+VetClickLab uses controller-configured connected accounts with a full Stripe
 Dashboard for clinics that want to bill pet owners by card. Stripe owns ongoing
 requirements collection and negative-balance liability, while each clinic pays
-its processing fees. This is separate from the OpenVPM Cloud subscription
-above: Cloud subscription charges settle to OpenVPM, while client invoice
+its processing fees. This is separate from the VetClickLab subscription
+above: Cloud subscription charges settle to VetClickLab, while client invoice
 payments are created on the clinic's connected account after onboarding is
 complete.
 
 Enable Connect in the platform Stripe account, then add the Connect webhook:
 
 ```text
-https://app.openvpm.com/api/webhooks/stripe-connect
+https://app.vetclicklab.com/api/webhooks/stripe-connect
 ```
 
 Subscribe to:
@@ -744,13 +744,13 @@ Subscribe to:
 Store this endpoint secret as `STRIPE_CONNECT_WEBHOOK_SECRET`.
 
 `STRIPE_CONNECT_APPLICATION_FEE_BPS` is optional and defaults to `0`. Leave it
-unset for v1 if OpenVPM should not take a percentage fee from clinic client
+unset for v1 if VetClickLab should not take a percentage fee from clinic client
 payments.
 
 Hosted subscription webhook endpoint:
 
 ```text
-https://app.openvpm.com/api/webhooks/stripe-subscription
+https://app.vetclicklab.com/api/webhooks/stripe-subscription
 ```
 
 Subscribe to:
@@ -765,7 +765,7 @@ Subscribe to:
 Store this endpoint secret as `STRIPE_SUBSCRIPTION_WEBHOOK_SECRET`.
 
 `checkout.session.completed` is shared by the platform invoice and hosted
-subscription endpoints. OpenVPM de-duplicates it per endpoint, so both webhook
+subscription endpoints. VetClickLab de-duplicates it per endpoint, so both webhook
 endpoints must remain configured; each handler ignores sessions that belong to
 the other billing surface.
 
@@ -774,7 +774,7 @@ the other billing surface.
 Use:
 
 ```text
-GET https://app.openvpm.com/api/health
+GET https://app.vetclicklab.com/api/health
 ```
 
 It checks database connectivity and required hosted configuration for auth, Stripe billing, storage, email, AI, and ops hooks. It never returns secret values. SMS provider setup is reported as advisory until the active provider is provisioned.
@@ -835,13 +835,13 @@ Do not commit:
 `.gitignore` already excludes the local/private files used by development and launch work.
 
 
-## Separate OpenVPM subscription account
+## Separate VetClickLab subscription account
 
-New subscriptions can use the OpenVPM Stripe account without moving existing
+New subscriptions can use the VetClickLab Stripe account without moving existing
 customers or clinic-owned client payments. Apply migration
 `0106_subscription_billing_account` before deploying this revision to any app
 or demo database. Existing `stripe_billing_account=NULL` rows continue to use
-the original Get Talky key, prices, billing portal, meters, and webhook.
+the original key, prices, billing portal, meters, and webhook.
 Run `node apps/web/scripts/verify-openvpm-subscription-account.mjs` with the
 new account's configuration to check identity, prices, meter tiers, cancellation,
 and the registered webhook without creating a customer or subscription.
@@ -851,20 +851,20 @@ belongs to that configured account before creating a session.
 
 Configure the complete `STRIPE_OPENVPM_*` group from `.env.example`. Monthly
 and annual prices, meters, portal cancellation, tax registrations, and payment
-method settings are account-specific; never copy IDs from Get Talky. Leave
-OpenVPM automatic tax disabled until its own registration and product tax code
+method settings are account-specific; never copy IDs from the original account. Leave
+VetClickLab automatic tax disabled until its own registration and product tax code
 have been verified. Configure trial reminders in Stripe (7 days before charging)
 with the charge date, amount, and cancellation link; the app also has its
 existing 7/3/1-day lifecycle reminders.
 
-Create the OpenVPM event destination at
-`https://app.openvpm.com/api/webhooks/stripe-openvpm-subscription` for:
+Create the VetClickLab event destination at
+`https://app.vetclicklab.com/api/webhooks/stripe-openvpm-subscription` for:
 
 - `checkout.session.completed`
 - `customer.subscription.created`, `customer.subscription.updated`, and `customer.subscription.deleted`
 - `invoice.payment_succeeded` and `invoice.payment_failed`
 
-Keep the Get Talky subscription destination and all original env values intact.
+Keep the the original account subscription destination and all original env values intact.
 Each handler verifies its own secret and scopes every clinic lookup/update to
 that account. Replayed events retain the existing event-ledger idempotency.
 Checkout resumes, portal cancellation, quantity sync, and usage meters resolve
@@ -875,12 +875,12 @@ Before promotion, verify the new-account flow in a sandbox: cancellation keeps
 the account without a running trial; retry offers the full 14 days; signed
 completion grants access and records payment-method evidence; portal cancels
 that subscription; a mismatched-account webhook changes no other clinic.
-Verify an existing Get Talky clinic can still open its original billing portal.
+Verify an existing the original account clinic can still open its original billing portal.
 Publish the matching marketing-site trial terms with this release. Reverting
 `STRIPE_OPENVPM_ACCOUNT_ID` stops new account assignments but must not remove
-OpenVPM credentials or its webhook while any clinics are assigned to it.
+VetClickLab credentials or its webhook while any clinics are assigned to it.
 
-Once any clinic uses OpenVPM billing, rollback must retain this account-routing
+Once any clinic uses VetClickLab billing, rollback must retain this account-routing
 code and database column. A code rollback to a revision that knows only Get
 Talky would route those clinics to the wrong portal and usage meter. Disable
 new account assignment instead of deleting the account boundary.

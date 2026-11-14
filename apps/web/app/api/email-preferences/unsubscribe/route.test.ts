@@ -123,7 +123,7 @@ describe("POST email preference unsubscribe", () => {
 
     const response = await POST(
       oneClickRequest(
-        "https://demo.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
+        "https://preview.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
       ),
     );
 

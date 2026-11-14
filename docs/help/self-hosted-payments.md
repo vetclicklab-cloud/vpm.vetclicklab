@@ -1,6 +1,6 @@
 # Set up Stripe payments on a self-hosted clinic
 
-This guide covers client invoice payments on your own OpenVPM installation. Cash, checks, and payments taken on an external terminal can be recorded without Stripe. It does not configure an OpenVPM Cloud subscription or a Stripe Connect platform.
+This guide covers client invoice payments on your own VetClickLab installation. Cash, checks, and payments taken on an external terminal can be recorded without Stripe. It does not configure an VetClickLab subscription or a Stripe Connect platform.
 
 ## 1. Configure a test installation
 
@@ -22,7 +22,7 @@ For local development, authenticate the Stripe CLI against the intended test acc
 stripe listen --events checkout.session.completed --forward-to localhost:3000/api/webhooks/stripe
 ```
 
-Use the signing secret printed by that listener for the local app only. A CLI listener and a deployed endpoint have different secrets. A generic generated Stripe test event does not contain a real OpenVPM invoice ID; create a checkout from an actual test invoice to verify the full integration.
+Use the signing secret printed by that listener for the local app only. A CLI listener and a deployed endpoint have different secrets. A generic generated Stripe test event does not contain a real VetClickLab invoice ID; create a checkout from an actual test invoice to verify the full integration.
 
 The route validates Stripe signatures. Keep this endpoint reachable without an interactive login, and preserve the request body through your reverse proxy. Follow Stripe's [webhook setup documentation](https://docs.stripe.com/webhooks).
 
@@ -30,7 +30,7 @@ The route validates Stripe signatures. Keep this endpoint reachable without an i
 
 Sign in as a clinic admin or front desk user. Create a test client and invoice, review the charges, and send the invoice so it is collectible. Visit-linked invoices also require charge reconciliation before collection. Open the invoice in Billing and choose **Take Card**. Finish Checkout using Stripe's test payment details.
 
-OpenVPM first authorizes the payment. Its webhook rechecks the current invoice balance, captures the permitted amount, and records the payment. The browser's success page alone is not proof that this completed. Verify a successful webhook delivery in Stripe, a captured payment, and exactly one payment in OpenVPM with the correct invoice balance.
+VetClickLab first authorizes the payment. Its webhook rechecks the current invoice balance, captures the permitted amount, and records the payment. The browser's success page alone is not proof that this completed. Verify a successful webhook delivery in Stripe, a captured payment, and exactly one payment in VetClickLab with the correct invoice balance.
 
 Also test cancellation, a declined card, and replaying the same completed event from Stripe. Cancellation and declines must not mark the invoice paid; replay must not create a duplicate payment. Test the client portal separately. To email payment links, outbound email must also be configured.
 
@@ -38,9 +38,9 @@ Also test cancellation, a declined card, and replaying the same completed event 
 
 **Record Payment** can record a partial amount received by cash, check, or another external tender. It does not itself charge a card. After recording a partial payment, **Take Card** requests the remaining balance; this checkout does not offer an arbitrary partial-card amount selector. Verify the recorded payment and remaining balance before charging again.
 
-Use the invoice's refund action as an admin to refund a Stripe payment, including a partial refund where appropriate. Provide a reason, then confirm both the Stripe refund and OpenVPM history. The current refund action allows one refund record per original payment, so it does not support several successive partial refunds against the same payment. A credit or write-off adjusts the invoice; it does not return money through Stripe.
+Use the invoice's refund action as an admin to refund a Stripe payment, including a partial refund where appropriate. Provide a reason, then confirm both the Stripe refund and VetClickLab history. The current refund action allows one refund record per original payment, so it does not support several successive partial refunds against the same payment. A credit or write-off adjusts the invoice; it does not return money through Stripe.
 
-This self-hosted invoice webhook processes checkout completion, not general Stripe Dashboard refund or dispute synchronization. Initiate routine refunds in OpenVPM. If someone refunds directly in Stripe, investigate and reconcile the records before further collection; do not issue a second refund to make the screens match.
+This self-hosted invoice webhook processes checkout completion, not general Stripe Dashboard refund or dispute synchronization. Initiate routine refunds in VetClickLab. If someone refunds directly in Stripe, investigate and reconcile the records before further collection; do not issue a second refund to make the screens match.
 
 ## 5. Enable live collection
 
@@ -51,4 +51,4 @@ If Checkout opens but payment remains unrecorded, inspect the completed event's 
 ## Related guides
 
 - [Self-hosted SMS](self-hosted-sms.md)
-- [Run a solo practice](https://docs.openvpm.com/guides/run-a-solo-practice)
+- [Run a solo practice](https://docs.vetclicklab.com/guides/run-a-solo-practice)

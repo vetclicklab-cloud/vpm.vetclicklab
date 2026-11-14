@@ -15,7 +15,6 @@ const EVENT_WINDOW_MS = 5 * 60 * 1000;
 const ALLOWED_ORIGINS = new Set([
   "https://vetclicklab.com",
   "https://www.vetclicklab.com",
-  "https://demo.vetclicklab.com",
   "https://app.vetclicklab.com",
   "http://localhost:3000",
 ]);

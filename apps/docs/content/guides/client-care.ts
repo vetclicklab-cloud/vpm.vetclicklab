@@ -59,7 +59,7 @@ export const clientCare: Guide[] = [
         title: "Read the request",
         body: [
           "Open [[Inbox]] and find the request. Check the client, pet, reason, preferred time, and any message.",
-          "OpenVPM also puts a provisional **Scheduled** appointment in the requested slot.",
+          "VetClickLab also puts a provisional **Scheduled** appointment in the requested slot.",
         ],
       },
       {

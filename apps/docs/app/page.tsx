@@ -11,7 +11,7 @@ const roleCards: Record<TeamId, { icon: typeof Calendar; title: string; shot: Sh
   "front-desk": {
     icon: Calendar,
     title: "Front desk",
-    shot: { id: "schedule", focus: ["date-nav", "lane"], pad: 8, aspect: 16 / 8, alt: "The OpenVPM schedule with a column for each doctor" },
+    shot: { id: "schedule", focus: ["date-nav", "lane"], pad: 8, aspect: 16 / 8, alt: "The VetClickLab schedule with a column for each doctor" },
     top: ["book-an-appointment", "check-in-a-patient", "take-a-payment"],
   },
   "clinical-team": {
@@ -23,7 +23,7 @@ const roleCards: Record<TeamId, { icon: typeof Calendar; title: string; shot: Sh
   "practice-administration": {
     icon: Briefcase,
     title: "Practice managers",
-    shot: { id: "dashboard", focus: ["stats", "followups"], pad: 8, aspect: 16 / 8, alt: "The OpenVPM dashboard with today's numbers" },
+    shot: { id: "dashboard", focus: ["stats", "followups"], pad: 8, aspect: 16 / 8, alt: "The VetClickLab dashboard with today's numbers" },
     top: ["set-up-your-clinic", "invite-and-manage-staff", "import-your-data"],
   },
 };
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
 
         <h2 className="section-title mt-10">Or find it by screen</h2>
-        <p className="mt-1 text-muted-foreground">Each page matches a spot in the OpenVPM sidebar.</p>
+        <p className="mt-1 text-muted-foreground">Each page matches a spot in the VetClickLab sidebar.</p>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {areas.map((area) => {
             const count = guidesOnScreen(area.id).length;

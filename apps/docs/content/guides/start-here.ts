@@ -9,7 +9,7 @@ export const startHere: Guide[] = [
     area: "dashboard",
     audience: "Everyone",
     minutes: 7,
-    before: "Practice with sample pets in the [demo clinic](https://demo.openvpm.com/login) until the team feels comfortable.",
+    before: "Practice with sample pets in the [demo clinic](https://app.vetclicklab.com/login) until the team feels comfortable.",
     keywords: ["overview", "walkthrough", "tour", "workflow", "getting started", "new"],
     steps: [
       {
@@ -74,7 +74,7 @@ export const startHere: Guide[] = [
   {
     slug: "find-anything-fast",
     title: "Find anything fast",
-    summary: "Get around OpenVPM and jump straight to the right client or pet.",
+    summary: "Get around VetClickLab and jump straight to the right client or pet.",
     category: "start-here",
     area: "dashboard",
     audience: "Everyone",
@@ -162,7 +162,7 @@ export const startHere: Guide[] = [
           focus: "prompts",
           pad: 16,
           callouts: ["prompts"],
-          alt: "The OpenVPM Agent with four suggested questions",
+          alt: "The VetClickLab Agent with four suggested questions",
         },
       },
       {
@@ -180,7 +180,7 @@ export const startHere: Guide[] = [
       },
     ],
     faq: [
-      ["I don't see the Agent, or it says it isn't available", "Only admins and veterinarians can use the Agent. On OpenVPM Cloud it's ready to go once your clinic has a card on file. If you run OpenVPM yourself, the server needs an AI provider set up first."],
+      ["I don't see the Agent, or it says it isn't available", "Only admins and veterinarians can use the Agent. On VetClickLab it's ready to go once your clinic has a card on file. If you run VetClickLab yourself, the server needs an AI provider set up first."],
     ],
     next: "find-anything-fast",
   },

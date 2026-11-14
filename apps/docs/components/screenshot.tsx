@@ -2,7 +2,7 @@ import type { ShotRef } from "@/content/types";
 import { layoutShot, RING_OUTSET } from "@/lib/shots";
 
 /**
- * A real OpenVPM screen, optionally zoomed into one area, with numbered
+ * A real VetClickLab screen, optionally zoomed into one area, with numbered
  * rings that match the ((n)) references in the step text.
  */
 export function Screenshot({ shot, browser = false, priority = false }: { shot: ShotRef; browser?: boolean; priority?: boolean }) {

@@ -4,7 +4,7 @@ Platform operators should use the
 [controlled clinic pilot operations runbook](clinic-pilot-operations.md) to
 qualify, validate, support, and graduate each clinic consistently.
 
-OpenVPM is ready for a controlled, connected-mode clinic pilot. It should not
+VetClickLab is ready for a controlled, connected-mode clinic pilot. It should not
 yet be sold as a universal replacement for every veterinary workflow. This
 page defines the boundary so a clinic can make a clear decision before moving
 live work.
@@ -15,7 +15,7 @@ The strongest first pilots are companion-animal or house-call clinics that:
 
 - can use a connected browser on a computer, phone, or iPad;
 - chart one patient at a time;
-- are willing to run OpenVPM alongside their current PIMS for a short
+- are willing to run VetClickLab alongside their current PIMS for a short
   validation period;
 - can name one clinic owner and one day-to-day workflow champion; and
 - want scheduling, records, billing, client access, data ownership, and
@@ -26,7 +26,7 @@ The strongest first pilots are companion-animal or house-call clinics that:
 | Area                                                                                                                                  | Status                          | What the clinic should expect                                                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Clients, patients, schedule, whiteboard, records, SOAP notes, vitals, vaccines, manual labs, inventory, invoices, and manual payments | Supported now                   | Use in a connected browser. Core clinic-day work is tenant scoped and role controlled.                                                                                                                      |
-| Phone and iPad use                                                                                                                    | Supported now                   | Core clinic-day screens are responsive. An internet connection is required. Server-saved drafts can recover; OpenVPM does not store clinical drafts in browser storage.                                     |
+| Phone and iPad use                                                                                                                    | Supported now                   | Core clinic-day screens are responsive. An internet connection is required. Server-saved drafts can recover; VetClickLab does not store clinical drafts in browser storage.                                     |
 | Client portal and appointment requests                                                                                                | Supported now                   | Clinics review and accept appointment requests. This is not unrestricted instant booking.                                                                                                                   |
 | Client card payments                                                                                                                  | Supported after setup           | The clinic must complete its own Stripe Connect setup before pet-owner card payments can be enabled.                                                                                                        |
 | Data import                                                                                                                           | Supported now for reviewed CSVs | Administrators can dry-run and then import clients, patients, vaccine history, and visit notes. Imports are additive and tenant scoped.                                                                     |
@@ -35,7 +35,7 @@ The strongest first pilots are companion-animal or house-call clinics that:
 | Larger or unusual migrations                                                                                                          | Assisted pilot                  | Appointment, invoice, attachment, or vendor-specific history migrations need an agreed mapping, sample validation, and secure transfer plan before a full move.                                             |
 | Production multi-location rollout                                                                                                     | Not supported                   | The current hosted pilot is one location. Multi-location data structures exist, but production operations have not been validated broadly enough to sell or depend on yet.                                  |
 | Optional AI                                                                                                                           | Supported with review           | AI can help draft or answer questions, but clinic staff remain responsible for clinical review and final records.                                                                                           |
-| Offline charting                                                                                                                      | Not supported                   | Do not rely on OpenVPM without internet access. The app warns and protects unsaved work, but it is not an offline PIMS.                                                                                     |
+| Offline charting                                                                                                                      | Not supported                   | Do not rely on VetClickLab without internet access. The app warns and protects unsaved work, but it is not an offline PIMS.                                                                                     |
 | Herd or group medicine                                                                                                                | Not supported                   | Current records and billing are patient based. Herd quantities, group treatments, and production-animal workflows are not ready.                                                                            |
 | Direct lab, distributor, reference, or legacy-PIMS integrations                                                                       | Not supported                   | IDEXX, Antech, Zoetis, Vetcove, Rhapsody, e-prescribing, accounting sync, and similar vendor connections are not generally available today.                                                                 |
 | Automated regulatory reporting                                                                                                        | Not supported                   | Clinics must keep using their existing state and federal reporting process unless a specific integration has been validated.                                                                                |
@@ -45,7 +45,7 @@ The strongest first pilots are companion-animal or house-call clinics that:
 1. **Confirm fit.** Agree on the clinic, location, users, devices, target
    workflow, and any capability that would block adoption.
 2. **Start alongside.** Keep the current PIMS as the source of truth while the
-   team completes guided setup and learns OpenVPM with sample data.
+   team completes guided setup and learns VetClickLab with sample data.
 3. **Import a small real sample.** Dry-run a few clients and patients first,
    then vaccine and visit history. Resolve every unexpected match or skipped
    row before a larger import.
@@ -76,11 +76,11 @@ The strongest first pilots are companion-animal or house-call clinics that:
   notes.
 - Agree on a cutoff time before the final import. Record any work entered in the
   old system after that time and reconcile it explicitly.
-- Export an OpenVPM backup after acceptance and before expanding the rollout.
+- Export an VetClickLab backup after acceptance and before expanding the rollout.
 
 ## Go-live evidence
 
-The clinic owner and OpenVPM operator should record:
+The clinic owner and VetClickLab operator should record:
 
 - the supported workflow and location in scope;
 - the staff roles that were tested;

@@ -1,6 +1,6 @@
 # Backup and Restore Runbook
 
-OpenVPM Cloud takes a structured database backup of every practice every day.
+VetClickLab takes a structured database backup of every practice every day.
 This runbook covers what is in those JSON backups, how to restore one, and the
 drill log for the database path. Attachment-binary disaster recovery is defined
 in [File and Object Recovery Runbook](file-object-recovery-runbook.md) and

@@ -284,7 +284,7 @@ describe("email preference tokens", () => {
       {
         now: NOW,
         signingSecret: SIGNING_SECRET,
-        baseUrl: "https://demo.vetclicklab.com",
+        baseUrl: "https://preview.vetclicklab.com",
       },
     );
 
@@ -313,17 +313,17 @@ describe("email preference tokens", () => {
       {
         now: NOW,
         signingSecret: SIGNING_SECRET,
-        baseUrl: "https://demo.vetclicklab.com",
+        baseUrl: "https://preview.vetclicklab.com",
       },
     );
     expect(links?.preferencesUrl).toMatch(
-      /^https:\/\/demo\.vetclicklab\.com\/email-preferences\?token=/,
+      /^https:\/\/preview\.vetclicklab\.com\/email-preferences\?token=/,
     );
   });
 
   it("rejects a noncanonical preference owner in hosted deployments", () => {
     vi.stubEnv("VERCEL", "1");
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://demo.vetclicklab.com");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://preview.vetclicklab.com");
 
     expect(emailPreferenceBaseUrl()).toBeNull();
     expect(

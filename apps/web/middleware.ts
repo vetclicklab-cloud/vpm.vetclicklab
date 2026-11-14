@@ -146,9 +146,8 @@ export async function middleware(request: NextRequest) {
   const secret = nextAuthSecret();
   const token = secret ? await getToken({ req: request, secret }) : null;
 
-  // Unauthenticated visitors go to the demo login, which offers one-click
-  // demo access. (Previously the root path bounced to the marketing site,
-  // which dead-ended anyone who came straight to demo.vetclicklab.com to try it.)
+  // Unauthenticated visitors go to sign-in (which offers one-click access when
+  // the deployment runs in demo mode) instead of bouncing to the marketing site.
   if (!token) {
     const loginUrl = new URL("/login", request.url);
     const nextPath = `${pathname}${requestUrl.search}`;

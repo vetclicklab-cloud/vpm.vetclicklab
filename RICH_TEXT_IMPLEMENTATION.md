@@ -2,7 +2,7 @@
 
 ## Overview
 
-This PR adds professional rich text editing capabilities to OpenVPM's SOAP note workflow using TipTap, a modern, headless editor built on ProseMirror.
+This PR adds professional rich text editing capabilities to VetClickLab's SOAP note workflow using TipTap, a modern, headless editor built on ProseMirror.
 
 ### What's New
 - **WYSIWYG Editing**: Veterinary staff can now make text **bold**, *italic*, <u>underlined</u>, and create lists
@@ -200,14 +200,14 @@ If LOVS wants to add more advanced features:
 
 ## Related Issues
 
-- Closes: OpenVPM #[issue-number]
+- Closes: VetClickLab #[issue-number]
 - Related: Rich text for prescriptions, exam notes, etc.
 
 ## References
 
 - TipTap Docs: https://tiptap.dev
 - ProseMirror: https://prosemirror.net
-- OpenVPM Architecture: [link to docs]
+- VetClickLab Architecture: [link to docs]
 
 ---
 

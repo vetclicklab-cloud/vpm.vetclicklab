@@ -70,7 +70,7 @@ describe("guides", () => {
 });
 
 describe("screen tours", () => {
-  it("cover every item in the OpenVPM sidebar", () => {
+  it("cover every item in the VetClickLab sidebar", () => {
     expect(areas.filter((a) => !getTour(a.id)).map((a) => a.id)).toEqual([]);
   });
 });
