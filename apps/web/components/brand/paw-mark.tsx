@@ -38,7 +38,7 @@ export function BrandBadge({
   return (
     <div
       className={
-        "flex items-center justify-center rounded-lg bg-primary text-primary-foreground " +
+        "flex items-center justify-center rounded-lg bg-brand text-brand-foreground " +
         (className ?? "h-8 w-8")
       }
     >

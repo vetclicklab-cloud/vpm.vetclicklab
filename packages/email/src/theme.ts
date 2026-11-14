@@ -1,14 +1,14 @@
 /**
- * Email design tokens, mirrored from the marketing site (openvpm.com):
- * teal-600 brand, DM Sans headings / Inter body, clean white cards on a soft
- * slate page. Kept as plain values so every template stays consistent.
+ * Email design tokens, matched to the VetClickLab app: deep teal brand, Inter
+ * throughout, clean white cards on a soft slate page. Kept as plain values so
+ * every template stays consistent.
  */
 export const theme = {
   // Brand
-  brand: "#0d9488", // teal-600
-  brandDark: "#0f766e", // teal-700
-  brandTint: "#f0fdfa", // teal-50
-  brandTintBorder: "#ccfbf1", // teal-100
+  brand: "#0f766e",
+  brandDark: "#115e59",
+  brandTint: "#e6f4f1",
+  brandTintBorder: "#b9ddd6",
 
   // Text
   text: "#0f172a", // slate-900
@@ -38,5 +38,5 @@ export const theme = {
   fontBody:
     "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
   fontHeading:
-    "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
 } as const;

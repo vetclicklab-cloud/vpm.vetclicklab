@@ -185,11 +185,11 @@ const configReadSchema = z.object({
    * Values are deduplicated into stable catalog order.
    */
   intakeFieldKeys: intakeFieldKeysReadSchema,
-  /** Hex accent for the public page, e.g. "#0d9488". */
+  /** Hex accent for the public page, e.g. "#0f766e". */
   accentColor: z
     .string()
     .regex(/^#[0-9a-fA-F]{6}$/)
-    .catch("#0d9488"),
+    .catch("#0f766e"),
 });
 
 const configWriteSchema = z
@@ -222,7 +222,7 @@ const configWriteSchema = z
     accentColor: z
       .string()
       .regex(/^#[0-9a-fA-F]{6}$/)
-      .default("#0d9488"),
+      .default("#0f766e"),
   })
   .strict();
 
@@ -237,7 +237,7 @@ export const DEFAULT_BOOKING_PAGE_CONFIG: BookingPageConfig = {
   bookingWindowDays: BOOKING_WINDOW_DEFAULT_DAYS,
   welcomeText: "",
   intakeFieldKeys: DEFAULT_PREVISIT_INTAKE_FIELD_KEYS,
-  accentColor: "#0d9488",
+  accentColor: "#0f766e",
 };
 
 /** Tolerant parse: unknown/invalid fields fall back to defaults, never throws. */

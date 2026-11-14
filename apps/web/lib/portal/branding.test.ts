@@ -6,7 +6,11 @@ import {
 
 describe("portal branding", () => {
   it("canonicalizes valid six-digit hex colors", () => {
-    expect(normalizePortalBrandColor(" #A1B2C3 ")).toBe("#a1b2c3");
+    expect(normalizePortalBrandColor(" #1A2B3C ")).toBe("#1a2b3c");
+  });
+
+  it("darkens accents too light for white text", () => {
+    expect(normalizePortalBrandColor("#a1b2c3")).not.toBe("#a1b2c3");
   });
 
   it.each([
@@ -21,7 +25,7 @@ describe("portal branding", () => {
     expect(normalizePortalBrandColor(value)).toBeNull();
   });
 
-  it("keeps the existing OpenVPM teal as the stable fallback", () => {
-    expect(DEFAULT_PORTAL_BRAND_COLOR).toBe("#0d9488");
+  it("keeps the VetClickLab teal as the stable fallback", () => {
+    expect(DEFAULT_PORTAL_BRAND_COLOR).toBe("#0f766e");
   });
 });

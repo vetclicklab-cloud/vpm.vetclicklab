@@ -2,7 +2,7 @@ import * as React from "react";
 import { Heading as REHeading, Text } from "@react-email/components";
 import { theme } from "../theme";
 
-/** Email H1 — DM Sans, tight tracking, like the site headings. */
+/** Email H1 — Inter, tight tracking, like the site headings. */
 export function Heading({ children }: { children: React.ReactNode }) {
   return (
     <REHeading

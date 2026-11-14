@@ -144,7 +144,7 @@ export function TopBar({
         >
           <Search className="h-4 w-4 shrink-0" />
           <span className="hidden sm:inline">Search...</span>
-          <kbd className="ml-auto hidden rounded border border-border bg-muted px-1.5 py-0.5 text-[10px] font-medium md:inline">
+          <kbd className="ml-auto hidden rounded border border-border bg-muted px-1.5 py-0.5 text-xs font-medium md:inline">
             ⌘K
           </kbd>
         </button>

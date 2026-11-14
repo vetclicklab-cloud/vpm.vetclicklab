@@ -23,14 +23,14 @@ export default function SignLayout({
       <header className="border-b border-gray-200 bg-white sticky top-0 z-10">
         <div className="mx-auto max-w-lg px-4 py-3 flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-teal-600 flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
               <PawMark className="h-4 w-4 text-white" />
             </div>
             <div>
               <span className="font-semibold text-gray-900 text-sm">
                 OpenVPM
               </span>
-              <span className="text-teal-600 text-sm ml-1.5 font-medium">
+              <span className="text-primary text-sm ml-1.5 font-medium">
                 Consent Form
               </span>
             </div>

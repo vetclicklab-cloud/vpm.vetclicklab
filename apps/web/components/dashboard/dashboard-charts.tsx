@@ -137,7 +137,10 @@ export function DashboardCharts({
                   fontSize: "0.875rem",
                 }}
               />
-              <Legend wrapperStyle={{ fontSize: "0.75rem" }} />
+              <Legend
+                wrapperStyle={{ fontSize: "0.75rem" }}
+                formatter={(value) => <span className="text-foreground">{value}</span>}
+              />
               <Bar
                 dataKey="completed"
                 name="Completed"
@@ -228,10 +231,10 @@ export function DashboardCharts({
                 type="monotone"
                 dataKey="revenue"
                 name="Revenue"
-                stroke="#0d9488"
+                stroke="#0f766e"
                 strokeWidth={2}
                 dot={false}
-                activeDot={{ r: 4, fill: "#0d9488" }}
+                activeDot={{ r: 4, fill: "#0f766e" }}
               />
             </LineChart>
           </ResponsiveContainer>

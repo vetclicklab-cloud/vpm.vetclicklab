@@ -1429,7 +1429,7 @@ export default function ApiDocsPage() {
       {/* Sidebar */}
       <nav className="sticky top-0 hidden h-screen w-64 shrink-0 overflow-y-auto border-r border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 lg:block">
         <div className="mb-6">
-          <h2 className="text-lg font-bold text-teal-600 dark:text-teal-400">
+          <h2 className="text-lg font-bold text-primary dark:text-primary">
             OpenVPM API
           </h2>
           <p className="text-xs text-slate-500">v1.0 Reference</p>
@@ -1565,7 +1565,7 @@ export default function ApiDocsPage() {
                   {WEBHOOK_EVENT_DEFINITIONS.map((ev) => (
                     <tr key={ev.event}>
                       <td className="px-4 py-2">
-                        <code className="text-sm font-medium text-teal-600 dark:text-teal-400">
+                        <code className="text-sm font-medium text-primary dark:text-primary">
                           {ev.event}
                         </code>
                       </td>
@@ -1637,7 +1637,7 @@ function verifySignature(
               API questions? Check the{" "}
               <a
                 href="https://github.com/evangauer/openvpm"
-                className="text-teal-600 hover:underline dark:text-teal-400"
+                className="text-primary hover:underline dark:text-primary"
               >
                 GitHub repository
               </a>{" "}

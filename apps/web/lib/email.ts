@@ -121,7 +121,7 @@ function emailLayout(
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
           <!-- Header -->
           <tr>
-            <td style="background-color:#0d9488;padding:24px 32px;">
+            <td style="background-color:#0f766e;padding:24px 32px;">
               <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:600;letter-spacing:-0.01em;">${practiceName}</h1>
             </td>
           </tr>
@@ -160,7 +160,7 @@ function practiceFooter(opts: {
 function ctaButton(label: string, url: string): string {
   return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;">
   <tr>
-    <td style="background-color:#0d9488;border-radius:6px;">
+    <td style="background-color:#0f766e;border-radius:6px;">
       <a href="${url}" target="_blank" style="display:inline-block;padding:12px 28px;color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;">${label}</a>
     </td>
   </tr>

@@ -176,7 +176,7 @@ function EvidenceId({
 }) {
   return (
     <div>
-      <dt className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+      <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
         {idLabel}
       </dt>
       <dd className="mt-0.5 break-all font-mono text-xs">{value ?? "—"}</dd>
@@ -881,7 +881,7 @@ export function SmsRecoveryConsole() {
               clear the incident.
             </span>
           </label>
-          <p className="mt-3 break-all font-mono text-[11px] text-amber-900">
+          <p className="mt-3 break-all font-mono text-xs text-amber-900">
             Resolution UUID: {providerEventOperationId}
           </p>
           <Button
@@ -1407,7 +1407,7 @@ export function SmsRecoveryConsole() {
                       body, client name, or PHI.
                     </span>
                   </label>
-                  <p className="mt-3 break-all font-mono text-[11px] text-amber-900">
+                  <p className="mt-3 break-all font-mono text-xs text-amber-900">
                     Reconciliation UUID: {attemptReconciliationId}
                   </p>
                   <Button
@@ -1481,7 +1481,7 @@ export function SmsRecoveryConsole() {
                       possible if external evidence was reviewed incorrectly.
                     </span>
                   </label>
-                  <p className="mt-3 break-all font-mono text-[11px] text-muted-foreground">
+                  <p className="mt-3 break-all font-mono text-xs text-muted-foreground">
                     Resend UUID: {resendId}
                   </p>
                   <Button
@@ -1710,7 +1710,7 @@ export function SmsRecoveryConsole() {
                   </label>
                 </div>
                 {quarantineReason ? (
-                  <p className="mt-3 break-all font-mono text-[11px] text-amber-900">
+                  <p className="mt-3 break-all font-mono text-xs text-amber-900">
                     Exact reviewed incident:{" "}
                     {deliverySelection.pendingHistoryId ?? "missing"}
                   </p>
@@ -1734,7 +1734,7 @@ export function SmsRecoveryConsole() {
                     a phone number, message body, client name, or PHI.
                   </span>
                 </label>
-                <p className="mt-3 break-all font-mono text-[11px] text-amber-900">
+                <p className="mt-3 break-all font-mono text-xs text-amber-900">
                   Reconciliation UUID: {deliveryReconciliationId}
                 </p>
                 <Button

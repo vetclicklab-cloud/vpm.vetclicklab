@@ -54,7 +54,7 @@ export function RevenueLineChart({
         <Line
           type="monotone"
           dataKey="amount"
-          stroke="#0d9488"
+          stroke="#0f766e"
           strokeWidth={2}
           dot={false}
         />
@@ -88,7 +88,7 @@ export function ServicesCountChart({ items }: { items: ServiceCountPoint[] }) {
             borderRadius: "0.5rem",
           }}
         />
-        <Bar dataKey="count" fill="#0d9488" radius={[4, 4, 0, 0]} />
+        <Bar dataKey="count" fill="#0f766e" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );

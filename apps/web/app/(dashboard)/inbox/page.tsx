@@ -776,11 +776,11 @@ export default function InboxPage() {
                             : preview}
                         </p>
                         {group.kind === "unmatched" ? (
-                          <p className="mt-1 text-[11px] font-medium text-amber-700">
+                          <p className="mt-1 text-xs font-medium text-amber-700">
                             Needs client match
                           </p>
                         ) : group.latest.assignedTo ? (
-                          <p className="mt-1 text-[11px] font-medium text-muted-foreground">
+                          <p className="mt-1 text-xs font-medium text-muted-foreground">
                             {group.latest.assignedTo === currentUserId
                               ? "Assigned to you"
                               : `Assigned to ${
@@ -912,7 +912,7 @@ export default function InboxPage() {
                     <div className="flex items-center gap-1.5 mb-1 text-muted-foreground">
                       <ArrowLeft className="h-3 w-3" />
                       <SelectedUnmatchedIcon className="h-3 w-3" />
-                      <span className="text-[10px] uppercase font-medium">
+                      <span className="text-xs uppercase font-medium">
                         {selectedUnmatchedChannel}
                       </span>
                     </div>
@@ -929,14 +929,14 @@ export default function InboxPage() {
 
                     <div className="flex items-center gap-1 mt-1 text-muted-foreground">
                       <Clock className="h-2.5 w-2.5" />
-                      <span className="text-[10px]">
+                      <span className="text-xs">
                         {relativeTime(
                           selectedUnmatched.createdAt,
                           inboxTimeZone,
                         )}
                       </span>
                       {selectedUnmatched.status ? (
-                        <span className="text-[10px] ml-1 capitalize">
+                        <span className="text-xs ml-1 capitalize">
                           {selectedUnmatched.status}
                         </span>
                       ) : null}
@@ -1113,7 +1113,7 @@ export default function InboxPage() {
                               <ArrowLeft className="h-3 w-3" />
                             )}
                             <Icon className="h-3 w-3" />
-                            <span className="text-[10px] uppercase font-medium">
+                            <span className="text-xs uppercase font-medium">
                               {channelLabels[msg.channel as Channel]}
                             </span>
                           </div>
@@ -1144,11 +1144,11 @@ export default function InboxPage() {
                             )}
                           >
                             <Clock className="h-2.5 w-2.5" />
-                            <span className="text-[10px]">
+                            <span className="text-xs">
                               {relativeTime(msg.createdAt, inboxTimeZone)}
                             </span>
                             {statusLabel ? (
-                              <span className="text-[10px] ml-1 capitalize">
+                              <span className="text-xs ml-1 capitalize">
                                 {statusLabel}
                               </span>
                             ) : null}

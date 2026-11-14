@@ -1333,7 +1333,7 @@ export default function AdminPage() {
                             {event.providerCampaignStatus ?? "—"}
                           </p>
                         </td>
-                        <td className="px-3 py-2 font-mono text-[11px]">
+                        <td className="px-3 py-2 font-mono text-xs">
                           <p className="break-all">event {event.id}</p>
                           <p className="mt-1 break-all text-muted-foreground">
                             operation {event.operationId}

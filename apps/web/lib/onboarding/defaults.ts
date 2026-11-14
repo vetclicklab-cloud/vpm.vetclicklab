@@ -35,7 +35,7 @@ export interface DefaultAppointmentType {
 }
 
 export const DEFAULT_APPOINTMENT_TYPES: DefaultAppointmentType[] = [
-  { name: "Wellness Exam", durationMinutes: 30, color: "#0d9488", requiresDoctor: 1, defaultRoomType: "exam" },
+  { name: "Wellness Exam", durationMinutes: 30, color: "#0f766e", requiresDoctor: 1, defaultRoomType: "exam" },
   { name: "Sick Visit", durationMinutes: 30, color: "#dc2626", requiresDoctor: 1, defaultRoomType: "exam" },
   { name: "Vaccination", durationMinutes: 15, color: "#2563eb", requiresDoctor: 0, defaultRoomType: "exam" },
   { name: "Surgery", durationMinutes: 120, color: "#7c3aed", requiresDoctor: 1, defaultRoomType: "surgery" },

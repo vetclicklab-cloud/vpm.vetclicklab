@@ -615,11 +615,11 @@ function RegistrationStep({
           </p>
         </div>
       ) : null}
-      <div className="rounded-xl border border-teal-200 bg-teal-50 p-4">
-        <p className="text-sm font-medium text-teal-950">
+      <div className="rounded-xl border border-primary/25 bg-primary/5 p-4">
+        <p className="text-sm font-medium text-foreground">
           Carrier approval is required before live US texting.
         </p>
-        <p className="mt-2 text-sm leading-6 text-teal-800">
+        <p className="mt-2 text-sm leading-6 text-primary">
           {hosted
             ? "The selected number will be saved with sending off. After this step, complete the clinic's legal and consent details in Messaging settings; OpenVPM reviews them before any fee-bearing carrier submission."
             : "The selected number will be saved with sending off. After this step, complete the clinic's legal and consent details in Messaging settings; your administrator must finish carrier activation before sending."}

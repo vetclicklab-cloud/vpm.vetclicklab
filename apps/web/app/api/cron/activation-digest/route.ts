@@ -216,7 +216,7 @@ function digestHtml(
       <td align="center" style="padding:24px 16px;">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
           <tr>
-            <td style="background-color:#0d9488;padding:24px 32px;">
+            <td style="background-color:#0f766e;padding:24px 32px;">
               <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:600;letter-spacing:-0.01em;">OpenVPM trial funnel</h1>
             </td>
           </tr>

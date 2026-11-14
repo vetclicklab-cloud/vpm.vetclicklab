@@ -5,7 +5,7 @@ import { soapSectionText } from "@/lib/records/soap-content";
 // Shared constants
 // ---------------------------------------------------------------------------
 
-const COLOR_TEAL = "#0d9488";
+const COLOR_TEAL = "#0f766e";
 const COLOR_DARK = "#333333";
 const COLOR_GRAY = "#666666";
 const COLOR_LIGHT_GRAY = "#eeeeee";

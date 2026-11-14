@@ -698,13 +698,13 @@ export function TreatmentPlanComposer({
         ) : null}
 
         {plan?.response ? (
-          <div className="space-y-3 rounded-md border border-teal-200 bg-teal-50/50 p-4">
+          <div className="space-y-3 rounded-md border border-primary/25 bg-primary/5 p-4">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="flex items-center gap-2 text-sm font-semibold text-teal-950">
+                <p className="flex items-center gap-2 text-sm font-semibold text-foreground">
                   <FileCheck2 className="h-4 w-4" /> Client response signed
                 </p>
-                <p className="mt-1 text-xs text-teal-900/70">
+                <p className="mt-1 text-xs text-foreground/70">
                   {plan.response.signerName} ·{" "}
                   {new Date(plan.response.decidedAt).toLocaleString()}
                 </p>
@@ -719,7 +719,7 @@ export function TreatmentPlanComposer({
                 </a>
               </Button>
             </div>
-            <div className="divide-y divide-teal-100 rounded-md border border-teal-100 bg-white">
+            <div className="divide-y divide-primary/15 rounded-md border border-primary/15 bg-white">
               {plan.lines.map((line) => {
                 const decision = plan.response!.lines.find(
                   (row) => row.revisionLineId === line.id,

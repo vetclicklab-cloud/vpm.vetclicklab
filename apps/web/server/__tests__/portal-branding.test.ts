@@ -99,13 +99,13 @@ afterEach(() => {
 describe("portal tenant branding", () => {
   it("returns only the bounded, canonical clinic identity for a valid token", async () => {
     const result = await portalRouter
-      .createCaller(portalContext(createDb(" #A1B2C3 ")))
+      .createCaller(portalContext(createDb(" #1A2B3C ")))
       .getClient({ token: "portal-token" });
 
     expect(result.practice).toEqual({
       name: "Harbor Veterinary",
       logoUrl: "/api/files/clinic/branding/logo.png",
-      brandColor: "#a1b2c3",
+      brandColor: "#1a2b3c",
       address: "1 Harbor Way",
       phone: "555-0100",
       email: "care@harbor.example",

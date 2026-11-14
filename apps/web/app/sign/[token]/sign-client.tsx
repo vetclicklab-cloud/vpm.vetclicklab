@@ -162,7 +162,7 @@ function SignaturePad({
         <button
           type="button"
           onClick={handleClear}
-          className="inline-flex items-center gap-1 text-xs font-medium text-teal-700"
+          className="inline-flex items-center gap-1 text-xs font-medium text-primary"
         >
           <Eraser className="h-3.5 w-3.5" />
           Clear
@@ -350,7 +350,7 @@ export function SignClient({ token }: { token: string }) {
   if (state.kind === "submitted") {
     return (
       <div className="flex flex-col items-center gap-3 py-16 text-center">
-        <CheckCircle2 className="h-10 w-10 text-teal-600" />
+        <CheckCircle2 className="h-10 w-10 text-primary" />
         <h1 className="text-lg font-semibold text-gray-900">All signed</h1>
         <p className="text-sm text-gray-600">
           Thank you. The clinic has your signed form.
@@ -361,7 +361,7 @@ export function SignClient({ token }: { token: string }) {
               type="button"
               disabled={downloading}
               onClick={() => void handleReceiptDownload(state.receiptToken!)}
-              className="mt-2 inline-flex items-center gap-2 rounded-lg border border-teal-700 px-4 py-2 text-sm font-semibold text-teal-700 hover:bg-teal-50 disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-2 inline-flex items-center gap-2 rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary/5 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {downloading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -392,7 +392,7 @@ export function SignClient({ token }: { token: string }) {
   if (state.consent.status === "signed") {
     return (
       <div className="flex flex-col items-center gap-3 py-16 text-center">
-        <CheckCircle2 className="h-10 w-10 text-teal-600" />
+        <CheckCircle2 className="h-10 w-10 text-primary" />
         <h1 className="text-lg font-semibold text-gray-900">All signed</h1>
         <p className="text-sm text-gray-600">
           Thank you. The clinic has your signed form. Ask the clinic if you need
@@ -405,7 +405,7 @@ export function SignClient({ token }: { token: string }) {
   if (state.consent.status === "signing") {
     return (
       <div className="flex flex-col items-center gap-4 py-16 text-center">
-        <CheckCircle2 className="h-10 w-10 text-teal-600" />
+        <CheckCircle2 className="h-10 w-10 text-primary" />
         <h1 className="text-lg font-semibold text-gray-900">
           Your signature is safe
         </h1>
@@ -426,7 +426,7 @@ export function SignClient({ token }: { token: string }) {
             onChange={(event) =>
               setSignerAuthorityAccepted(event.target.checked)
             }
-            className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+            className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-ring"
           />
           <span>{CONSENT_SIGNER_AUTHORITY_ATTESTATION}</span>
         </label>
@@ -434,7 +434,7 @@ export function SignClient({ token }: { token: string }) {
           type="button"
           disabled={submitting || !signerAuthorityAccepted}
           onClick={() => void handleResume()}
-          className="w-full max-w-sm rounded-lg bg-teal-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full max-w-sm rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {submitting ? "Finishing…" : "Finish saving"}
         </button>
@@ -477,7 +477,7 @@ export function SignClient({ token }: { token: string }) {
           maxLength={120}
           value={signerName}
           onChange={(e) => setSignerName(e.target.value)}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
           placeholder="First and last name"
         />
       </div>
@@ -525,7 +525,7 @@ export function SignClient({ token }: { token: string }) {
               maxLength={120}
               value={typedSignature}
               onChange={(event) => setTypedSignature(event.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 font-serif text-lg italic focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 font-serif text-lg italic focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
               placeholder="First and last name"
             />
             <p className="mt-1 text-xs text-gray-500">
@@ -540,7 +540,7 @@ export function SignClient({ token }: { token: string }) {
           type="checkbox"
           checked={signerAuthorityAccepted}
           onChange={(event) => setSignerAuthorityAccepted(event.target.checked)}
-          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-ring"
         />
         <span>{CONSENT_SIGNER_AUTHORITY_ATTESTATION}</span>
       </label>
@@ -556,7 +556,7 @@ export function SignClient({ token }: { token: string }) {
         type="button"
         disabled={!canSubmit || submitting}
         onClick={handleSubmit}
-        className="w-full rounded-lg bg-teal-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {submitting ? (
           <span className="inline-flex items-center gap-2">

@@ -380,7 +380,7 @@ export function ActivationChecklist() {
           onClick={snooze}
           aria-label="Hide for now"
           title="Hide for now"
-          className="absolute right-3 top-3 rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
+          className="absolute right-3 top-3 rounded-md p-1 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
         >
           <X className="h-4 w-4" />
         </button>
@@ -505,7 +505,7 @@ export function ActivationChecklist() {
           <button
             type="button"
             onClick={dontShowAgain}
-            className="text-xs font-medium text-zinc-500 transition-colors hover:text-zinc-200"
+            className="text-xs font-medium text-zinc-400 transition-colors hover:text-zinc-200"
           >
             Don&apos;t show this again
           </button>

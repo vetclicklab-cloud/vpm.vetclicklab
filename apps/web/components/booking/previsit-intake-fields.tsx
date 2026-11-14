@@ -78,7 +78,7 @@ export function PrevisitIntakeFields({
                 rows={2}
                 maxLength={PREVISIT_INTAKE_FIELD_MAX_LENGTH}
                 placeholder={field.placeholder}
-                className="w-full resize-y rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 disabled:cursor-not-allowed disabled:opacity-50"
+                className="w-full resize-y rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
               />
             </div>
           );

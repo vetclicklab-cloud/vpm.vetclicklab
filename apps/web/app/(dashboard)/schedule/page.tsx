@@ -69,7 +69,7 @@ const END_HOUR = 18;
 const HOUR_HEIGHT = 60; // px per hour
 const TOTAL_HOURS = END_HOUR - START_HOUR;
 const CALENDAR_HEIGHT = TOTAL_HOURS * HOUR_HEIGHT;
-const DEFAULT_APPOINTMENT_COLOR = "#0d9488";
+const DEFAULT_APPOINTMENT_COLOR = "#0f766e";
 const DIALOG_FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -737,7 +737,7 @@ function PhoneAgenda({
                           {patientName}
                         </span>
                       </span>
-                      <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-muted px-2 py-1 text-[11px] font-medium text-muted-foreground">
+                      <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
                         <StatusDot status={appointment.status} />
                         {appointmentStatusLabel(appointment)}
                       </span>
@@ -907,7 +907,7 @@ function AppointmentChip({
     <button
       type="button"
       onClick={onClick}
-      className="flex min-h-6 w-full items-center gap-1.5 rounded-md border px-2 py-1 text-left text-[11px] leading-tight transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1"
+      className="flex min-h-6 w-full items-center gap-1.5 rounded-md border px-2 py-1 text-left text-xs leading-tight transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1"
       style={{
         backgroundColor: `${color}18`,
         borderColor: `${color}55`,
@@ -1019,7 +1019,7 @@ function MonthCalendar({
                 {hiddenCount > 0 && (
                   <button
                     type="button"
-                    className="w-full rounded-md px-2 py-1 text-left text-[11px] font-medium text-muted-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="w-full rounded-md px-2 py-1 text-left text-xs font-medium text-muted-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
                     onClick={() => onDayOpen(day.date)}
                   >
                     +{hiddenCount} more
@@ -1600,7 +1600,7 @@ function AppointmentDetailPopover({
               <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
                 <label
                   htmlFor={confirmationPhoneFieldId}
-                  className="flex items-start gap-2 rounded-md border border-border p-2.5 text-sm has-[:checked]:border-teal-500 has-[:checked]:bg-teal-50"
+                  className="flex items-start gap-2 rounded-md border border-border p-2.5 text-sm has-[:checked]:border-ring has-[:checked]:bg-primary/5"
                 >
                   <input
                     id={confirmationPhoneFieldId}
@@ -1623,7 +1623,7 @@ function AppointmentDetailPopover({
                 </label>
                 <label
                   htmlFor={confirmationEmailFieldId}
-                  className="flex items-start gap-2 rounded-md border border-border p-2.5 text-sm has-[:checked]:border-teal-500 has-[:checked]:bg-teal-50"
+                  className="flex items-start gap-2 rounded-md border border-border p-2.5 text-sm has-[:checked]:border-ring has-[:checked]:bg-primary/5"
                 >
                   <input
                     id={confirmationEmailFieldId}

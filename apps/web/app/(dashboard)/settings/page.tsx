@@ -190,7 +190,7 @@ const TIMEZONES = [
 const CURRENCIES = ["usd", "gbp", "eur", "cad", "aud"];
 
 const PRESET_COLORS = [
-  "#0d9488",
+  "#0f766e",
   "#dc2626",
   "#2563eb",
   "#7c3aed",
@@ -207,7 +207,7 @@ const ROLE_BADGE: Record<string, string> = {
   admin:
     "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
   veterinarian:
-    "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-400",
+    "bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary",
   technician:
     "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
   front_desk:
@@ -2816,7 +2816,7 @@ function AppointmentTypesTab() {
   const [addForm, setAddForm] = useState({
     name: "",
     durationMinutes: 30,
-    color: "#0d9488",
+    color: "#0f766e",
     requiresDoctor: 1,
     defaultRoomType: "exam" as "exam" | "surgery" | "treatment" | "boarding",
   });
@@ -2834,7 +2834,7 @@ function AppointmentTypesTab() {
     setAddForm({
       name: "",
       durationMinutes: 30,
-      color: "#0d9488",
+      color: "#0f766e",
       requiresDoctor: 1,
       defaultRoomType: "exam",
     });
@@ -3093,7 +3093,7 @@ function AppointmentTypesTab() {
                             setEditForm({
                               name: type.name,
                               durationMinutes: type.durationMinutes,
-                              color: type.color ?? "#0d9488",
+                              color: type.color ?? "#0f766e",
                               requiresDoctor: type.requiresDoctor,
                               defaultRoomType: type.defaultRoomType ?? "exam",
                             });
@@ -4055,7 +4055,7 @@ function DataTab() {
                             key={section}
                             className="rounded-md bg-muted/60 px-2 py-1"
                           >
-                            <p className="truncate text-[11px] text-muted-foreground">
+                            <p className="truncate text-xs text-muted-foreground">
                               {section}
                             </p>
                             <p className="text-sm font-semibold">
@@ -4566,7 +4566,7 @@ function DataTab() {
 function ImportStat({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-md bg-muted/60 px-3 py-2">
-      <p className="text-[11px] text-muted-foreground">{label}</p>
+      <p className="text-xs text-muted-foreground">{label}</p>
       <p className="text-lg font-semibold">{value.toLocaleString()}</p>
     </div>
   );
@@ -5046,7 +5046,7 @@ const CATEGORY_BADGE: Record<string, string> = {
     "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
   dental: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
   preventive:
-    "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-400",
+    "bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary",
   emergency:
     "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400",
   other: "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400",

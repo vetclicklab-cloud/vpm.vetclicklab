@@ -6,7 +6,7 @@ export default function AIIntegrationDocs() {
       <div className="mx-auto max-w-4xl px-6 py-16">
         {/* Header */}
         <div className="mb-12">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-teal-600">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
             Developer Documentation
           </p>
           <h1 className="mb-4 text-4xl font-bold text-gray-900">
@@ -292,7 +292,7 @@ function QueryCard({
   return (
     <div className="mb-6 rounded-lg border border-gray-200 bg-white p-6">
       <h3 className="mb-1 text-lg font-semibold text-gray-900">{name}</h3>
-      <code className="mb-3 block text-sm text-teal-600">{endpoint}</code>
+      <code className="mb-3 block text-sm text-primary">{endpoint}</code>
       <p className="mb-4 text-sm text-gray-600">{description}</p>
       <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
         Response
@@ -311,7 +311,7 @@ function EventRow({
 }) {
   return (
     <div className="flex items-center gap-4">
-      <code className="shrink-0 rounded bg-teal-50 px-2 py-1 text-sm font-medium text-teal-700">
+      <code className="shrink-0 rounded bg-primary/5 px-2 py-1 text-sm font-medium text-primary">
         {event}
       </code>
       <span className="text-sm text-gray-600">{description}</span>

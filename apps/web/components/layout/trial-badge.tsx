@@ -85,7 +85,7 @@ export function TrialBadge() {
     return (
       <Link
         href="/settings?tab=billing"
-        className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-medium text-teal-800 transition-colors hover:bg-teal-100"
+        className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
       >
         <CreditCard className="h-3.5 w-3.5" />
         Billing connected · Manage billing
@@ -97,7 +97,7 @@ export function TrialBadge() {
     return (
       <Link
         href="/settings?tab=billing"
-        className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-medium text-teal-800 transition-colors hover:bg-teal-100"
+        className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
       >
         <Clock className="h-3.5 w-3.5" />
         {previewTimeLeftLabel(data.previewEndsAt)} · Start free trial
@@ -109,7 +109,7 @@ export function TrialBadge() {
     return (
       <Link
         href="/settings?tab=billing"
-        className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-medium text-teal-800 transition-colors hover:bg-teal-100"
+        className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
       >
         <CreditCard className="h-3.5 w-3.5" />
         Start trial · Add a card
@@ -129,7 +129,7 @@ export function TrialBadge() {
           "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors",
           urgent
             ? "border-amber-200 bg-amber-50 text-amber-800 hover:bg-amber-100"
-            : "border-teal-200 bg-teal-50 text-teal-800 hover:bg-teal-100",
+            : "border-primary/25 bg-primary/5 text-primary hover:bg-primary/10",
         )}
       >
         <Clock className="h-3.5 w-3.5" />

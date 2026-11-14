@@ -58,7 +58,7 @@ const STATUS_STYLES: Record<string, string> = {
   overdue: "bg-red-100 text-red-700",
   void: "bg-gray-100 text-gray-500",
   partial: "bg-amber-100 text-amber-700",
-  settled: "bg-teal-100 text-teal-700",
+  settled: "bg-primary/10 text-primary",
   estimate: "bg-purple-100 text-purple-700",
 };
 
@@ -1323,7 +1323,7 @@ function InvoiceRow({
                       {Number(detail.data.adjustedAmount ?? 0) > 0 && (
                         <span>
                           Adjusted:{" "}
-                          <span className="font-semibold text-teal-600">
+                          <span className="font-semibold text-primary">
                             {formatCurrency(detail.data.adjustedAmount)}
                           </span>
                         </span>
@@ -1997,7 +1997,7 @@ function PaymentSection({
                 <td className="py-2 capitalize text-muted-foreground">
                   {adjustment.type.replace(/_/g, " ")}
                 </td>
-                <td className="py-2 text-right tabular-nums font-medium text-teal-600">
+                <td className="py-2 text-right tabular-nums font-medium text-primary">
                   {formatCurrency(adjustment.amount)}
                 </td>
                 <td className="py-2 text-muted-foreground">

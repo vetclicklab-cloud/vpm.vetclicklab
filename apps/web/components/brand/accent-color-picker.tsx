@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Check, Plus } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, readableAccent } from "@/lib/utils";
 
-const PRESETS = ["#0d9488", "#16a34a", "#f97316", "#db2777"];
-const FALLBACK = "#0d9488";
+// All presets reach 4.5:1 on white (white button text, link text).
+const PRESETS = ["#0f766e", "#15803d", "#c2410c", "#be185d"];
+const FALLBACK = "#0f766e";
 
 /** Lowercase, prepend #, expand #abc → #aabbcc, validate. Returns null if bad. */
 function normalizeHex(input: string): string | null {
@@ -56,7 +57,7 @@ export function AccentColorPicker({
 
   function commit(v: string) {
     const hex = normalizeHex(v);
-    if (hex) onChange(hex);
+    if (hex) onChange(readableAccent(hex));
   }
 
   return (
@@ -138,6 +139,16 @@ export function AccentColorPicker({
                 className="h-9 w-full min-w-0 rounded-md border border-input bg-background px-2 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-ring"
               />
             </div>
+            {normalizeHex(draft) &&
+            readableAccent(normalizeHex(draft)!) !== normalizeHex(draft) ? (
+              <p className="mt-2 text-xs text-muted-foreground">
+                Too light for readable text. We&apos;ll use{" "}
+                <span className="font-mono text-foreground">
+                  {readableAccent(normalizeHex(draft)!)}
+                </span>{" "}
+                instead.
+              </p>
+            ) : null}
             <button
               type="button"
               onClick={() => {

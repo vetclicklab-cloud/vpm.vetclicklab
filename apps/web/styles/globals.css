@@ -3,28 +3,41 @@
 @tailwind utilities;
 
 @layer base {
+  /* VetClickLab tokens. Three layers:
+     --brand    fixed VetClickLab identity (logo, auth, emails); clinics never change it.
+     --primary  the clinic accent (defaults to brand; BrandTheme overrides it, kept >= 4.5:1 on white).
+     status     success / warning / info / destructive, never brand-tinted. */
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 216.5 32.4% 13.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 216.5 32.4% 13.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 166 91% 32%;
+    --popover-foreground: 216.5 32.4% 13.9%;
+    --brand: 175.3 77.4% 26.1%;
+    --brand-foreground: 0 0% 100%;
+    --primary: 175.3 77.4% 26.1%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 220 14% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 166 91% 32%;
+    --secondary: 205.7 25.9% 94.7%;
+    --secondary-foreground: 216.5 32.4% 13.9%;
+    --muted: 205.7 25.9% 94.7%;
+    --muted-foreground: 210.9 16.8% 38.6%;
+    --accent: 205.7 25.9% 94.7%;
+    --accent-foreground: 216.5 32.4% 13.9%;
+    --destructive: 0 73.7% 41.8%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-soft: 0 85.7% 97.3%;
+    --success: 142.4 71.8% 29.2%;
+    --success-soft: 138.5 76.5% 96.7%;
+    --warning: 22.7 82.5% 31.4%;
+    --warning-soft: 48 100% 96.1%;
+    --info: 224.3 76.3% 48%;
+    --info-soft: 213.8 100% 96.9%;
+    --border: 208 23.8% 87.6%;
+    --input: 215.4 16.3% 46.9%;
+    --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
-    --surface: 225 20% 98%;
+    --surface: 210 28.6% 97.3%;
   }
 
   .dark {
@@ -34,7 +47,9 @@
     --card-foreground: 210 40% 98%;
     --popover: 217 33% 17%;
     --popover-foreground: 210 40% 98%;
-    --primary: 166 91% 32%;
+    --brand: 175.3 77.4% 26.1%;
+    --brand-foreground: 0 0% 100%;
+    --primary: 175.3 77.4% 26.1%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
@@ -44,9 +59,9 @@
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 166 91% 32%;
+    --border: 215 25% 27%;
+    --input: 215 20% 45%;
+    --ring: 213 94% 68%;
     --surface: 222 47% 11%;
   }
 }
@@ -57,5 +72,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    caret-color: hsl(var(--primary));
+  }
+  ::selection {
+    background-color: hsl(var(--primary) / 0.18);
   }
 }
