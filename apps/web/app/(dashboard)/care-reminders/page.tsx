@@ -218,7 +218,7 @@ export default function CareRemindersPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Care reminders</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Follow-ups</h2>
           <p className="mt-1 max-w-3xl text-sm text-muted-foreground">
             Internal follow-up work for each patient. This queue never sends an
             email or text automatically; client outreach remains a separate,

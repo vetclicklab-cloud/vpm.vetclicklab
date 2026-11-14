@@ -1091,7 +1091,7 @@ export default function InventoryPage() {
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Inventory</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Inventory</h2>
           <p className="text-sm text-muted-foreground">
             Products, stock management, and suppliers
           </p>

@@ -79,7 +79,7 @@ const navigationItems: CommandItemConfig[] = [
     roles: ["admin", "veterinarian", "front_desk"],
   },
   {
-    label: "Care Reminders",
+    label: "Follow-ups",
     href: "/care-reminders",
     Icon: BellRing,
     roles: allRoles,

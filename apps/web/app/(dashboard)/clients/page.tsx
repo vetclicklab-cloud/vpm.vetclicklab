@@ -44,7 +44,7 @@ export default function ClientsPage() {
     <div>
       <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Clients</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Clients</h2>
           <p className="text-sm text-muted-foreground">
             Manage client information
           </p>

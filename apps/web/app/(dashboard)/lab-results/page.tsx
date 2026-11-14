@@ -299,7 +299,17 @@ function LabResultsInboxContent() {
               : "One clinic-wide queue for pending values, clinical review, and owned follow-up."}
           </p>
         </div>
-        <Badge variant={actionCount > 0 ? "destructive" : "secondary"} className="w-fit">
+        {/* Red is reserved for patient risk: only critical results turn it red. */}
+        <Badge
+          variant={
+            rows.some((row) => row.resultFlag === "critical")
+              ? "destructive"
+              : actionCount > 0
+                ? "warning"
+                : "secondary"
+          }
+          className="w-fit"
+        >
           {actionCount} action {actionCount === 1 ? "item" : "items"} shown
         </Badge>
       </div>

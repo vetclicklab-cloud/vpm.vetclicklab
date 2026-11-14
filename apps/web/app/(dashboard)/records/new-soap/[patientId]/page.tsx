@@ -698,7 +698,7 @@ export default function NewSoapNotePage() {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <ShieldAlert className="h-12 w-12 text-muted-foreground mb-4" />
-        <h2 className="font-heading text-xl font-semibold">Access Denied</h2>
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">Access Denied</h2>
         <p className="text-sm text-muted-foreground mt-1">
           Only veterinarians and administrators can create SOAP notes.
         </p>
@@ -804,7 +804,7 @@ export default function NewSoapNotePage() {
           <div className="flex items-start gap-3">
             <AlertCircle className="mt-0.5 h-6 w-6 shrink-0 text-destructive" />
             <div>
-              <h2 className="font-heading text-xl font-semibold text-destructive">
+              <h2 className="font-heading text-2xl font-semibold tracking-tight text-destructive">
                 SOAP note finalized in another session
               </h2>
               <p className="mt-2 font-medium">
@@ -894,7 +894,7 @@ export default function NewSoapNotePage() {
 
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="font-heading text-xl font-semibold">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">
             SOAP Documentation
           </h2>
           {patient && (

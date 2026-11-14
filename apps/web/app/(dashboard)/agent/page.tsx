@@ -325,7 +325,7 @@ function AgentRunner({ isAdmin }: { isAdmin: boolean }) {
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
               <Sparkles className="h-6 w-6" />
             </div>
-            <h2 className="mt-4 font-heading text-xl font-semibold">
+            <h2 className="mt-4 font-heading text-2xl font-semibold tracking-tight">
               What can I help you with?
             </h2>
             <p className="mt-1 max-w-md text-sm text-muted-foreground">

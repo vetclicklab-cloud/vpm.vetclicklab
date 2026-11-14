@@ -27,7 +27,7 @@ const routeLabels: Record<string, string> = {
   "/inventory": "Inventory",
   "/inbox": "Inbox",
   "/recalls": "Vaccination Recalls",
-  "/care-reminders": "Care Reminders",
+  "/care-reminders": "Follow-ups",
   "/migration-archive": "Imported History",
   "/whiteboard": "Whiteboard",
   "/agent": "Agent",
@@ -128,7 +128,9 @@ export function TopBar({
         >
           <Menu className="h-5 w-5" />
         </button>
-        <h1 className="truncate font-heading text-lg font-semibold">{label}</h1>
+        {/* Pages show their own title on desktop; the bar keeps it for small
+            screens and assistive tech. */}
+        <h1 className="truncate font-heading text-lg font-semibold lg:sr-only">{label}</h1>
       </div>
 
       <div className="flex shrink-0 items-center gap-2">

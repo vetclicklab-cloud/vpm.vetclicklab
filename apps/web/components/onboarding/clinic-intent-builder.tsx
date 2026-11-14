@@ -26,7 +26,6 @@ import { cn } from "@/lib/utils";
 import {
   CLINIC_MODEL_OPTIONS,
   FIRST_GOAL_OPTIONS,
-  SELF_HOST_GOAL,
   clinicModelOption,
   firstDayTasks,
   type ClinicModel,
@@ -91,10 +90,9 @@ export function ClinicIntentBuilder({
 }) {
   const selectedModel = clinicModelOption(clinicModel);
   const tasks = firstDayTasks(clinicModel, firstGoal);
-  const goalOptions =
-    clinicModel === "exploring"
-      ? [...FIRST_GOAL_OPTIONS, SELF_HOST_GOAL]
-      : FIRST_GOAL_OPTIONS;
+  // VetClickLab is hosted only, so the self-hosting goal is no longer offered.
+  // Existing practices that chose it keep working through the legacy value.
+  const goalOptions = FIRST_GOAL_OPTIONS;
 
   return (
     <div

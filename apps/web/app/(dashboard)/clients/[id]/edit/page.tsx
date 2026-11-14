@@ -288,7 +288,7 @@ function EditClientForm() {
         Back to Client
       </Button>
 
-      <h2 className="font-heading text-xl font-semibold">Edit Client</h2>
+      <h2 className="font-heading text-2xl font-semibold tracking-tight">Edit Client</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Update client information
       </p>

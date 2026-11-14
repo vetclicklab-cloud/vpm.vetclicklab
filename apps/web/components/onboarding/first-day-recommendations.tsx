@@ -58,10 +58,10 @@ const FIRST_GOAL_RECOMMENDATIONS: Record<
     rowLabel: "Guided visit",
   },
   self_host: {
-    title: "Review the self-hosted path",
-    body: "Confirm deployment and data-ownership controls before moving any live work.",
-    pictureLabel: "Self-hosted setup",
-    rowLabel: "Deployment plan",
+    title: "Review your rollout plan",
+    body: "Confirm data-ownership controls before moving any live work.",
+    pictureLabel: "Rollout plan",
+    rowLabel: "Rollout plan",
   },
 };
 

@@ -75,13 +75,13 @@ export const ONBOARDING_INTENT_OPTIONS: readonly OnboardingIntentOption[] = [
   },
   {
     value: "self_host",
-    label: "Evaluate for self-hosting",
-    shortLabel: "Self-host",
+    // Legacy value: no longer offered at sign-up.
+    label: "Evaluate the product",
+    shortLabel: "Evaluate",
     description:
-      "Explore the product with sample data while you plan your own deployment.",
-    firstWin: "Brand your self-hosted workspace",
-    firstWinHint:
-      "Set clinic details first; hosted-only billing steps stay out of self-hosted setup.",
+      "Explore the product with sample data before planning a rollout.",
+    firstWin: "Brand your workspace",
+    firstWinHint: "Set clinic details first.",
     firstWinTarget: "brand",
   },
 ];

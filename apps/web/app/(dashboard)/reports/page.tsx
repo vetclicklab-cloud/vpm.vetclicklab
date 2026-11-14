@@ -924,7 +924,7 @@ function ReportsDashboard() {
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Reports</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Reports</h2>
           <p className="text-sm text-muted-foreground">
             Practice analytics and insights
           </p>

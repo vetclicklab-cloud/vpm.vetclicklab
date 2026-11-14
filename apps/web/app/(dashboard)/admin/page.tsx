@@ -230,7 +230,7 @@ export default function AdminPage() {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <ShieldAlert className="h-12 w-12 text-muted-foreground mb-4" />
-        <h2 className="font-heading text-xl font-semibold">Access Denied</h2>
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">Access Denied</h2>
         <p className="text-sm text-muted-foreground mt-1">
           This area is for VetClickLab platform operators only.
         </p>
@@ -291,7 +291,7 @@ export default function AdminPage() {
   return (
     <div>
       <div>
-        <h2 className="font-heading text-xl font-semibold">Platform Admin</h2>
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">Platform Admin</h2>
         <p className="text-sm text-muted-foreground">
           Cross-tenant operations overview
         </p>

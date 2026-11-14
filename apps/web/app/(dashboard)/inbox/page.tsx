@@ -568,7 +568,7 @@ export default function InboxPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Inbox</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Inbox</h2>
           <p className="text-sm text-muted-foreground">Client communications</p>
         </div>
         {canMutateInbox ? (

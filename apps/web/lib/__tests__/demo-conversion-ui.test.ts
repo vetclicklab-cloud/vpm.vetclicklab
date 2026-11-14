@@ -73,7 +73,7 @@ describe("demo conversion bridge UI", () => {
     expect(firstDayRecommendations).toContain("FIRST_GOAL_RECOMMENDATIONS");
     expect(firstDayRecommendations).toContain("Plan a safe first import");
     expect(firstDayRecommendations).toContain("Explore a ready-made clinic");
-    expect(firstDayRecommendations).toContain("Review the self-hosted path");
+    expect(firstDayRecommendations).toContain("Review your rollout plan");
     expect(register).toContain('label="Password"');
     expect(register).not.toContain(
       "Two quick choices make the rest of setup feel like your clinic—not a generic software tour.",

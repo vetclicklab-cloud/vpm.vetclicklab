@@ -677,7 +677,7 @@ export default function WhiteboardPage() {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-3">
-            <h2 className="font-heading text-xl font-semibold">
+            <h2 className="font-heading text-2xl font-semibold tracking-tight">
               Practice Whiteboard
             </h2>
             <LiveIndicator />

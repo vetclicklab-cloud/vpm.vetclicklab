@@ -283,7 +283,7 @@ export default function BillingPage() {
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Billing</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Billing</h2>
           <p className="text-sm text-muted-foreground">
             Invoices and payments
           </p>

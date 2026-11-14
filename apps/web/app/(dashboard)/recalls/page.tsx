@@ -148,7 +148,7 @@ export default function VaccinationRecallsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">
             Vaccination recalls
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">

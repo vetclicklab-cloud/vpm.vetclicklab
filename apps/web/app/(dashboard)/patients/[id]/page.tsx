@@ -1007,7 +1007,7 @@ export default function PatientDetailPage() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="font-heading text-xl font-semibold">
+                <h2 className="font-heading text-2xl font-semibold tracking-tight">
                   {patient.name}
                 </h2>
                 <span
@@ -1135,13 +1135,13 @@ export default function PatientDetailPage() {
                 <ConsentSign patientId={patient.id} />
               </>
             )}
-            <Button variant="outline" size="sm" onClick={handleDownloadSummary}>
+            <Button variant="ghost" size="sm" onClick={handleDownloadSummary}>
               <FileDown className="mr-2 h-4 w-4" />
               Download Summary
             </Button>
             {canManagePatientDetail && (
               <Button
-                variant="outline"
+                variant="ghost"
                 size="sm"
                 onClick={() => router.push(`/patients/${patient.id}/edit`)}
               >

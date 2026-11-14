@@ -40,6 +40,7 @@ import {
   toISODate,
   type CalendarDay,
   type CalendarView,
+  practiceToday,
 } from "@/lib/scheduling/calendar-views";
 import {
   APPOINTMENT_DURATION_MAX_MINUTES,
@@ -2529,6 +2530,19 @@ function SchedulePageContent() {
   const calendarTimeZone = verifiedCalendarSettings
     ? verifiedCalendarSettings.timezone
     : null;
+  // The first render uses the device day; once the practice time zone is
+  // known, open on the practice's today (matches the whiteboard) unless the
+  // user already moved the calendar.
+  const openedOnPracticeDay = useRef(false);
+  useEffect(() => {
+    if (!calendarTimeZone || openedOnPracticeDay.current) return;
+    openedOnPracticeDay.current = true;
+    setCurrentDate((current) =>
+      toISODate(current) === toISODate(startOfCalendarDay(new Date()))
+        ? practiceToday(calendarTimeZone)
+        : current,
+    );
+  }, [calendarTimeZone]);
   const queryRangeInput = useMemo(() => {
     if (view === "week") {
       return {
@@ -2723,7 +2737,7 @@ function SchedulePageContent() {
     setShowBookingForm(true);
   }, [canUseScheduleInteractions, firstClinicDay]);
 
-  const goToday = () => setCurrentDate(startOfCalendarDay(new Date()));
+  const goToday = () => setCurrentDate(practiceToday(calendarTimeZone));
   const goPrev = () =>
     setCurrentDate((d) =>
       view === "month"
@@ -2793,7 +2807,7 @@ function SchedulePageContent() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Schedule</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Schedule</h2>
           <p className="text-sm text-muted-foreground">Appointment calendar</p>
         </div>
         <CalendarSubscribe />
