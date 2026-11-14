@@ -387,7 +387,7 @@ export default function NewSoapNotePage() {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [editorNeedsLeaveGuard]);
 
-  // AI draft availability mirrors the OpenVPM Agent (same key + model config).
+  // AI draft availability mirrors the VetClickLab Agent (same key + model config).
   const agentStatus = trpc.agent.status.useQuery(undefined, {
     enabled: canCreateSoapNote && !!appointmentId,
   });
@@ -1004,7 +1004,7 @@ export default function NewSoapNotePage() {
             className="rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-100"
           >
             Keep this tab open. New SOAP changes remain only in this tab, and
-            OpenVPM will retry the same revision-checked draft automatically
+            VetClickLab will retry the same revision-checked draft automatically
             when the connection returns.
           </div>
         ) : null}

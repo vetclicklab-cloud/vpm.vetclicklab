@@ -158,7 +158,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "OpenVPM Cloud is read-only until your trial or subscription is active.",
+            "VetClickLab Cloud is read-only until your trial or subscription is active.",
         },
         { status: 403 },
       );

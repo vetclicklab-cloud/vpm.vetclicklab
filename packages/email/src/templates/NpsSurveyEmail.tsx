@@ -14,7 +14,7 @@ export interface NpsSurveyEmailProps {
 }
 
 export function npsSurveySubject(): string {
-  return "One quick question about OpenVPM";
+  return "One quick question about VetClickLab";
 }
 
 const cell: React.CSSProperties = {
@@ -44,15 +44,15 @@ export function NpsSurveyEmail({
   return (
     <PersonalNote
       brand={brand}
-      preview="How likely are you to recommend OpenVPM to another clinic?"
+      preview="How likely are you to recommend VetClickLab to another clinic?"
       greetingName={greetingName}
       senderName={senderName}
       unsubscribeUrl={unsubscribeUrl}
-      recipientReason={`You're receiving this because you run ${practiceName} on OpenVPM.`}
+      recipientReason={`You're receiving this because you run ${practiceName} on VetClickLab.`}
     >
       <P>
         One question, and it takes a second: how likely are you to recommend
-        OpenVPM to another clinic?
+        VetClickLab to another clinic?
       </P>
       <P style={{ margin: "0 0 4px" }}>
         {scoreUrls.map((url, score) => (

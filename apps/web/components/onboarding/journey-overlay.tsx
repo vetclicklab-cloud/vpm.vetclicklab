@@ -14,7 +14,7 @@ import { usePathname, useRouter } from "next/navigation";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { ArrowLeft, ArrowRight, Loader2, ShieldCheck } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { BrandBadge } from "@/components/brand/paw-mark";
+import { BrandBadge } from "@/components/brand/brand-mark";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -451,7 +451,7 @@ function JourneyShell({
           onPointerDownOutside={(event) => event.preventDefault()}
         >
           <DialogPrimitive.Description className="sr-only">
-            Guided setup for your OpenVPM clinic.
+            Guided setup for your VetClickLab clinic.
           </DialogPrimitive.Description>
           <div className="flex min-h-full items-center justify-center">
             <div
@@ -468,10 +468,10 @@ function JourneyShell({
                 <div className="inline-flex items-center gap-2.5 text-slate-950">
                   <BrandBadge
                     className="h-9 w-9 rounded-xl"
-                    pawClassName="h-5 w-5"
+                    markClassName="h-5 w-5"
                   />
                   <span className="font-heading text-lg font-semibold tracking-tight">
-                    OpenVPM
+                    VetClickLab
                   </span>
                 </div>
                 <div className="flex min-w-[132px] items-center gap-3 sm:min-w-[230px]">

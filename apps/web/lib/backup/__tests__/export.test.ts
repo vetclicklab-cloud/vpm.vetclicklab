@@ -1705,7 +1705,7 @@ describe("practice backup secret handling", () => {
         id: "attempt-operator",
         requestedByActorType: "platform_operator",
         requestedByIdentity: "platform-operator",
-        requestedByName: "OpenVPM operator",
+        requestedByName: "VetClickLab operator",
       },
       {
         id: "attempt-clinic",
@@ -1739,7 +1739,7 @@ describe("practice backup secret handling", () => {
           id: `${section}-operator`,
           actorType: "platform_operator",
           actorIdentity: "platform-operator",
-          actorName: "OpenVPM operator",
+          actorName: "VetClickLab operator",
         },
         {
           id: `${section}-clinic`,

@@ -397,7 +397,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(
           {
             error:
-              "OpenVPM Cloud is read-only until the practice trial or subscription is active.",
+              "VetClickLab Cloud is read-only until the practice trial or subscription is active.",
           },
           { status: 403 },
         );
@@ -406,7 +406,7 @@ export async function POST(req: NextRequest) {
       // On hosted, client money must land in the practice's own Stripe
       // account (Connect direct charge), exactly like the staff
       // "Take Card" path. A platform charge would put clinic revenue in
-      // OpenVPM's account. Self-host keeps the platform charge: there the
+      // VetClickLab's account. Self-host keeps the platform charge: there the
       // configured Stripe key IS the practice's own account.
       const connectedAccountId = billingEnforced()
         ? await getChargeableStripeConnectAccountId(tx, invoice.practiceId)

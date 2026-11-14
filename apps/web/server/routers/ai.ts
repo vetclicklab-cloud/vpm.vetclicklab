@@ -418,7 +418,7 @@ export const aiRouter = createRouter({
       if (!aiAccess.allowed) {
         throw new TRPCError({
           code: "FORBIDDEN",
-          message: aiAccess.message ?? "OpenVPM AI is not available.",
+          message: aiAccess.message ?? "VetClickLab AI is not available.",
         });
       }
 

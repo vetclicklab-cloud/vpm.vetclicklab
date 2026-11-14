@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BrandBadge } from "@/components/brand/paw-mark";
+import { BrandBadge } from "@/components/brand/brand-mark";
 import { openvpmBrand } from "@openpims/email";
 import {
   isNpsScore,
@@ -11,7 +11,7 @@ import {
 import { verifyNpsToken } from "@/lib/growth/nps-token";
 
 export const metadata: Metadata = {
-  title: "How are we doing? - OpenVPM",
+  title: "How are we doing? - VetClickLab",
   robots: { index: false, follow: false },
 };
 
@@ -21,7 +21,7 @@ const THANKS: Record<NpsCategory, string> = {
   passive:
     "Thank you. If there's one thing that would make it a 10, reply to the email and tell us.",
   detractor:
-    "Thank you for being straight with us. A person from OpenVPM will reach out to hear what's not working.",
+    "Thank you for being straight with us. A person from VetClickLab will reach out to hear what's not working.",
 };
 
 function param(value: string | string[] | undefined): string {
@@ -61,9 +61,9 @@ export default async function NpsPage({
           href="/"
           className="inline-flex items-center gap-2.5 text-foreground"
         >
-          <BrandBadge className="h-9 w-9 rounded-xl" pawClassName="h-5 w-5" />
+          <BrandBadge className="h-9 w-9 rounded-xl" markClassName="h-5 w-5" />
           <span className="font-heading text-lg font-semibold tracking-tight">
-            OpenVPM
+            VetClickLab
           </span>
         </Link>
 
@@ -93,7 +93,7 @@ export default async function NpsPage({
           <form method="post" action="/api/growth/nps" className="mt-8 space-y-5">
             <div className="space-y-2">
               <h1 className="font-heading text-2xl font-semibold">
-                How likely are you to recommend OpenVPM to another clinic?
+                How likely are you to recommend VetClickLab to another clinic?
               </h1>
               <p className="text-sm leading-6 text-muted-foreground">
                 0 is not at all likely, 10 is extremely likely.

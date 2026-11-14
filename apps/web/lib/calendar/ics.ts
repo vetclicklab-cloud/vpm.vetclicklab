@@ -92,7 +92,7 @@ export function buildPracticeCalendarIcs(input: CalendarFeedInput): string {
   const lines: string[] = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//OpenVPM//Schedule Feed//EN",
+    "PRODID:-//VetClickLab//Schedule Feed//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     `X-WR-CALNAME:${escapeIcsText(`${input.practiceName} schedule`)}`,

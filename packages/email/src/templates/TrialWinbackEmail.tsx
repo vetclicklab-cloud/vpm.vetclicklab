@@ -55,12 +55,12 @@ export function TrialWinbackEmail({
       greetingName={greetingName}
       senderName={senderName}
       unsubscribeUrl={unsubscribeUrl}
-      recipientReason={`You're receiving this because you tried ${practiceName} on OpenVPM.`}
+      recipientReason={`You're receiving this because you tried ${practiceName} on VetClickLab.`}
     >
       {step === 1 ? (
         <>
           <P>
-            Your OpenVPM trial for {practiceName} ended. Nothing was deleted:
+            Your VetClickLab trial for {practiceName} ended. Nothing was deleted:
             {usageSummary
               ? ` your ${usageSummary} are all still there,`
               : " everything you set up is still there,"}{" "}
@@ -102,7 +102,7 @@ export function TrialWinbackEmail({
             want to <A href={reactivateUrl}>pick up where you left off</A>. If
             now isn&apos;t the right time, there&apos;s nothing you need to do.
           </P>
-          <P>Thanks for giving OpenVPM a try.</P>
+          <P>Thanks for giving VetClickLab a try.</P>
         </>
       ) : null}
     </PersonalNote>

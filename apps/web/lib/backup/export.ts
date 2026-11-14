@@ -416,7 +416,7 @@ export function sanitizePracticeExportRows(
           ? {
               ...row,
               requestedByIdentity: "platform-operator",
-              requestedByName: "OpenVPM operator",
+              requestedByName: "VetClickLab operator",
             }
           : row;
       case "smsSendAttemptEvents":
@@ -425,7 +425,7 @@ export function sanitizePracticeExportRows(
           ? {
               ...row,
               actorIdentity: "platform-operator",
-              actorName: "OpenVPM operator",
+              actorName: "VetClickLab operator",
             }
           : row;
       default:

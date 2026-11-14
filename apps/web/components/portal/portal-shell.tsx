@@ -3,7 +3,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { PawMark } from "@/components/brand/paw-mark";
+import { BrandMark } from "@/components/brand/brand-mark";
 import { trpc } from "@/lib/trpc";
 import { hexToHslString, initials } from "@/lib/utils";
 import { DEFAULT_PORTAL_BRAND_COLOR } from "@/lib/portal/branding";
@@ -32,7 +32,7 @@ export function PortalShell({ children }: { children: ReactNode }) {
   const themeStyle: PortalThemeStyle | undefined = brandHsl
     ? { "--primary": brandHsl, "--ring": brandHsl }
     : undefined;
-  const practiceName = practice?.name ?? "OpenVPM";
+  const practiceName = practice?.name ?? "VetClickLab";
 
   async function signOut() {
     if (signingOut) return;
@@ -68,7 +68,7 @@ export function PortalShell({ children }: { children: ReactNode }) {
                 aria-hidden="true"
                 className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground"
               >
-                <PawMark className="h-5 w-5" />
+                <BrandMark className="h-5 w-5" />
               </span>
             )}
             <div className="min-w-0">
@@ -95,7 +95,7 @@ export function PortalShell({ children }: { children: ReactNode }) {
       </main>
       <footer className="mt-12 border-t border-gray-100">
         <div className="mx-auto max-w-4xl px-4 py-6 text-center text-sm text-gray-400">
-          Powered by OpenVPM
+          Powered by VetClickLab
           <span className="mx-2" aria-hidden="true">
             ·
           </span>

@@ -118,7 +118,7 @@ describe("expireDuePrescriptions", () => {
         refillsAfter: 1,
         reason: "Prescription end date elapsed.",
         actorId: null,
-        actorName: "OpenVPM system",
+        actorName: "VetClickLab system",
         operationId: null,
       },
     ]);

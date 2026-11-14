@@ -329,7 +329,7 @@ function TrustedProxyNotice() {
               Your proxy isn&apos;t forwarding client addresses
             </p>
             <p className="mt-1">
-              <code>OPENVPM_TRUSTED_PROXY_HOPS</code> is set, but requests
+              The trusted-proxy setting is on, but requests
               arrive from{" "}
               {data.proxyNotForwarding.address
                 ? `an internal address (${data.proxyNotForwarding.address})`
@@ -337,21 +337,18 @@ function TrustedProxyNotice() {
               , which is usually the proxy itself. Per-IP sign-in limits are
               off until the proxy sends <code>X-Forwarded-For</code>;
               per-account limits still apply. If staff only connect from
-              inside your network, this is expected. See &ldquo;Reverse
-              proxies and sign-in limits&rdquo; in the README.
+              inside your network, this is expected. Contact VetClickLab
+              support if you&apos;re not sure.
             </p>
           </>
         ) : (
           <>
             <p className="font-medium">Reverse proxy not configured</p>
             <p className="mt-1">
-              OpenVPM can&apos;t verify client addresses, so per-IP sign-in
-              limits are off; per-account limits still apply. Only if you
-              run a reverse proxy in front of OpenVPM: set{" "}
-              <code>OPENVPM_TRUSTED_PROXY_HOPS</code> to the number of proxies
-              in front of the app and restart. See &ldquo;Reverse proxies and
-              sign-in limits&rdquo; in the README for nginx, Caddy, and Traefik
-              settings.
+              VetClickLab can&apos;t verify client addresses, so per-IP sign-in
+              limits are off; per-account limits still apply. Contact
+              VetClickLab support to configure the trusted-proxy setting for
+              your deployment.
             </p>
           </>
         )}
@@ -521,8 +518,8 @@ function PracticeInfoTab() {
         utils.settings.getMarketingEmailPreference.invalidate();
         toast.success(
           preference.enabled
-            ? "Optional OpenVPM emails turned on"
-            : "Optional OpenVPM emails turned off",
+            ? "Optional VetClickLab emails turned on"
+            : "Optional VetClickLab emails turned off",
         );
       },
       onError: (err) => toast.error(err.message),
@@ -821,7 +818,7 @@ function PracticeInfoTab() {
           <div className="space-y-1">
             <h3 className="text-sm font-semibold">Branding</h3>
             <p className="text-xs text-muted-foreground">
-              Your logo and accent color appear across OpenVPM. Changes save
+              Your logo and accent color appear across VetClickLab. Changes save
               immediately.
             </p>
           </div>
@@ -901,12 +898,12 @@ function PracticeInfoTab() {
           </div>
         </div>
 
-        {/* ── OpenVPM email preferences ── */}
+        {/* ── VetClickLab email preferences ── */}
         <div className="space-y-5 rounded-lg border border-border bg-card p-6">
           <div className="space-y-1">
-            <h3 className="text-sm font-semibold">Emails from OpenVPM</h3>
+            <h3 className="text-sm font-semibold">Emails from VetClickLab</h3>
             <p className="text-xs text-muted-foreground">
-              Controls optional email OpenVPM sends to your clinic, not messages
+              Controls optional email VetClickLab sends to your clinic, not messages
               your clinic sends to pet owners.
             </p>
           </div>
@@ -979,8 +976,8 @@ function PracticeInfoTab() {
                   marketingEmailPreference?.enabled ? (
                 <p className="text-xs text-emerald-700" role="status">
                   {marketingEmailMutation.data.enabled
-                    ? "Optional OpenVPM emails are on."
-                    : "Optional OpenVPM emails are off."}
+                    ? "Optional VetClickLab emails are on."
+                    : "Optional VetClickLab emails are off."}
                 </p>
               ) : null}
 
@@ -1420,7 +1417,7 @@ function LocationsTab() {
 
 // ── Plan & Billing ──────────────────────────────────────────
 const FEATURE_LABELS: Record<string, string> = {
-  agent: "OpenVPM Agent (AI)",
+  agent: "VetClickLab Agent (AI)",
   sms: "SMS sending",
   advancedReporting: "Advanced reporting",
   apiAccess: "API access + webhooks",
@@ -1532,13 +1529,13 @@ function BillingTab() {
             <div className="flex items-center gap-3">
               <Check className="h-5 w-5 text-green-600" />
               <h3 className="font-heading text-lg font-semibold">
-                Self-hosted — all features unlocked
+                All features unlocked
               </h3>
             </div>
             <p className="mt-2 text-sm text-muted-foreground">
-              You&apos;re running OpenVPM on your own infrastructure. Every
+              You&apos;re running VetClickLab on your own infrastructure. Every
               feature is available and there&apos;s no subscription — free
-              forever. Plans below are how the managed OpenVPM Cloud is priced,
+              forever. Plans below are how the managed VetClickLab Cloud is priced,
               for reference.
             </p>
           </div>
@@ -1594,7 +1591,7 @@ function BillingTab() {
       {checkoutStatus === "success" ? (
         <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900">
           <p className="font-medium">Your billing details were received</p>
-          <p className="mt-1">OpenVPM is confirming the subscription now.</p>
+          <p className="mt-1">VetClickLab is confirming the subscription now.</p>
         </div>
       ) : null}
 
@@ -1607,7 +1604,7 @@ function BillingTab() {
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
                 <p className="text-sm font-medium text-primary">
-                  OpenVPM Cloud
+                  VetClickLab Cloud
                 </p>
                 <Badge
                   variant={data.billingStatus === "active" ? "success" : "info"}
@@ -1877,7 +1874,7 @@ function ClientPaymentProcessingSection({
           <p className="mt-2 text-sm text-muted-foreground">
             {data?.connectRequired
               ? "Stripe Connect lets the clinic collect card payments from pet owners into its own Stripe account."
-              : "This installation can use its configured Stripe key for client invoice payments. Stripe Connect is required for hosted OpenVPM Cloud clinics."}
+              : "This installation can use its configured Stripe key for client invoice payments. Stripe Connect is required for hosted VetClickLab Cloud clinics."}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -2100,7 +2097,7 @@ function PlanGrid({
                 </Button>
               ) : !p.selfServe ? (
                 <a
-                  href="mailto:support@openvpm.com?subject=OpenVPM%20Enterprise"
+                  href="mailto:support@vetclicklab.com?subject=VetClickLab%20Enterprise"
                   className="text-xs font-medium text-primary hover:underline"
                 >
                   Contact sales
@@ -3544,7 +3541,7 @@ function DataTab() {
         "Could not export full backup",
       );
       const date = formatSettingsDateInput(new Date(), settingsTimeZone);
-      downloadJSON(backup, `openvpm-full-backup-${date}.json`);
+      downloadJSON(backup, `vetclicklab-full-backup-${date}.json`);
     } catch (err) {
       toast.error(
         err instanceof Error ? err.message : "Could not export full backup",
@@ -3973,7 +3970,7 @@ function DataTab() {
               <div>
                 <p className="text-sm font-medium">Empty-practice restore</p>
                 <p className="mt-1 text-xs leading-5 text-amber-900 dark:text-amber-200">
-                  OpenVPM first checks the backup sections, row counts, and
+                  VetClickLab first checks the backup sections, row counts, and
                   internal record links. Restores are non-destructive and only
                   insert rows that do not already exist.{" "}
                   {PRACTICE_BACKUP_JSON_SIZE_MESSAGE}

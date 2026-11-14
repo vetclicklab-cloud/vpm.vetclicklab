@@ -7,18 +7,18 @@ const PRACTICE_ID = "00000000-0000-0000-0000-0000000000aa";
 describe("public clinic messaging program", () => {
   it("builds stable hosted policy and consent URLs", () => {
     expect(
-      messagingProgramUrls(PRACTICE_ID, "https://app.openvpm.com/settings"),
+      messagingProgramUrls(PRACTICE_ID, "https://app.vetclicklab.com/settings"),
     ).toEqual({
-      programUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}`,
-      privacyPolicyUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/privacy`,
-      termsUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/terms`,
-      optInUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/opt-in`,
+      programUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}`,
+      privacyPolicyUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/privacy`,
+      termsUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/terms`,
+      optInUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/opt-in`,
     });
   });
 
   it("rejects malformed practice identifiers", () => {
     expect(() =>
-      messagingProgramUrls("../other", "https://app.openvpm.com"),
+      messagingProgramUrls("../other", "https://app.vetclicklab.com"),
     ).toThrow();
   });
 

@@ -8,7 +8,7 @@ export interface CheckoutRecoveryEmailProps {
   practiceName: string;
   /** Recipient's first name; null greets with "Hi there". */
   greetingName: string | null;
-  /** Signature; null signs as the OpenVPM team. */
+  /** Signature; null signs as the VetClickLab team. */
   senderName: string | null;
   trialDays: number;
   resumeUrl: string;
@@ -32,7 +32,7 @@ export function checkoutRecoverySubject(
   }
   switch (step) {
     case 1:
-      return `Finish starting ${practiceName}'s OpenVPM trial`;
+      return `Finish starting ${practiceName}'s VetClickLab trial`;
     case 2:
       return `Quick question about ${practiceName}`;
     case 3:
@@ -79,7 +79,7 @@ export function CheckoutRecoveryEmail({
       greetingName={greetingName}
       senderName={senderName}
       unsubscribeUrl={unsubscribeUrl}
-      recipientReason={`You're receiving this because you created ${practiceName} on OpenVPM.`}
+      recipientReason={`You're receiving this because you created ${practiceName} on VetClickLab.`}
     >
       {previewIntro ? (
         <>
@@ -102,7 +102,7 @@ export function CheckoutRecoveryEmail({
       {step === 1 && !previewIntro ? (
         <>
           <P>
-            You set up {practiceName} on OpenVPM but didn&apos;t get to the last
+            You set up {practiceName} on VetClickLab but didn&apos;t get to the last
             step: starting the trial. Everything you entered is saved.
           </P>
           <P>
@@ -119,7 +119,7 @@ export function CheckoutRecoveryEmail({
       {step === 2 ? (
         <>
           <P>
-            You created {practiceName} on OpenVPM but haven&apos;t started the
+            You created {practiceName} on VetClickLab but haven&apos;t started the
             trial yet. Would you tell me what stopped you? One click is enough:
           </P>
           {reasonLinks.map((reason) => (
@@ -137,7 +137,7 @@ export function CheckoutRecoveryEmail({
       {step === 3 ? (
         <>
           <P>
-            A lot of clinics find it easier to set up OpenVPM with someone. If
+            A lot of clinics find it easier to set up VetClickLab with someone. If
             that would help, I&apos;ll walk through it with you in 15 minutes:
             your services and prices, one real visit, and how your current
             system stays in place while you try it.
@@ -165,7 +165,7 @@ export function CheckoutRecoveryEmail({
             right time, there&apos;s nothing you need to do.
           </P>
           <P>
-            If OpenVPM isn&apos;t a fit, I&apos;d really value knowing why.{" "}
+            If VetClickLab isn&apos;t a fit, I&apos;d really value knowing why.{" "}
             <A href={feedbackUrl}>It takes one click</A>.
           </P>
         </>

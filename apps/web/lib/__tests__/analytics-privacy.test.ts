@@ -4,10 +4,10 @@ import { filterVercelAnalyticsEvent } from "../analytics-privacy";
 
 describe("Vercel Analytics capability privacy", () => {
   it.each([
-    "https://app.openvpm.com/capture/raw-secret-token",
-    "https://app.openvpm.com/capture/raw-secret-token?source=qr",
-    "https://app.openvpm.com/sign/raw-secret-token",
-    "https://app.openvpm.com/treatment-plan/raw-secret-token",
+    "https://app.vetclicklab.com/capture/raw-secret-token",
+    "https://app.vetclicklab.com/capture/raw-secret-token?source=qr",
+    "https://app.vetclicklab.com/sign/raw-secret-token",
+    "https://app.vetclicklab.com/treatment-plan/raw-secret-token",
     "/capture/raw-secret-token",
     "/sign/raw-secret-token",
     "/treatment-plan/raw-secret-token",
@@ -19,7 +19,7 @@ describe("Vercel Analytics capability privacy", () => {
   it("leaves ordinary analytics events unchanged", () => {
     const event = {
       type: "pageview" as const,
-      url: "https://app.openvpm.com/patients",
+      url: "https://app.vetclicklab.com/patients",
     };
     expect(filterVercelAnalyticsEvent(event)).toBe(event);
   });

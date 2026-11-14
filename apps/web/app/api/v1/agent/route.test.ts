@@ -10,7 +10,7 @@ const mocks = vi.hoisted(() => {
 
   class AgentNotConfiguredError extends Error {
     constructor() {
-      super("OpenVPM Agent is not configured.");
+      super("VetClickLab Agent is not configured.");
       this.name = "AgentNotConfiguredError";
     }
   }
@@ -48,7 +48,7 @@ const mocks = vi.hoisted(() => {
   }
 
   class AgentBillingAccessError extends Error {
-    constructor(message = "Add a card to your trial to try OpenVPM AI.") {
+    constructor(message = "Add a card to your trial to try VetClickLab AI.") {
       super(message);
       this.name = "AgentBillingAccessError";
     }
@@ -414,7 +414,7 @@ describe("POST /api/v1/agent", () => {
     expect(response.status).toBe(403);
     expect(json).toEqual({
       error: {
-        message: "Add a card to your trial to try OpenVPM AI.",
+        message: "Add a card to your trial to try VetClickLab AI.",
       },
     });
   });
@@ -431,7 +431,7 @@ describe("POST /api/v1/agent", () => {
 
     expect(response.status).toBe(503);
     expect(json).toEqual({
-      error: { message: "OpenVPM Agent is not configured." },
+      error: { message: "VetClickLab Agent is not configured." },
     });
   });
 });

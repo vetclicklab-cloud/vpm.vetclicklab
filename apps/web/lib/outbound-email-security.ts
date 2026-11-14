@@ -74,7 +74,7 @@ export async function assertOutboundEmailAllowed(
   // The shared inbox previously accepted free-form email copy from any
   // authenticated practice and delivered it with the platform Resend key.
   // A bad actor could therefore register a tenant, edit a client's address,
-  // and use OpenVPM as an arbitrary mail relay. Keep historical email rows
+  // and use VetClickLab as an arbitrary mail relay. Keep historical email rows
   // readable, but permanently fail closed for this untrusted compose surface.
   // Templated product mail (invites, invoices, reminders, recalls, and account
   // lifecycle messages) continues through its bounded, purpose-specific path.
@@ -190,7 +190,7 @@ export async function assertOutboundEmailAllowed(
     throw new TRPCError({
       code: "TOO_MANY_REQUESTS",
       message:
-        "Email sending is temporarily limited for account safety. Try again after the limit resets or contact OpenVPM support.",
+        "Email sending is temporarily limited for account safety. Try again after the limit resets or contact VetClickLab support.",
     });
   }
 

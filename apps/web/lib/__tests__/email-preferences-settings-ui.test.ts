@@ -9,9 +9,9 @@ const source = readFileSync(
   "utf8",
 );
 
-describe("OpenVPM email settings UI", () => {
+describe("VetClickLab email settings UI", () => {
   it("separates optional platform email from required and clinic-sent mail", () => {
-    expect(source).toContain("Emails from OpenVPM");
+    expect(source).toContain("Emails from VetClickLab");
     expect(source).toContain("Product guidance and feedback");
     expect(source).toContain("Account, security, and billing email");
     expect(source).toContain(

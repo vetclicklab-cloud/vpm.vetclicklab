@@ -493,7 +493,7 @@ export const wellnessRouter = createRouter({
 
   /**
    * Manual reconciliation escape hatch: advance an enrollment without creating
-   * an invoice, for charges handled outside OpenVPM.
+   * an invoice, for charges handled outside VetClickLab.
    */
   markBilled: protectedProcedure
     .use(manageRole)

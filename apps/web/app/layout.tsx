@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "OpenVPM: Open-Source Veterinary Practice Management",
+  title: "VetClickLab",
   description:
-    "The first modern, open-source, API-first practice management system built for the veterinary community. Beautiful, fast, and free.",
+    "Veterinary practice management for clinic teams: schedule, records, billing and follow-ups in one place.",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },

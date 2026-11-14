@@ -9,7 +9,7 @@ export function formatOpsAlert(
   subject: string,
   detail: string,
 ): { text: string } {
-  return { text: `🚨 OpenVPM ops alert — ${subject}\n${detail}` };
+  return { text: `🚨 VetClickLab ops alert — ${subject}\n${detail}` };
 }
 
 export const OPS_ALERT_TIMEOUT_MS = 5_000;

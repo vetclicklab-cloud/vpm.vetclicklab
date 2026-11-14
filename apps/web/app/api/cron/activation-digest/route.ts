@@ -47,7 +47,7 @@ export async function GET(request: Request) {
       loadClinicPilotQueue(db),
     ]);
 
-    const subject = `OpenVPM trial funnel: ${week.totals.signups} signups, ${week.totals.activated} activated this week`;
+    const subject = `VetClickLab trial funnel: ${week.totals.signups} signups, ${week.totals.activated} activated this week`;
     const html = digestHtml(week, month, journeyWeek, journeyMonth, pilots);
 
     let sent = 0;
@@ -208,7 +208,7 @@ function digestHtml(
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OpenVPM trial funnel</title>
+  <title>VetClickLab trial funnel</title>
 </head>
 <body style="margin:0;padding:0;background-color:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f5;">
@@ -217,7 +217,7 @@ function digestHtml(
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
           <tr>
             <td style="background-color:#0f766e;padding:24px 32px;">
-              <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:600;letter-spacing:-0.01em;">OpenVPM trial funnel</h1>
+              <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:600;letter-spacing:-0.01em;">VetClickLab trial funnel</h1>
             </td>
           </tr>
           <tr>
@@ -232,7 +232,7 @@ function digestHtml(
           </tr>
           <tr>
             <td style="padding:24px 32px;background-color:#f9fafb;border-top:1px solid #e5e7eb;">
-              <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.5;">Weekly digest from the OpenVPM activation cron. Full detail is on the platform admin page.</p>
+              <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.5;">Weekly digest from the VetClickLab activation cron. Full detail is on the platform admin page.</p>
             </td>
           </tr>
         </table>

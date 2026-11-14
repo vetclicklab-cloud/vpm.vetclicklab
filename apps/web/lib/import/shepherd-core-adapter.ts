@@ -210,7 +210,7 @@ function coverage(
 }
 
 /**
- * Transform only the four mature OpenVPM import domains. The function is pure,
+ * Transform only the four mature VetClickLab import domains. The function is pure,
  * logs no source values, and returns fixed reason codes for every skipped row.
  * Persistence still goes through the reviewed preview/commit migration ledger.
  */

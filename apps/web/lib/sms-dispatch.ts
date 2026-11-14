@@ -200,7 +200,7 @@ export function prepareCampaignSmsBody(input: {
     return {
       success: false,
       error:
-        "Do not add STOP or HELP instructions; OpenVPM adds the registered compliance footer automatically.",
+        "Do not add STOP or HELP instructions; VetClickLab adds the registered compliance footer automatically.",
     };
   }
   const repeatedPrefix = `${displayName}:`;
@@ -282,7 +282,7 @@ async function campaignDisplayName(options: {
   if (registered) return registered;
   if (options.hostedExternalSend) return undefined;
 
-  // A self-hosted real provider may be configured outside OpenVPM. Require the
+  // A self-hosted real provider may be configured outside VetClickLab. Require the
   // operator to snapshot the exact carrier-registered identity explicitly.
   if (options.provider !== "console") {
     const configured = envValue("MESSAGING_REGISTERED_DISPLAY_NAME")?.trim();
@@ -753,7 +753,7 @@ async function dispatchWinner(
           const rejected: SendMessageResult = {
             status: "definite_failure",
             error:
-              "OpenVPM Cloud is read-only until your trial or subscription is active.",
+              "VetClickLab Cloud is read-only until your trial or subscription is active.",
           };
           await appendProviderResult(
             tx as unknown as Database,

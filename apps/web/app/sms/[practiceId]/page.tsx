@@ -17,7 +17,7 @@ export default async function SmsProgramPage({
       <p className="font-medium text-primary">Clinic text messaging</p>
       <h1>{program.displayName}</h1>
       <p>
-        {program.displayName} may use OpenVPM to send requested veterinary
+        {program.displayName} may use VetClickLab to send requested veterinary
         service messages. These may include appointment reminders, vaccination
         and care updates, and replies to client questions.
       </p>

@@ -650,12 +650,12 @@ interface VerificationEmailData {
 function verificationEmailContent(data: VerificationEmailData) {
   const body = `
     <p style="margin:0 0 16px;color:#111827;font-size:15px;line-height:1.6;">Hi ${data.name},</p>
-    <p style="margin:0 0 8px;color:#111827;font-size:15px;line-height:1.6;">Welcome to OpenVPM! Please confirm your email address to secure your workspace and keep important account messages deliverable.</p>
+    <p style="margin:0 0 8px;color:#111827;font-size:15px;line-height:1.6;">Welcome to VetClickLab! Please confirm your email address to secure your workspace and keep important account messages deliverable.</p>
     ${ctaButton("Confirm email", data.verifyUrl)}
-    <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.5;">This link expires in 24 hours. If you didn't create an OpenVPM account, you can ignore this email.</p>
+    <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.5;">This link expires in 24 hours. If you didn't create an VetClickLab account, you can ignore this email.</p>
   `;
-  const html = emailLayout("OpenVPM", body);
-  return { subject: "Verify your OpenVPM email", html };
+  const html = emailLayout("VetClickLab", body);
+  return { subject: "Verify your VetClickLab email", html };
 }
 
 export async function sendVerificationEmail(
@@ -695,14 +695,14 @@ export async function sendPasswordResetEmail(data: {
 }): Promise<{ success: boolean }> {
   const body = `
     <p style="margin:0 0 16px;color:#111827;font-size:15px;line-height:1.6;">Hi ${data.name},</p>
-    <p style="margin:0 0 8px;color:#111827;font-size:15px;line-height:1.6;">We received a request to reset your OpenVPM password. Click below to choose a new one.</p>
+    <p style="margin:0 0 8px;color:#111827;font-size:15px;line-height:1.6;">We received a request to reset your VetClickLab password. Click below to choose a new one.</p>
     ${ctaButton("Reset my password", data.resetUrl)}
     <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.5;">This link expires in 1 hour. If you didn't request a password reset, you can safely ignore this email — your password won't change.</p>
   `;
-  const html = emailLayout("OpenVPM", body);
+  const html = emailLayout("VetClickLab", body);
   const result = await sendEmail({
     to: data.to,
-    subject: "Reset your OpenVPM password",
+    subject: "Reset your VetClickLab password",
     html,
   });
   return { success: result.success };
@@ -716,7 +716,7 @@ export async function sendStaffInviteEmail(data: {
   idempotencyKey?: string;
 }): Promise<{ success: boolean }> {
   const body = `
-    <p style="margin:0 0 8px;color:#111827;font-size:15px;line-height:1.6;"><strong>${data.inviterName}</strong> has invited you to join <strong>${data.practiceName}</strong> on OpenVPM.</p>
+    <p style="margin:0 0 8px;color:#111827;font-size:15px;line-height:1.6;"><strong>${data.inviterName}</strong> has invited you to join <strong>${data.practiceName}</strong> on VetClickLab.</p>
     <p style="margin:0 0 8px;color:#111827;font-size:15px;line-height:1.6;">Accept the invite below to set your password and activate your account.</p>
     ${ctaButton("Accept invite", data.inviteUrl)}
     <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.5;">This link expires in 72 hours. If you weren't expecting this invitation, you can safely ignore this email.</p>
@@ -724,7 +724,7 @@ export async function sendStaffInviteEmail(data: {
   const html = emailLayout(data.practiceName, body);
   const result = await sendEmail({
     to: data.to,
-    subject: `You're invited to join ${data.practiceName} on OpenVPM`,
+    subject: `You're invited to join ${data.practiceName} on VetClickLab`,
     html,
     idempotencyKey: data.idempotencyKey,
   });

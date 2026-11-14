@@ -65,8 +65,8 @@ function renderComposedEmail(opts: {
     : null;
   const body = escapeHtml(opts.content).replace(/\n/g, "<br />");
   const replyNotice = safeReplyToEmail
-    ? `Replies go to ${safeReplyToEmail}. Email replies are not imported into OpenVPM yet.`
-    : `Email replies are not imported into OpenVPM yet. Please contact ${safePracticeName} directly if you need to respond.`;
+    ? `Replies go to ${safeReplyToEmail}. Email replies are not imported into VetClickLab yet.`
+    : `Email replies are not imported into VetClickLab yet. Please contact ${safePracticeName} directly if you need to respond.`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -830,7 +830,7 @@ export const communicationsRouter = createRouter({
         throw practiceNotFound();
       }
 
-      const practiceName = practice.name?.trim() || "OpenVPM";
+      const practiceName = practice.name?.trim() || "VetClickLab";
       const replyToEmail = validReplyToEmail(practice.email);
       const subject =
         input.channel === "email"
@@ -1114,7 +1114,7 @@ export const communicationsRouter = createRouter({
         throw new TRPCError({
           code: "CONFLICT",
           message:
-            "The texting provider outcome is unknown. This message will not be retried automatically; contact OpenVPM support before sending it again.",
+            "The texting provider outcome is unknown. This message will not be retried automatically; contact VetClickLab support before sending it again.",
         });
       }
 

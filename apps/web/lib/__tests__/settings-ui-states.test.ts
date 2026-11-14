@@ -90,9 +90,9 @@ describe("settings UI states", () => {
 
   it("uses the public support address for enterprise contact links", () => {
     expect(source).toContain(
-      "mailto:support@openvpm.com?subject=OpenVPM%20Enterprise",
+      "mailto:support@vetclicklab.com?subject=VetClickLab%20Enterprise",
     );
-    expect(source).not.toContain("mailto:evan@openvpm.com");
+    expect(source).not.toContain("mailto:evan@vetclicklab.com");
   });
 
   it("uses shared empty states for first-run settings panels", () => {
@@ -308,7 +308,7 @@ describe("settings UI states", () => {
     expect(source).toContain(
       "const date = formatSettingsDateInput(new Date(), settingsTimeZone)",
     );
-    expect(source).toContain("openvpm-full-backup-${date}.json");
+    expect(source).toContain("vetclicklab-full-backup-${date}.json");
     expect(source).toContain(
       "[exportFullBackup, settingsTimeZone, verifiedPracticeSettings]",
     );

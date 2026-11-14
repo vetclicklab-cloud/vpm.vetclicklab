@@ -57,24 +57,27 @@ function formatGeneratedDateUtc(): string {
 }
 
 /**
- * Brand mark: a white paw print on a teal rounded square, drawn with
- * primitives so PDFs need no image asset. Matches the in-app brand color.
+ * Brand mark: the white VetClickLab "V" with its click point on a teal rounded
+ * square, drawn with primitives so PDFs need no image asset. Geometry matches
+ * components/brand/brand-mark.tsx (24-unit box).
  */
-function drawPawMark(doc: jsPDF, x: number, y: number, size: number) {
+function drawBrandMark(doc: jsPDF, x: number, y: number, size: number) {
   const [r, g, b] = hexToRgb(COLOR_TEAL);
   doc.setFillColor(r, g, b);
   doc.roundedRect(x, y, size, size, size * 0.22, size * 0.22, "F");
 
+  const u = size / 24;
+  doc.setDrawColor(255, 255, 255);
   doc.setFillColor(255, 255, 255);
-  const cx = x + size / 2;
-  const s = size / 12;
-  // Main pad
-  doc.ellipse(cx, y + 7.7 * s, 2.7 * s, 2.2 * s, "F");
-  // Four toes
-  doc.circle(cx - 3.3 * s, y + 4.7 * s, 1.15 * s, "F");
-  doc.circle(cx - 1.15 * s, y + 3.5 * s, 1.15 * s, "F");
-  doc.circle(cx + 1.15 * s, y + 3.5 * s, 1.15 * s, "F");
-  doc.circle(cx + 3.3 * s, y + 4.7 * s, 1.15 * s, "F");
+  doc.setLineWidth(3.2 * u);
+  doc.setLineCap("round");
+  doc.setLineJoin("round");
+  doc.lines([[6.5 * u, 11 * u], [6.5 * u, -11 * u]], x + 5.5 * u, y + 8 * u, [1, 1], "S");
+  doc.circle(x + 12 * u, y + 6 * u, 2 * u, "F");
+  // Restore jsPDF defaults for the rest of the document.
+  doc.setLineWidth(0.2);
+  doc.setLineCap("butt");
+  doc.setLineJoin("miter");
 }
 
 // ---------------------------------------------------------------------------
@@ -512,7 +515,7 @@ export function generateMedicalSummaryPdf(data: MedicalSummaryData): jsPDF {
   // Stacked top to bottom (logo, clinic name, document title) so any
   // clinic-name length fits without colliding with the title.
   const logoSize = 12;
-  drawPawMark(doc, PAGE_MARGIN, y, logoSize);
+  drawBrandMark(doc, PAGE_MARGIN, y, logoSize);
   y += logoSize + 8;
 
   doc.setFont(FONT, "bold");
@@ -1132,7 +1135,7 @@ function drawCertificateHeader(
   title: string,
 ): number {
   let y = PAGE_MARGIN;
-  drawPawMark(doc, PAGE_MARGIN, y - 5, 13);
+  drawBrandMark(doc, PAGE_MARGIN, y - 5, 13);
   doc.setFont(FONT, "bold");
   doc.setFontSize(18);
   setColor(doc, COLOR_TEAL);

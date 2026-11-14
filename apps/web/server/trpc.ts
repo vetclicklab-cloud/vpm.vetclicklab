@@ -513,7 +513,7 @@ export const protectedProcedure = t.procedure.use(
             throw new TRPCError({
               code: "FORBIDDEN",
               message:
-                "OpenVPM Cloud is read-only until your trial or subscription is active. You can still manage billing and export your data.",
+                "VetClickLab Cloud is read-only until your trial or subscription is active. You can still manage billing and export your data.",
             });
           }
         }
@@ -628,7 +628,7 @@ export function requireFeature(feature: Feature) {
         if (!access.allowed) {
           throw new TRPCError({
             code: "FORBIDDEN",
-            message: access.message ?? "OpenVPM AI is not available.",
+            message: access.message ?? "VetClickLab AI is not available.",
           });
         }
         return next({

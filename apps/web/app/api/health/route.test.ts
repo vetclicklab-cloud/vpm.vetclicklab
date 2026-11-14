@@ -151,8 +151,8 @@ function stubHostedRequiredEnvs() {
     "current-signing-secret-at-least-32-bytes",
   );
   vi.stubEnv("EMAIL_PREFERENCE_SIGNING_SECRET_PREVIOUS", "");
-  vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.openvpm.com");
-  vi.stubEnv("EMAIL_SUPPORT_ADDRESS", "support@openvpm.com");
+  vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.vetclicklab.com");
+  vi.stubEnv("EMAIL_SUPPORT_ADDRESS", "support@vetclicklab.com");
   vi.stubEnv("EMAIL_COMPANY_ADDRESS", "123 Cloud Lane, Boston, MA");
   vi.stubEnv("AI_MODEL", "gemini-3.5-flash");
   vi.stubEnv("GOOGLE_VERTEX_PROJECT", "openvpm-ai");
@@ -1012,7 +1012,7 @@ describe("health route", () => {
   it("requires the canonical platform preference origin", async () => {
     mocks.billingEnforced.mockReturnValue(true);
     stubHostedRequiredEnvs();
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://demo.openvpm.com");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://demo.vetclicklab.com");
 
     const response = await GET();
     const json = await response.json();
@@ -1022,7 +1022,7 @@ describe("health route", () => {
       ok: false,
       detail: "1 required hosted configuration value is invalid",
     });
-    expect(JSON.stringify(json)).not.toContain("demo.openvpm.com");
+    expect(JSON.stringify(json)).not.toContain("demo.vetclicklab.com");
   });
 
   it("fails readiness when the persisted email identity key does not match", async () => {

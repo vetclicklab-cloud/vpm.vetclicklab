@@ -118,7 +118,7 @@ export async function inspectTelnyxProviderReadiness(
     input.registrationStatus !== "active" ||
     input.senderRegistrationStatus !== "active"
   ) {
-    blockers.push("OpenVPM carrier reconciliation is not active");
+    blockers.push("VetClickLab carrier reconciliation is not active");
   }
 
   return { profile, blockers };

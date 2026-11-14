@@ -283,7 +283,7 @@ describe("middleware security headers", () => {
       "img-src 'self' data: blob: https:",
     );
     expect(contentSecurityPolicy).toContain(
-      "connect-src 'self' https://app.openvpm.com",
+      "connect-src 'self' https://app.vetclicklab.com",
     );
     expect(contentSecurityPolicy).toContain("default-src 'self'");
     expect(contentSecurityPolicy).toContain("object-src 'none'");

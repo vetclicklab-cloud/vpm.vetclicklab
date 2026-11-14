@@ -18,7 +18,7 @@ describe("formatOpsAlert", () => {
     const p = formatOpsAlert("Backup failed", "practice abc: timeout");
     expect(p.text).toContain("Backup failed");
     expect(p.text).toContain("practice abc: timeout");
-    expect(p.text).toContain("OpenVPM");
+    expect(p.text).toContain("VetClickLab");
   });
 });
 

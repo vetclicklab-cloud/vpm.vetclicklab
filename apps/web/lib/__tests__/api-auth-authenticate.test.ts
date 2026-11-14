@@ -579,7 +579,7 @@ describe("authenticateApiKey", () => {
       allowed: false,
       reason: "billing_setup_required",
       message:
-        "Add a card to your trial to try OpenVPM AI. The rest of your free trial stays available.",
+        "Add a card to your trial to try VetClickLab AI. The rest of your free trial stays available.",
     });
 
     const result = await authenticateApiKey(

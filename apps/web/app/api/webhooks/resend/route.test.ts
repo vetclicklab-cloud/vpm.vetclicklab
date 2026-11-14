@@ -201,7 +201,7 @@ describe("Resend webhook", () => {
       created_at: "2026-06-29T12:00:00Z",
       data: {
         email_id: "email-1",
-        from: "OpenVPM <noreply@mail.openvpm.com>",
+        from: "VetClickLab <noreply@mail.vetclicklab.com>",
         to: ["Ada@Example.com"],
         subject: "Follow up",
         created_at: "2026-06-29T12:00:00Z",
@@ -240,7 +240,7 @@ describe("Resend webhook", () => {
       created_at: "2026-06-29T12:00:00Z",
       data: {
         email_id: "email-1",
-        from: "OpenVPM <noreply@mail.openvpm.com>",
+        from: "VetClickLab <noreply@mail.vetclicklab.com>",
         to: [" Ada@Example.com ", "not-an-email", "ada@example.com"],
         subject: "Follow up",
         created_at: "2026-06-29T12:00:00Z",
@@ -278,9 +278,9 @@ describe("Resend webhook", () => {
       created_at: "2026-06-29T12:00:00Z",
       data: {
         email_id: "email-auth-1",
-        from: "OpenVPM <noreply@mail.openvpm.com>",
+        from: "VetClickLab <noreply@mail.vetclicklab.com>",
         to: ["owner@example.com"],
-        subject: "Verify your OpenVPM email",
+        subject: "Verify your VetClickLab email",
         created_at: "2026-06-29T12:00:00Z",
         tags: {
           openvpm_email_kind: "auth_verification",
@@ -328,9 +328,9 @@ describe("Resend webhook", () => {
       created_at: "2026-06-29T12:00:00Z",
       data: {
         email_id: "email-lifecycle-1",
-        from: "OpenVPM <noreply@mail.openvpm.com>",
+        from: "VetClickLab <noreply@mail.vetclicklab.com>",
         to: [" Billing@Example.com ", "billing@example.com"],
-        subject: "Your OpenVPM trial",
+        subject: "Your VetClickLab trial",
         created_at: "2026-06-29T12:00:00Z",
       },
     });
@@ -366,9 +366,9 @@ describe("Resend webhook", () => {
       created_at: "2026-06-29T12:00:00Z",
       data: {
         email_id: "email-lifecycle-2",
-        from: "OpenVPM <noreply@mail.openvpm.com>",
+        from: "VetClickLab <noreply@mail.vetclicklab.com>",
         to: ["billing@example.com"],
-        subject: "Your OpenVPM trial",
+        subject: "Your VetClickLab trial",
         created_at: "2026-06-29T12:00:00Z",
         suppressed: { message: "Recipient is on provider suppression list" },
       },
@@ -400,9 +400,9 @@ describe("Resend webhook", () => {
       created_at: "2026-06-29T12:00:00Z",
       data: {
         email_id: "email-auth-1",
-        from: "OpenVPM <noreply@mail.openvpm.com>",
+        from: "VetClickLab <noreply@mail.vetclicklab.com>",
         to: ["owner@example.com"],
-        subject: "Verify your OpenVPM email",
+        subject: "Verify your VetClickLab email",
         created_at: "2026-06-29T12:00:00Z",
         tags: { openvpm_email_kind: "auth_verification" },
       },
@@ -429,7 +429,7 @@ describe("Resend webhook", () => {
       created_at: "2026-06-29T12:00:00Z",
       data: {
         email_id: "missing-email-id",
-        from: "OpenVPM <noreply@mail.openvpm.com>",
+        from: "VetClickLab <noreply@mail.vetclicklab.com>",
         to: ["ada@example.com"],
         subject: "Follow up",
         created_at: "2026-06-29T12:00:00Z",

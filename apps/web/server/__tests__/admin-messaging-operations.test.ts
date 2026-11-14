@@ -67,7 +67,7 @@ const mocks = vi.hoisted(() => {
     messagingProfileAutoresponseSafetyIssues: vi.fn((): string[] => []),
     messagingProfileSafetyIssues: vi.fn((): string[] => []),
     openVpmMessagingProfileName: vi.fn(
-      (locationId: string) => `OpenVPM provision ${locationId}`,
+      (locationId: string) => `VetClickLab provision ${locationId}`,
     ),
     updateMessagingProfileEnabled: vi.fn(),
     ensureMessagingProfileAutoresponses: vi.fn(async () => []),
@@ -176,8 +176,8 @@ function activeSender() {
 function providerProfile(enabled: boolean) {
   return {
     id: "profile-123",
-    name: `OpenVPM provision ${LOCATION_ID}`,
-    webhookUrl: "https://app.openvpm.com/api/webhooks/telnyx",
+    name: `VetClickLab provision ${LOCATION_ID}`,
+    webhookUrl: "https://app.vetclicklab.com/api/webhooks/telnyx",
     webhookApiVersion: "2",
     enabled,
     whitelistedDestinations: ["US"],
@@ -394,13 +394,13 @@ describe("platform messaging operations", () => {
       businessPhone: "+15555550100",
       website: "https://healthypets.example",
       programUrl:
-        "https://app.openvpm.com/sms/00000000-0000-0000-0000-0000000000aa",
+        "https://app.vetclicklab.com/sms/00000000-0000-0000-0000-0000000000aa",
       privacyPolicyUrl:
-        "https://app.openvpm.com/sms/00000000-0000-0000-0000-0000000000aa/privacy",
+        "https://app.vetclicklab.com/sms/00000000-0000-0000-0000-0000000000aa/privacy",
       termsUrl:
-        "https://app.openvpm.com/sms/00000000-0000-0000-0000-0000000000aa/terms",
+        "https://app.vetclicklab.com/sms/00000000-0000-0000-0000-0000000000aa/terms",
       optInUrl:
-        "https://app.openvpm.com/sms/00000000-0000-0000-0000-0000000000aa/opt-in",
+        "https://app.vetclicklab.com/sms/00000000-0000-0000-0000-0000000000aa/opt-in",
     });
 
     expect(copy.messageFlow).toContain("phone or in-person intake");
@@ -413,7 +413,7 @@ describe("platform messaging operations", () => {
     expect(copy.messageFlow).toContain("/terms");
     expect(copy.messageFlow).not.toContain("online booking");
     expect(copy.sample1).toContain("+15555550100");
-    expect(copy.sample3).toContain("https://app.openvpm.com/sms/");
+    expect(copy.sample3).toContain("https://app.vetclicklab.com/sms/");
     expect(copy.helpMessage).toContain("https://healthypets.example");
     expect(JSON.stringify(copy)).not.toContain("Reply C");
     expect(JSON.stringify(copy)).not.toContain("invoice");
@@ -423,7 +423,7 @@ describe("platform messaging operations", () => {
   it("wires stored policies and hosted consent pages into the provider campaign", async () => {
     vi.stubEnv("PLATFORM_ADMIN_EMAILS", "ops@example.com");
     vi.stubEnv("MESSAGING_PROVISIONING_ENABLED", "true");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.selectResults.push([
       {
         id: "00000000-0000-0000-0000-000000000008",
@@ -474,12 +474,12 @@ describe("platform messaging operations", () => {
         privacyPolicyUrl: "https://healthypets.example/sms-privacy",
         termsUrl: "https://healthypets.example/sms-terms",
         sample3: expect.stringContaining(
-          `https://app.openvpm.com/sms/${PRACTICE_ID}`,
+          `https://app.vetclicklab.com/sms/${PRACTICE_ID}`,
         ),
         messageFlow: expect.stringContaining(
-          `https://app.openvpm.com/sms/${PRACTICE_ID}/opt-in`,
+          `https://app.vetclicklab.com/sms/${PRACTICE_ID}/opt-in`,
         ),
-        webhookUrl: "https://app.openvpm.com/api/webhooks/telnyx",
+        webhookUrl: "https://app.vetclicklab.com/api/webhooks/telnyx",
       }),
     );
     const payload = mocks.createA2pCampaign.mock.calls[0]?.[0];
@@ -828,7 +828,7 @@ describe("platform messaging operations", () => {
   it("enables an exact safe provider profile but keeps clinic sending off", async () => {
     vi.stubEnv("PLATFORM_ADMIN_EMAILS", "ops@example.com");
     vi.stubEnv("MESSAGING_PROVISIONING_ENABLED", "true");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.selectResults.push(
       [activeSender()],
       [activeRegistration()],
@@ -905,7 +905,7 @@ describe("platform messaging operations", () => {
   it("blocks provider activation before provider reads when durable evidence remains", async () => {
     vi.stubEnv("PLATFORM_ADMIN_EMAILS", "ops@example.com");
     vi.stubEnv("MESSAGING_PROVISIONING_ENABLED", "true");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.db.execute.mockResolvedValueOnce({
       rows: [
         {
@@ -939,7 +939,7 @@ describe("platform messaging operations", () => {
   it("refuses to record readiness when messaging state changes during verification", async () => {
     vi.stubEnv("PLATFORM_ADMIN_EMAILS", "ops@example.com");
     vi.stubEnv("MESSAGING_PROVISIONING_ENABLED", "true");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.selectResults.push(
       [activeSender()],
       [activeRegistration()],
@@ -991,7 +991,7 @@ describe("platform messaging operations", () => {
   it("activates the sender identity returned by the fresh provider inspection", async () => {
     vi.stubEnv("PLATFORM_ADMIN_EMAILS", "ops@example.com");
     vi.stubEnv("MESSAGING_PROVISIONING_ENABLED", "true");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     const inspectedSender = {
       ...activeSender(),
       messagingProfileId: "profile-current",
@@ -1109,7 +1109,7 @@ describe("platform messaging operations", () => {
   it("refuses provider activation when exact profile safety checks fail", async () => {
     vi.stubEnv("PLATFORM_ADMIN_EMAILS", "ops@example.com");
     vi.stubEnv("MESSAGING_PROVISIONING_ENABLED", "true");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.selectResults.push(
       [activeSender()],
       [activeRegistration()],
@@ -1165,7 +1165,7 @@ describe("platform messaging operations", () => {
   it("keeps readiness cleared when provider activation readback is unsafe", async () => {
     vi.stubEnv("PLATFORM_ADMIN_EMAILS", "ops@example.com");
     vi.stubEnv("MESSAGING_PROVISIONING_ENABLED", "true");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.selectResults.push(
       [activeSender()],
       [activeRegistration()],

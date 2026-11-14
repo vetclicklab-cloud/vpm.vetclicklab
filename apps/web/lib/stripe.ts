@@ -53,15 +53,15 @@ async function verifyOpenvpmBillingAccount(client: Stripe): Promise<void> {
     const expected = process.env.STRIPE_OPENVPM_ACCOUNT_ID?.trim();
     const portalId = process.env.STRIPE_OPENVPM_BILLING_PORTAL_CONFIGURATION?.trim();
     if (!portalId || !process.env.STRIPE_OPENVPM_SUBSCRIPTION_WEBHOOK_SECRET?.trim()) {
-      throw new Error("OpenVPM billing requires its webhook and customer portal configuration.");
+      throw new Error("VetClickLab billing requires its webhook and customer portal configuration.");
     }
     const actual = await client.accounts.retrieve(null);
     if (!expected || actual.id !== expected) {
-      throw new Error("OpenVPM billing key does not match its configured Stripe account.");
+      throw new Error("VetClickLab billing key does not match its configured Stripe account.");
     }
     const portal = await client.billingPortal.configurations.retrieve(portalId);
     if (!portal.active || !portal.features.subscription_cancel.enabled || !portal.features.payment_method_update.enabled) {
-      throw new Error("OpenVPM customer portal must allow cancellation and payment-method updates.");
+      throw new Error("VetClickLab customer portal must allow cancellation and payment-method updates.");
     }
   })().catch((error) => { openvpmAccountVerification = undefined; throw error; });
   await openvpmAccountVerification;
@@ -611,7 +611,7 @@ export function buildSubscriptionCheckoutSessionParams(data: {
     metadata,
     ...subscriptionTaxCheckoutParams(data.customerId, data.billingAccount),
     subscription_data: {
-      description: `OpenVPM Cloud — ${
+      description: `VetClickLab Cloud — ${
         billingCadence === "year" ? "annual" : "monthly"
       }`,
       metadata,

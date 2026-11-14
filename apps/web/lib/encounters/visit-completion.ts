@@ -70,7 +70,7 @@ export function getVisitCompletionAction(input: {
       target: "loading",
       title: "Confirming visit state",
       description:
-        "OpenVPM is verifying documentation, invoices, and performed work before suggesting the next action.",
+        "VetClickLab is verifying documentation, invoices, and performed work before suggesting the next action.",
     };
   }
 

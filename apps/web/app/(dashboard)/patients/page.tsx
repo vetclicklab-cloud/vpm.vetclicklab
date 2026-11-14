@@ -266,7 +266,7 @@ export default function PatientsPage() {
           description={
             hasFilters
               ? "Clear the search or species filter to broaden the list."
-              : "Create a patient record once the owner client is in OpenVPM."
+              : "Create a patient record once the owner client is in VetClickLab."
           }
           action={
             !hasFilters && canManagePatients

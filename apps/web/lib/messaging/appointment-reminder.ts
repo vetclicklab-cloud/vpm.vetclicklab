@@ -111,7 +111,7 @@ export async function appointmentReminderDispatchEligible(
  * Resolve the recipient again immediately before an email provider call. This
  * is intentionally separate from the sweep and claim so an address edit,
  * bounce, complaint, cancellation, or clinic kill-switch committed while the
- * job is running is honored before any email leaves OpenVPM.
+ * job is running is honored before any email leaves VetClickLab.
  */
 export async function currentAppointmentReminderEmailRecipient(
   db: Pick<Database, "select">,

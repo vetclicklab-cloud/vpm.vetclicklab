@@ -567,7 +567,7 @@ function duplicateResult(
  * Claim a signed Resend delivery event without retaining its recipient,
  * subject, tags, or payload. The SHA-256 fingerprint proves whether a repeated
  * Svix id carried the exact same verified raw body. Signed callbacks carrying
- * both OpenVPM verification tags may repair a reserved or unknown Resend
+ * both VetClickLab verification tags may repair a reserved or unknown Resend
  * attempt immediately; a conflicting provider identity is quarantined instead.
  * Opens/clicks are redacted evidence only and never verify a user.
  */

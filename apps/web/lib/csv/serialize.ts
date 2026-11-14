@@ -1,5 +1,5 @@
 /**
- * Shared CSV writer for every CSV that OpenVPM produces (Settings → Data
+ * Shared CSV writer for every CSV that VetClickLab produces (Settings → Data
  * exports, report exports). Pure apart from `downloadCsv`, which needs a DOM.
  *
  * - RFC 4180: fields containing a comma, double quote, CR or LF are quoted,

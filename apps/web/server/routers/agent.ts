@@ -25,7 +25,7 @@ import { readHostedAiAccess } from "@/lib/billing/ai-access";
 
 export { AGENT_INSTRUCTION_MAX_LENGTH } from "@/lib/agent/policy";
 
-// The OpenVPM Agent is a Cloud feature on hosted; unrestricted on self-host.
+// The VetClickLab Agent is a Cloud feature on hosted; unrestricted on self-host.
 const agentProcedure = protectedProcedure
   .use(requireRole("admin", "veterinarian"))
   .use(requireFeature("agent"));
@@ -76,7 +76,7 @@ export const agentRouter = createRouter({
     };
   }),
 
-  /** Run the OpenVPM Agent against a natural-language instruction. */
+  /** Run the VetClickLab Agent against a natural-language instruction. */
   run: agentProcedure
     .input(
       z.object({

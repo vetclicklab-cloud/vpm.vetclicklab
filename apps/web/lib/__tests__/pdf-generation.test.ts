@@ -14,7 +14,7 @@ describe("medical summary header", () => {
       source.indexOf("export function generateMedicalSummaryPdf"),
       source.indexOf('sectionHeading("Patient Information")'),
     );
-    const logoAt = headerSection.indexOf("drawPawMark");
+    const logoAt = headerSection.indexOf("drawBrandMark");
     const nameAt = headerSection.indexOf("splitTextToSize(data.practiceName");
     const titleAt = headerSection.indexOf('"MEDICAL RECORD SUMMARY"');
     expect(logoAt).toBeGreaterThan(-1);
@@ -52,7 +52,7 @@ describe("medical summary header", () => {
       (_, index) => `observation-${index}`,
     ).join(" ");
     const doc = generateMedicalSummaryPdf({
-      practiceName: "OpenVPM Test Clinic",
+      practiceName: "VetClickLab Test Clinic",
       patientName: "Biscuit",
       species: "Canine",
       clientName: "Jordan Avery",

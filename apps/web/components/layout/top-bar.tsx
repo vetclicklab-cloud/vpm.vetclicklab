@@ -86,7 +86,7 @@ export function TopBar({
 }) {
   const pathname = usePathname();
   const basePath = "/" + (pathname.split("/")[1] ?? "");
-  const label = routeLabels[basePath] ?? "OpenVPM";
+  const label = routeLabels[basePath] ?? "VetClickLab";
   const { data: session } = useSession();
   const role = session?.user?.role as UserRole | undefined;
   const availableNewActions = role

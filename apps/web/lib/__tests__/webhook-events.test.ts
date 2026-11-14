@@ -55,7 +55,7 @@ describe("webhook event catalog", () => {
 
     expect(apiDocs).toContain("X-Webhook-Signature");
     expect(apiDocs).toContain("X-Webhook-Event");
-    expect(apiDocs).not.toContain("X-OpenVPM-Signature");
+    expect(apiDocs).not.toContain("X-VetClickLab-Signature");
     expect(apiDocs).not.toContain('"practice_id"');
     expect(aiDocs).not.toContain('"practiceId"');
     expect(apiDocs).toContain("WEBHOOK_EVENT_DEFINITIONS");

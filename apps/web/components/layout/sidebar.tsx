@@ -28,7 +28,7 @@ import {
   ChevronRight,
   LogOut,
 } from "lucide-react";
-import { PawMark } from "@/components/brand/paw-mark";
+import { BrandMark } from "@/components/brand/brand-mark";
 
 type UserRole =
   | "admin"
@@ -168,12 +168,12 @@ export function Sidebar({
               className="h-8 w-8 rounded-lg object-cover"
             />
           ) : (
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <PawMark className="h-4 w-4 text-primary-foreground" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
+              <BrandMark className="h-4 w-4 text-brand-foreground" />
             </div>
           )}
           {!isCollapsed && (
-            <span className="font-heading text-lg font-semibold">OpenVPM</span>
+            <span className="font-heading text-lg font-semibold">VetClickLab</span>
           )}
         </Link>
       </div>

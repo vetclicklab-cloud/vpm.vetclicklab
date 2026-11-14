@@ -17,10 +17,10 @@ export default function BookingLayout({
         <div className="mx-auto max-w-2xl px-4 py-6 text-center text-sm text-gray-400">
           Powered by{" "}
           <a
-            href="https://openvpm.com"
+            href="https://vetclicklab.com"
             className="underline-offset-2 hover:text-gray-600 hover:underline"
           >
-            OpenVPM
+            VetClickLab
           </a>
           <span className="mx-2" aria-hidden="true">
             ·

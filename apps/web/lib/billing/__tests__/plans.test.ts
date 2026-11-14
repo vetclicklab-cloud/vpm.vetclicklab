@@ -131,7 +131,7 @@ describe("PLANS pricing", () => {
   });
 
   it("keeps customer-facing plan blurbs scoped to shipped hosted capabilities", () => {
-    expect(PLANS.free.blurb).toContain("Self-host OpenVPM");
+    expect(PLANS.free.blurb).toContain("no billing configured");
     expect(PLANS.free.blurb.toLowerCase()).not.toContain("full product");
 
     expect(PLANS.cloud.blurb).toContain("supported integration hooks");
@@ -297,7 +297,7 @@ describe("hosted trial payment collection", () => {
 });
 
 
-describe("separate OpenVPM price catalog", () => {
+describe("separate VetClickLab price catalog", () => {
   it("maps both accounts but never falls back across accounts for checkout", () => {
     vi.stubEnv("STRIPE_PRICE_CLOUD_LOCATION", "price_legacy");
     vi.stubEnv("STRIPE_OPENVPM_PRICE_CLOUD_LOCATION", "price_openvpm");

@@ -74,7 +74,7 @@ function coverage(
 }
 
 /**
- * Convert only active Shepherd care reminders into OpenVPM's generic internal
+ * Convert only active Shepherd care reminders into VetClickLab's generic internal
  * task format. No output from this adapter is a communication or send request.
  */
 export function adaptShepherdCareReminders(

@@ -32,7 +32,7 @@ const LEGACY_CLOUD_TIERS = new Set(["starter", "pro", "professional"]);
 
 /** Capabilities. With feature parity these are unlocked on every paid tier. */
 export type Feature =
-  | "agent" // OpenVPM Agent (AI)
+  | "agent" // VetClickLab Agent (AI)
   | "sms" // SMS sending
   | "advancedReporting"
   | "apiAccess" // public /api/v1 + webhooks
@@ -120,11 +120,11 @@ export const PLANS: Record<PlanTier, PlanDefinition> = {
     // NOT via this feature list. On hosted, `free` is also the lapsed/unpaid
     // fallback tier — so its entitlements MUST be empty to gate non-payers.
     tier: "free",
-    name: "Free (self-host)",
+    name: "Free",
     locationUnitPriceMonthlyUsd: 0,
     seatUnitPriceMonthlyUsd: 0,
     blurb:
-      "Self-host OpenVPM on your own infrastructure. Free forever, no lock-in.",
+      "Workspace with no billing configured.",
     seatLimit: null,
     locationLimit: null,
     features: [],

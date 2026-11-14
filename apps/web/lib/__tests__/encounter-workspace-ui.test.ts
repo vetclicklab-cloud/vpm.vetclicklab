@@ -355,7 +355,7 @@ describe("clinic encounter workspace", () => {
     expect(workspaceSource).toContain("href={actionHref}");
     expect(workspaceSource).toContain("No charge? Continue handoff");
     expect(workspaceSource).toContain(
-      "OpenVPM will not bill a suggestion automatically",
+      "VetClickLab will not bill a suggestion automatically",
     );
   });
 

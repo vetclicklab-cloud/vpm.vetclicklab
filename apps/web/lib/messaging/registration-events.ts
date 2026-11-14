@@ -45,7 +45,7 @@ export type MessagingRegistrationEventActor =
       actorType: "system";
       actorUserId: null;
       actorIdentity: null;
-      actorName: "OpenVPM system";
+      actorName: "VetClickLab system";
     };
 
 export function clinicMessagingRegistrationActor(input: {
@@ -76,7 +76,7 @@ export function platformMessagingRegistrationActor(input: {
     actorType: "platform_operator",
     actorUserId: null,
     actorIdentity: redactedIdentity(input.email),
-    actorName: input.name?.trim() || "OpenVPM operator",
+    actorName: input.name?.trim() || "VetClickLab operator",
   };
 }
 
@@ -85,7 +85,7 @@ export function systemMessagingRegistrationActor(): MessagingRegistrationEventAc
     actorType: "system",
     actorUserId: null,
     actorIdentity: null,
-    actorName: "OpenVPM system",
+    actorName: "VetClickLab system",
   };
 }
 

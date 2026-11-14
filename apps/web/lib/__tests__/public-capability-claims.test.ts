@@ -18,7 +18,7 @@ describe("public capability claims", () => {
     expect(source).not.toContain("Real-time practice whiteboard");
     expect(source).not.toContain("Self-service online booking (client portal)");
     expect(source).not.toContain(
-      "point an existing integration at OpenVPM with zero changes",
+      "point an existing integration at VetClickLab with zero changes",
     );
     expect(source).not.toContain("Costs go to zero");
     expect(source).not.toContain("apps/www");

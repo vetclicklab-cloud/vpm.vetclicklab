@@ -41,11 +41,11 @@ export function WelcomeEmail({
     return (
       <EmailLayout
         brand={brand}
-        preview="Welcome to OpenVPM — your workspace is ready to explore"
+        preview="Welcome to VetClickLab — your workspace is ready to explore"
         unsubscribeUrl={unsubscribeUrl}
-        recipientReason="You're receiving this because you created an OpenVPM account."
+        recipientReason="You're receiving this because you created an VetClickLab account."
       >
-        <Heading>Welcome to OpenVPM 🎉</Heading>
+        <Heading>Welcome to VetClickLab 🎉</Heading>
         <Paragraph>
           Hi {practiceName}, your workspace is ready. It includes sample clients,
           pets, and appointments, so you can see a full clinic day right away.
@@ -87,15 +87,15 @@ export function WelcomeEmail({
     <EmailLayout
       brand={brand}
       preview={billingRequired
-        ? `Welcome to OpenVPM — complete billing to start your ${trialDays}-day trial`
-        : `Welcome to OpenVPM — your ${trialDays}-day trial is ready`}
+        ? `Welcome to VetClickLab — complete billing to start your ${trialDays}-day trial`
+        : `Welcome to VetClickLab — your ${trialDays}-day trial is ready`}
       unsubscribeUrl={unsubscribeUrl}
-      recipientReason="You're receiving this because you created an OpenVPM account."
+      recipientReason="You're receiving this because you created an VetClickLab account."
     >
-      <Heading>Welcome to OpenVPM 🎉</Heading>
+      <Heading>Welcome to VetClickLab 🎉</Heading>
       <Paragraph>
         Hi {practiceName}, your account has been created. Your workspace includes
-        sample clients, pets, and appointments to help you explore OpenVPM.
+        sample clients, pets, and appointments to help you explore VetClickLab.
       </Paragraph>
       <Paragraph muted>
         {billingRequired

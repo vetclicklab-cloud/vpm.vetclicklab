@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PawMark } from "@/components/brand/paw-mark";
+import { BrandMark } from "@/components/brand/brand-mark";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Clinic text messaging information - OpenVPM",
+  title: "Clinic text messaging information - VetClickLab",
   description:
-    "Program information, consent disclosure, privacy policy, and terms for clinic text messages powered by OpenVPM.",
+    "Program information, consent disclosure, privacy policy, and terms for clinic text messages powered by VetClickLab.",
   robots: { index: false, follow: false },
 };
 
@@ -26,10 +26,10 @@ export default async function SmsProgramLayout({
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4 px-4 py-4">
           <Link href={root} className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <PawMark className="h-4 w-4 text-primary-foreground" />
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
+              <BrandMark className="h-4 w-4 text-brand-foreground" />
             </span>
-            <span className="font-heading text-lg font-semibold">OpenVPM</span>
+            <span className="font-heading text-lg font-semibold">VetClickLab</span>
           </Link>
           <nav
             aria-label="Text messaging policies"
@@ -54,7 +54,7 @@ export default async function SmsProgramLayout({
       </main>
       <footer className="border-t border-border bg-card">
         <div className="mx-auto max-w-3xl px-4 py-6 text-center text-xs text-muted-foreground">
-          Text messaging powered by OpenVPM
+          Text messaging powered by VetClickLab
         </div>
       </footer>
     </div>

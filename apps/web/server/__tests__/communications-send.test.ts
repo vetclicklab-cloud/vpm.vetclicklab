@@ -257,7 +257,7 @@ describe("communications.create delivery", () => {
     expect(createBlock).not.toContain(
       "isNotNull(locationMessaging.messagingProfileId)",
     );
-    expect(createBlock).not.toContain(': [{ name: "OpenVPM"');
+    expect(createBlock).not.toContain(': [{ name: "VetClickLab"');
     expect(createBlock).not.toContain("practice?.name");
     expect(createBlock).not.toContain("practice?.email");
     expect(createBlock).not.toContain("practice?.timezone");
@@ -400,7 +400,7 @@ describe("communications.create delivery", () => {
     expect(mocks.sendEmail).toHaveBeenCalledWith(
       expect.objectContaining({
         html: expect.stringContaining(
-          "Email replies are not imported into OpenVPM yet.",
+          "Email replies are not imported into VetClickLab yet.",
         ),
       }),
     );

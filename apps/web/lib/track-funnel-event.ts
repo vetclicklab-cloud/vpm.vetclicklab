@@ -34,8 +34,8 @@ export function trackFunnelEvent(
     if (!anonymousId || !eventId || typeof window === "undefined") return;
 
     const hostedFunnelOrigin =
-      window.location.hostname === "demo.openvpm.com"
-        ? "https://app.openvpm.com"
+      window.location.hostname === "demo.vetclicklab.com"
+        ? "https://app.vetclicklab.com"
         : window.location.origin;
     const configuredOrigin =
       process.env.NEXT_PUBLIC_FUNNEL_ENDPOINT?.trim() || hostedFunnelOrigin;

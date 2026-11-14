@@ -446,7 +446,7 @@ describe("subscription checkout", () => {
 
 
 describe("per-clinic subscription account", () => {
-  it("uses OpenVPM prices and portal for new clinics while existing clinics stay on legacy", async () => {
+  it("uses VetClickLab prices and portal for new clinics while existing clinics stay on legacy", async () => {
     vi.stubEnv("STRIPE_OPENVPM_ACCOUNT_ID", "acct_openvpm");
     vi.stubEnv("STRIPE_PRICE_CLOUD_LOCATION", "price_legacy");
     vi.stubEnv("STRIPE_OPENVPM_PRICE_CLOUD_LOCATION", "price_openvpm");

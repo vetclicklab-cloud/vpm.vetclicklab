@@ -974,7 +974,7 @@ export function csvToSoapNoteRecords(
 
 /**
  * Internal care-task import. Creating these rows never schedules or sends a
- * client communication; staff review and complete them inside OpenVPM.
+ * client communication; staff review and complete them inside VetClickLab.
  */
 export function csvToCareReminderRecords(
   csv: string,

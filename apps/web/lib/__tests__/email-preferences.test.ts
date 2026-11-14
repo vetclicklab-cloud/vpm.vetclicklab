@@ -284,27 +284,27 @@ describe("email preference tokens", () => {
       {
         now: NOW,
         signingSecret: SIGNING_SECRET,
-        baseUrl: "https://demo.openvpm.com",
+        baseUrl: "https://demo.vetclicklab.com",
       },
     );
 
     expect(links?.preferencesUrl).toMatch(
-      /^https:\/\/app\.openvpm\.com\/email-preferences\?token=/,
+      /^https:\/\/app\.vetclicklab\.com\/email-preferences\?token=/,
     );
     expect(links?.oneClickUrl).toMatch(
-      /^https:\/\/app\.openvpm\.com\/api\/email-preferences\/unsubscribe\?token=/,
+      /^https:\/\/app\.vetclicklab\.com\/api\/email-preferences\/unsubscribe\?token=/,
     );
     expect(emailPreferenceBaseUrl()).toBe(CANONICAL_EMAIL_PREFERENCE_BASE_URL);
   });
 
   it("rejects non-HTTPS or non-origin preference base URLs", () => {
     expect(
-      normalizeEmailPreferenceBaseUrl("http://app.openvpm.com"),
+      normalizeEmailPreferenceBaseUrl("http://app.vetclicklab.com"),
     ).toBeNull();
     expect(
-      normalizeEmailPreferenceBaseUrl("https://app.openvpm.com/path"),
+      normalizeEmailPreferenceBaseUrl("https://app.vetclicklab.com/path"),
     ).toBeNull();
-    expect(normalizeEmailPreferenceBaseUrl("https://app.openvpm.com")).toBe(
+    expect(normalizeEmailPreferenceBaseUrl("https://app.vetclicklab.com")).toBe(
       CANONICAL_EMAIL_PREFERENCE_BASE_URL,
     );
 
@@ -313,17 +313,17 @@ describe("email preference tokens", () => {
       {
         now: NOW,
         signingSecret: SIGNING_SECRET,
-        baseUrl: "https://demo.openvpm.com",
+        baseUrl: "https://demo.vetclicklab.com",
       },
     );
     expect(links?.preferencesUrl).toMatch(
-      /^https:\/\/demo\.openvpm\.com\/email-preferences\?token=/,
+      /^https:\/\/demo\.vetclicklab\.com\/email-preferences\?token=/,
     );
   });
 
   it("rejects a noncanonical preference owner in hosted deployments", () => {
     vi.stubEnv("VERCEL", "1");
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://demo.openvpm.com");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://demo.vetclicklab.com");
 
     expect(emailPreferenceBaseUrl()).toBeNull();
     expect(

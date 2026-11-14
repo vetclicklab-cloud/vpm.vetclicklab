@@ -24,11 +24,11 @@ export function PaymentFailedEmail({
   return (
     <EmailLayout
       brand={brand}
-      preview="Your OpenVPM payment didn't go through — update your billing"
+      preview="Your VetClickLab payment didn't go through — update your billing"
     >
       <Heading>Your payment didn&apos;t go through</Heading>
       <Paragraph>
-        Hi {practiceName}, we couldn&apos;t process your latest OpenVPM payment
+        Hi {practiceName}, we couldn&apos;t process your latest VetClickLab payment
         of <strong>{amount}</strong>. This usually means a card expired or was
         replaced — it&apos;s a quick fix.
       </Paragraph>

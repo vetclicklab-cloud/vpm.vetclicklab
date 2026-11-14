@@ -1,7 +1,7 @@
 /**
  * Value normalizers for migration imports. Real PIMS exports (AVImark,
  * Cornerstone, ezyVet, spreadsheets) spell species, sex, and dates a dozen
- * ways; these map the common spellings onto OpenVPM's enums and ISO dates
+ * ways; these map the common spellings onto VetClickLab's enums and ISO dates
  * so clinics do not have to hand-edit their files. Pure — no I/O.
  */
 

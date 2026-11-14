@@ -57,7 +57,7 @@ export function useWelcome() {
 
 /**
  * Value-first first-run: before any setup is asked of a new user, show
- * what OpenVPM can do for their clinic today (the Polaroid guide cards).
+ * what VetClickLab can do for their clinic today (the Polaroid guide cards).
  *
  * Gating:
  * - New trial admins: auto-opens under the SAME three server gates the

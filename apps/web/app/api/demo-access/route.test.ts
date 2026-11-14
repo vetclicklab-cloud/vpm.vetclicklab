@@ -45,7 +45,7 @@ const { POST } = await import("./route");
 const ANONYMOUS_ID = "00000000-0000-4000-8000-000000000001";
 
 function request(body: unknown, headers: HeadersInit = {}) {
-  return new Request("https://demo.openvpm.com/api/demo-access", {
+  return new Request("https://demo.vetclicklab.com/api/demo-access", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -106,12 +106,12 @@ describe("POST /api/demo-access", () => {
     expect(response.headers.get("set-cookie")).toContain("Secure");
     expect(response.headers.get("cache-control")).toBe("no-store");
     expect(mocks.fetchFunnel).toHaveBeenCalledWith(
-      new URL("https://app.openvpm.com/api/funnel-event"),
+      new URL("https://app.vetclicklab.com/api/funnel-event"),
       expect.objectContaining({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Origin: "https://demo.openvpm.com",
+          Origin: "https://demo.vetclicklab.com",
         },
       }),
     );
@@ -163,7 +163,7 @@ describe("POST /api/demo-access", () => {
 
       expect(response.status).toBe(200);
       expect(mocks.fetchFunnel).toHaveBeenCalledWith(
-        new URL("https://app.openvpm.com/api/growth/leads"),
+        new URL("https://app.vetclicklab.com/api/growth/leads"),
         expect.objectContaining({
           method: "POST",
           headers: {
@@ -173,7 +173,7 @@ describe("POST /api/demo-access", () => {
         }),
       );
       const leadCall = mocks.fetchFunnel.mock.calls.find(
-        (call) => String(call[0]) === "https://app.openvpm.com/api/growth/leads",
+        (call) => String(call[0]) === "https://app.vetclicklab.com/api/growth/leads",
       );
       expect(JSON.parse(String(leadCall?.[1]?.body))).toEqual({
         source: "demo",

@@ -21,7 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/form-field";
-import { PawMark } from "@/components/brand/paw-mark";
+import { BrandMark } from "@/components/brand/brand-mark";
 import { cn, initials, isValidEmail } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
@@ -396,10 +396,10 @@ function RegisterPageInner({
               href="/"
               className="inline-flex items-center gap-3 font-heading text-lg font-semibold tracking-tight text-slate-950 sm:text-xl"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <PawMark className="h-5 w-5" />
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-sm">
+                <BrandMark className="h-5 w-5" />
               </span>
-              OpenVPM
+              <span className="sr-only sm:not-sr-only">VetClickLab</span>
             </Link>
             <div className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:gap-3 sm:text-sm">
               <span className="whitespace-nowrap">Step 1 of 4</span>
@@ -457,10 +457,10 @@ function RegisterPageInner({
               href="/"
               className="inline-flex items-center gap-3 font-heading text-lg font-semibold tracking-tight text-slate-950 sm:text-xl"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <PawMark className="h-5 w-5" />
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-sm">
+                <BrandMark className="h-5 w-5" />
               </span>
-              OpenVPM
+              <span className="sr-only sm:not-sr-only">VetClickLab</span>
             </Link>
             <div className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:gap-3 sm:text-sm">
               <span className="whitespace-nowrap">Step 2 of 4</span>
@@ -579,10 +579,10 @@ function RegisterPageInner({
               href="/"
               className="inline-flex items-center gap-3 font-heading text-lg font-semibold tracking-tight text-slate-950 sm:text-xl"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <PawMark className="h-5 w-5" />
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-sm">
+                <BrandMark className="h-5 w-5" />
               </span>
-              OpenVPM
+              <span className="sr-only sm:not-sr-only">VetClickLab</span>
             </Link>
             <div className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:gap-3 sm:text-sm">
               <span className="whitespace-nowrap">Step 3 of 4</span>
@@ -647,10 +647,10 @@ function RegisterPageInner({
               href="/"
               className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-primary"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <PawMark className="h-4 w-4" />
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
+                <BrandMark className="h-4 w-4" />
               </span>
-              OpenVPM {cloudIntent ? "Cloud" : ""}
+              VetClickLab {cloudIntent ? "Cloud" : ""}
             </Link>
             <span className="text-xs font-medium text-slate-500">
               Step 4 of 4
@@ -668,7 +668,7 @@ function RegisterPageInner({
               ? " Next, add your card securely through Stripe to start your free trial."
               : hostedBilling
                 ? " Your free trial starts immediately."
-                : " Your self-hosted workspace is free."}
+                : " Your workspace is ready to use."}
           </p>
 
           <form onSubmit={handleSubmit} className="mt-8 grid min-w-0 gap-4">
@@ -733,7 +733,7 @@ function RegisterPageInner({
               <div className="flex gap-2 rounded-md border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-950">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
                 <p>
-                  OpenVPM can format this workspace for your region, but the
+                  VetClickLab can format this workspace for your region, but the
                   supported design-partner rollout is currently limited to US
                   clinics. Explore with sample data only; do not move live
                   clinic work yet.
@@ -743,22 +743,14 @@ function RegisterPageInner({
 
             {country === "OTHER" ? (
               <div className="rounded-md border border-slate-200 bg-slate-50 p-3 text-xs leading-5 text-slate-700">
-                Hosted workspaces are not available in your country yet. You can
-                still{" "}
+                VetClickLab is not available in your country yet. Email{" "}
                 <a
-                  href="https://demo.openvpm.com"
+                  href="mailto:support@vetclicklab.com"
                   className="font-medium text-primary underline underline-offset-2"
                 >
-                  explore the immediate demo
+                  support@vetclicklab.com
                 </a>{" "}
-                or review the{" "}
-                <a
-                  href="https://github.com/evangauer/openvpm"
-                  className="font-medium text-primary underline underline-offset-2"
-                >
-                  self-hosted project
-                </a>
-                .
+                and we&apos;ll let you know when it is.
               </div>
             ) : null}
 
@@ -802,7 +794,7 @@ function RegisterPageInner({
 
             <p className="flex items-center justify-center gap-1.5 text-xs text-slate-500">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-              {hostedBilling ? `Free for ${trialDays} days.` : "Free, open-source software."}
+              {hostedBilling ? `Free for ${trialDays} days.` : "No charge to get started."}
               {previewFirst ? " No card needed to look around." : cardFirst ? " Card required. No charge today." : hostedBilling ? " No credit card required." : ""}
             </p>
 

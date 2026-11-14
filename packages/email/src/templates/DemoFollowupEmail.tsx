@@ -24,11 +24,11 @@ export function demoFollowupSubject(
 ): string {
   switch (step) {
     case 1:
-      return "What did you think of the OpenVPM demo?";
+      return "What did you think of the VetClickLab demo?";
     case 2:
       return tool
         ? `${capitalize(tool.name)}, with your own clinic`
-        : "Your clinic in OpenVPM, set up in minutes";
+        : "Your clinic in VetClickLab, set up in minutes";
     case 3:
       return "Want it set up with your services and prices?";
     case 4:
@@ -64,12 +64,12 @@ export function DemoFollowupEmail({
       greetingName={null}
       senderName={senderName}
       unsubscribeUrl={unsubscribeUrl}
-      recipientReason="You're receiving this because you tried the OpenVPM demo."
+      recipientReason="You're receiving this because you tried the VetClickLab demo."
     >
       {step === 1 ? (
         <>
           <P>
-            Thanks for trying the OpenVPM demo
+            Thanks for trying the VetClickLab demo
             {tool ? ` and taking a look at ${tool.name}` : ""}. I&apos;d love
             to know what you thought: what stood out, and what was missing for
             your clinic? Just hit reply. I read every one.
@@ -105,7 +105,7 @@ export function DemoFollowupEmail({
           <P>
             If you&apos;d rather not set it up alone, I&apos;ll walk through it
             with you in 15 minutes: your services and prices, one real visit,
-            and how OpenVPM runs alongside your current system while you try
+            and how VetClickLab runs alongside your current system while you try
             it.
           </P>
           <P>
@@ -124,15 +124,15 @@ export function DemoFollowupEmail({
 
       {step === 4 ? (
         <>
-          <P>Three questions clinics ask before trying OpenVPM:</P>
+          <P>Three questions clinics ask before trying VetClickLab:</P>
           <P>
             <strong>Can we run it alongside our current system?</strong> Yes.
             Most clinics start with one real visit while their current PIMS
             stays the source of truth.
           </P>
           <P>
-            <strong>Who owns our data?</strong> You do. OpenVPM is open source,
-            you can export everything, and you can even run it yourself.
+            <strong>Who owns our data?</strong> You do. You can export everything
+            at any time.
           </P>
           <P>
             <strong>What does it cost to try?</strong> Nothing for {trialDays}{" "}

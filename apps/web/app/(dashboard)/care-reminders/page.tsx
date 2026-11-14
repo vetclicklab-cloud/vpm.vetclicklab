@@ -839,7 +839,7 @@ export default function CareRemindersPage() {
                           <Badge
                             variant={item.imported ? "secondary" : "outline"}
                           >
-                            {item.imported ? "Imported" : "OpenVPM"}
+                            {item.imported ? "Imported" : "VetClickLab"}
                           </Badge>
                         </td>
                         <td className="py-4 text-right">

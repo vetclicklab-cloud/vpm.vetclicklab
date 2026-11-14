@@ -70,7 +70,7 @@ describe("imported history workspace", () => {
     expect(checklist).toContain("never paste names, contact information");
     expect(checklist).toContain('href="/clients"');
     expect(checklist).toContain('href="/patients"');
-    expect(checklist).toContain("OpenVPM remains responsible for the bulk reconciliation queue");
+    expect(checklist).toContain("VetClickLab remains responsible for the bulk reconciliation queue");
     expect(checklist).toContain("never releases");
     expect(checklist).toContain('role="progressbar"');
   });

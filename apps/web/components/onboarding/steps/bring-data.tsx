@@ -586,7 +586,7 @@ export function BringDataStep({ register, state, setState }: StepProps) {
       : pathway.value === "replace"
         ? "Move in stages: check owners, pets, vaccines, and visit notes before your team changes live workflows."
         : pathway.value === "self_host"
-          ? "The same import and export tools work in hosted and self-hosted OpenVPM."
+          ? "Import and export tools stay available, so your data is never locked in."
           : "Keep the sample clinic as long as you need, or try an import when you are ready.";
 
   return (
@@ -635,7 +635,7 @@ export function BringDataStep({ register, state, setState }: StepProps) {
                 </p>
               ) : null}
               <p>
-                Add any files you have. OpenVPM checks each one in order. No
+                Add any files you have. VetClickLab checks each one in order. No
                 records import until you review that file's plan.
               </p>
               <p>
@@ -726,7 +726,7 @@ export function BringDataStep({ register, state, setState }: StepProps) {
                 <p className="text-xs text-slate-500">
                   History attaches only to a safely matched real patient. Use
                   the same patient ID from the pet file whenever possible.
-                  Existing OpenVPM pets can also match by owner email or client
+                  Existing VetClickLab pets can also match by owner email or client
                   ID plus patient name.
                 </p>
                 {MIGRATION_STEPS.slice(2).map((step, index) => (
@@ -1050,7 +1050,7 @@ function CsvPreviewCard({
       {preview.errors.length > 0 ? (
         <ImportIssues
           errors={preview.errors}
-          fileName={`openvpm-${mode}-preview-issues.txt`}
+          fileName={`vetclicklab-${mode}-preview-issues.txt`}
         />
       ) : null}
     </div>
@@ -1083,7 +1083,7 @@ function ImportResultCard({ result }: { result: OnboardingImportSummary }) {
         <>
           <ImportIssues
             errors={result.errors}
-            fileName="openvpm-import-issues.txt"
+            fileName="vetclicklab-import-issues.txt"
           />
           <Link
             href="/settings?tab=data"

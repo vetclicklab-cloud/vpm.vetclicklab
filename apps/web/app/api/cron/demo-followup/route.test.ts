@@ -71,7 +71,7 @@ function candidate(overrides: Record<string, unknown> = {}) {
 }
 
 const request = () =>
-  new Request("https://app.openvpm.com/api/cron/demo-followup");
+  new Request("https://app.vetclicklab.com/api/cron/demo-followup");
 
 beforeEach(() => {
   vi.useFakeTimers({ now: NOW, toFake: ["Date"] });

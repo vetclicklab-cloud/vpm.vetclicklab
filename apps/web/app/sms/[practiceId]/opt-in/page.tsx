@@ -20,7 +20,7 @@ export default async function SmsOptInPage({
       <p>
         Clients may opt in during phone or in-person intake. Clinic staff read
         or show the disclosure below, ask for an explicit choice, and record the
-        client&apos;s answer in OpenVPM. The consent control is optional and is
+        client&apos;s answer in VetClickLab. The consent control is optional and is
         not selected by default. No text is sent until consent is recorded.
       </p>
 
@@ -31,7 +31,7 @@ export default async function SmsOptInPage({
 
       <h2>Evidence retained</h2>
       <p>
-        OpenVPM records the consent choice, date and time, mobile number,
+        VetClickLab records the consent choice, date and time, mobile number,
         disclosure text, and consent source. Replying STOP creates a suppression
         that blocks further sends. Replying START, YES, or UNSTOP may
         re-establish consent from the client&apos;s own phone.

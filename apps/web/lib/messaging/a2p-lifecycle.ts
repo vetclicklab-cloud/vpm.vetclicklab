@@ -23,7 +23,7 @@ const FAILURE_CAMPAIGN_STATUSES = new Set([
   "MNO_PROVISIONING_FAILED",
 ]);
 
-/** Pure mapping from Telnyx's multi-stage state into OpenVPM's send gate. */
+/** Pure mapping from Telnyx's multi-stage state into VetClickLab's send gate. */
 export function observedRegistrationStatus(
   observation: TelnyxRegistrationObservation,
 ): RegistrationLifecycleStatus {

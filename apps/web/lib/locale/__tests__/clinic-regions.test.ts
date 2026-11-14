@@ -54,8 +54,7 @@ describe("clinic jurisdiction evidence", () => {
     expect(source).toContain('country !== ""');
     expect(source).toContain('country !== "OTHER"');
     expect(source).toContain("supported design-partner rollout");
-    expect(source).toContain("https://demo.openvpm.com");
-    expect(source).toContain("https://github.com/evangauer/openvpm");
+    expect(source).toContain("mailto:support@vetclicklab.com");
     expect(settingsSource).toContain("practice.jurisdictionConfirmed &&");
     expect(settingsSource).toContain('country: ClinicRegionCode | ""');
     expect(settingsSource).toContain(

@@ -504,7 +504,7 @@ describe("settings admin stale target safety", () => {
         ?.length ?? 0,
     ).toBeGreaterThanOrEqual(15);
     expect(SETTINGS_SOURCE).not.toContain("practice?.settings ?? {}");
-    expect(SETTINGS_SOURCE).not.toContain('practice?.name ?? "OpenVPM"');
+    expect(SETTINGS_SOURCE).not.toContain('practice?.name ?? "VetClickLab"');
   });
 
   it("rejects stale staff updates with a typed not-found error", async () => {

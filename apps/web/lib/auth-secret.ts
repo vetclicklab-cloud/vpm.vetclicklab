@@ -138,7 +138,7 @@ export function authSecretProblemMessage(problem: AuthSecretProblem): string {
     case "missing":
       return `NEXTAUTH_SECRET is not set.`;
     case "known_public":
-      return `NEXTAUTH_SECRET is a published placeholder value from the OpenVPM repository, so anyone could forge sign-ins.`;
+      return `NEXTAUTH_SECRET is a published placeholder value from the VetClickLab repository, so anyone could forge sign-ins.`;
     case "too_short":
       return `NEXTAUTH_SECRET is shorter than ${MIN_AUTH_SECRET_LENGTH} characters.`;
   }

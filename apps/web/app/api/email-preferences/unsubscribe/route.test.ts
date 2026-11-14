@@ -11,7 +11,7 @@ const IDENTITY_KEY_FINGERPRINT = "c".repeat(64);
 const mocks = vi.hoisted(() => {
   return {
     verifyEmailPreferenceToken: vi.fn(),
-    emailPreferenceBaseUrl: vi.fn(() => "https://app.openvpm.com"),
+    emailPreferenceBaseUrl: vi.fn(() => "https://app.vetclicklab.com"),
     setMarketingEmailPreferenceForHash: vi.fn(async () => undefined),
   };
 });
@@ -47,9 +47,9 @@ describe("POST email preference unsubscribe", () => {
     mocks.verifyEmailPreferenceToken.mockReturnValue(null);
 
     for (const url of [
-      "https://app.openvpm.com/api/email-preferences/unsubscribe",
-      "https://app.openvpm.com/api/email-preferences/unsubscribe?token=bad",
-      `https://app.openvpm.com/api/email-preferences/unsubscribe?token=${"x".repeat(4097)}`,
+      "https://app.vetclicklab.com/api/email-preferences/unsubscribe",
+      "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=bad",
+      `https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=${"x".repeat(4097)}`,
     ]) {
       const response = await POST(oneClickRequest(url));
       expect(response.status).toBe(400);
@@ -65,11 +65,11 @@ describe("POST email preference unsubscribe", () => {
 
     const requests = [
       new Request(
-        "https://app.openvpm.com/api/email-preferences/unsubscribe?token=signed",
+        "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
         { method: "POST" },
       ),
       new Request(
-        "https://app.openvpm.com/api/email-preferences/unsubscribe?token=signed",
+        "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -77,7 +77,7 @@ describe("POST email preference unsubscribe", () => {
         },
       ),
       oneClickRequest(
-        "https://app.openvpm.com/api/email-preferences/unsubscribe?token=signed",
+        "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
         "List-Unsubscribe=not-one-click",
       ),
     ];
@@ -96,7 +96,7 @@ describe("POST email preference unsubscribe", () => {
 
     const response = await POST(
       new Request(
-        "https://app.openvpm.com/api/email-preferences/unsubscribe?token=signed",
+        "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
         {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -123,7 +123,7 @@ describe("POST email preference unsubscribe", () => {
 
     const response = await POST(
       oneClickRequest(
-        "https://demo.openvpm.com/api/email-preferences/unsubscribe?token=signed",
+        "https://demo.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
       ),
     );
 
@@ -139,7 +139,7 @@ describe("POST email preference unsubscribe", () => {
 
     const response = await POST(
       oneClickRequest(
-        "https://app.openvpm.com/api/email-preferences/unsubscribe?token=signed",
+        "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
       ),
     );
 
@@ -159,7 +159,7 @@ describe("POST email preference unsubscribe", () => {
 
     const response = await POST(
       oneClickRequest(
-        "https://app.openvpm.com/api/email-preferences/unsubscribe?token=signed",
+        "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=signed",
       ),
     );
 

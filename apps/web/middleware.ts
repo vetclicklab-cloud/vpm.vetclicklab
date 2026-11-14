@@ -45,7 +45,7 @@ const PUBLIC_PATH_PREFIXES = [
 ];
 
 const PUBLIC_FILE_PATTERN =
-  /\.(?:avif|css|gif|ico|jpg|jpeg|js|json|map|png|svg|txt|webp|xml)$/i;
+  /\.(?:avif|css|gif|ico|jpg|jpeg|js|json|map|png|svg|txt|webmanifest|webp|xml)$/i;
 
 function isPublicPath(pathname: string): boolean {
   return (
@@ -80,7 +80,7 @@ function authSecretSetupResponse(pathname: string): NextResponse {
       NextResponse.json(
         {
           error: "Authentication secret is not configured securely",
-          detail: `${reason} Set a new NEXTAUTH_SECRET (${AUTH_SECRET_SETUP_COMMAND}) and restart OpenVPM.`,
+          detail: `${reason} Set a new NEXTAUTH_SECRET (${AUTH_SECRET_SETUP_COMMAND}) and restart VetClickLab.`,
         },
         { status: 503, headers: { "Cache-Control": "no-store" } },
       ),
@@ -89,7 +89,7 @@ function authSecretSetupResponse(pathname: string): NextResponse {
 
   const html = `<!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><title>OpenVPM setup required</title>
+<head><meta charset="utf-8"><title>VetClickLab setup required</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 <body style="font-family:system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem;line-height:1.5">
 <h1>Set NEXTAUTH_SECRET to finish setup</h1>
@@ -97,7 +97,7 @@ function authSecretSetupResponse(pathname: string): NextResponse {
 <ol>
 <li>Generate a secret: <code>${AUTH_SECRET_SETUP_COMMAND}</code></li>
 <li>Set it as <code>NEXTAUTH_SECRET</code> in your <code>.env</code> file or deployment environment.</li>
-<li>Restart OpenVPM. Everyone will need to sign in again once.</li>
+<li>Restart VetClickLab. Everyone will need to sign in again once.</li>
 </ol>
 </body>
 </html>`;
@@ -148,7 +148,7 @@ export async function middleware(request: NextRequest) {
 
   // Unauthenticated visitors go to the demo login, which offers one-click
   // demo access. (Previously the root path bounced to the marketing site,
-  // which dead-ended anyone who came straight to demo.openvpm.com to try it.)
+  // which dead-ended anyone who came straight to demo.vetclicklab.com to try it.)
   if (!token) {
     const loginUrl = new URL("/login", request.url);
     const nextPath = `${pathname}${requestUrl.search}`;

@@ -188,7 +188,7 @@ function createLedgerDb() {
       return providerAttestedNoProjectionRows;
     }
     if (name === "users") {
-      return [{ id: ACTOR_ID, name: "Operator", email: "ops@openvpm.com" }];
+      return [{ id: ACTOR_ID, name: "Operator", email: "ops@vetclicklab.com" }];
     }
     if (name === "communications") return communicationRows;
     if (name === "sms_send_attempts") {
@@ -690,7 +690,7 @@ describe("durable SMS dispatch", () => {
       success: false,
       outcome: "definite_failure",
       error:
-        "Texting is not enabled for this clinic pilot. Contact OpenVPM support.",
+        "Texting is not enabled for this clinic pilot. Contact VetClickLab support.",
     });
 
     expect(mocks.providerSend).not.toHaveBeenCalled();
@@ -1459,8 +1459,8 @@ describe("durable SMS dispatch", () => {
         detail: "Confirmed in provider console.",
         actorType: "platform_operator",
         actorUserId: ACTOR_ID,
-        actorIdentity: "ops@openvpm.com",
-        actorName: "OpenVPM Ops",
+        actorIdentity: "ops@vetclicklab.com",
+        actorName: "VetClickLab Ops",
         reconciliationKey: "operator-reconciliation:1",
       }),
     ).resolves.toMatchObject({ success: true, sid: "msg-reconciled" });
@@ -1468,7 +1468,7 @@ describe("durable SMS dispatch", () => {
     expect(ledger.events.at(-1)).toMatchObject({
       kind: "reconciliation",
       actorType: "platform_operator",
-      actorIdentity: "ops@openvpm.com",
+      actorIdentity: "ops@vetclicklab.com",
     });
   });
 
@@ -1515,8 +1515,8 @@ describe("durable SMS dispatch", () => {
           detail: "Provider console reported acceptance.",
           actorType: "platform_operator",
           actorUserId: ACTOR_ID,
-          actorIdentity: "ops@openvpm.com",
-          actorName: "OpenVPM Ops",
+          actorIdentity: "ops@vetclicklab.com",
+          actorName: "VetClickLab Ops",
           reconciliationKey: `operator-reconciliation:${conflictId ?? "base"}`,
         }),
       ).resolves.toMatchObject({
@@ -1562,8 +1562,8 @@ describe("durable SMS dispatch", () => {
         detail: "Provider confirmed rejection.",
         actorType: "platform_operator",
         actorUserId: ACTOR_ID,
-        actorIdentity: "ops@openvpm.com",
-        actorName: "OpenVPM Ops",
+        actorIdentity: "ops@vetclicklab.com",
+        actorName: "VetClickLab Ops",
         reconciliationKey: "operator-reconciliation:projection-miss",
       }),
     ).resolves.toMatchObject({
@@ -1620,14 +1620,14 @@ describe("durable SMS dispatch", () => {
         idempotencyKey: "sms:operator-resend:1",
         actorType: "platform_operator",
         actorUserId: ACTOR_ID,
-        actorIdentity: "ops@openvpm.com",
-        actorName: "OpenVPM Ops",
+        actorIdentity: "ops@vetclicklab.com",
+        actorName: "VetClickLab Ops",
       }),
     ).resolves.toMatchObject({ success: true, sid: "msg-resend" });
     expect(ledger.attempts[1]).toMatchObject({
       resendOfAttemptId: ledger.attempts[0]!.id,
       requestedByActorType: "platform_operator",
-      requestedByIdentity: "ops@openvpm.com",
+      requestedByIdentity: "ops@vetclicklab.com",
     });
     expect(ledger.updates).toContainEqual({
       status: "sent",
@@ -1675,8 +1675,8 @@ describe("durable SMS dispatch", () => {
         idempotencyKey: "sms:operator-resend:fallback-delivered",
         actorType: "platform_operator",
         actorUserId: ACTOR_ID,
-        actorIdentity: "ops@openvpm.com",
-        actorName: "OpenVPM Ops",
+        actorIdentity: "ops@vetclicklab.com",
+        actorName: "VetClickLab Ops",
       }),
     ).resolves.toMatchObject({
       success: false,
@@ -1731,8 +1731,8 @@ describe("durable SMS dispatch", () => {
         idempotencyKey: "sms:operator-resend:fallback-race",
         actorType: "platform_operator",
         actorUserId: ACTOR_ID,
-        actorIdentity: "ops@openvpm.com",
-        actorName: "OpenVPM Ops",
+        actorIdentity: "ops@vetclicklab.com",
+        actorName: "VetClickLab Ops",
       }),
     ).resolves.toMatchObject({
       success: false,
@@ -1781,8 +1781,8 @@ describe("durable SMS dispatch", () => {
       attemptId: originalAttemptId,
       actorType: "platform_operator" as const,
       actorUserId: ACTOR_ID,
-      actorIdentity: "ops@openvpm.com",
-      actorName: "OpenVPM Ops",
+      actorIdentity: "ops@vetclicklab.com",
+      actorName: "VetClickLab Ops",
     };
 
     const first = resendSmsAttempt({

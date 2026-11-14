@@ -320,7 +320,7 @@ export function warnUnverifiedLoginIpOnce(client: ResolvedClientIp): void {
   warnedUnverifiedIp = true;
   console.warn(
     client.source === "unverified"
-      ? `[auth] Sign-in client IPs can't be verified, so per-IP sign-in limits are off; per-account limits still apply. If OpenVPM runs behind a reverse proxy, set ${TRUSTED_PROXY_HOPS_ENV} to the number of proxies in front of it.`
+      ? `[auth] Sign-in client IPs can't be verified, so per-IP sign-in limits are off; per-account limits still apply. If VetClickLab runs behind a reverse proxy, set ${TRUSTED_PROXY_HOPS_ENV} to the number of proxies in front of it.`
       : `[auth] Sign-in request had no usable client IP from the ${client.source} source; per-IP sign-in limits were skipped.`
   );
 }

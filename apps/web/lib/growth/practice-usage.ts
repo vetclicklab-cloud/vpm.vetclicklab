@@ -2,7 +2,7 @@ import { sql } from "drizzle-orm";
 import type { Database } from "@openpims/db/client";
 import { rowsFromExecute } from "@/lib/db/execute-rows";
 
-/** What a clinic has really done in OpenVPM, never counting sample data. */
+/** What a clinic has really done in VetClickLab, never counting sample data. */
 export interface PracticeUsage {
   clients: number;
   patients: number;

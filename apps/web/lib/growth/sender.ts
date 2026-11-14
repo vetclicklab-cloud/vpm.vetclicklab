@@ -7,7 +7,7 @@ export const GROWTH_BOOKING_URL_ENV = "GROWTH_BOOKING_URL";
 const DISPLAY_NAME_RE = /^[\p{L}\p{M}' .-]{1,60}$/u;
 
 export interface GrowthSender {
-  /** Signature name; null signs as "The OpenVPM team". */
+  /** Signature name; null signs as "The VetClickLab team". */
   name: string | null;
   /** Full RFC 5322 From value. The address stays the verified default. */
   from: string;
@@ -39,7 +39,7 @@ export function growthSender(fallbackReplyTo: string): GrowthSender {
   const address = fromAddress(defaultEmailFrom());
   return {
     name,
-    from: name ? `${name} at OpenVPM <${address}>` : `OpenVPM <${address}>`,
+    from: name ? `${name} at VetClickLab <${address}>` : `VetClickLab <${address}>`,
     replyTo:
       nonBlankEmailValue(process.env[GROWTH_SENDER_REPLY_TO_ENV]) ??
       fallbackReplyTo,

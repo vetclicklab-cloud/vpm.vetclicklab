@@ -21,7 +21,7 @@ const SECRET = "lead-capture-secret-at-least-32-bytes!";
 const ANONYMOUS_ID = "11111111-1111-4111-8111-111111111111";
 
 function post(body: unknown, authorization = `Bearer ${SECRET}`) {
-  return new Request("https://app.openvpm.com/api/growth/leads", {
+  return new Request("https://app.vetclicklab.com/api/growth/leads", {
     method: "POST",
     headers: { "Content-Type": "application/json", authorization },
     body: JSON.stringify(body),
