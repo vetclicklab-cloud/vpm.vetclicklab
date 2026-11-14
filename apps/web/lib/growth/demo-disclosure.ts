@@ -19,7 +19,7 @@ export const CURRENT_DEMO_DISCLOSURE: DemoDisclosureVersion =
   DEMO_DISCLOSURE_FOLLOWUP_V2;
 
 export const CURRENT_DEMO_DISCLOSURE_TEXT =
-  "No call, sales form, or credit card. We use your email to protect this shared sandbox from automated abuse and to send a few short emails about getting started with OpenVPM. Unsubscribe anytime.";
+  "No call, sales form, or credit card. We use your email to protect this shared sandbox from automated abuse and to send a few short emails about getting started with VetClickLab. Unsubscribe anytime.";
 
 export function isDemoDisclosureVersion(
   value: unknown,

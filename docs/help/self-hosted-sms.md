@@ -1,6 +1,6 @@
 # Set up SMS on a self-hosted clinic
 
-OpenVPM has Telnyx and Twilio transports, signed inbound callbacks, delivery history, and client opt-out handling. Provider credentials alone do not activate texting for a clinic location. This guide explains the supported setup and its current boundaries so an operator can assess it before paying for numbers.
+VetClickLab has Telnyx and Twilio transports, signed inbound callbacks, delivery history, and client opt-out handling. Provider credentials alone do not activate texting for a clinic location. This guide explains the supported setup and its current boundaries so an operator can assess it before paying for numbers.
 
 ## 1. Check whether the setup fits your clinic
 
@@ -25,7 +25,7 @@ For Telnyx, configure:
 
 Restart after changing configuration. `MESSAGING_SENDING_ENABLED`, the sending allowlists, and `MESSAGING_INBOUND_ENABLED` are hosted rollout gates; they do not replace self-hosted location activation. Demo mode (`NEXT_PUBLIC_DEMO_MODE=true`) prevents actual sends.
 
-`TELNYX_MESSAGING_PROFILE_ID` and `TELNYX_FROM_NUMBER` are global fallbacks for sends without a location. Normal clinic sends require a persisted, active, enabled sender belonging to the selected practice and location. OpenVPM deliberately does not fall back to a different location's number.
+`TELNYX_MESSAGING_PROFILE_ID` and `TELNYX_FROM_NUMBER` are global fallbacks for sends without a location. Normal clinic sends require a persisted, active, enabled sender belonging to the selected practice and location. VetClickLab deliberately does not fall back to a different location's number.
 
 ## 3. Provision and activate a Telnyx location
 
@@ -58,5 +58,5 @@ A complete acceptance check includes a received message, delivery status, a corr
 ## Related guides
 
 - [Self-hosted Stripe payments](self-hosted-payments.md)
-- [Run a solo practice](https://docs.openvpm.com/guides/run-a-solo-practice)
+- [Run a solo practice](https://docs.vetclicklab.com/guides/run-a-solo-practice)
 - [SMS concurrency and recovery drill](../sms-concurrency-drill.md)

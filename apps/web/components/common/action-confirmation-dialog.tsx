@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -44,6 +44,8 @@ export function ActionConfirmationDialog({
   const dialogRef = useRef<HTMLDivElement>(null);
   const reasonRef = useRef<HTMLTextAreaElement>(null);
   const confirmRef = useRef<HTMLButtonElement>(null);
+  const cancelButtonRef = useRef<HTMLButtonElement>(null);
+  const destructive = confirmVariant === "destructive";
   const cancelRef = useRef(onCancel);
   const pendingRef = useRef(isPending);
   const hasReason = reason !== undefined;
@@ -56,7 +58,13 @@ export function ActionConfirmationDialog({
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const focusFrame = window.requestAnimationFrame(() => {
-      (hasReason ? reasonRef.current : confirmRef.current)?.focus();
+      // Destructive actions start on Cancel so a stray Enter cannot confirm.
+      (hasReason
+        ? reasonRef.current
+        : destructive
+          ? cancelButtonRef.current
+          : confirmRef.current
+      )?.focus();
     });
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && !pendingRef.current) {
@@ -87,7 +95,7 @@ export function ActionConfirmationDialog({
       document.body.style.overflow = previousOverflow;
       previousFocus?.focus();
     };
-  }, [hasReason, open]);
+  }, [destructive, hasReason, open]);
 
   if (!open) return null;
 
@@ -149,7 +157,12 @@ export function ActionConfirmationDialog({
         {children ? <div className="mt-4">{children}</div> : null}
 
         <div className="mt-5 flex justify-end gap-2">
-          <Button variant="outline" disabled={isPending} onClick={onCancel}>
+          <Button
+            ref={cancelButtonRef}
+            variant="outline"
+            disabled={isPending}
+            onClick={onCancel}
+          >
             Cancel
           </Button>
           <Button
@@ -167,5 +180,62 @@ export function ActionConfirmationDialog({
       </div>
     </div>,
     document.body,
+  );
+}
+
+type ConfirmRequest = {
+  title: string;
+  description: string;
+  confirmLabel?: string;
+  destructive?: boolean;
+};
+
+let openConfirm:
+  | ((request: ConfirmRequest, resolve: (ok: boolean) => void) => void)
+  | null = null;
+
+/**
+ * Promise-based replacement for window.confirm: shows the in-app
+ * ActionConfirmationDialog and resolves true when the user confirms.
+ * Requires <ConfirmActionHost /> (mounted once in Providers).
+ */
+export function confirmAction(request: ConfirmRequest): Promise<boolean> {
+  const open = openConfirm;
+  if (!open) return Promise.resolve(false);
+  return new Promise((resolve) => open(request, resolve));
+}
+
+export function ConfirmActionHost() {
+  const [pending, setPending] = useState<{
+    request: ConfirmRequest;
+    resolve: (ok: boolean) => void;
+  } | null>(null);
+
+  useEffect(() => {
+    openConfirm = (request, resolve) =>
+      setPending((current) => {
+        current?.resolve(false);
+        return { request, resolve };
+      });
+    return () => {
+      openConfirm = null;
+    };
+  }, []);
+
+  const settle = (ok: boolean) => {
+    pending?.resolve(ok);
+    setPending(null);
+  };
+
+  return (
+    <ActionConfirmationDialog
+      open={pending !== null}
+      title={pending?.request.title ?? ""}
+      description={pending?.request.description ?? ""}
+      confirmLabel={pending?.request.confirmLabel ?? "Continue"}
+      confirmVariant={pending?.request.destructive ? "destructive" : "default"}
+      onCancel={() => settle(false)}
+      onConfirm={() => settle(true)}
+    />
   );
 }

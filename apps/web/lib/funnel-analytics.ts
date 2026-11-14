@@ -104,7 +104,7 @@ function cleanFunnelId(value: string | null | undefined): string | undefined {
 }
 
 export type CloudSignupUrlOptions = {
-  /** Absolute app origin (e.g. https://app.openvpm.com). Empty → relative /register. */
+  /** Absolute app origin (e.g. https://app.vetclicklab.com). Empty → relative /register. */
   appOrigin?: string | null;
   tool?: FunnelToolId | string | null;
   source?: string;
@@ -165,7 +165,8 @@ export function buildClinicFitDemoUrl(
   searchParams: SearchParamsReader,
 ): string {
   const params = clinicFitAttributionParams(searchParams);
-  return `https://demo.openvpm.com/login?${params.toString()}`;
+  // Same host as clinic-fit (app.vetclicklab.com), so this also works on staging.
+  return `/login?${params.toString()}`;
 }
 
 function clinicFitAttributionParams(

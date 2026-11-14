@@ -231,7 +231,7 @@ function EditPatientForm() {
         Back to Patient
       </Button>
 
-      <h2 className="font-heading text-xl font-semibold">Edit Patient</h2>
+      <h2 className="font-heading text-2xl font-semibold tracking-tight">Edit Patient</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Update patient information
       </p>

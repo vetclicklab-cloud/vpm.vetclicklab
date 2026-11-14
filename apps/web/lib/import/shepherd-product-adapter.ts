@@ -98,7 +98,7 @@ function coverage(
 /**
  * Convert active stock-bearing catalog entries into inventory-untracked
  * products. Source quantities and lots are intentionally not copied: Shepherd
- * can represent decimal, multi-lot stock while OpenVPM's operational stock is
+ * can represent decimal, multi-lot stock while VetClickLab's operational stock is
  * a clinic-attested starting balance. Imported catalog rows can be billed but
  * cannot dispense or emit low-stock claims until staff starts tracking them.
  */

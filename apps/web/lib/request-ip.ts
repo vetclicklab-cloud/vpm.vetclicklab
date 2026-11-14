@@ -208,7 +208,7 @@ export function proxyWithoutTrustedHops(
 /**
  * With `OPENVPM_TRUSTED_PROXY_HOPS` set, the address the proxy chain reports
  * for this request when it is missing or non-public, which usually means the
- * proxy isn't adding `X-Forwarded-For` and OpenVPM is seeing the proxy
+ * proxy isn't adding `X-Forwarded-For` and VetClickLab is seeing the proxy
  * itself. Returns null when hops are unset or the address is public.
  */
 export function trustedProxyNotForwarding(

@@ -26,7 +26,6 @@ import { cn } from "@/lib/utils";
 import {
   CLINIC_MODEL_OPTIONS,
   FIRST_GOAL_OPTIONS,
-  SELF_HOST_GOAL,
   clinicModelOption,
   firstDayTasks,
   type ClinicModel,
@@ -71,7 +70,7 @@ export function ClinicIntentBuilder({
   firstGoal,
   onClinicModelChange,
   onFirstGoalChange,
-  intro = "Start with one useful workflow. We’ll shape OpenVPM around the way your team works—and you stay in control.",
+  intro = "Start with one useful workflow. We’ll shape VetClickLab around the way your team works—and you stay in control.",
   showClinicModel = true,
   showFirstGoal = true,
   goalLegend = "What would feel useful first?",
@@ -91,10 +90,9 @@ export function ClinicIntentBuilder({
 }) {
   const selectedModel = clinicModelOption(clinicModel);
   const tasks = firstDayTasks(clinicModel, firstGoal);
-  const goalOptions =
-    clinicModel === "exploring"
-      ? [...FIRST_GOAL_OPTIONS, SELF_HOST_GOAL]
-      : FIRST_GOAL_OPTIONS;
+  // VetClickLab is hosted only, so the self-hosting goal is no longer offered.
+  // Existing practices that chose it keep working through the legacy value.
+  const goalOptions = FIRST_GOAL_OPTIONS;
 
   return (
     <div
@@ -237,7 +235,7 @@ export function ClinicIntentBuilder({
               </span>
               <div>
                 <h3 className="font-heading text-lg font-semibold text-slate-950 sm:text-xl">
-                  Your first OpenVPM day
+                  Your first VetClickLab day
                 </h3>
                 <p className="mt-0.5 text-xs text-slate-500">
                   Shaped for {selectedModel.shortLabel.toLowerCase()} care
@@ -254,7 +252,7 @@ export function ClinicIntentBuilder({
                     style={{ animationDelay: `${index * 90}ms` }}
                     className="onboarding-task-in relative flex items-center gap-3 rounded-2xl border border-white bg-white/90 p-2.5 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.4)] sm:p-3"
                   >
-                    <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-primary-foreground shadow-sm">
+                    <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground shadow-sm">
                       {index + 1}
                     </span>
                     <span className="ml-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">

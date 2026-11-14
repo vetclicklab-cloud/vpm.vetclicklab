@@ -293,7 +293,7 @@ beforeEach(() => {
   mocks.createMessagingProfile.mockResolvedValue({ id: "profile_123" });
   mocks.getMessagingProfile.mockResolvedValue({
     id: "profile_123",
-    name: `OpenVPM provision ${LOCATION_ID}`,
+    name: `VetClickLab provision ${LOCATION_ID}`,
     webhookUrl: "https://app.example.com/api/webhooks/telnyx",
     enabled: false,
   });
@@ -456,7 +456,7 @@ describe("messaging location target safety", () => {
   });
 
   it("prefills carrier registration from the active clinic without exposing legal fields", async () => {
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     const { db } = createDb({
       selectResults: [
         [
@@ -478,15 +478,15 @@ describe("messaging location target safety", () => {
       contactEmail: "admin@example.com",
       businessPhone: "+15555550100",
       website: "https://example.com",
-      programUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}`,
-      privacyPolicyUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/privacy`,
-      termsUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/terms`,
-      optInUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/opt-in`,
+      programUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}`,
+      privacyPolicyUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/privacy`,
+      termsUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/terms`,
+      optInUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/opt-in`,
     });
   });
 
   it("leaves invalid or overlong clinic defaults blank instead of creating save errors", async () => {
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     const { db } = createDb({
       selectResults: [
         [
@@ -512,7 +512,7 @@ describe("messaging location target safety", () => {
   });
 
   it("keeps carrier registration available when the clinic website is blank", async () => {
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     const { db } = createDb({
       selectResults: [
         [
@@ -534,10 +534,10 @@ describe("messaging location target safety", () => {
       contactEmail: "clinic@example.com",
       businessPhone: "+15555550100",
       website: "",
-      programUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}`,
-      privacyPolicyUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/privacy`,
-      termsUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/terms`,
-      optInUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/opt-in`,
+      programUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}`,
+      privacyPolicyUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/privacy`,
+      termsUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/terms`,
+      optInUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/opt-in`,
     });
   });
 
@@ -662,7 +662,7 @@ describe("messaging location target safety", () => {
       "MESSAGING_REGISTRATION_ENCRYPTION_KEY",
       Buffer.alloc(32, 9).toString("base64"),
     );
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     const { db, insertValues } = createDb({ selectResults: [[]] });
 
     await callerWithDb(db).saveRegistration({
@@ -683,8 +683,8 @@ describe("messaging location target safety", () => {
     });
 
     expect(insertValues.mock.calls[0]?.[0]).toMatchObject({
-      privacyPolicyUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/privacy`,
-      termsUrl: `https://app.openvpm.com/sms/${PRACTICE_ID}/terms`,
+      privacyPolicyUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/privacy`,
+      termsUrl: `https://app.vetclicklab.com/sms/${PRACTICE_ID}/terms`,
     });
   });
 
@@ -887,7 +887,7 @@ describe("messaging location target safety", () => {
     });
 
     expect(mocks.createMessagingProfile).toHaveBeenCalledWith({
-      name: `OpenVPM provision ${LOCATION_ID}`,
+      name: `VetClickLab provision ${LOCATION_ID}`,
       webhookUrl: "https://auth.example.com/api/webhooks/telnyx",
     });
     expect(mocks.buyNumber).toHaveBeenCalledWith({
@@ -913,7 +913,7 @@ describe("messaging location target safety", () => {
     });
 
     expect(mocks.createMessagingProfile).toHaveBeenCalledWith({
-      name: `OpenVPM provision ${LOCATION_ID}`,
+      name: `VetClickLab provision ${LOCATION_ID}`,
       webhookUrl: "https://app.example.com/api/webhooks/telnyx",
     });
     expect(mocks.buyNumber).toHaveBeenCalledWith({
@@ -984,7 +984,7 @@ describe("messaging location target safety", () => {
     mocks.findMessagingProfilesByName.mockResolvedValue([
       {
         id: "profile_123",
-        name: `OpenVPM provision ${LOCATION_ID}`,
+        name: `VetClickLab provision ${LOCATION_ID}`,
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         enabled: false,
       },
@@ -1031,7 +1031,7 @@ describe("messaging location target safety", () => {
     mocks.findMessagingProfilesByName.mockResolvedValue([
       {
         id: "profile_123",
-        name: `OpenVPM provision ${LOCATION_ID}`,
+        name: `VetClickLab provision ${LOCATION_ID}`,
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         enabled: false,
       },
@@ -1087,7 +1087,7 @@ describe("messaging location target safety", () => {
       .mockResolvedValueOnce([
         {
           id: "profile_123",
-          name: `OpenVPM provision ${LOCATION_ID}`,
+          name: `VetClickLab provision ${LOCATION_ID}`,
           webhookUrl: "https://app.example.com/api/webhooks/telnyx",
           enabled: false,
         },
@@ -1223,7 +1223,7 @@ describe("messaging location target safety", () => {
       .mockResolvedValueOnce([
         {
           id: "profile_123",
-          name: `OpenVPM provision ${LOCATION_ID}`,
+          name: `VetClickLab provision ${LOCATION_ID}`,
           webhookUrl: "https://app.example.com/api/webhooks/telnyx",
           enabled: false,
         },
@@ -1255,7 +1255,7 @@ describe("messaging location target safety", () => {
     mocks.findMessagingProfilesByName.mockResolvedValue([
       {
         id: "profile_123",
-        name: `OpenVPM provision ${LOCATION_ID}`,
+        name: `VetClickLab provision ${LOCATION_ID}`,
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         enabled: false,
       },
@@ -1417,7 +1417,7 @@ describe("messaging location target safety", () => {
     mocks.findMessagingProfilesByName.mockResolvedValueOnce([
       {
         id: "profile_123",
-        name: `OpenVPM provision ${LOCATION_ID}`,
+        name: `VetClickLab provision ${LOCATION_ID}`,
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         enabled: false,
       },
@@ -1450,13 +1450,13 @@ describe("messaging location target safety", () => {
     mocks.findMessagingProfilesByName.mockResolvedValue([
       {
         id: "profile_1",
-        name: `OpenVPM provision ${LOCATION_ID}`,
+        name: `VetClickLab provision ${LOCATION_ID}`,
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         enabled: false,
       },
       {
         id: "profile_2",
-        name: `OpenVPM provision ${LOCATION_ID}`,
+        name: `VetClickLab provision ${LOCATION_ID}`,
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         enabled: false,
       },
@@ -1481,7 +1481,7 @@ describe("messaging location target safety", () => {
     mocks.findMessagingProfilesByName.mockResolvedValue([
       {
         id: "profile_123",
-        name: `OpenVPM provision ${LOCATION_ID}`,
+        name: `VetClickLab provision ${LOCATION_ID}`,
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         enabled: true,
       },
@@ -1934,7 +1934,7 @@ describe("messaging location target safety", () => {
 
     expect(mocks.sendSms).toHaveBeenCalledWith({
       to: "+15555550100",
-      body: "OpenVPM test message — your texting is set up correctly.",
+      body: "VetClickLab test message — your texting is set up correctly.",
       practiceId: PRACTICE_ID,
       locationId: LOCATION_ID,
       source: "self_host_test",
@@ -2090,7 +2090,7 @@ describe("messaging location sender join scoping", () => {
     expect(
       source.match(/gte\(\s*locationMessaging\.providerProfileSyncedAt/g),
     ).toHaveLength(2);
-    expect(source).toContain("OpenVPM must freshly verify");
+    expect(source).toContain("VetClickLab must freshly verify");
   });
 
   it("fails closed for migrated hosted senders until provider readiness is verified", () => {

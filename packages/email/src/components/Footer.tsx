@@ -53,7 +53,7 @@ export function Footer({
         }}
       >
         {recipientReason ??
-          "You're receiving this because your clinic uses OpenVPM."}
+          "You're receiving this because your clinic uses VetClickLab."}
         {unsubscribeUrl ? (
           <>
             {"  "}

@@ -27,7 +27,7 @@ const routeLabels: Record<string, string> = {
   "/inventory": "Inventory",
   "/inbox": "Inbox",
   "/recalls": "Vaccination Recalls",
-  "/care-reminders": "Care Reminders",
+  "/care-reminders": "Follow-ups",
   "/migration-archive": "Imported History",
   "/whiteboard": "Whiteboard",
   "/agent": "Agent",
@@ -86,7 +86,7 @@ export function TopBar({
 }) {
   const pathname = usePathname();
   const basePath = "/" + (pathname.split("/")[1] ?? "");
-  const label = routeLabels[basePath] ?? "OpenVPM";
+  const label = routeLabels[basePath] ?? "VetClickLab";
   const { data: session } = useSession();
   const role = session?.user?.role as UserRole | undefined;
   const availableNewActions = role
@@ -124,11 +124,13 @@ export function TopBar({
           type="button"
           onClick={onMenuOpen}
           aria-label="Open navigation"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:bg-accent hover:text-foreground lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md text-muted-foreground hover:bg-accent hover:text-foreground lg:hidden"
         >
           <Menu className="h-5 w-5" />
         </button>
-        <h1 className="truncate font-heading text-lg font-semibold">{label}</h1>
+        {/* Pages show their own title on desktop; the bar keeps it for small
+            screens and assistive tech. */}
+        <h1 className="truncate font-heading text-lg font-semibold lg:sr-only">{label}</h1>
       </div>
 
       <div className="flex shrink-0 items-center gap-2">
@@ -140,11 +142,11 @@ export function TopBar({
           type="button"
           onClick={onSearchOpen}
           aria-label="Open search"
-          className="flex h-9 items-center gap-2 rounded-md border border-input bg-background px-2 text-sm text-muted-foreground transition-colors hover:bg-accent sm:w-64 sm:px-3 md:w-80"
+          className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-input bg-background px-2 text-sm sm:h-9 sm:justify-start text-muted-foreground transition-colors hover:bg-accent sm:w-64 sm:px-3 md:w-80"
         >
           <Search className="h-4 w-4 shrink-0" />
           <span className="hidden sm:inline">Search...</span>
-          <kbd className="ml-auto hidden rounded border border-border bg-muted px-1.5 py-0.5 text-[10px] font-medium md:inline">
+          <kbd className="ml-auto hidden rounded border border-border bg-muted px-1.5 py-0.5 text-xs font-medium md:inline">
             ⌘K
           </kbd>
         </button>
@@ -153,8 +155,9 @@ export function TopBar({
           <div className="relative" ref={newMenuRef}>
             <Button
               size="sm"
-              className="gap-1"
+              className="h-11 min-w-11 gap-1 sm:h-9"
               onClick={() => setNewMenuOpen((v) => !v)}
+              aria-label="New"
               aria-haspopup="menu"
               aria-expanded={newMenuOpen}
             >

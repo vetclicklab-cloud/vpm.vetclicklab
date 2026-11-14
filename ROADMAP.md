@@ -1,8 +1,8 @@
-# OpenVPM Roadmap
+# VetClickLab Roadmap
 
-OpenVPM is building the modern, open, API-first foundation for veterinary software — the system AI agents and integrators can actually build on, and that clinics fully own.
+VetClickLab is building clear, safe practice management for veterinary clinics, with an open API that integrators and AI tools can build on, and data that clinics fully own.
 
-This roadmap is a living document. The fastest way to influence it: [open an issue](https://github.com/evangauer/openvpm/issues), [start a discussion](https://github.com/evangauer/openvpm/discussions), or 👍 the ones that matter to you. ⭐ the repo to follow along.
+This roadmap is a living document. To influence it, [open an issue](https://github.com/vetclicklab-cloud/vpm.vetclicklab/issues) or 👍 the ones that matter to you.
 
 _Last reviewed: September 2, 2026._
 
@@ -12,7 +12,7 @@ For the operational boundary used in clinic evaluations, see the [Clinic Pilot R
 
 - Core PIMS: patients, clients, scheduling, medical records (SOAP, manually entered or in-house lab results, vaccinations, prescriptions), structured visit closeout, billing and invoicing, inventory, controlled-substance records, reporting, client portal, and an auto-refreshing shared whiteboard
 - **Public REST API** (`/api/v1`) with scoped, per-practice API keys
-- **OpenVPM Agent** — a typed tool layer with explicit write opt-in, available in-app or over `POST /api/v1/agent` when a supported model provider is configured
+- **VetClickLab Agent** — a typed tool layer with explicit write opt-in, available in-app or over `POST /api/v1/agent` when a supported model provider is configured
 - **Scheduling engine** — strict conflict detection (doctor _and_ room), reschedule, open-slot availability
 - **Clinical depth** — weight-based drug dosing, vital signs, treatment plans, and an attributable closeout connecting clinical handoff, follow-up, charges, and checkout
 - **Wellness plans / recurring billing**
@@ -26,7 +26,7 @@ For the operational boundary used in clinic evaluations, see the [Clinic Pilot R
 - **Email delivery** requires a configured Resend provider and verified sending domain
 - **Hosted SMS and two-way texting** require carrier-approved registration, recorded client consent, platform activation, and are limited to the controlled one-location clinic pilot
 - **Client online card payments** require the clinic to complete Stripe Connect onboarding; manual payment recording works without it
-- **OpenVPM Agent** requires a supported model API key, must be reviewed by clinic staff, and gates writes behind explicit opt-in
+- **VetClickLab Agent** requires a supported model API key, must be reviewed by clinic staff, and gates writes behind explicit opt-in
 - **Migration and restore** require a dry run, validation, and operator-supported cutover for anything beyond the documented self-service CSV import
 
 ## 🔜 Next (no external dependencies — community PRs very welcome)
@@ -39,7 +39,7 @@ For the operational boundary used in clinic evaluations, see the [Clinic Pilot R
 ## 🌅 Later (needs integrations or larger design)
 
 - Lab integrations (IDEXX, Antech, Zoetis) — order + auto-result matching
-- **PIMS-compatibility connectors** — mirror an incumbent's public API so existing integrations work against OpenVPM, and so a clinic can keep a live, owned copy of their data
+- **PIMS-compatibility connectors** — mirror an incumbent's public API so existing integrations work against VetClickLab, and so a clinic can keep a live, owned copy of their data
 - Field and house-call workflows, herd/group medicine, and offline-capable mobile use
 - Imaging / DICOM, electronic prescribing, card-present payment terminals, production multi-location operations, general-purpose bulk marketing campaigns, localization, and a FHIR-inspired veterinary data standard
 
@@ -47,6 +47,6 @@ For the operational boundary used in clinic evaluations, see the [Clinic Pilot R
 
 1. Does it help a real clinic do real work faster? (reduce staff hours)
 2. Does it strengthen the open API / agent platform others build on?
-3. Can the community own a piece of it? (we label [`good first issue`](https://github.com/evangauer/openvpm/labels/good%20first%20issue))
+3. Can the community own a piece of it? (we label [`good first issue`](https://github.com/vetclicklab-cloud/vpm.vetclicklab/labels/good%20first%20issue))
 
 If something you need isn't here, tell us — that's how it gets prioritized.

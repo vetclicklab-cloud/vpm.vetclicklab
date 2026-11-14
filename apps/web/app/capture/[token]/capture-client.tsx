@@ -178,7 +178,7 @@ export function CaptureClient({ token }: { token: string }) {
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="flex w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-teal-300 bg-teal-50 px-4 py-10 text-teal-700 transition-colors hover:bg-teal-100"
+            className="flex w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-primary/40 bg-primary/5 px-4 py-10 text-primary transition-colors hover:bg-primary/10"
           >
             <Camera className="h-8 w-8" />
             <span className="text-sm font-medium">
@@ -197,7 +197,7 @@ export function CaptureClient({ token }: { token: string }) {
             >
               <div className="flex items-center gap-3">
                 {item.status === "uploading" && (
-                  <Loader2 className="h-4 w-4 shrink-0 animate-spin text-teal-600" />
+                  <Loader2 className="h-4 w-4 shrink-0 animate-spin text-primary" />
                 )}
                 {item.status === "done" && (
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
@@ -217,7 +217,7 @@ export function CaptureClient({ token }: { token: string }) {
               {item.status === "uploading" && (
                 <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-gray-100">
                   <div
-                    className="h-full rounded-full bg-teal-500 transition-all"
+                    className="h-full rounded-full bg-primary transition-all"
                     style={{ width: `${item.progress}%` }}
                   />
                 </div>
@@ -229,7 +229,7 @@ export function CaptureClient({ token }: { token: string }) {
                     <button
                       type="button"
                       onClick={() => void performUpload(item)}
-                      className="shrink-0 text-xs font-medium text-teal-700 hover:text-teal-800"
+                      className="shrink-0 text-xs font-medium text-primary hover:text-primary"
                     >
                       Try again
                     </button>

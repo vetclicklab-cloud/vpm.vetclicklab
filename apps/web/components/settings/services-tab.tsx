@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useMemo, useState } from "react";
 import {
   AlertTriangle,
@@ -381,10 +382,14 @@ export function ServicesTab() {
                         size="icon"
                         variant="ghost"
                         disabled={mutationPending}
-                        onClick={() => {
-                          const confirmed = window.confirm(
-                            `Archive ${service.name}? It will be removed from future charge pickers. Existing invoices stay unchanged, and treatment templates that reference it must be updated before use.`
-                          );
+                        onClick={async () => {
+                          const confirmed = await confirmAction({
+                            title: `Archive ${service.name}?`,
+                            description:
+                              "It will be removed from future charge pickers. Existing invoices stay unchanged, and treatment templates that reference it must be updated before use.",
+                            confirmLabel: "Archive service",
+                            destructive: true,
+                          });
                           if (!confirmed) return;
                           archiveMutation.mutate({
                             id: service.id,

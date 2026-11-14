@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useState } from "react";
 import {
   ShieldAlert,
@@ -229,9 +230,9 @@ export default function AdminPage() {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <ShieldAlert className="h-12 w-12 text-muted-foreground mb-4" />
-        <h2 className="font-heading text-xl font-semibold">Access Denied</h2>
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">Access Denied</h2>
         <p className="text-sm text-muted-foreground mt-1">
-          This area is for OpenVPM platform operators only.
+          This area is for VetClickLab platform operators only.
         </p>
       </div>
     );
@@ -290,7 +291,7 @@ export default function AdminPage() {
   return (
     <div>
       <div>
-        <h2 className="font-heading text-xl font-semibold">Platform Admin</h2>
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">Platform Admin</h2>
         <p className="text-sm text-muted-foreground">
           Cross-tenant operations overview
         </p>
@@ -1030,13 +1031,11 @@ export default function AdminPage() {
                               type="button"
                               disabled={busy || anyMutationPending}
                               className="rounded border border-border px-2 py-1 text-xs font-medium hover:bg-muted disabled:opacity-50"
-                              onClick={() => {
+                              onClick={async () => {
                                 if (
-                                  window.confirm(
-                                    registration.lastError
+                                  (await confirmAction({ title: "Submit brand to Telnyx?", description: registration.lastError
                                       ? `Retry ${registration.practiceName}'s brand only after confirming in the Telnyx portal that no brand was created. This can incur another non-refundable charge. Continue?`
-                                      : `Submit ${registration.practiceName}'s legal brand to Telnyx? This incurs a non-refundable provider charge.`,
-                                  )
+                                      : `Submit ${registration.practiceName}'s legal brand to Telnyx? This incurs a non-refundable provider charge.` }))
                                 ) {
                                   submitMessagingBrand.mutate({
                                     practiceId: registration.practiceId,
@@ -1059,13 +1058,11 @@ export default function AdminPage() {
                               type="button"
                               disabled={busy || anyMutationPending}
                               className="rounded border border-border px-2 py-1 text-xs font-medium hover:bg-muted disabled:opacity-50"
-                              onClick={() => {
+                              onClick={async () => {
                                 if (
-                                  window.confirm(
-                                    registration.lastError
+                                  (await confirmAction({ title: "Submit campaign to Telnyx?", description: registration.lastError
                                       ? `Retry ${registration.practiceName}'s campaign only after confirming in the Telnyx portal that no matching campaign exists. This can incur another non-refundable charge. Continue?`
-                                      : `Submit ${registration.practiceName}'s campaign to Telnyx? This incurs non-refundable provider charges.`,
-                                  )
+                                      : `Submit ${registration.practiceName}'s campaign to Telnyx? This incurs non-refundable provider charges.` }))
                                 ) {
                                   submitMessagingCampaign.mutate({
                                     practiceId: registration.practiceId,
@@ -1087,11 +1084,9 @@ export default function AdminPage() {
                               type="button"
                               disabled={busy || anyMutationPending}
                               className="rounded border border-border px-2 py-1 text-xs font-medium hover:bg-muted disabled:opacity-50"
-                              onClick={() => {
+                              onClick={async () => {
                                 if (
-                                  window.confirm(
-                                    `Assign ${registration.practiceName}'s texting numbers to its approved campaign? Sending will remain disabled.`,
-                                  )
+                                  (await confirmAction({ title: "Assign texting numbers?", description: `Assign ${registration.practiceName}'s texting numbers to its approved campaign? Sending will remain disabled.` }))
                                 ) {
                                   assignMessagingNumbers.mutate({
                                     practiceId: registration.practiceId,
@@ -1129,11 +1124,9 @@ export default function AdminPage() {
                                     type="button"
                                     disabled={anyMutationPending}
                                     className="rounded border border-green-300 bg-green-50 px-2 py-1 text-xs font-medium text-green-900 hover:bg-green-100 disabled:opacity-50"
-                                    onClick={() => {
+                                    onClick={async () => {
                                       if (
-                                        window.confirm(
-                                          `Install ${registration.practiceName}'s exact clinic-branded START, STOP, and HELP rules, then enable its Telnyx profile only after OpenVPM verifies the webhook, US-only destination list, $10 daily cap, active campaign, and assigned number? Clinic sending will remain off.`,
-                                        )
+                                        (await confirmAction({ title: "Enable Telnyx profile?", description: `Install ${registration.practiceName}'s exact clinic-branded START, STOP, and HELP rules, then enable its Telnyx profile only after VetClickLab verifies the webhook, US-only destination list, $10 daily cap, active campaign, and assigned number? Clinic sending will remain off.` }))
                                       ) {
                                         setMessagingProfileEnabled.mutate({
                                           practiceId: registration.practiceId,
@@ -1151,11 +1144,9 @@ export default function AdminPage() {
                                   type="button"
                                   disabled={anyMutationPending}
                                   className="rounded border border-destructive/40 px-2 py-1 text-xs font-medium text-destructive hover:bg-destructive/5 disabled:opacity-50"
-                                  onClick={() => {
+                                  onClick={async () => {
                                     if (
-                                      window.confirm(
-                                        `Disable ${registration.practiceName}'s Telnyx profile and keep clinic sending off?`,
-                                      )
+                                      (await confirmAction({ title: "Disable Telnyx profile?", destructive: true, description: `Disable ${registration.practiceName}'s Telnyx profile and keep clinic sending off?` }))
                                     ) {
                                       setMessagingProfileEnabled.mutate({
                                         practiceId: registration.practiceId,
@@ -1220,15 +1211,13 @@ export default function AdminPage() {
                                     : "Available after the 15-minute safety window"
                                 }
                                 className="rounded border border-destructive/40 px-2 py-1 text-xs font-medium text-destructive hover:bg-destructive/5 disabled:opacity-50"
-                                onClick={() => {
+                                onClick={async () => {
                                   const providerObject =
                                     registration.providerBrandId
                                       ? "campaign"
                                       : "brand";
                                   if (
-                                    window.confirm(
-                                      `I reviewed the Telnyx portal and confirmed NO matching ${providerObject} exists. Clear the stale lock and keep all sending disabled?`,
-                                    )
+                                    (await confirmAction({ title: "Clear stale submission lock?", destructive: true, description: `I reviewed the Telnyx portal and confirmed NO matching ${providerObject} exists. Clear the stale lock and keep all sending disabled?` }))
                                   ) {
                                     clearStaleMessagingSubmissionLock.mutate({
                                       practiceId: registration.practiceId,
@@ -1333,7 +1322,7 @@ export default function AdminPage() {
                             {event.providerCampaignStatus ?? "—"}
                           </p>
                         </td>
-                        <td className="px-3 py-2 font-mono text-[11px]">
+                        <td className="px-3 py-2 font-mono text-xs">
                           <p className="break-all">event {event.id}</p>
                           <p className="mt-1 break-all text-muted-foreground">
                             operation {event.operationId}
@@ -1516,7 +1505,7 @@ export default function AdminPage() {
               </table>
             </div>
             <p className="mt-3 text-xs text-muted-foreground">
-              Anonymous first touch is carried across openvpm.com, demo, and
+              Anonymous first touch is carried across vetclicklab.com, demo, and
               signup. Rates are visit-to-step for demo and registration, then
               step-to-step. Stalls require seven full days; an active trial with
               a collected payment method is not treated as payment-abandoned.

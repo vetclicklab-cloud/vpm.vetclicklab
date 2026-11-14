@@ -109,7 +109,7 @@ export const FIRST_GOAL_OPTIONS: readonly FirstGoalOption[] = [
 
 export const SELF_HOST_GOAL: FirstGoalOption = {
   value: "self_host",
-  label: "Evaluate self-hosting",
+  label: "Evaluate the product",
   onboardingIntent: "self_host",
 };
 

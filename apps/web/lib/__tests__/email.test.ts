@@ -137,7 +137,7 @@ describe("sendEmail", () => {
 
   it("uses Resend when a provider key is configured", async () => {
     vi.stubEnv("RESEND_API_KEY", " re_test ");
-    vi.stubEnv("EMAIL_FROM", " OpenVPM <clinic@example.com> ");
+    vi.stubEnv("EMAIL_FROM", " VetClickLab <clinic@example.com> ");
     mocks.billingEnforced.mockReturnValue(true);
     mocks.resendSend.mockResolvedValue({ data: { id: "email-1" } });
     const { EMAIL_SEND_TIMEOUT_MS, sendEmail } = await loadEmail();
@@ -153,7 +153,7 @@ describe("sendEmail", () => {
     expect(mocks.Resend).toHaveBeenCalledWith("re_test");
     expect(mocks.resendSend).toHaveBeenCalledWith(
       expect.objectContaining({
-        from: "OpenVPM <clinic@example.com>",
+        from: "VetClickLab <clinic@example.com>",
         to: "client@example.com",
         subject: "Reminder",
       }),
@@ -182,7 +182,7 @@ describe("sendEmail", () => {
 
     const [payload] = mocks.resendSend.mock.calls[0] ?? [];
     expect(payload).toMatchObject({
-      from: "OpenVPM <noreply@mail.openvpm.com>",
+      from: "VetClickLab <noreply@mail.vetclicklab.com>",
       to: "client@example.com",
       subject: "Reminder",
     });
@@ -254,14 +254,14 @@ describe("sendEmail", () => {
       sendVerificationEmail({
         to: "admin@example.com",
         name: "Dr Admin",
-        verifyUrl: "https://app.openvpm.com/verify-email?token=safe-token",
+        verifyUrl: "https://app.vetclicklab.com/verify-email?token=safe-token",
       }),
     ).resolves.toEqual({ success: true, id: "email-verify-1" });
 
     const [payload] = mocks.resendSend.mock.calls[0] ?? [];
     expect(payload).toMatchObject({
       to: "admin@example.com",
-      subject: "Verify your OpenVPM email",
+      subject: "Verify your VetClickLab email",
     });
     expect(payload.html).not.toContain("Your trial is already active.");
     expect(payload.html).toContain("Confirm email");
@@ -280,7 +280,7 @@ describe("sendEmail", () => {
       sendVerificationEmailWithProviderEvidence({
         to: "admin@example.com",
         name: "Dr Admin",
-        verifyUrl: "https://app.openvpm.com/verify-email?token=safe-token",
+        verifyUrl: "https://app.vetclicklab.com/verify-email?token=safe-token",
         attemptId,
         idempotencyKey: `auth-email:${attemptId}`,
       }),
@@ -312,7 +312,7 @@ describe("sendEmail", () => {
       sendVerificationEmailWithProviderEvidence({
         to: "private-owner@example.com",
         name: "Dr Admin",
-        verifyUrl: "https://app.openvpm.com/verify-email?token=safe-token",
+        verifyUrl: "https://app.vetclicklab.com/verify-email?token=safe-token",
         attemptId: "00000000-0000-4000-8000-000000000001",
         idempotencyKey: "auth-email:00000000-0000-4000-8000-000000000001",
       }),
@@ -340,7 +340,7 @@ describe("sendEmail", () => {
       sendVerificationEmailWithProviderEvidence({
         to: "private-owner@example.com",
         name: "Dr Admin",
-        verifyUrl: "https://app.openvpm.com/verify-email?token=safe-token",
+        verifyUrl: "https://app.vetclicklab.com/verify-email?token=safe-token",
         attemptId: "00000000-0000-4000-8000-000000000001",
         idempotencyKey: "auth-email:00000000-0000-4000-8000-000000000001",
       }),
@@ -372,7 +372,7 @@ describe("sendEmail", () => {
       sendVerificationEmailWithProviderEvidence({
         to: "private-owner@example.com",
         name: "Dr Admin",
-        verifyUrl: "https://app.openvpm.com/verify-email?token=safe-token",
+        verifyUrl: "https://app.vetclicklab.com/verify-email?token=safe-token",
         attemptId: "00000000-0000-4000-8000-000000000001",
         idempotencyKey: "auth-email:00000000-0000-4000-8000-000000000001",
       }),
@@ -401,7 +401,7 @@ describe("sendEmail", () => {
       sendVerificationEmailWithProviderEvidence({
         to: "admin@example.com",
         name: "Dr Admin",
-        verifyUrl: "https://app.openvpm.com/verify-email?token=safe-token",
+        verifyUrl: "https://app.vetclicklab.com/verify-email?token=safe-token",
         attemptId: "00000000-0000-4000-8000-000000000001",
         idempotencyKey: "auth-email:00000000-0000-4000-8000-000000000001",
       }),
@@ -670,7 +670,7 @@ describe("openvpmBrand", () => {
     const { openvpmBrand } = await loadEmailBrand();
 
     expect(openvpmBrand()).toMatchObject({
-      name: "OpenVPM",
+      name: "VetClickLab",
       companyName: "Open Vet Ops",
       supportEmail: "support@example.com",
       companyAddress: "123 Clinic Way",
@@ -688,9 +688,9 @@ describe("openvpmBrand", () => {
     const { openvpmBrand } = await loadEmailBrand();
 
     expect(openvpmBrand()).toMatchObject({
-      companyName: "OpenVPM",
-      supportEmail: "support@openvpm.com",
-      appUrl: "https://app.openvpm.com",
+      companyName: "VetClickLab",
+      supportEmail: "support@vetclicklab.com",
+      appUrl: "https://app.vetclicklab.com",
     });
     expect(openvpmBrand().companyAddress).toBeUndefined();
     expect(openvpmBrand().logoUrl).toBeUndefined();
@@ -708,8 +708,8 @@ describe("lifecycle email branding", () => {
       "EMAIL_PREFERENCE_SIGNING_SECRET",
       "stable-signing-secret-at-least-32-bytes",
     );
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.openvpm.com");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.resendSend.mockResolvedValue({ data: { id: "email-setup" } });
     const { sendSetupRecoveryEmail } = await loadEmail();
 
@@ -727,15 +727,15 @@ describe("lifecycle email branding", () => {
     expect(payload).toMatchObject({
       to: "owner@example.com",
       subject: "Resume setup for Neighborhood Veterinary",
-      replyTo: "support@openvpm.com",
+      replyTo: "support@vetclicklab.com",
       headers: {
         "List-Unsubscribe": expect.stringContaining(
-          "https://app.openvpm.com/api/email-preferences/unsubscribe?token=",
+          "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=",
         ),
         "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
       },
     });
-    expect(payload.html).toContain("https://app.openvpm.com/?setup=resume");
+    expect(payload.html).toContain("https://app.vetclicklab.com/?setup=resume");
     expect(payload.html).toContain("no call or credit card required");
     expect(payload.html).toContain("do not email patient files");
     expect(payload.html).toContain("/email-preferences?token=");
@@ -751,11 +751,11 @@ describe("lifecycle email branding", () => {
       "EMAIL_PREFERENCE_SIGNING_SECRET",
       "stable-signing-secret-at-least-32-bytes",
     );
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.openvpm.com");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
-    vi.stubEnv("EMAIL_FROM", "OpenVPM <hello@mail.openvpm.com>");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("EMAIL_FROM", "VetClickLab <hello@mail.vetclicklab.com>");
     vi.stubEnv("GROWTH_SENDER_NAME", "Alex");
-    vi.stubEnv("GROWTH_SENDER_REPLY_TO", "alex@openvpm.com");
+    vi.stubEnv("GROWTH_SENDER_REPLY_TO", "alex@vetclicklab.com");
     mocks.resendSend.mockResolvedValue({ data: { id: "email-checkout" } });
     const { sendCheckoutRecoveryEmail } = await loadEmail();
 
@@ -773,19 +773,19 @@ describe("lifecycle email branding", () => {
     const [payload] = mocks.resendSend.mock.calls[0] ?? [];
     expect(payload).toMatchObject({
       to: "owner@example.com",
-      from: "Alex at OpenVPM <hello@mail.openvpm.com>",
-      replyTo: "alex@openvpm.com",
+      from: "Alex at VetClickLab <hello@mail.vetclicklab.com>",
+      replyTo: "alex@vetclicklab.com",
       subject: "Quick question about Neighborhood Veterinary",
       headers: {
         "List-Unsubscribe": expect.stringContaining(
-          "https://app.openvpm.com/api/email-preferences/unsubscribe?token=",
+          "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=",
         ),
         "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
       },
     });
     expect(payload.html).toContain("Hi <!-- -->Sam");
     expect(payload.html).toContain(
-      "https://app.openvpm.com/feedback/stop-reason?token=",
+      "https://app.vetclicklab.com/feedback/stop-reason?token=",
     );
     expect(payload.html).toContain("reason=card");
     expect(payload.html).toContain("reason=self_host");
@@ -802,11 +802,11 @@ describe("lifecycle email branding", () => {
       "EMAIL_PREFERENCE_SIGNING_SECRET",
       "stable-signing-secret-at-least-32-bytes",
     );
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.openvpm.com");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
-    vi.stubEnv("EMAIL_FROM", "OpenVPM <hello@mail.openvpm.com>");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("EMAIL_FROM", "VetClickLab <hello@mail.vetclicklab.com>");
     vi.stubEnv("GROWTH_SENDER_NAME", "Alex");
-    vi.stubEnv("GROWTH_SENDER_REPLY_TO", "alex@openvpm.com");
+    vi.stubEnv("GROWTH_SENDER_REPLY_TO", "alex@vetclicklab.com");
     mocks.resendSend.mockResolvedValue({ data: { id: "email-growth" } });
   }
 
@@ -826,7 +826,7 @@ describe("lifecycle email branding", () => {
 
     const [payload] = mocks.resendSend.mock.calls[0] ?? [];
     expect(payload).toMatchObject({
-      from: "Alex at OpenVPM <hello@mail.openvpm.com>",
+      from: "Alex at VetClickLab <hello@mail.vetclicklab.com>",
       subject: "What didn't work for Neighborhood Veterinary?",
     });
     expect(payload.html).toContain("/feedback/stop-reason?token=");
@@ -848,7 +848,7 @@ describe("lifecycle email branding", () => {
     });
 
     const [payload] = mocks.resendSend.mock.calls[0] ?? [];
-    expect(payload.subject).toBe("One quick question about OpenVPM");
+    expect(payload.subject).toBe("One quick question about VetClickLab");
     const links = payload.html.match(/\/feedback\/nps\?token=[^"]+score=\d+/g);
     expect(links).toHaveLength(11);
     expect(payload.html).toContain("score=0");
@@ -904,9 +904,9 @@ describe("lifecycle email branding", () => {
       "EMAIL_PREFERENCE_SIGNING_SECRET",
       "stable-signing-secret-at-least-32-bytes",
     );
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.openvpm.com");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
-    vi.stubEnv("EMAIL_FROM", "OpenVPM <hello@mail.openvpm.com>");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("EMAIL_FROM", "VetClickLab <hello@mail.vetclicklab.com>");
     vi.stubEnv("GROWTH_SENDER_NAME", "Alex");
     mocks.resendSend.mockResolvedValue({ data: { id: "email-demo" } });
     const { sendDemoFollowupEmail } = await loadEmail();
@@ -924,7 +924,7 @@ describe("lifecycle email branding", () => {
     const [payload] = mocks.resendSend.mock.calls[0] ?? [];
     expect(payload).toMatchObject({
       to: "vet@clinic.com",
-      from: "Alex at OpenVPM <hello@mail.openvpm.com>",
+      from: "Alex at VetClickLab <hello@mail.vetclicklab.com>",
       subject: "The day board, with your own clinic",
       headers: {
         "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
@@ -935,7 +935,7 @@ describe("lifecycle email branding", () => {
     expect(payload.html).toContain(
       "funnel_id=11111111-1111-4111-8111-111111111111",
     );
-    expect(payload.html).toContain("you tried the OpenVPM demo");
+    expect(payload.html).toContain("you tried the VetClickLab demo");
   });
 
   it("uses a signed human link and RFC one-click headers for trial email", async () => {
@@ -948,8 +948,8 @@ describe("lifecycle email branding", () => {
       "EMAIL_PREFERENCE_SIGNING_SECRET",
       "stable-signing-secret-at-least-32-bytes",
     );
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.openvpm.com");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.resendSend.mockResolvedValue({ data: { id: "email-1" } });
     const { sendTrialEndingEmail } = await loadEmail();
 
@@ -967,13 +967,13 @@ describe("lifecycle email branding", () => {
     const [payload, providerOptions] = mocks.resendSend.mock.calls[0] ?? [];
     expect(payload.headers).toMatchObject({
       "List-Unsubscribe": expect.stringMatching(
-        /^<https:\/\/app\.openvpm\.com\/api\/email-preferences\/unsubscribe\?token=.+>$/,
+        /^<https:\/\/app\.vetclicklab\.com\/api\/email-preferences\/unsubscribe\?token=.+>$/,
       ),
       "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
     });
     expect(payload.html).toContain("/email-preferences?token=");
     expect(payload.html).toContain(
-      "This address is the OpenVPM billing contact for Neighborhood Veterinary.",
+      "This address is the VetClickLab billing contact for Neighborhood Veterinary.",
     );
     expect(payload.html).toContain("Review billing");
     expect(payload.html).toContain("no need to add it again");
@@ -982,7 +982,7 @@ describe("lifecycle email branding", () => {
       idempotencyKey: "lc:trial-ending:practice:t-3",
     });
     expect(payload.html).not.toContain(
-      'href="https://app.openvpm.com/settings?tab=billing">Manage email preferences',
+      'href="https://app.vetclicklab.com/settings?tab=billing">Manage email preferences',
     );
   });
 
@@ -996,8 +996,8 @@ describe("lifecycle email branding", () => {
       "EMAIL_PREFERENCE_SIGNING_SECRET",
       "stable-signing-secret-at-least-32-bytes",
     );
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.openvpm.com");
-    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.openvpm.com");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.vetclicklab.com");
+    vi.stubEnv("NEXT_PUBLIC_APP_URL", "https://app.vetclicklab.com");
     mocks.resendSend.mockResolvedValue({ data: { id: "email-first-win" } });
     const { sendFirstClinicWinEmail } = await loadEmail();
 
@@ -1013,10 +1013,10 @@ describe("lifecycle email branding", () => {
     const [payload, providerOptions] = mocks.resendSend.mock.calls[0] ?? [];
     expect(payload).toMatchObject({
       to: "owner@example.com",
-      subject: "Your first real OpenVPM visit is complete",
+      subject: "Your first real VetClickLab visit is complete",
       headers: {
         "List-Unsubscribe": expect.stringContaining(
-          "https://app.openvpm.com/api/email-preferences/unsubscribe?token=",
+          "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=",
         ),
         "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
       },
@@ -1063,7 +1063,7 @@ describe("lifecycle email branding", () => {
       "EMAIL_PREFERENCE_SIGNING_SECRET",
       "stable-signing-secret-at-least-32-bytes",
     );
-    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.openvpm.com");
+    vi.stubEnv("EMAIL_PREFERENCE_BASE_URL", "https://app.vetclicklab.com");
     mocks.resendSend.mockResolvedValue({ data: { id: "email-1" } });
     const { sendWelcomeEmail } = await loadEmail();
 
@@ -1082,14 +1082,14 @@ describe("lifecycle email branding", () => {
         to: "owner@example.com",
         headers: {
           "List-Unsubscribe": expect.stringContaining(
-            "https://app.openvpm.com/api/email-preferences/unsubscribe?token=",
+            "https://app.vetclicklab.com/api/email-preferences/unsubscribe?token=",
           ),
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
         },
       }),
     );
     expect(payload.html).toContain("/email-preferences?token=");
-    expect(payload.html).toContain("because you created an OpenVPM account");
+    expect(payload.html).toContain("because you created an VetClickLab account");
   });
 
   it("falls back from a blank support email before lifecycle sends", async () => {
@@ -1110,7 +1110,7 @@ describe("lifecycle email branding", () => {
     const [payload] = mocks.resendSend.mock.calls[0] ?? [];
     expect(payload).toEqual(
       expect.objectContaining({
-        replyTo: "support@openvpm.com",
+        replyTo: "support@vetclicklab.com",
         to: "owner@example.com",
       }),
     );

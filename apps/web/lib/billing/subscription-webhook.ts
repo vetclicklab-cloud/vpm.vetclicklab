@@ -29,7 +29,7 @@ import { projectStripeConversionMilestonesForEvent } from "@/lib/conversion-mile
 
 class UnmanagedStripeSubscriptionError extends Error {
   constructor(subscriptionId: string) {
-    super(`Stripe subscription ${subscriptionId} is not managed by OpenVPM.`);
+    super(`Stripe subscription ${subscriptionId} is not managed by VetClickLab.`);
     this.name = "UnmanagedStripeSubscriptionError";
   }
 }

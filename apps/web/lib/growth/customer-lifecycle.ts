@@ -36,7 +36,7 @@ function validDate(value: Date | string | null | undefined): Date | null {
 }
 
 // ---------------------------------------------------------------------------
-// Team invite: one nudge for a clinic that is using OpenVPM alone.
+// Team invite: one nudge for a clinic that is using VetClickLab alone.
 // ---------------------------------------------------------------------------
 
 export const TEAM_INVITE_DEDUPE_BASE = "lc:team-invite:v1:";

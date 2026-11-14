@@ -22,7 +22,7 @@ export const HOSTED_CLINIC_PILOT = {
     "Move one real client and pet through an appointment, clinical handoff, charges (or no-charge), and checkout.",
   guardrails: [
     "Keep your current PIMS as the source of truth until your team validates its workflow and export.",
-    "Plan to use OpenVPM online; offline changes stay only in the current tab and cannot be relied on after a close or reload.",
+    "Plan to use VetClickLab online; offline changes stay only in the current tab and cannot be relied on after a close or reload.",
     "Texting requires separate controlled activation and should not be assumed available.",
     "Herd and large-animal workflows and turnkey third-party integrations are outside this clinic pilot.",
   ],
@@ -75,13 +75,13 @@ export const ONBOARDING_INTENT_OPTIONS: readonly OnboardingIntentOption[] = [
   },
   {
     value: "self_host",
-    label: "Evaluate for self-hosting",
-    shortLabel: "Self-host",
+    // Legacy value: no longer offered at sign-up.
+    label: "Evaluate the product",
+    shortLabel: "Evaluate",
     description:
-      "Learn the same open-source product while you plan or run your own deployment.",
-    firstWin: "Brand your self-hosted workspace",
-    firstWinHint:
-      "Set clinic details first; hosted-only billing steps stay out of self-hosted setup.",
+      "Explore the product with sample data before planning a rollout.",
+    firstWin: "Brand your workspace",
+    firstWinHint: "Set clinic details first.",
     firstWinTarget: "brand",
   },
 ];

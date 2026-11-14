@@ -10,16 +10,16 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PawMark } from "@/components/brand/paw-mark";
+import { BrandMark } from "@/components/brand/brand-mark";
 import {
   buildClinicFitDemoUrl,
   buildClinicFitSignupUrl,
 } from "@/lib/funnel-analytics";
 
 export const metadata: Metadata = {
-  title: "Clinic fit and pilot readiness | OpenVPM",
+  title: "Clinic fit and pilot readiness | VetClickLab",
   description:
-    "See which OpenVPM clinic workflows are ready today, which need a supported pilot, and which are not yet available.",
+    "See which VetClickLab clinic workflows are ready today, which need a supported pilot, and which are not yet available.",
 };
 
 const READY_NOW = [
@@ -76,10 +76,10 @@ export default async function ClinicFitPage({
             href="/register"
             className="inline-flex items-center gap-2 font-semibold"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <PawMark className="h-4 w-4" />
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-brand-foreground">
+              <BrandMark className="h-4 w-4" />
             </span>
-            OpenVPM
+            VetClickLab
           </Link>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" asChild>
@@ -106,7 +106,7 @@ export default async function ClinicFitPage({
               Know what is ready before you move clinic work.
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-              OpenVPM is strongest today for companion-animal and house-call
+              VetClickLab is strongest today for companion-animal and house-call
               clinics that can work in a connected browser and start alongside
               their current PIMS. Explore the free shared demo, or start a 14-day Cloud trial with
               your card on file.
@@ -218,7 +218,7 @@ export default async function ClinicFitPage({
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild>
-              <a href="mailto:support@openvpm.com?subject=OpenVPM%20clinic%20fit%20review">
+              <a href="mailto:support@vetclicklab.com?subject=VetClickLab%20clinic%20fit%20review">
                 Plan a clinic pilot
               </a>
             </Button>

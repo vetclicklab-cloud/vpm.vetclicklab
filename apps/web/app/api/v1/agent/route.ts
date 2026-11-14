@@ -36,7 +36,7 @@ function agentRateLimitHeaders(error: AgentRateLimitedError): HeadersInit {
   };
 }
 
-// POST /api/v1/agent — run the OpenVPM Agent over the API, scoped to the key's
+// POST /api/v1/agent — run the VetClickLab Agent over the API, scoped to the key's
 // practice. This is what lets external automations (and an agent-led ops layer)
 // drive the practice through one natural-language endpoint.
 export async function POST(req: Request) {

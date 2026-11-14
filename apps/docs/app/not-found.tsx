@@ -10,7 +10,7 @@ export default function NotFound() {
         <SearchButton variant="hero" placeholder="What do you need to do?" />
       </div>
       <Link href="/" className="text-link mt-6 inline-block">
-        Back to OpenVPM Help
+        Back to VetClickLab Help
       </Link>
     </div>
   );

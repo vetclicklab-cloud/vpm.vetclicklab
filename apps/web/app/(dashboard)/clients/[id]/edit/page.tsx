@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -287,7 +288,7 @@ function EditClientForm() {
         Back to Client
       </Button>
 
-      <h2 className="font-heading text-xl font-semibold">Edit Client</h2>
+      <h2 className="font-heading text-2xl font-semibold tracking-tight">Edit Client</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Update client information
       </p>
@@ -447,12 +448,16 @@ function EditClientForm() {
             size="sm"
             className="mt-3"
             disabled={!persistedSmsPhone || phoneChanged || revokeSms.isPending}
-            onClick={() => {
+            onClick={async () => {
               setError(null);
               if (
-                window.confirm(
-                  "Stop all SMS to this phone number across the practice?",
-                )
+                await confirmAction({
+                  title: "Stop SMS to this number?",
+                  description:
+                    "Stop all SMS to this phone number across the practice?",
+                  confirmLabel: "Stop SMS",
+                  destructive: true,
+                })
               ) {
                 revokeSms.mutate({
                   id: params.id,

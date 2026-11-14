@@ -2,7 +2,7 @@ import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 import { appBaseUrl } from "@/lib/app-url";
 
 export const CANONICAL_EMAIL_PREFERENCE_BASE_URL =
-  "https://app.openvpm.com" as const;
+  "https://app.vetclicklab.com" as const;
 
 export type EmailPreferenceTarget = { kind: "recipient"; id: string };
 

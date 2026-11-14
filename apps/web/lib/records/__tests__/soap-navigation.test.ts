@@ -7,13 +7,13 @@ import {
 } from "../soap-navigation";
 
 const currentHref =
-  "https://app.openvpm.com/records/new-soap/patient-1?appointmentId=visit-1";
+  "https://app.vetclicklab.com/records/new-soap/patient-1?appointmentId=visit-1";
 
 function click(
   overrides: Partial<SoapNavigationClick> = {},
 ): SoapNavigationClick {
   return {
-    href: "https://app.openvpm.com/records",
+    href: "https://app.vetclicklab.com/records",
     currentHref,
     button: 0,
     defaultPrevented: false,
@@ -32,7 +32,7 @@ describe("SOAP editor navigation classification", () => {
     expect(
       guardedSoapNavigationDestination(
         click({
-          href: "https://app.openvpm.com/patients/one?tab=records#latest",
+          href: "https://app.vetclicklab.com/patients/one?tab=records#latest",
         }),
       ),
     ).toBe("/patients/one?tab=records#latest");

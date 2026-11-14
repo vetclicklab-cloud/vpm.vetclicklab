@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, DM_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Providers } from "@/lib/providers";
 import "@/styles/globals.css";
 
@@ -8,15 +8,10 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-});
-
 export const metadata: Metadata = {
-  title: "OpenVPM: Open-Source Veterinary Practice Management",
+  title: "VetClickLab",
   description:
-    "The first modern, open-source, API-first practice management system built for the veterinary community. Beautiful, fast, and free.",
+    "Veterinary practice management for clinic teams: schedule, records, billing and follow-ups in one place.",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
@@ -30,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${dmSans.variable} font-sans antialiased`}
+        className={`${inter.variable} font-sans antialiased`}
       >
         <a
           href="#main-content"

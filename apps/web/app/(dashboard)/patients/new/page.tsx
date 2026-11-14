@@ -236,7 +236,7 @@ function NewPatientForm() {
         Back to Patients
       </Button>
 
-      <h2 className="font-heading text-xl font-semibold">New Patient</h2>
+      <h2 className="font-heading text-2xl font-semibold tracking-tight">New Patient</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         {firstClinicDay
           ? "First clinic day, step 2 of 3: add this owner's pet. Booking is next."

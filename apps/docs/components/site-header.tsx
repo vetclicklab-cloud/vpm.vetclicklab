@@ -40,7 +40,7 @@ export function SiteHeader({ appUrl }: { appUrl: string }) {
           <SearchButton />
         </div>
         <a href={appUrl} className="btn-ghost hidden md:inline-flex">
-          Open OpenVPM <ArrowUpRight className="icon" aria-hidden="true" />
+          Open VetClickLab <ArrowUpRight className="icon" aria-hidden="true" />
         </a>
         <button
           type="button"
@@ -61,7 +61,7 @@ export function SiteHeader({ appUrl }: { appUrl: string }) {
             </Link>
           ))}
           <a href={appUrl} className="mt-1 flex items-center gap-1.5 rounded-lg px-2 py-2.5 font-medium text-primary">
-            Open OpenVPM <ArrowUpRight className="icon" aria-hidden="true" />
+            Open VetClickLab <ArrowUpRight className="icon" aria-hidden="true" />
           </a>
         </nav>
       )}

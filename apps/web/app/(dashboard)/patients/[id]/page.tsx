@@ -1007,7 +1007,7 @@ export default function PatientDetailPage() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="font-heading text-xl font-semibold">
+                <h2 className="font-heading text-2xl font-semibold tracking-tight">
                   {patient.name}
                 </h2>
                 <span
@@ -1135,13 +1135,13 @@ export default function PatientDetailPage() {
                 <ConsentSign patientId={patient.id} />
               </>
             )}
-            <Button variant="outline" size="sm" onClick={handleDownloadSummary}>
+            <Button variant="ghost" size="sm" onClick={handleDownloadSummary}>
               <FileDown className="mr-2 h-4 w-4" />
               Download Summary
             </Button>
             {canManagePatientDetail && (
               <Button
-                variant="outline"
+                variant="ghost"
                 size="sm"
                 onClick={() => router.push(`/patients/${patient.id}/edit`)}
               >
@@ -2756,13 +2756,13 @@ function MedicalRecordsTab({
                         : "Unknown"}
                     </p>
                     {note.imported ? (
-                      <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                      <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
                         Imported
                       </span>
                     ) : null}
                     <span
                       className={cn(
-                        "rounded-full px-2 py-0.5 text-[11px] font-medium",
+                        "rounded-full px-2 py-0.5 text-xs font-medium",
                         note.status === "draft"
                           ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
                           : "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
@@ -3029,7 +3029,7 @@ function SoapAddendumControl({
 
 const appointmentStatusStyles: Record<string, string> = {
   scheduled: "bg-blue-100 text-blue-700",
-  confirmed: "bg-teal-100 text-teal-700",
+  confirmed: "bg-primary/10 text-primary",
   checked_in: "bg-amber-100 text-amber-700",
   in_exam: "bg-purple-100 text-purple-700",
   checked_out: "bg-green-100 text-green-700",

@@ -6,7 +6,7 @@ import { categories, guidesIn } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "All guides",
-  description: "Every OpenVPM guide, grouped by the work it covers.",
+  description: "Every VetClickLab guide, grouped by the work it covers.",
   alternates: { canonical: "/guides" },
 };
 

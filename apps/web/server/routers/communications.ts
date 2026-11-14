@@ -65,8 +65,8 @@ function renderComposedEmail(opts: {
     : null;
   const body = escapeHtml(opts.content).replace(/\n/g, "<br />");
   const replyNotice = safeReplyToEmail
-    ? `Replies go to ${safeReplyToEmail}. Email replies are not imported into OpenVPM yet.`
-    : `Email replies are not imported into OpenVPM yet. Please contact ${safePracticeName} directly if you need to respond.`;
+    ? `Replies go to ${safeReplyToEmail}. Email replies are not imported into VetClickLab yet.`
+    : `Email replies are not imported into VetClickLab yet. Please contact ${safePracticeName} directly if you need to respond.`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -81,7 +81,7 @@ function renderComposedEmail(opts: {
       <td align="center" style="padding:24px 16px;">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;">
           <tr>
-            <td style="background:#0d9488;padding:20px 28px;">
+            <td style="background:#0f766e;padding:20px 28px;">
               <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:600;">${safePracticeName}</h1>
             </td>
           </tr>
@@ -830,7 +830,7 @@ export const communicationsRouter = createRouter({
         throw practiceNotFound();
       }
 
-      const practiceName = practice.name?.trim() || "OpenVPM";
+      const practiceName = practice.name?.trim() || "VetClickLab";
       const replyToEmail = validReplyToEmail(practice.email);
       const subject =
         input.channel === "email"
@@ -1114,7 +1114,7 @@ export const communicationsRouter = createRouter({
         throw new TRPCError({
           code: "CONFLICT",
           message:
-            "The texting provider outcome is unknown. This message will not be retried automatically; contact OpenVPM support before sending it again.",
+            "The texting provider outcome is unknown. This message will not be retried automatically; contact VetClickLab support before sending it again.",
         });
       }
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { readableAccent } from "@/lib/utils";
 import { useEffect, useId, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import { AlertCircle, CalendarX2 } from "lucide-react";
@@ -78,7 +79,7 @@ export default function PublicBookingPage() {
   if (page.isLoading) {
     return (
       <div className="flex items-center justify-center py-24">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-teal-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
       </div>
     );
   }
@@ -95,7 +96,7 @@ export default function PublicBookingPage() {
   }
 
   const data = page.data;
-  const accent = data.accentColor;
+  const accent = readableAccent(data.accentColor);
   const selectedType = data.types.find((t) => t.id === typeId);
   const selectedLocation = data.locations.find(
     (item) => item.id === locationId,
@@ -273,7 +274,7 @@ export default function PublicBookingPage() {
                 setTime("");
               }}
               required
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
             >
               <option value="" disabled>
                 Choose a location
@@ -314,7 +315,7 @@ export default function PublicBookingPage() {
               setTime("");
             }}
             required
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
           >
             <option value="" disabled>
               Choose a visit type
@@ -345,7 +346,7 @@ export default function PublicBookingPage() {
             min={dateBounds?.min}
             max={dateBounds?.max}
             required
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
           />
         </div>
 
@@ -390,7 +391,7 @@ export default function PublicBookingPage() {
                           className="peer sr-only"
                         />
                         <span
-                          className={`block rounded-md border px-3 py-1.5 text-sm transition-colors peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-teal-500 peer-focus-visible:ring-offset-2 ${
+                          className={`block rounded-md border px-3 py-1.5 text-sm transition-colors peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 ${
                             selected
                               ? "text-white"
                               : "border-gray-200 text-gray-600 hover:border-gray-400"
@@ -428,7 +429,7 @@ export default function PublicBookingPage() {
                 required
                 maxLength={128}
                 autoComplete="given-name"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
               />
             </div>
             <div>
@@ -445,7 +446,7 @@ export default function PublicBookingPage() {
                 required
                 maxLength={128}
                 autoComplete="family-name"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
               />
             </div>
           </div>
@@ -465,7 +466,7 @@ export default function PublicBookingPage() {
                 required
                 maxLength={255}
                 autoComplete="email"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
               />
             </div>
             <div>
@@ -483,7 +484,7 @@ export default function PublicBookingPage() {
                 onChange={(e) => setPhone(e.target.value)}
                 maxLength={32}
                 autoComplete="tel"
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
               />
             </div>
           </div>
@@ -516,7 +517,7 @@ export default function PublicBookingPage() {
                 onChange={(e) => setPetName(e.target.value)}
                 required
                 maxLength={128}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
               />
             </div>
             <div>
@@ -530,7 +531,7 @@ export default function PublicBookingPage() {
                 id={speciesFieldId}
                 value={species}
                 onChange={(e) => setSpecies(e.target.value as PatientSpecies)}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
               >
                 {PATIENT_SPECIES_OPTIONS.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -556,7 +557,7 @@ export default function PublicBookingPage() {
               rows={3}
               maxLength={BOOKING_REASON_MAX_LENGTH}
               placeholder="Tell us a little about what your pet needs"
-              className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+              className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
             />
           </div>
 

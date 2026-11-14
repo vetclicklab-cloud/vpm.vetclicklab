@@ -18,7 +18,7 @@ export default async function SmsPrivacyPage({
 
       <p>
         This policy applies to text messages sent by {program.displayName}{" "}
-        through OpenVPM. The clinic controls its client information; OpenVPM
+        through VetClickLab. The clinic controls its client information; VetClickLab
         processes that information to provide the messaging service.
       </p>
 
@@ -39,12 +39,12 @@ export default async function SmsPrivacyPage({
 
       <h2>No sale or promotional sharing</h2>
       <p>
-        The clinic and OpenVPM do not sell your personal information. SMS opt-in
+        The clinic and VetClickLab do not sell your personal information. SMS opt-in
         data and consent are not shared with third parties for their own
         marketing or promotional purposes.
       </p>
       <p>
-        Information may be processed by OpenVPM&apos;s infrastructure providers,
+        Information may be processed by VetClickLab&apos;s infrastructure providers,
         telecommunications carriers, and other service providers only as needed
         to deliver, secure, and support the clinic&apos;s messages or meet legal
         obligations.
@@ -55,7 +55,7 @@ export default async function SmsPrivacyPage({
         Consent, message, and opt-out records are retained as part of the
         clinic&apos;s business and medical-record systems for as long as needed
         to provide the service and meet legal or operational requirements.
-        OpenVPM uses encryption in transit, role-based access, and tenant
+        VetClickLab uses encryption in transit, role-based access, and tenant
         isolation to protect hosted records.
       </p>
 

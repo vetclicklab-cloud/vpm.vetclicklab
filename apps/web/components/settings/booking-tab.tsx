@@ -43,7 +43,7 @@ const WINDOW_OPTIONS = [
 ];
 
 const inputClass =
-  "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500";
+  "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring";
 
 export function BookingTab() {
   const utils = trpc.useUtils();
@@ -231,7 +231,7 @@ export function BookingTab() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-          <Globe className="h-5 w-5 text-teal-600" />
+          <Globe className="h-5 w-5 text-primary" />
           Online appointment requests
         </h2>
         <p className="text-sm text-gray-500 mt-1">
@@ -343,7 +343,7 @@ export function BookingTab() {
                           : null
                       )
                     }
-                    className="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                    className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-ring"
                   />
                   {label}
                 </label>
@@ -399,7 +399,7 @@ export function BookingTab() {
                   type="checkbox"
                   checked={bookableSet.has(t.id)}
                   onChange={() => toggleType(t.id)}
-                  className="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                  className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-ring"
                 />
                 {t.name}
                 <span className="text-gray-400">({t.durationMinutes} min)</span>
@@ -479,7 +479,7 @@ export function BookingTab() {
             onChange={(e) =>
               setConfig((c) => ({ ...c, allowNewClients: e.target.checked }))
             }
-            className="mt-0.5 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+            className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-ring"
           />
           <span>
             Let new clients request appointments

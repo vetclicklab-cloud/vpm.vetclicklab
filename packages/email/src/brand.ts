@@ -1,5 +1,5 @@
 /**
- * Brand identity passed into every email shell. Defaults resolve OpenVPM's
+ * Brand identity passed into every email shell. Defaults resolve VetClickLab's
  * hosted identity from env (so app + emails stay in sync), with sane fallbacks
  * for local rendering / previews.
  */
@@ -30,12 +30,12 @@ function nonBlankEnv(name: string): string | undefined {
 
 export function openvpmBrand(): Brand {
   return {
-    name: "OpenVPM",
-    companyName: nonBlankEnv("EMAIL_COMPANY_NAME") ?? "OpenVPM",
-    supportEmail: nonBlankEnv("EMAIL_SUPPORT_ADDRESS") ?? "support@openvpm.com",
+    name: "VetClickLab",
+    companyName: nonBlankEnv("EMAIL_COMPANY_NAME") ?? "VetClickLab",
+    supportEmail: nonBlankEnv("EMAIL_SUPPORT_ADDRESS") ?? "support@vetclicklab.com",
     companyAddress: nonBlankEnv("EMAIL_COMPANY_ADDRESS"),
-    appUrl: nonBlankEnv("NEXT_PUBLIC_APP_URL") ?? "https://app.openvpm.com",
-    marketingUrl: "https://openvpm.com",
+    appUrl: nonBlankEnv("NEXT_PUBLIC_APP_URL") ?? "https://app.vetclicklab.com",
+    marketingUrl: "https://vetclicklab.com",
     logoUrl: nonBlankEnv("EMAIL_LOGO_URL"),
   };
 }

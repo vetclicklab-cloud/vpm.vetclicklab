@@ -65,7 +65,7 @@ export function BookingIntakeSettings({
                 onChange={(event) =>
                   updateField(field.key, event.currentTarget.checked)
                 }
-                className="mt-1 h-4 w-4 rounded border-gray-300 accent-teal-600"
+                className="mt-1 h-4 w-4 rounded border-gray-300 accent-primary"
               />
               <label htmlFor={inputId} className="min-w-0 text-sm">
                 <span className="block font-medium text-gray-800">

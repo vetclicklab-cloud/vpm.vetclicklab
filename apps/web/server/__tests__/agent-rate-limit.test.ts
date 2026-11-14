@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => {
   class AgentNotConfiguredError extends Error {
     constructor() {
-      super("OpenVPM Agent is not configured.");
+      super("VetClickLab Agent is not configured.");
       this.name = "AgentNotConfiguredError";
     }
   }
@@ -33,7 +33,7 @@ const mocks = vi.hoisted(() => {
   }
 
   class AgentBillingAccessError extends Error {
-    constructor(message = "Add a card to your trial to try OpenVPM AI.") {
+    constructor(message = "Add a card to your trial to try VetClickLab AI.") {
       super(message);
       this.name = "AgentBillingAccessError";
     }
@@ -213,7 +213,7 @@ describe("agent router rate limits", () => {
       allowed: false,
       reason: "billing_setup_required",
       message:
-        "Add a card to your trial to try OpenVPM AI. The rest of your free trial stays available.",
+        "Add a card to your trial to try VetClickLab AI. The rest of your free trial stays available.",
     });
 
     await expect(

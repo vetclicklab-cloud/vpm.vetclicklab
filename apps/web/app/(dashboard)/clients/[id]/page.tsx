@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -184,7 +185,7 @@ export default function ClientDetailPage() {
       <div className="rounded-lg border border-border bg-card p-6">
         <div className="flex items-start justify-between">
           <div>
-            <h2 className="font-heading text-xl font-semibold">
+            <h2 className="font-heading text-2xl font-semibold tracking-tight">
               {client.firstName} {client.lastName}
             </h2>
             <div className="mt-2 flex flex-col gap-1 text-sm text-muted-foreground">
@@ -570,8 +571,16 @@ function WellnessEnrollmentPanel({
     },
   });
 
-  const handleCancelEnrollment = (enrollmentId: string) => {
-    if (!window.confirm("Cancel this wellness enrollment?")) return;
+  const handleCancelEnrollment = async (enrollmentId: string) => {
+    if (
+      !(await confirmAction({
+        title: "Cancel wellness enrollment?",
+        description: "The client's wellness plan enrollment will be cancelled.",
+        confirmLabel: "Cancel enrollment",
+        destructive: true,
+      }))
+    )
+      return;
     cancelEnrollment.mutate({ enrollmentId });
   };
   const canCreateEnrollment =

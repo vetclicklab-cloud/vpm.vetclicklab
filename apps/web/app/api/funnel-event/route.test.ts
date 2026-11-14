@@ -26,8 +26,8 @@ vi.mock("@/lib/rate-limit", async (importOriginal) => {
 
 const { OPTIONS, POST } = await import("./route");
 
-function request(body: unknown, origin = "https://openvpm.com") {
-  return new Request("https://app.openvpm.com/api/funnel-event", {
+function request(body: unknown, origin = "https://vetclicklab.com") {
+  return new Request("https://app.vetclicklab.com/api/funnel-event", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -67,7 +67,7 @@ describe("/api/funnel-event", () => {
 
     expect(response.status).toBe(202);
     expect(response.headers.get("access-control-allow-origin")).toBe(
-      "https://openvpm.com",
+      "https://vetclicklab.com",
     );
     expect(mocks.rateLimit).toHaveBeenCalledWith({
       key: "funnel-event:ip:203.0.113.10",
@@ -82,7 +82,7 @@ describe("/api/funnel-event", () => {
         anonymousId: validEvent.anonymousId,
         source: "homepage",
         path: "/patients/:id",
-        origin: "https://openvpm.com",
+        origin: "https://vetclicklab.com",
         metadata: {
           placement: "hero",
         },
@@ -105,18 +105,18 @@ describe("/api/funnel-event", () => {
 
   it("answers trusted preflight requests", async () => {
     const response = await OPTIONS(
-      new Request("https://app.openvpm.com/api/funnel-event", {
+      new Request("https://app.vetclicklab.com/api/funnel-event", {
         method: "OPTIONS",
-        headers: { origin: "https://openvpm.com" },
+        headers: { origin: "https://vetclicklab.com" },
       }),
     );
     expect(response.status).toBe(204);
     expect(response.headers.get("access-control-allow-origin")).toBe(
-      "https://openvpm.com",
+      "https://vetclicklab.com",
     );
   });
 
-  it("accepts events from the hosted demo origin", async () => {
+  it("accepts events from the hosted app origin", async () => {
     const response = await POST(
       request(
         {
@@ -125,19 +125,19 @@ describe("/api/funnel-event", () => {
           path: "/login",
           source: undefined,
         },
-        "https://demo.openvpm.com",
+        "https://app.vetclicklab.com",
       ),
     );
 
     expect(response.status).toBe(202);
     expect(response.headers.get("access-control-allow-origin")).toBe(
-      "https://demo.openvpm.com",
+      "https://app.vetclicklab.com",
     );
     expect(mocks.insertFunnelEvent).toHaveBeenCalledWith(
       {},
       expect.objectContaining({
         eventName: "demo_gate_viewed",
-        origin: "https://demo.openvpm.com",
+        origin: "https://app.vetclicklab.com",
         path: "/login",
       }),
     );

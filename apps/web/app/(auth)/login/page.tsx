@@ -9,7 +9,7 @@ import {
   isAuthEmailLengthValid,
 } from "@/lib/auth-input-policy";
 import { AUTH_PASSWORD_MAX_LENGTH } from "@/lib/auth-password-policy";
-import { PawMark } from "@/components/brand/paw-mark";
+import { BrandMark } from "@/components/brand/brand-mark";
 import { isValidEmail } from "@/lib/utils";
 import {
   buildCloudSignupUrl,
@@ -136,11 +136,11 @@ function LoginPageInner() {
     <div className="flex min-h-screen items-center justify-center bg-surface p-4">
       <div className="w-full max-w-md rounded-lg border border-border bg-card p-8">
         <div className="mb-6 text-center">
-          <span className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <PawMark className="h-6 w-6" />
+          <span className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-brand text-brand-foreground">
+            <BrandMark className="h-6 w-6" />
           </span>
           <h1 className="font-heading text-2xl font-bold text-foreground">
-            OpenVPM
+            VetClickLab
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             {DEMO_MODE
@@ -210,7 +210,7 @@ function LoginPageInner() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 maxLength={AUTH_PASSWORD_MAX_LENGTH}
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="min-h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 placeholder="Enter your password"
               />
             </div>
@@ -235,7 +235,7 @@ function LoginPageInner() {
           <p className="mt-4 text-center text-sm text-muted-foreground">
             <Link
               href="/forgot-password"
-              className="text-primary hover:underline"
+              className="inline-flex min-h-11 items-center text-primary hover:underline"
             >
               Forgot your password?
             </Link>
@@ -258,7 +258,7 @@ function LoginPageInner() {
                   path: "/login",
                 })
               }
-              className="text-primary hover:underline"
+              className="inline-flex min-h-11 items-center text-primary hover:underline"
             >
               Start my clinic
             </a>
@@ -269,7 +269,7 @@ function LoginPageInner() {
                   ? "/register"
                   : `/register?next=${encodeURIComponent(nextPath)}`
               }
-              className="text-primary hover:underline"
+              className="inline-flex min-h-11 items-center text-primary hover:underline"
             >
               Register your practice
             </Link>

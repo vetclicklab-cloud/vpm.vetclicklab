@@ -48,12 +48,7 @@ function funnelEventEndpoint(request: Request): URL {
     }
   }
 
-  const requestUrl = new URL(request.url);
-  const origin =
-    requestUrl.hostname === "demo.openvpm.com"
-      ? "https://app.openvpm.com"
-      : requestUrl.origin;
-  return new URL("/api/funnel-event", origin);
+  return new URL("/api/funnel-event", new URL(request.url).origin);
 }
 
 async function recordAcceptedDemoGate(
@@ -216,7 +211,7 @@ export async function POST(request: Request) {
 
   // Gate acceptance is a business event, so record it from the server after
   // the lead is durably captured. The demo uses a separate database, hence
-  // the server-to-server write to app.openvpm.com. It remains non-blocking for
+  // the server-to-server write to app.vetclicklab.com. It remains non-blocking for
   // the visitor if telemetry is unavailable.
   if (parsed.data.anonymousId) {
     try {

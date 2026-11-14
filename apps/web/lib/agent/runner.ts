@@ -37,7 +37,7 @@ export const AGENT_RUN_RATE_WINDOW_MS = 60_000;
 export const AGENT_RUN_ACTOR_RATE_LIMIT = 20;
 export const AGENT_RUN_PRACTICE_RATE_LIMIT = 120;
 
-const SYSTEM_PROMPT = `You are the OpenVPM Agent, an operations assistant embedded in an open-source veterinary practice management system.
+const SYSTEM_PROMPT = `You are the VetClickLab Agent, an operations assistant embedded in a veterinary practice management system.
 
 You help practice staff by using the provided tools to read and act on practice data. Guidelines:
 - Always use tools to ground answers in real data. Never invent client names, patient records, appointment times, or doses.
@@ -63,7 +63,7 @@ export interface AgentRunResult {
 export class AgentNotConfiguredError extends Error {
   constructor() {
     super(
-      "OpenVPM Agent is not configured. Configure Google Vertex AI for Gemini, or set ANTHROPIC_API_KEY for an explicit Claude model.",
+      "VetClickLab Agent is not configured. Configure Google Vertex AI for Gemini, or set ANTHROPIC_API_KEY for an explicit Claude model.",
     );
     this.name = "AgentNotConfiguredError";
   }
@@ -347,7 +347,7 @@ function buildToolSet(
 }
 
 /**
- * Run the OpenVPM Agent against a natural-language instruction. Executes a
+ * Run the VetClickLab Agent against a natural-language instruction. Executes a
  * tool-use loop scoped to the caller's practice. Write tools are gated behind
  * `allowWrites` (default false) so a read-only run can never mutate data.
  */
@@ -382,7 +382,7 @@ export async function runAgent(opts: {
   if (!aiAccess) throw new AgentPracticeNotFoundError();
   if (!aiAccess.allowed) {
     throw new AgentBillingAccessError(
-      aiAccess.message ?? "OpenVPM AI is not available.",
+      aiAccess.message ?? "VetClickLab AI is not available.",
     );
   }
 

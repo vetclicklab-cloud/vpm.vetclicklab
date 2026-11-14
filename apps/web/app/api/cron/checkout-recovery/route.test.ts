@@ -75,7 +75,7 @@ function candidate(overrides: Record<string, unknown> = {}) {
 }
 
 function request() {
-  return new Request("https://app.openvpm.com/api/cron/checkout-recovery");
+  return new Request("https://app.vetclicklab.com/api/cron/checkout-recovery");
 }
 
 beforeEach(() => {

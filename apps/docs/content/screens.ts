@@ -6,7 +6,7 @@ export const tours: ScreenTour[] = [
     title: "Dashboard",
     navLabel: "Dashboard",
     summary: "Today at a glance: visits, money in, and the follow-ups nobody has picked up yet.",
-    shot: { id: "dashboard", callouts: ["stats", "followups", "upcoming", "search", "new"], alt: "The OpenVPM dashboard" },
+    shot: { id: "dashboard", callouts: ["stats", "followups", "upcoming", "search", "new"], alt: "The VetClickLab dashboard" },
     legend: [
       { title: "Today's numbers", body: "Appointments today, pets seen, revenue this month, and invoices waiting on payment." },
       { title: "Follow-up work queue", body: "Follow-ups from signed visits that still need an owner. Pick one up so it doesn't get missed." },
@@ -56,7 +56,7 @@ export const tours: ScreenTour[] = [
     shot: {
       id: "schedule",
       callouts: ["date-nav", "views", "doctor-filter", "new-appointment", "lane", "calendar-feed"],
-      alt: "The OpenVPM schedule in day view with three doctor columns",
+      alt: "The VetClickLab schedule in day view with three doctor columns",
     },
     legend: [
       { title: "Pick the day", body: "Arrows move a day at a time. [[Today]] jumps back." },
@@ -177,7 +177,7 @@ export const tours: ScreenTour[] = [
     legend: [
       { title: "Counts", body: "Open, due or overdue, upcoming, and dismissed reminders." },
       { title: "Filters", body: "Switch between open, completed, and dismissed, or show only overdue or upcoming work." },
-      { title: "A reminder", body: "Due date (red once it's due), the pet and owner, what needs doing, and whether it came from OpenVPM or your old system." },
+      { title: "A reminder", body: "Due date (red once it's due), the pet and owner, what needs doing, and whether it came from VetClickLab or your old system." },
       { title: "Complete", body: "Mark the work done. It moves to the completed list." },
       { title: "Contact client", body: "Email or text the owner about it, with a preview first. This is always a separate step." },
       { title: "Add reminder", body: "Set a due date for follow-up on a pet." },
@@ -217,12 +217,12 @@ export const tours: ScreenTour[] = [
     title: "Agent",
     navLabel: "Agent",
     summary: "Ask about your clinic in plain words. It looks things up and, with your okay, does the work.",
-    shot: { id: "agent", focus: ["prompts", "composer"], pad: 24, callouts: ["prompts", "composer"], alt: "The OpenVPM Agent with suggested questions" },
+    shot: { id: "agent", focus: ["prompts", "composer"], pad: 24, callouts: ["prompts", "composer"], alt: "The VetClickLab Agent with suggested questions" },
     legend: [
       { title: "Suggested questions", body: "Try asking which patients are overdue for vaccines, or for a summary of today." },
       { title: "Ask anything", body: "Type a question. The agent can only make changes, like booking or recording vitals, when you allow it." },
     ],
-    goodToKnow: ["If you run OpenVPM yourself, the agent needs an AI provider set up before it can answer."],
+    goodToKnow: ["If you run VetClickLab yourself, the agent needs an AI provider set up before it can answer."],
     tasks: ["ask-the-agent"],
     keywords: ["ai", "assistant", "ask", "chat", "help"],
   },
@@ -239,7 +239,7 @@ export const tours: ScreenTour[] = [
     ],
     goodToKnow: [
       "Only admins and veterinarians see this screen.",
-      "Follow your clinic's and your state's rules for controlled drug records. OpenVPM keeps the log, but your team is responsible for it.",
+      "Follow your clinic's and your state's rules for controlled drug records. VetClickLab keeps the log, but your team is responsible for it.",
     ],
     tasks: [],
     keywords: ["dea", "controlled", "narcotics", "log", "ketamine", "schedule ii", "witness"],

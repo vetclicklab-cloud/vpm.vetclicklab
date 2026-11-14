@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
   messagingProfileAutoresponseSafetyIssues: vi.fn(),
   messagingProfileSafetyIssues: vi.fn(),
   messagingProfileAutoresponsesForClinic: vi.fn(() => []),
-  openVpmMessagingProfileName: vi.fn(() => "OpenVPM location-1"),
+  openVpmMessagingProfileName: vi.fn(() => "VetClickLab location-1"),
 }));
 
 vi.mock("@/lib/messaging/telnyx-provisioning", () => mocks);
@@ -28,7 +28,7 @@ const input = {
   providerCampaignId: "campaign-1",
   registrationStatus: "active",
   senderRegistrationStatus: "active",
-  webhookUrl: "https://app.openvpm.com/api/webhooks/telnyx",
+  webhookUrl: "https://app.vetclicklab.com/api/webhooks/telnyx",
   registrationDisplayName: "Healthy Pets",
   registrationEntityType: "PRIVATE_PROFIT",
   registrationBusinessPhone: "+15555550100",
@@ -171,7 +171,7 @@ describe("Telnyx provider readiness inspection", () => {
       expect.arrayContaining([
         "webhook URL mismatch",
         "phone number is not active on the exact messaging profile",
-        "OpenVPM carrier reconciliation is not active",
+        "VetClickLab carrier reconciliation is not active",
       ]),
     );
   });

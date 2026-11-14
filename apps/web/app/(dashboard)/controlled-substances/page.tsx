@@ -604,7 +604,7 @@ function ControlledSubstancesLogPage() {
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">
             Controlled Substance Log
           </h2>
           <p className="text-sm text-muted-foreground">

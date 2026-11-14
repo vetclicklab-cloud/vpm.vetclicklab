@@ -207,12 +207,12 @@ export function ServicePicker({
                     {service.name}
                   </span>
                   {service.code ? (
-                    <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
+                    <span className="shrink-0 font-mono text-xs text-muted-foreground">
                       {service.code}
                     </span>
                   ) : null}
                   {service.category ? (
-                    <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-[11px] text-muted-foreground">
+                    <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">
                       {service.category}
                     </span>
                   ) : null}

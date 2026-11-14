@@ -589,7 +589,7 @@ interface PracticeSettings {
     migrationCompletedModes?: Array<
       "clients" | "patients" | "vaccinations" | "soapNotes"
     >;
-    /** A clinic-admin request for an OpenVPM-assisted first setup session. */
+    /** A clinic-admin request for an VetClickLab-assisted first setup session. */
     setupHelpRequestedAt?: string;
     setupHelpRequestedByUserId?: string;
     setupHelpRequestedByEmail?: string;

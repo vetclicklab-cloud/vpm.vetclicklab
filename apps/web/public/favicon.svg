@@ -1,10 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="OpenVPM">
-  <rect width="40" height="40" rx="8" fill="#0d9488"/>
-  <g transform="translate(8 8) scale(1)" fill="#ffffff">
-    <ellipse cx="12" cy="16" rx="4.5" ry="3.5"/>
-    <ellipse cx="6" cy="9" rx="2" ry="2.5"/>
-    <ellipse cx="9.5" cy="4.5" rx="1.7" ry="2.2"/>
-    <ellipse cx="14.5" cy="4.5" rx="1.7" ry="2.2"/>
-    <ellipse cx="18" cy="9" rx="2" ry="2.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="VetClickLab">
+  <rect width="24" height="24" rx="5.5" fill="#0f766e"/>
+  <g transform="translate(3 3) scale(0.75)">
+    <path d="M5.5 8 L12 19 L18.5 8" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="6" r="2" fill="#ffffff"/>
   </g>
 </svg>

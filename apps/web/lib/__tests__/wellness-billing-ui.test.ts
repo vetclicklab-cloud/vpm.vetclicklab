@@ -52,7 +52,7 @@ describe("wellness billing UI", () => {
     const source = readFileSync("app/(dashboard)/billing/page.tsx", "utf8");
 
     expect(source).toContain("scheduled invoice");
-    expect(source).toContain("OpenVPM generates invoices for each billing date");
+    expect(source).toContain("VetClickLab generates invoices for each billing date");
     expect(source).toContain("staff still");
     expect(source).toContain("collect payment on each invoice");
   });

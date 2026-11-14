@@ -21,7 +21,7 @@ export default async function SmsTermsPage({
         By opting in, you authorize {program.displayName} to send veterinary
         service text messages to the mobile number you provide. Messages may
         include appointment reminders, vaccination and care updates,
-        prescription or follow-up notices, and two-way client support. OpenVPM
+        prescription or follow-up notices, and two-way client support. VetClickLab
         supplies the clinic&apos;s messaging technology.
       </p>
 

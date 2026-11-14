@@ -172,7 +172,7 @@ export function VitalsTrendChart({ data }: { data: VitalTrendPoint[] }) {
                 <XAxis dataKey="dateLabel" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }} tickLine={false} axisLine={{ stroke: "hsl(var(--border))" }} />
                 <YAxis width={44} tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }} tickLine={false} axisLine={{ stroke: "hsl(var(--border))" }} domain={[0, 10]} />
                 <Tooltip content={<ChartTooltip />} />
-                <Line type="monotone" dataKey="bodyConditionScore" name="BCS" stroke="#0d9488" strokeWidth={2} dot={{ r: 3 }} connectNulls />
+                <Line type="monotone" dataKey="bodyConditionScore" name="BCS" stroke="#0f766e" strokeWidth={2} dot={{ r: 3 }} connectNulls />
                 <Line type="monotone" dataKey="painScore" name="Pain" stroke="#f59e0b" strokeWidth={2} dot={{ r: 3 }} connectNulls />
               </LineChart>
             </ResponsiveContainer>

@@ -7,7 +7,7 @@ import type { MigrationImportMode } from "@/lib/import/sources";
 export interface JourneyState {
   /** Care model used to personalize the setup language and first-day plan. */
   clinicModel: ClinicModel;
-  /** The concrete outcome the clinic wants from its first OpenVPM session. */
+  /** The concrete outcome the clinic wants from its first VetClickLab session. */
   firstGoal: FirstGoal;
   /** The adoption path selected on the first setup step. */
   onboardingIntent: OnboardingIntent;

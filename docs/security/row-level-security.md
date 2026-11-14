@@ -1,6 +1,6 @@
 # Row-Level Security (RLS)
 
-OpenVPM enforces multi-tenant isolation in two layers:
+VetClickLab enforces multi-tenant isolation in two layers:
 
 1. **Application layer** — every query is scoped by `ctx.practiceId` (tRPC) or
    the API key's practice. This is the primary guard and works on any database.

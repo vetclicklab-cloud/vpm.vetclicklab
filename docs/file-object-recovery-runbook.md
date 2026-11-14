@@ -1,6 +1,6 @@
 # File and Object Recovery Runbook
 
-This runbook covers OpenVPM attachment and per-practice database-backup
+This runbook covers VetClickLab attachment and per-practice database-backup
 recovery across an independent object-storage failure domain. The feature is
 not considered operational until every item in **Activation gate** has passed.
 

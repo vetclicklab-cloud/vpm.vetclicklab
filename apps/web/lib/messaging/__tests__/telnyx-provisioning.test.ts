@@ -205,8 +205,8 @@ describe("Telnyx provisioning requests", () => {
 
     await expect(
       createMessagingProfile({
-        name: "Healthy Pets — OpenVPM",
-        webhookUrl: "https://app.openvpm.com/api/webhooks/telnyx",
+        name: "Healthy Pets — VetClickLab",
+        webhookUrl: "https://app.vetclicklab.com/api/webhooks/telnyx",
       }),
     ).resolves.toEqual({ id: "3fa85f64-5717-4562-b3fc-2c963f66afa6" });
 
@@ -218,9 +218,9 @@ describe("Telnyx provisioning requests", () => {
       String(fetchMock.mock.calls[0]?.[1]?.body),
     ) as Record<string, unknown>;
     expect(body).toEqual({
-      name: "Healthy Pets — OpenVPM",
+      name: "Healthy Pets — VetClickLab",
       enabled: false,
-      webhook_url: "https://app.openvpm.com/api/webhooks/telnyx",
+      webhook_url: "https://app.vetclicklab.com/api/webhooks/telnyx",
       webhook_api_version: "2",
       whitelisted_destinations: ["US"],
       daily_spend_limit_enabled: true,
@@ -233,7 +233,7 @@ describe("Telnyx provisioning requests", () => {
     vi.stubEnv("TELNYX_API_KEY", "KEY123");
     const profileId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
     const locationId = "00000000-0000-0000-0000-000000000002";
-    const webhookUrl = "https://app.openvpm.com/api/webhooks/telnyx";
+    const webhookUrl = "https://app.vetclicklab.com/api/webhooks/telnyx";
     vi.stubGlobal(
       "fetch",
       vi.fn(
@@ -483,7 +483,7 @@ describe("Telnyx provisioning requests", () => {
         },
         {
           id: "profile-1",
-          name: "OpenVPM provision location-1",
+          name: "VetClickLab provision location-1",
           webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         },
       ),
@@ -507,7 +507,7 @@ describe("Telnyx provisioning requests", () => {
           JSON.stringify({
             data: {
               id: profileId,
-              name: "OpenVPM provision location-1",
+              name: "VetClickLab provision location-1",
               enabled: true,
             },
           }),
@@ -572,7 +572,7 @@ describe("Telnyx provisioning requests", () => {
 
       await expect(
         createMessagingProfile({
-          name: "OpenVPM provision location-1",
+          name: "VetClickLab provision location-1",
           webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         }),
       ).rejects.toBeInstanceOf(TelnyxMutationUncertainError);
@@ -590,7 +590,7 @@ describe("Telnyx provisioning requests", () => {
 
     const request = () =>
       createMessagingProfile({
-        name: "OpenVPM provision location-1",
+        name: "VetClickLab provision location-1",
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
       });
     await expect(request()).rejects.toBeInstanceOf(
@@ -612,7 +612,7 @@ describe("Telnyx provisioning requests", () => {
         autoresponseInventoryResponse([
           {
             id: "profile-1",
-            name: "OpenVPM provision location-1",
+            name: "VetClickLab provision location-1",
             webhook_url: "https://app.example.com/api/webhooks/telnyx",
             enabled: false,
           },
@@ -637,11 +637,11 @@ describe("Telnyx provisioning requests", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     await expect(
-      findMessagingProfilesByName("OpenVPM provision location-1"),
+      findMessagingProfilesByName("VetClickLab provision location-1"),
     ).resolves.toEqual([
       {
         id: "profile-1",
-        name: "OpenVPM provision location-1",
+        name: "VetClickLab provision location-1",
         webhookUrl: "https://app.example.com/api/webhooks/telnyx",
         enabled: false,
       },
@@ -656,7 +656,7 @@ describe("Telnyx provisioning requests", () => {
     ]);
 
     expect(String(fetchMock.mock.calls[0]?.[0])).toContain(
-      "filter%5Bname%5D%5Beq%5D=OpenVPM+provision+location-1",
+      "filter%5Bname%5D%5Beq%5D=VetClickLab+provision+location-1",
     );
     expect(String(fetchMock.mock.calls[1]?.[0])).toContain(
       "filter%5Bphone_number%5D=%2B15555550100",

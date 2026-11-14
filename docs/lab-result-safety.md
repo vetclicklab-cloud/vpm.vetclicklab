@@ -1,6 +1,6 @@
 # Lab result safety workflow
 
-OpenVPM supports manual and in-house result recording today. External lab
+VetClickLab supports manual and in-house result recording today. External lab
 ordering remains disabled until a real provider adapter is configured; this
 workflow does not call a laboratory vendor.
 

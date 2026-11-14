@@ -16,9 +16,9 @@ import type { Brand } from "../brand";
 import { Footer } from "./Footer";
 
 /**
- * The single branded shell every OpenVPM email uses: soft slate page, a brand
+ * The single branded shell every VetClickLab email uses: soft slate page, a brand
  * wordmark header, a clean white rounded card for the body, and the footer.
- * Visually matched to openvpm.com (teal-600, DM Sans heading, Inter body).
+ * Visually matched to the VetClickLab app (deep teal, Inter throughout).
  */
 export function EmailLayout({
   brand,
@@ -93,7 +93,7 @@ export function EmailLayout({
                       margin: 0,
                     }}
                   >
-                    OpenVPM
+                    VetClickLab
                   </Text>
                 </Column>
               </Row>

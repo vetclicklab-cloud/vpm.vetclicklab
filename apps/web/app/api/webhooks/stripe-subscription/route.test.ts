@@ -871,8 +871,8 @@ describe("Stripe subscription webhook", () => {
 });
 
 
-describe("OpenVPM webhook account isolation", () => {
-  it("uses its own subscription client and scopes signed completion to OpenVPM clinics", async () => {
+describe("VetClickLab webhook account isolation", () => {
+  it("uses its own subscription client and scopes signed completion to VetClickLab clinics", async () => {
     mocks.constructSubscriptionWebhookEvent.mockResolvedValue(checkoutCompletedEvent());
     mocks.retrieveOpenvpmSubscription.mockResolvedValue(stripeSubscription("trialing"));
     mocks.updateReturns.push([{ id: PRACTICE_ID }], [{ id: PRACTICE_ID }]);

@@ -1235,7 +1235,7 @@ function RecordsPageContent() {
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">
             Medical Records
           </h2>
           <p className="text-sm text-muted-foreground">
@@ -1375,7 +1375,7 @@ function RecordsPageContent() {
       {selectedPatient &&
       linkedAppointmentId &&
       linkedPatientId === selectedPatient.id ? (
-        <div className="mt-3 flex flex-col gap-2 rounded-lg border border-teal-300 bg-teal-50 px-4 py-3 text-sm text-teal-950 dark:border-teal-900 dark:bg-teal-950/30 dark:text-teal-100 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-3 flex flex-col gap-2 rounded-lg border border-primary/40 bg-primary/5 px-4 py-3 text-sm text-foreground dark:border-primary/40 dark:bg-primary/20 dark:text-primary sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="font-medium">Recording for this visit</p>
             <p className="mt-0.5 text-xs">
@@ -1531,13 +1531,13 @@ function RecordsPageContent() {
                                           : "No date"}
                                       </p>
                                       {note.imported ? (
-                                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
                                           Imported
                                         </span>
                                       ) : null}
                                       <span
                                         className={cn(
-                                          "rounded-full px-2 py-0.5 text-[11px] font-medium",
+                                          "rounded-full px-2 py-0.5 text-xs font-medium",
                                           note.status === "draft"
                                             ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
                                             : "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
@@ -1548,7 +1548,7 @@ function RecordsPageContent() {
                                           : "Finalized"}
                                       </span>
                                       {note.correctionId ? (
-                                        <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[11px] font-medium text-destructive">
+                                        <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-medium text-destructive">
                                           Entered in error
                                         </span>
                                       ) : null}

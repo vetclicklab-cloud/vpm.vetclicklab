@@ -1,5 +1,6 @@
 "use client";
 
+import { FilterChips } from "@/components/ui/filter-chips";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -217,7 +218,7 @@ export default function CareRemindersPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Care reminders</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Follow-ups</h2>
           <p className="mt-1 max-w-3xl text-sm text-muted-foreground">
             Internal follow-up work for each patient. This queue never sends an
             email or text automatically; client outreach remains a separate,
@@ -623,48 +624,31 @@ export default function CareRemindersPage() {
               identity so retrying a migration cannot duplicate them.
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Button
-              size="sm"
-              variant={status === "open" ? "default" : "outline"}
-              onClick={() => setStatus("open")}
-            >
-              Open
-            </Button>
-            <Button
-              size="sm"
-              variant={status === "completed" ? "default" : "outline"}
-              onClick={() => {
-                setStatus("completed");
-                setDue("all");
+          <div className="flex flex-col items-start gap-2 sm:items-end">
+            <FilterChips
+              label="Reminder status"
+              value={status}
+              onChange={(next) => {
+                setStatus(next);
+                if (next !== "open") setDue("all");
               }}
-            >
-              Completed
-            </Button>
-            <Button
-              size="sm"
-              variant={status === "dismissed" ? "default" : "outline"}
-              onClick={() => {
-                setStatus("dismissed");
-                setDue("all");
-              }}
-            >
-              Dismissed
-            </Button>
+              options={[
+                { value: "open", label: "Open" },
+                { value: "completed", label: "Completed" },
+                { value: "dismissed", label: "Dismissed" },
+              ]}
+            />
             {status === "open" ? (
-              <>
-                {(["all", "overdue", "upcoming"] as const).map((value) => (
-                  <Button
-                    key={value}
-                    size="sm"
-                    variant={due === value ? "secondary" : "ghost"}
-                    onClick={() => setDue(value)}
-                    className="capitalize"
-                  >
-                    {value}
-                  </Button>
-                ))}
-              </>
+              <FilterChips
+                label="Due date"
+                value={due}
+                onChange={setDue}
+                options={[
+                  { value: "all", label: "All due dates" },
+                  { value: "overdue", label: "Overdue" },
+                  { value: "upcoming", label: "Upcoming" },
+                ]}
+              />
             ) : null}
           </div>
         </CardHeader>
@@ -839,7 +823,7 @@ export default function CareRemindersPage() {
                           <Badge
                             variant={item.imported ? "secondary" : "outline"}
                           >
-                            {item.imported ? "Imported" : "OpenVPM"}
+                            {item.imported ? "Imported" : "VetClickLab"}
                           </Badge>
                         </td>
                         <td className="py-4 text-right">

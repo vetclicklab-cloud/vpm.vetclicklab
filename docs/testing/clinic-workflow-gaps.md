@@ -1,6 +1,6 @@
 # Clinic workflow regression and release checks
 
-Baseline: production `app.openvpm.com` was verified against `main` commit
+Baseline: production `app.vetclicklab.com` was verified against `main` commit
 `a6e65362b73779a121d3fa773b2184fc4ae164ea` on September 14, 2026.
 
 ## Reported gaps and fixes

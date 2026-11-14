@@ -316,11 +316,11 @@ export default function PatientDuplicatesPage() {
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to patients
           </Button>
-          <h2 className="font-heading text-xl font-semibold">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">
             Review duplicate patient identities
           </h2>
           <p className="mt-1 max-w-3xl text-sm text-muted-foreground">
-            OpenVPM only suggests same-owner matches. A merge is permitted when
+            VetClickLab only suggests same-owner matches. A merge is permitted when
             the retiring chart has no clinical, medication, controlled,
             financial, or other retained history.
           </p>

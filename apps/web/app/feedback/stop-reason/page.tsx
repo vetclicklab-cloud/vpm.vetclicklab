@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BrandBadge } from "@/components/brand/paw-mark";
+import { BrandBadge } from "@/components/brand/brand-mark";
 import { openvpmBrand } from "@openpims/email";
 import {
   isStopReason,
@@ -12,7 +12,7 @@ import {
 import { verifyStopReasonToken } from "@/lib/growth/stop-reason-token";
 
 export const metadata: Metadata = {
-  title: "What got in the way? - OpenVPM",
+  title: "What got in the way? - VetClickLab",
   robots: { index: false, follow: false },
 };
 
@@ -21,7 +21,7 @@ const FOLLOW_UP: Record<StopReason, string> = {
   price: "We'll reach out personally to talk through pricing for a clinic your size.",
   timing: "No pressure. Your workspace stays saved, and we won't send more setup reminders.",
   missing_feature: "We'll reach out personally to learn what you need and whether it's on the way.",
-  self_host: "OpenVPM is open source, so you can run it yourself. The setup guide is in the repository README.",
+  self_host: "Thanks for telling us. We'll reach out personally to understand your deployment needs.",
   other: "We'll read your note and reach out personally.",
 };
 
@@ -56,9 +56,9 @@ export default async function StopReasonPage({
           href="/"
           className="inline-flex items-center gap-2.5 text-foreground"
         >
-          <BrandBadge className="h-9 w-9 rounded-xl" pawClassName="h-5 w-5" />
+          <BrandBadge className="h-9 w-9 rounded-xl" markClassName="h-5 w-5" />
           <span className="font-heading text-lg font-semibold tracking-tight">
-            OpenVPM
+            VetClickLab
           </span>
         </Link>
 
@@ -83,14 +83,6 @@ export default async function StopReasonPage({
             <p className="text-sm leading-6 text-muted-foreground">
               {FOLLOW_UP[saved]}
             </p>
-            {saved === "self_host" ? (
-              <a
-                className="inline-block text-sm font-medium underline"
-                href="https://github.com/evangauer/openvpm"
-              >
-                OpenVPM on GitHub
-              </a>
-            ) : null}
           </div>
         ) : (
           <form
@@ -103,7 +95,7 @@ export default async function StopReasonPage({
                 What got in the way?
               </h1>
               <p className="text-sm leading-6 text-muted-foreground">
-                Your answer goes straight to the OpenVPM team, and a person
+                Your answer goes straight to the VetClickLab team, and a person
                 will follow up.
               </p>
             </div>

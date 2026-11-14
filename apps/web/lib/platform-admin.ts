@@ -1,6 +1,6 @@
 /**
  * Platform (operator) admin — distinct from a practice's own "admin" role. These
- * are OpenVPM staff who can see the cross-tenant operations dashboard. Gated by
+ * are VetClickLab staff who can see the cross-tenant operations dashboard. Gated by
  * an env allowlist so there's no in-app way to escalate into it.
  */
 

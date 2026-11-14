@@ -78,7 +78,7 @@ function record(
   else tally.failed++;
 }
 
-/** Hosted clinics a person at OpenVPM may write to about their account. */
+/** Hosted clinics a person at VetClickLab may write to about their account. */
 const reachablePractice = sql`
   p.deleted_at is null
   and p.recovery_hold = false

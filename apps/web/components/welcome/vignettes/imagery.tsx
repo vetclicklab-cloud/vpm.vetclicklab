@@ -66,7 +66,7 @@ export function ImageryBackdrop({ card }: { card: WelcomeCardId }) {
         <circle cx="168" cy="18" r="52" fill={scene.blob} opacity="0.45" />
         <circle cx="22" cy="138" r="64" fill={scene.blob2} opacity="0.5" />
         <circle cx="120" cy="128" r="26" fill="#ffffff" opacity="0.35" />
-        {/* Paw motif, echoing the sidebar PawMark */}
+        {/* Decorative paw motif */}
         <g fill="#ffffff" opacity="0.65" transform="translate(28 26) scale(1.5)">
           <ellipse cx="12" cy="16" rx="4.5" ry="3.5" />
           <ellipse cx="6" cy="9" rx="2" ry="2.5" />

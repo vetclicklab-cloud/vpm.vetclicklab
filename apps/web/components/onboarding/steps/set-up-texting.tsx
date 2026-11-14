@@ -97,7 +97,7 @@ export function SetUpTextingStep({
       messaging.launchEligible === false
     ) {
       return hosted
-        ? "Carrier registration is approved, but outbound texting remains off until OpenVPM approves this clinic location for the controlled pilot."
+        ? "Carrier registration is approved, but outbound texting remains off until VetClickLab approves this clinic location for the controlled pilot."
         : "Carrier registration is approved, but outbound texting remains off until your administrator enables this clinic location.";
     }
     if (isActive) return "Texting is active.";
@@ -106,7 +106,7 @@ export function SetUpTextingStep({
     }
     if (messaging.registrationStatus === "suspended") {
       return hosted
-        ? "Texting is suspended. Review Messaging settings and contact OpenVPM support."
+        ? "Texting is suspended. Review Messaging settings and contact VetClickLab support."
         : "Texting is suspended. Review Messaging settings and contact your administrator.";
     }
     return "Texting is not ready yet. Review Messaging settings before sending.";
@@ -137,10 +137,10 @@ export function SetUpTextingStep({
               </Link>{" "}
               or{" "}
               <a
-                href="mailto:support@openvpm.com?subject=OpenVPM%20texting%20pilot"
+                href="mailto:support@vetclicklab.com?subject=VetClickLab%20texting%20pilot"
                 className="font-medium text-emerald-700 underline underline-offset-2"
               >
-                contact OpenVPM support
+                contact VetClickLab support
               </a>{" "}
               {hasAnyNumber
                 ? " for help with the existing setup."
@@ -157,7 +157,7 @@ export function SetUpTextingStep({
         ) : (
           <>
             Text your clients about appointments, reminders, and results, and
-            let them text you back. OpenVPM can set up a new local texting
+            let them text you back. VetClickLab can set up a new local texting
             number; your existing clinic voice line stays unchanged. This is
             optional, so skip it and set it up later if you like.
           </>
@@ -193,7 +193,7 @@ export function SetUpTextingStep({
                 </p>
                 <p className="text-xs text-slate-500">
                   {hosted
-                    ? "Email appointment reminders remain available while OpenVPM approves clinics for texting setup."
+                    ? "Email appointment reminders remain available while VetClickLab approves clinics for texting setup."
                     : "Email appointment reminders remain available while your administrator configures texting."}
                 </p>
               </div>

@@ -27,7 +27,7 @@ const { createStopReasonToken } = await import(
 const PRACTICE_ID = "00000000-0000-4000-8000-0000000000aa";
 
 function post(fields: Record<string, string>) {
-  return new Request("https://app.openvpm.com/api/growth/stop-reason", {
+  return new Request("https://app.vetclicklab.com/api/growth/stop-reason", {
     method: "POST",
     body: new URLSearchParams(fields),
   });

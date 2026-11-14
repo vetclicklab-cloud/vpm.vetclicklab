@@ -19,13 +19,13 @@ describe("portal branding UI", () => {
     expect(shell).toContain("practice?.logoUrl");
     expect(shell).toContain("practiceName");
     expect(shell).toContain("Pet Portal");
-    expect(shell).toContain("Powered by OpenVPM");
+    expect(shell).toContain("Powered by VetClickLab");
   });
 
   it("keeps safe branding fallbacks for unbranded or invalid links", () => {
-    expect(shell).toContain('practice?.name ?? "OpenVPM"');
+    expect(shell).toContain('practice?.name ?? "VetClickLab"');
     expect(shell).toContain("DEFAULT_PORTAL_BRAND_COLOR");
-    expect(shell).toContain("<PawMark");
+    expect(shell).toContain("<BrandMark");
     expect(shell).toContain('initials(practiceName) || "VP"');
     expect(shell).toContain('retry: false');
   });

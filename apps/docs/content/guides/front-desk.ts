@@ -77,7 +77,7 @@ export const frontDesk: Guide[] = [
     area: "schedule",
     audience: "Front desk, admins",
     minutes: 4,
-    before: "The client and pet should already be in OpenVPM. Search for them first with **⌘K**. New to the clinic? [Add the client and pet](/guides/add-a-new-client-and-pet) first.",
+    before: "The client and pet should already be in VetClickLab. Search for them first with **⌘K**. New to the clinic? [Add the client and pet](/guides/add-a-new-client-and-pet) first.",
     keywords: ["schedule", "booking", "new appointment", "visit", "recurring", "repeat"],
     steps: [
       {
@@ -172,7 +172,7 @@ export const frontDesk: Guide[] = [
         id: "tell",
         title: "Make sure the client knows",
         body: [
-          "Confirm the client has the new time. Whether OpenVPM can email or text them depends on your clinic's setup, so check the client's message history when it matters.",
+          "Confirm the client has the new time. Whether VetClickLab can email or text them depends on your clinic's setup, so check the client's message history when it matters.",
         ],
       },
     ],
@@ -345,14 +345,14 @@ export const frontDesk: Guide[] = [
         id: "updates",
         title: "Let it update on its own",
         body: [
-          "Book or change a visit in OpenVPM and your calendar picks it up. Calendar apps check on their own schedule, so a change can take a while to appear.",
+          "Book or change a visit in VetClickLab and your calendar picks it up. Calendar apps check on their own schedule, so a change can take a while to appear.",
           "The calendar shows the last week and the next 60 days. Cancelled visits and no-shows are left out.",
         ],
       },
     ],
     faq: [
       ["Someone who shouldn't have the link has it", "An admin can choose [[Get a new link]] in the same panel. The old link stops working for everyone, so the team will need to subscribe again with the new one."],
-      ["Can I change visits from my calendar?", "No. The calendar is read-only. Make changes on the [[Schedule]] in OpenVPM."],
+      ["Can I change visits from my calendar?", "No. The calendar is read-only. Make changes on the [[Schedule]] in VetClickLab."],
     ],
     next: "check-in-a-patient",
   },

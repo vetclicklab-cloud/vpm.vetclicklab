@@ -76,7 +76,7 @@ export async function expireDuePrescriptions(database: Database = db) {
         refillsAfter: prescription.refillsRemaining,
         reason: "Prescription end date elapsed.",
         actorId: null,
-        actorName: "OpenVPM system",
+        actorName: "VetClickLab system",
         operationId: null,
       });
       expired.push(updated);

@@ -69,7 +69,7 @@ describe("care reminder safety contract", () => {
       'href: "/care-reminders"',
     );
     expect(read("components/layout/top-bar.tsx")).toContain(
-      '"/care-reminders": "Care Reminders"',
+      '"/care-reminders": "Follow-ups"',
     );
   });
 });

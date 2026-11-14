@@ -15,7 +15,6 @@ import {
   Receipt,
   Package,
   MessageSquare,
-  Syringe,
   BellRing,
   ClipboardList,
   BarChart3,
@@ -28,7 +27,7 @@ import {
   ChevronRight,
   LogOut,
 } from "lucide-react";
-import { PawMark } from "@/components/brand/paw-mark";
+import { BrandMark } from "@/components/brand/brand-mark";
 
 type UserRole =
   | "admin"
@@ -49,70 +48,75 @@ function isUserRole(role?: string | null): role is UserRole {
   return allRoles.includes(role as UserRole);
 }
 
+type NavGroup = "Today" | "Patients" | "Money & stock" | "Practice";
+
 const navItems: {
   href: string;
   label: string;
   icon: React.ElementType;
   roles: UserRole[];
+  group: NavGroup;
+  /** Extra path prefixes that keep this item highlighted. */
+  alsoActive?: string[];
 }[] = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard, roles: allRoles },
-  { href: "/patients", label: "Patients", icon: PawPrint, roles: allRoles },
-  { href: "/clients", label: "Clients", icon: Users, roles: allRoles },
-  { href: "/schedule", label: "Schedule", icon: Calendar, roles: allRoles },
-  { href: "/records", label: "Records", icon: FileText, roles: allRoles },
+  { href: "/", label: "Dashboard", icon: LayoutDashboard, roles: allRoles, group: "Today" },
+  { href: "/schedule", label: "Schedule", icon: Calendar, roles: allRoles, group: "Today" },
+  { href: "/whiteboard", label: "Whiteboard", icon: ClipboardList, roles: allRoles, group: "Today" },
+  { href: "/inbox", label: "Inbox", icon: MessageSquare, roles: allRoles, group: "Today" },
+  { href: "/patients", label: "Patients", icon: PawPrint, roles: allRoles, group: "Patients" },
+  { href: "/clients", label: "Clients", icon: Users, roles: allRoles, group: "Patients" },
+  { href: "/records", label: "Records", icon: FileText, roles: allRoles, group: "Patients" },
   {
     href: "/lab-results",
     label: "Lab Inbox",
     icon: FlaskConical,
     roles: ["admin", "veterinarian", "technician", "front_desk", "viewer"],
-  },
-  { href: "/billing", label: "Billing", icon: Receipt, roles: allRoles },
-  { href: "/inventory", label: "Inventory", icon: Package, roles: allRoles },
-  { href: "/inbox", label: "Inbox", icon: MessageSquare, roles: allRoles },
-  {
-    href: "/recalls",
-    label: "Recalls",
-    icon: Syringe,
-    roles: ["admin", "veterinarian", "front_desk"],
+    group: "Patients",
   },
   {
+    // One home for follow-up work; vaccination recalls and appointment
+    // reminders are reached from this page's header.
     href: "/care-reminders",
-    label: "Care Reminders",
+    label: "Follow-ups",
     icon: BellRing,
     roles: allRoles,
+    group: "Patients",
+    alsoActive: ["/recalls"],
   },
-  {
-    href: "/migration-archive",
-    label: "Imported History",
-    icon: Archive,
-    roles: allRoles,
-  },
-  {
-    href: "/whiteboard",
-    label: "Whiteboard",
-    icon: ClipboardList,
-    roles: allRoles,
-  },
-  {
-    href: "/agent",
-    label: "Agent",
-    icon: Bot,
-    roles: ["admin", "veterinarian"],
-  },
+  { href: "/billing", label: "Billing", icon: Receipt, roles: allRoles, group: "Money & stock" },
+  { href: "/inventory", label: "Inventory", icon: Package, roles: allRoles, group: "Money & stock" },
   {
     href: "/controlled-substances",
     label: "Controlled Substances",
     icon: ShieldAlert,
     roles: ["admin", "veterinarian"],
+    group: "Money & stock",
   },
   {
     href: "/reports",
     label: "Reports",
     icon: BarChart3,
     roles: ["admin", "veterinarian"],
+    group: "Practice",
   },
-  { href: "/settings", label: "Settings", icon: Settings, roles: ["admin"] },
+  {
+    href: "/migration-archive",
+    label: "Imported History",
+    icon: Archive,
+    roles: allRoles,
+    group: "Practice",
+  },
+  {
+    href: "/agent",
+    label: "Agent",
+    icon: Bot,
+    roles: ["admin", "veterinarian"],
+    group: "Practice",
+  },
+  { href: "/settings", label: "Settings", icon: Settings, roles: ["admin"], group: "Practice" },
 ];
+
+const navGroups: NavGroup[] = ["Today", "Patients", "Money & stock", "Practice"];
 
 type SidebarProps = {
   className?: string;
@@ -168,12 +172,12 @@ export function Sidebar({
               className="h-8 w-8 rounded-lg object-cover"
             />
           ) : (
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <PawMark className="h-4 w-4 text-primary-foreground" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
+              <BrandMark className="h-4 w-4 text-brand-foreground" />
             </div>
           )}
           {!isCollapsed && (
-            <span className="font-heading text-lg font-semibold">OpenVPM</span>
+            <span className="font-heading text-lg font-semibold">VetClickLab</span>
           )}
         </Link>
       </div>
@@ -184,12 +188,26 @@ export function Sidebar({
         role="navigation"
         aria-label="Main navigation"
       >
-        <ul className="space-y-0.5">
-          {visibleNavItems.map((item) => {
+        {navGroups.map((group) => {
+          const groupItems = visibleNavItems.filter((item) => item.group === group);
+          if (groupItems.length === 0) return null;
+          return (
+            <div key={group} className="mt-3 first:mt-0">
+              {isCollapsed ? (
+                <div className="mx-3 mb-2 border-t border-border" aria-hidden="true" />
+              ) : (
+                <p className="px-3 pb-1 text-xs font-medium text-muted-foreground">
+                  {group}
+                </p>
+              )}
+        <ul className="space-y-0.5" aria-label={group}>
+          {groupItems.map((item) => {
             const isActive =
               item.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(item.href);
+                : [item.href, ...(item.alsoActive ?? [])].some((prefix) =>
+                    pathname.startsWith(prefix),
+                  );
 
             return (
               <li key={item.href}>
@@ -201,7 +219,7 @@ export function Sidebar({
                   className={cn(
                     "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     isActive
-                      ? "bg-primary/10 text-primary"
+                      ? "bg-primary/[0.08] text-primary"
                       : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
                   )}
                 >
@@ -224,7 +242,7 @@ export function Sidebar({
                   unreadInboxCount > 0 ? (
                     <span
                       aria-label={`${unreadInboxCount} unread inbox conversations`}
-                      className="ml-auto rounded-full bg-primary px-1.5 py-0.5 text-[10px] font-semibold leading-none text-primary-foreground"
+                      className="ml-auto rounded-full bg-primary px-1.5 py-0.5 text-xs font-semibold leading-none text-primary-foreground"
                     >
                       {unreadInboxLabel}
                     </span>
@@ -234,13 +252,16 @@ export function Sidebar({
             );
           })}
         </ul>
+            </div>
+          );
+        })}
       </nav>
 
       {/* User & Collapse */}
       <div className="border-t border-border p-2">
         {session?.user && !isCollapsed && (
           <div className="mb-2 flex items-center gap-3 rounded-md px-3 py-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-xs font-medium text-primary">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/[0.08] text-xs font-medium text-primary">
               {session.user.name
                 ?.split(" ")
                 .map((n) => n[0])

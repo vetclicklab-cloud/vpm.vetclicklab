@@ -1468,8 +1468,8 @@ describe("auth router token validation", () => {
 });
 
 
-describe("dedicated OpenVPM signup billing", () => {
-  it("pins new trials to OpenVPM without granting access before checkout", async () => {
+describe("dedicated VetClickLab signup billing", () => {
+  it("pins new trials to VetClickLab without granting access before checkout", async () => {
     vi.stubEnv("STRIPE_OPENVPM_ACCOUNT_ID", "acct_openvpm");
     vi.stubEnv("STRIPE_OPENVPM_PRICE_CLOUD_LOCATION", "price_openvpm");
     vi.stubEnv("STRIPE_PRICE_CLOUD_LOCATION", "price_legacy");

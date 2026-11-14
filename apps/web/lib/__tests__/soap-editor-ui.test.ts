@@ -118,7 +118,7 @@ describe("SOAP note editor UX", () => {
     expect(source).toContain('setSaveState("offline")');
     expect(source).toContain("Offline — autosave is paused");
     expect(source).toContain(
-      "OpenVPM will retry the same revision-checked draft automatically",
+      "VetClickLab will retry the same revision-checked draft automatically",
     );
     expect(source).toContain("if (wasOnline) return;");
     expect(source).toContain("void persistDraft()");

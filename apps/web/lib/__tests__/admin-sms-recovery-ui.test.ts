@@ -36,7 +36,7 @@ describe("platform-admin SMS recovery console", () => {
     expect(source).toContain("attemptReviewed &&");
     expect(source).toContain("deliveryReviewed &&");
     expect(source).toContain("exactQuarantineEvidence &&");
-    expect(source).toContain("window.confirm(");
+    expect(source).toContain("confirmAction(");
     expect(source).toContain("Evidence source ${attemptEvidence}");
     expect(source).toContain("reviewedHistoryId: quarantineReason");
   });

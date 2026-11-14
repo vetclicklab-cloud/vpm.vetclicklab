@@ -380,12 +380,12 @@ export function ActivationChecklist() {
           onClick={snooze}
           aria-label="Hide for now"
           title="Hide for now"
-          className="absolute right-3 top-3 rounded-md p-1 text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
+          className="absolute right-1 top-1 rounded-md p-3.5 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200"
         >
           <X className="h-4 w-4" />
         </button>
 
-        <div className="flex items-center gap-2.5 pr-6">
+        <div className="flex items-center gap-2.5 pr-9">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-400">
             <Sparkles className="h-4 w-4" />
           </span>
@@ -463,7 +463,7 @@ export function ActivationChecklist() {
 
             if (m.href) {
               return (
-                <Link key={m.key} href={m.href} className="block">
+                <Link key={m.key} href={m.href} className="block py-1.5">
                   {inner}
                 </Link>
               );
@@ -492,7 +492,7 @@ export function ActivationChecklist() {
               type="button"
               onClick={() => requestSetupHelp.mutate()}
               disabled={requestSetupHelp.isPending}
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400 transition-colors hover:text-emerald-300 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex min-h-11 items-center gap-1.5 text-xs font-medium text-emerald-400 transition-colors hover:text-emerald-300 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {requestSetupHelp.isPending ? (
                 <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -505,7 +505,7 @@ export function ActivationChecklist() {
           <button
             type="button"
             onClick={dontShowAgain}
-            className="text-xs font-medium text-zinc-500 transition-colors hover:text-zinc-200"
+            className="inline-flex min-h-11 items-center text-xs font-medium text-zinc-400 transition-colors hover:text-zinc-200"
           >
             Don&apos;t show this again
           </button>

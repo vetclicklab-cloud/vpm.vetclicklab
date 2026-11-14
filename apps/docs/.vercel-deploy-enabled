@@ -1,2 +1,2 @@
-# Present = Vercel builds the help site (docs.openvpm.com) from git.
+# Present = Vercel builds the help site (docs.vetclicklab.com) from git.
 # The openvpm-docs project skips builds while this file is missing.

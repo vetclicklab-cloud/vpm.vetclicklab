@@ -21,7 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/form-field";
-import { PawMark } from "@/components/brand/paw-mark";
+import { BrandMark } from "@/components/brand/brand-mark";
 import { cn, initials, isValidEmail } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
@@ -396,10 +396,10 @@ function RegisterPageInner({
               href="/"
               className="inline-flex items-center gap-3 font-heading text-lg font-semibold tracking-tight text-slate-950 sm:text-xl"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <PawMark className="h-5 w-5" />
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-sm">
+                <BrandMark className="h-5 w-5" />
               </span>
-              OpenVPM
+              <span className="sr-only sm:not-sr-only">VetClickLab</span>
             </Link>
             <div className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:gap-3 sm:text-sm">
               <span className="whitespace-nowrap">Step 1 of 4</span>
@@ -457,10 +457,10 @@ function RegisterPageInner({
               href="/"
               className="inline-flex items-center gap-3 font-heading text-lg font-semibold tracking-tight text-slate-950 sm:text-xl"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <PawMark className="h-5 w-5" />
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-sm">
+                <BrandMark className="h-5 w-5" />
               </span>
-              OpenVPM
+              <span className="sr-only sm:not-sr-only">VetClickLab</span>
             </Link>
             <div className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:gap-3 sm:text-sm">
               <span className="whitespace-nowrap">Step 2 of 4</span>
@@ -579,10 +579,10 @@ function RegisterPageInner({
               href="/"
               className="inline-flex items-center gap-3 font-heading text-lg font-semibold tracking-tight text-slate-950 sm:text-xl"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-                <PawMark className="h-5 w-5" />
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-brand-foreground shadow-sm">
+                <BrandMark className="h-5 w-5" />
               </span>
-              OpenVPM
+              <span className="sr-only sm:not-sr-only">VetClickLab</span>
             </Link>
             <div className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:gap-3 sm:text-sm">
               <span className="whitespace-nowrap">Step 3 of 4</span>
@@ -647,10 +647,10 @@ function RegisterPageInner({
               href="/"
               className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-primary"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <PawMark className="h-4 w-4" />
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
+                <BrandMark className="h-4 w-4" />
               </span>
-              OpenVPM {cloudIntent ? "Cloud" : ""}
+              VetClickLab {cloudIntent ? "Cloud" : ""}
             </Link>
             <span className="text-xs font-medium text-slate-500">
               Step 4 of 4
@@ -668,7 +668,7 @@ function RegisterPageInner({
               ? " Next, add your card securely through Stripe to start your free trial."
               : hostedBilling
                 ? " Your free trial starts immediately."
-                : " Your self-hosted workspace is free."}
+                : " Your workspace is ready to use."}
           </p>
 
           <form onSubmit={handleSubmit} className="mt-8 grid min-w-0 gap-4">
@@ -733,7 +733,7 @@ function RegisterPageInner({
               <div className="flex gap-2 rounded-md border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-950">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
                 <p>
-                  OpenVPM can format this workspace for your region, but the
+                  VetClickLab can format this workspace for your region, but the
                   supported design-partner rollout is currently limited to US
                   clinics. Explore with sample data only; do not move live
                   clinic work yet.
@@ -743,22 +743,14 @@ function RegisterPageInner({
 
             {country === "OTHER" ? (
               <div className="rounded-md border border-slate-200 bg-slate-50 p-3 text-xs leading-5 text-slate-700">
-                Hosted workspaces are not available in your country yet. You can
-                still{" "}
+                VetClickLab is not available in your country yet. Email{" "}
                 <a
-                  href="https://demo.openvpm.com"
+                  href="mailto:support@vetclicklab.com"
                   className="font-medium text-primary underline underline-offset-2"
                 >
-                  explore the immediate demo
+                  support@vetclicklab.com
                 </a>{" "}
-                or review the{" "}
-                <a
-                  href="https://github.com/evangauer/openvpm"
-                  className="font-medium text-primary underline underline-offset-2"
-                >
-                  self-hosted project
-                </a>
-                .
+                and we&apos;ll let you know when it is.
               </div>
             ) : null}
 
@@ -802,7 +794,7 @@ function RegisterPageInner({
 
             <p className="flex items-center justify-center gap-1.5 text-xs text-slate-500">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-              {hostedBilling ? `Free for ${trialDays} days.` : "Free, open-source software."}
+              {hostedBilling ? `Free for ${trialDays} days.` : "No charge to get started."}
               {previewFirst ? " No card needed to look around." : cardFirst ? " Card required. No charge today." : hostedBilling ? " No credit card required." : ""}
             </p>
 
@@ -894,7 +886,7 @@ const KPIS = [
 
 // Appointment colors mirror the real schedule.
 const APPTS = [
-  { time: "9:00", title: "Wellness exam", pet: "Biscuit", color: "#0d9488" },
+  { time: "9:00", title: "Wellness exam", pet: "Biscuit", color: "#0f766e" },
   { time: "10:30", title: "Vaccination", pet: "Luna", color: "#2563eb" },
   { time: "1:15", title: "Dental cleaning", pet: "Mango", color: "#0891b2" },
   { time: "3:00", title: "Sick visit", pet: "Olive", color: "#dc2626" },
@@ -913,7 +905,7 @@ function PlatformPreview({ practiceName }: { practiceName: string }) {
         {/* Side nav */}
         <aside className="flex w-[150px] shrink-0 flex-col border-r border-slate-100 bg-slate-50/70 p-3">
           <div className="flex items-center gap-2 px-1 pb-4">
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary text-[10px] font-semibold text-primary-foreground">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary text-xs font-semibold text-primary-foreground">
               {initials(clinic)}
             </span>
             <span className="truncate font-heading text-sm font-semibold text-slate-900">
@@ -935,10 +927,10 @@ function PlatformPreview({ practiceName }: { practiceName: string }) {
             ))}
           </nav>
           <div className="mt-auto flex items-center gap-2 px-1 pt-3">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-[10px] font-semibold text-primary">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
               DV
             </span>
-            <span className="truncate text-[11px] text-slate-500">Dr. Vet</span>
+            <span className="truncate text-xs text-slate-500">Dr. Vet</span>
           </div>
         </aside>
 
@@ -948,7 +940,7 @@ function PlatformPreview({ practiceName }: { practiceName: string }) {
             <p className="font-heading text-sm font-semibold text-slate-900">
               Dashboard
             </p>
-            <span className="rounded-md bg-primary px-2.5 py-1 text-[11px] font-medium text-primary-foreground">
+            <span className="rounded-md bg-primary px-2.5 py-1 text-xs font-medium text-primary-foreground">
               New
             </span>
           </div>
@@ -964,7 +956,7 @@ function PlatformPreview({ practiceName }: { practiceName: string }) {
                   <span className="flex h-6 w-6 items-center justify-center rounded-md bg-primary/10 text-primary">
                     <Icon className="h-3.5 w-3.5" />
                   </span>
-                  <p className="mt-2 text-[10px] font-medium uppercase tracking-wide text-slate-500">
+                  <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500">
                     {label}
                   </p>
                   <p className="text-base font-semibold text-slate-950">
@@ -986,7 +978,7 @@ function PlatformPreview({ practiceName }: { practiceName: string }) {
                     className="flex items-center gap-3 rounded-md px-2.5 py-1.5"
                     style={{ backgroundColor: `${a.color}14` }}
                   >
-                    <span className="w-10 text-[11px] font-medium text-slate-500">
+                    <span className="w-10 text-xs font-medium text-slate-500">
                       {a.time}
                     </span>
                     <span
@@ -996,7 +988,7 @@ function PlatformPreview({ practiceName }: { practiceName: string }) {
                     <span className="text-xs font-medium text-slate-900">
                       {a.title}
                     </span>
-                    <span className="ml-auto text-[11px] text-slate-500">
+                    <span className="ml-auto text-xs text-slate-500">
                       {a.pet}
                     </span>
                   </div>
@@ -1013,10 +1005,10 @@ function PlatformPreview({ practiceName }: { practiceName: string }) {
                 <p className="text-xs font-semibold text-slate-900">Ask AI</p>
               </div>
               <div className="mt-2 flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2">
-                <span className="truncate text-[11px] text-slate-500">
+                <span className="truncate text-xs text-slate-500">
                   Which pets are due for vaccines?
                 </span>
-                <span className="ml-auto rounded bg-primary px-2 py-0.5 text-[10px] font-medium text-primary-foreground">
+                <span className="ml-auto rounded bg-primary px-2 py-0.5 text-xs font-medium text-primary-foreground">
                   Ask
                 </span>
               </div>

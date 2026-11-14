@@ -104,23 +104,23 @@ export const administration: Guide[] = [
         shot: {
           id: "settings-plan",
           alt: "Plan & Billing in Settings, showing Client payment processing as not configured",
-          caption: "The self-hosted view. On OpenVPM Cloud, this card walks you through Stripe setup and adds Refresh and Open Stripe buttons.",
+          caption: "The self-hosted view. On VetClickLab, this card walks you through Stripe setup and adds Refresh and Open Stripe buttons.",
         },
       },
       {
         id: "setup",
         title: "Finish the setup",
         body: [
-          "On OpenVPM Cloud, Stripe may ask for your legal business and tax details, ID for a representative, and a bank account for payouts.",
-          "If you run OpenVPM yourself, follow the [self-hosted Stripe setup](https://github.com/evangauer/openvpm/blob/main/docs/help/self-hosted-payments.md).",
+          "On VetClickLab, Stripe may ask for your legal business and tax details, ID for a representative, and a bank account for payouts.",
+          "If you run VetClickLab yourself, follow the [self-hosted Stripe setup](https://github.com/vetclicklab-cloud/vpm.vetclicklab/blob/main/docs/help/self-hosted-payments.md).",
         ],
       },
       {
         id: "verify",
         title: "Test before you use it for real",
         body: [
-          "On OpenVPM Cloud, choose [[Refresh]] to update the status, and [[Open Stripe]] to manage your Stripe account. Make sure card payments and payouts are on.",
-          "If you run OpenVPM yourself, check the card says payments are ready. Then run a test invoice through checkout.",
+          "On VetClickLab, choose [[Refresh]] to update the status, and [[Open Stripe]] to manage your Stripe account. Make sure card payments and payouts are on.",
+          "If you run VetClickLab yourself, check the card says payments are ready. Then run a test invoice through checkout.",
         ],
         important: "A saved Stripe key doesn't mean everything works. Always run a test payment first.",
       },
@@ -148,7 +148,7 @@ export const administration: Guide[] = [
         title: "Do a dry run",
         body: [
           "Open [[Settings]] → [[Data]] → [[Import Data]]. Choose the system you're coming from and what you're importing, then upload the CSV.",
-          "OpenVPM shows what will import, what matches an existing record, what's a duplicate, and what it can't use. Nothing is saved yet.",
+          "VetClickLab shows what will import, what matches an existing record, what's a duplicate, and what it can't use. Nothing is saved yet.",
         ],
       },
       {
@@ -159,7 +159,7 @@ export const administration: Guide[] = [
           "Future appointments, open balances, active prescriptions, attachments, labs, inventory, reminders, and messages aren't part of the CSV import. Plan those separately.",
       },
     ],
-    faq: [["Where can I read more about switching?", "See [Migrating to OpenVPM](https://github.com/evangauer/openvpm/blob/main/docs/migrating-to-openvpm.md)."]],
+    faq: [["Where can I read more about switching?", "See [Migrating to VetClickLab](https://github.com/vetclicklab-cloud/vpm.vetclicklab/blob/main/docs/migrating-to-vetclicklab.md)."]],
     next: "export-and-back-up-your-data",
   },
   {
@@ -187,7 +187,7 @@ export const administration: Guide[] = [
       {
         id: "backup",
         title: "Back up the database and files together",
-        body: ["If you run OpenVPM yourself, back up the PostgreSQL database and the file storage together. Keep encrypted copies somewhere other than the server."],
+        body: ["If you run VetClickLab yourself, back up the PostgreSQL database and the file storage together. Keep encrypted copies somewhere other than the server."],
       },
       {
         id: "restore",
@@ -257,7 +257,7 @@ export const administration: Guide[] = [
           "For house calls and farm visits, an admin can turn on **Ambulatory workspace** in [[Settings]] → [[Practice Info]], pick your units and body condition scale, and save. Active patient charts then get a [[Start field visit]] button, so you can start a visit without booking it first.",
           "On a field visit, **Bill now, finish notes later** lets you take payment before the notes are done. **Unfinished field visits** on the [[Dashboard]] shows what still needs notes.",
         ],
-        tip: "Don't see Ambulatory workspace in Settings? It hasn't been made available for your OpenVPM yet. On a self-hosted install, whoever runs the server turns it on first.",
+        tip: "Don't see Ambulatory workspace in Settings? It hasn't been made available for your VetClickLab yet. On a self-hosted install, whoever runs the server turns it on first.",
         important: "Taking payment doesn't finish the medical record. Come back and complete the notes.",
       },
       {

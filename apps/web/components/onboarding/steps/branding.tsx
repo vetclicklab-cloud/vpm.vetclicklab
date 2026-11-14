@@ -22,7 +22,7 @@ import { toast } from "sonner";
 import type { StepHandle } from "../journey-types";
 
 /** Brand default accent, pre-highlighted so the step never arrives blank. */
-const SUGGESTED_ACCENT = "#0d9488";
+const SUGGESTED_ACCENT = "#0f766e";
 
 /**
  * Step 2: optional logo upload and accent color. Both save right away through

@@ -5,7 +5,7 @@ describe("AI integration docs", () => {
   it("documents live API key and webhook integration paths", () => {
     const source = readFileSync("app/api-docs/ai/page.tsx", "utf8");
 
-    expect(source).toContain("POST https://your-practice.openvpm.com/api/v1/agent");
+    expect(source).toContain("POST https://app.vetclicklab.com/api/v1/agent");
     expect(source).toContain("POST /api/v1/soap-notes");
     expect(source).toContain("records:write");
     expect(source).toContain("agent:run");

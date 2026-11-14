@@ -3,8 +3,8 @@ import Link from "next/link";
 import { EmailPreferenceForm } from "./preference-form";
 
 export const metadata: Metadata = {
-  title: "Email preferences - OpenVPM",
-  description: "Manage optional OpenVPM email updates.",
+  title: "Email preferences - VetClickLab",
+  description: "Manage optional VetClickLab email updates.",
   robots: { index: false, follow: false },
 };
 
@@ -23,14 +23,14 @@ export default async function EmailPreferencesPage({
     >
       <div className="w-full max-w-lg rounded-xl border border-border bg-card p-6 shadow-sm sm:p-8">
         <Link href="/" className="font-heading text-lg font-semibold">
-          OpenVPM
+          VetClickLab
         </Link>
         <div className="mt-8 space-y-3">
           <h1 className="font-heading text-2xl font-semibold">
             Email preferences
           </h1>
           <p className="text-sm leading-6 text-muted-foreground">
-            Stop optional OpenVPM product, trial, research, and feedback emails
+            Stop optional VetClickLab product, trial, research, and feedback emails
             with one click.
           </p>
         </div>

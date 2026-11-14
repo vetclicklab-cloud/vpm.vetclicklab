@@ -1,15 +1,15 @@
-# OpenVPM REST API (v1)
+# VetClickLab REST API (v1)
 
-A versioned, public REST API over OpenVPM's core records. It is intended for
+A versioned, public REST API over VetClickLab's core records. It is intended for
 third-party integrators (booking, reminders, client comms, AI agents) that read
 and write practice data without using the internal tRPC client.
 
-> **Compatibility layer.** The `v1` surface is OpenVPM's own clean contract and
+> **Compatibility layer.** The `v1` surface is VetClickLab's own clean contract and
 > doubles as the reference implementation for vendor-compatible APIs. Each
 > response shape is owned by an explicit schema and frozen independently of the
 > internal database — internal columns can change without breaking you. A
 > vendor-specific "identical-twin" surface (so an existing integration can point
-> at OpenVPM with zero changes) is added as a sibling namespace; see
+> at VetClickLab with zero changes) is added as a sibling namespace; see
 > [Adding a compatibility target](../../CONTRIBUTING.md#adding-a-compatibility-endpoint-or-target).
 
 ## Authentication
@@ -21,11 +21,11 @@ shown **once** at creation — store it securely.
 Send it on every request as a bearer token (preferred) or `X-API-Key`:
 
 ```bash
-curl https://demo.openvpm.com/api/v1/clients \
+curl https://app.vetclicklab.com/api/v1/clients \
   -H "Authorization: Bearer ovpm_xxxxxxxxxxxxxxxxxxxxxxxx"
 
 # equivalent
-curl https://demo.openvpm.com/api/v1/clients \
+curl https://app.vetclicklab.com/api/v1/clients \
   -H "X-API-Key: ovpm_xxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
@@ -41,7 +41,7 @@ practice — a key can only ever read or write its own practice's data.
 | `appointments:read`  | List/read appointments                                                                                       |
 | `appointments:write` | Create appointments                                                                                          |
 | `records:write`      | Create clinical record entries such as SOAP notes                                                            |
-| `agent:run`          | Run the OpenVPM Agent over the API                                                                           |
+| `agent:run`          | Run the VetClickLab Agent over the API                                                                           |
 | `agent:write`        | Allow write-enabled agent runs when paired with `agent:run`; write tools still require their resource scopes |
 | `*`                  | All of the above                                                                                             |
 
@@ -222,7 +222,7 @@ this endpoint as an editable draft workflow.
 
 ### `POST /api/v1/agent`
 
-Scope `agent:run`. Run the OpenVPM Agent over the API, scoped to the key's
+Scope `agent:run`. Run the VetClickLab Agent over the API, scoped to the key's
 practice. Body:
 
 ```json
@@ -239,7 +239,7 @@ appointments and recording vitals. Requests with
 tool, the key must also carry that tool's resource scope, such as
 `appointments:write` for booking or `records:write` for vitals. Returns
 `{ data: { text, toolCalls, iterations, stopReason } }`, where `toolCalls`
-traces every tool the agent invoked. On OpenVPM Cloud, a card-free trial
+traces every tool the agent invoked. On VetClickLab, a card-free trial
 returns `403` until billing setup is confirmed by the signed Stripe Checkout
 webhook; adding a card does not end the free trial. Returns `503` if the
 configured model provider is unavailable (Vertex AI workload identity settings

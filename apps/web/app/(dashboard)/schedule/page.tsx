@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { Suspense, useState, useRef, useEffect, useId, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
@@ -39,6 +40,7 @@ import {
   toISODate,
   type CalendarDay,
   type CalendarView,
+  practiceToday,
 } from "@/lib/scheduling/calendar-views";
 import {
   APPOINTMENT_DURATION_MAX_MINUTES,
@@ -69,7 +71,7 @@ const END_HOUR = 18;
 const HOUR_HEIGHT = 60; // px per hour
 const TOTAL_HOURS = END_HOUR - START_HOUR;
 const CALENDAR_HEIGHT = TOTAL_HOURS * HOUR_HEIGHT;
-const DEFAULT_APPOINTMENT_COLOR = "#0d9488";
+const DEFAULT_APPOINTMENT_COLOR = "#0f766e";
 const DIALOG_FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -737,7 +739,7 @@ function PhoneAgenda({
                           {patientName}
                         </span>
                       </span>
-                      <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-muted px-2 py-1 text-[11px] font-medium text-muted-foreground">
+                      <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
                         <StatusDot status={appointment.status} />
                         {appointmentStatusLabel(appointment)}
                       </span>
@@ -907,7 +909,7 @@ function AppointmentChip({
     <button
       type="button"
       onClick={onClick}
-      className="flex min-h-6 w-full items-center gap-1.5 rounded-md border px-2 py-1 text-left text-[11px] leading-tight transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1"
+      className="flex min-h-6 w-full items-center gap-1.5 rounded-md border px-2 py-1 text-left text-xs leading-tight transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1"
       style={{
         backgroundColor: `${color}18`,
         borderColor: `${color}55`,
@@ -1019,7 +1021,7 @@ function MonthCalendar({
                 {hiddenCount > 0 && (
                   <button
                     type="button"
-                    className="w-full rounded-md px-2 py-1 text-left text-[11px] font-medium text-muted-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="w-full rounded-md px-2 py-1 text-left text-xs font-medium text-muted-foreground hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
                     onClick={() => onDayOpen(day.date)}
                   >
                     +{hiddenCount} more
@@ -1600,7 +1602,7 @@ function AppointmentDetailPopover({
               <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
                 <label
                   htmlFor={confirmationPhoneFieldId}
-                  className="flex items-start gap-2 rounded-md border border-border p-2.5 text-sm has-[:checked]:border-teal-500 has-[:checked]:bg-teal-50"
+                  className="flex items-start gap-2 rounded-md border border-border p-2.5 text-sm has-[:checked]:border-ring has-[:checked]:bg-primary/5"
                 >
                   <input
                     id={confirmationPhoneFieldId}
@@ -1623,7 +1625,7 @@ function AppointmentDetailPopover({
                 </label>
                 <label
                   htmlFor={confirmationEmailFieldId}
-                  className="flex items-start gap-2 rounded-md border border-border p-2.5 text-sm has-[:checked]:border-teal-500 has-[:checked]:bg-teal-50"
+                  className="flex items-start gap-2 rounded-md border border-border p-2.5 text-sm has-[:checked]:border-ring has-[:checked]:bg-primary/5"
                 >
                   <input
                     id={confirmationEmailFieldId}
@@ -2528,6 +2530,19 @@ function SchedulePageContent() {
   const calendarTimeZone = verifiedCalendarSettings
     ? verifiedCalendarSettings.timezone
     : null;
+  // The first render uses the device day; once the practice time zone is
+  // known, open on the practice's today (matches the whiteboard) unless the
+  // user already moved the calendar.
+  const openedOnPracticeDay = useRef(false);
+  useEffect(() => {
+    if (!calendarTimeZone || openedOnPracticeDay.current) return;
+    openedOnPracticeDay.current = true;
+    setCurrentDate((current) =>
+      toISODate(current) === toISODate(startOfCalendarDay(new Date()))
+        ? practiceToday(calendarTimeZone)
+        : current,
+    );
+  }, [calendarTimeZone]);
   const queryRangeInput = useMemo(() => {
     if (view === "week") {
       return {
@@ -2685,11 +2700,15 @@ function SchedulePageContent() {
     rescheduleAppointment.mutate(input);
   };
 
-  const handleCancelRecurringSeries = (seriesId: string) => {
+  const handleCancelRecurringSeries = async (seriesId: string) => {
     if (
-      !window.confirm(
-        "Cancel future appointments in this recurring series? Past, completed, and in-progress appointments will stay unchanged."
-      )
+      !(await confirmAction({
+        title: "Cancel recurring series?",
+        description:
+          "Future appointments in this series will be cancelled. Past, completed, and in-progress appointments will stay unchanged.",
+        confirmLabel: "Cancel future appointments",
+        destructive: true,
+      }))
     ) {
       return;
     }
@@ -2718,7 +2737,7 @@ function SchedulePageContent() {
     setShowBookingForm(true);
   }, [canUseScheduleInteractions, firstClinicDay]);
 
-  const goToday = () => setCurrentDate(startOfCalendarDay(new Date()));
+  const goToday = () => setCurrentDate(practiceToday(calendarTimeZone));
   const goPrev = () =>
     setCurrentDate((d) =>
       view === "month"
@@ -2788,7 +2807,7 @@ function SchedulePageContent() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Schedule</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Schedule</h2>
           <p className="text-sm text-muted-foreground">Appointment calendar</p>
         </div>
         <CalendarSubscribe />
@@ -2881,6 +2900,7 @@ function SchedulePageContent() {
           <div className="relative min-w-0 flex-1 sm:flex-none">
             <Filter className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground pointer-events-none" />
             <select
+              aria-label="Filter by doctor"
               value={doctorFilter}
               onChange={(e) => setDoctorFilter(e.target.value)}
               className="h-11 w-full min-w-0 appearance-none rounded-md border border-input bg-background pl-8 pr-8 text-xs focus:outline-none focus:ring-2 focus:ring-ring sm:h-9 sm:w-auto"

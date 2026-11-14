@@ -87,10 +87,10 @@ export function PersonalNote({
               <>
                 {senderName}
                 <br />
-                OpenVPM
+                VetClickLab
               </>
             ) : (
-              "The OpenVPM team"
+              "The VetClickLab team"
             )}
           </P>
         </Container>

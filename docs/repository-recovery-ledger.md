@@ -32,20 +32,20 @@ They are evidence for triage, not acceptance evidence for the underlying code.
 
 | PR | Topic | Observed state | Decision | Recovery boundary |
 | --- | --- | --- | --- | --- |
-| [#198](https://github.com/evangauer/openvpm/pull/198) | Encounter estimate conversion and medication charge handoff | Conflicting; 19 files | `recover` | Re-prove conversion, charge ownership, idempotency, and tenant boundaries separately |
-| [#199](https://github.com/evangauer/openvpm/pull/199) | Auditable medication charge workflow | Stacked on #198; 39 files | `recover` | Extract only after #198 concepts are mapped; do not merge the stack base-to-tip |
-| [#200](https://github.com/evangauer/openvpm/pull/200) | Onboarding conversion funnel | Conflicting; 16 files | `recover` | Reconcile with #221 and current analytics/privacy contracts |
-| [#202](https://github.com/evangauer/openvpm/pull/202) | Subscription conversion lifecycle | Draft, conflicting; 15 files | `recover` | Reconcile with current billing and webhook idempotency code |
-| [#203](https://github.com/evangauer/openvpm/pull/203) | First-clinic-win subscription conversion | Draft, stacked on #202; 58 files | `recover` | Separate product behavior from generated or fixture-heavy changes |
-| [#204](https://github.com/evangauer/openvpm/pull/204) | SMS pilot activation preflight | Draft, conflicting; 13 files | `recover` | Security/operations review; preserve all default-off and fee-bearing interlocks |
-| [#205](https://github.com/evangauer/openvpm/pull/205) | Clinic-launch integration stack | Draft, conflicting; 130 files | `evidence-only` | Umbrella branch contains the component stack; use it to trace provenance and tests, never as a wholesale merge |
-| [#219](https://github.com/evangauer/openvpm/pull/219) | Patient merge and migration safety | Draft, conflicting; 13 files | `recover` | Database/RLS specialist review and fresh real-Postgres evidence required |
-| [#220](https://github.com/evangauer/openvpm/pull/220) | pnpm/action-setup update | Behind; 2 files | `recreate` | Re-run Dependabot after governance baseline; retain pinning and supply-chain checks |
-| [#221](https://github.com/evangauer/openvpm/pull/221) | Privacy-safe acquisition reporting | Draft, behind; 7 files | `recover` | Reconcile overlap with #200 and re-review reporting privacy |
-| [#222](https://github.com/evangauer/openvpm/pull/222) | P0 one-click billing integration | Draft, conflicting; 136 files | `evidence-only` | High-risk integration aggregate; decompose billing, auth, migration, and operational changes into independently testable recoveries |
-| [#224](https://github.com/evangauer/openvpm/pull/224) | Development dependency group | Behind; 7 files | `recreate` | Regenerate after baseline and review breaking toolchain changes separately |
-| [#230](https://github.com/evangauer/openvpm/pull/230) | Production dependency group | Behind; 4 files | `recreate` | Split security fixes from broad upgrades and prove runtime compatibility |
-| [#240](https://github.com/evangauer/openvpm/pull/240) | Repository governance | Draft; core checks pass | `governance` | Complete final review, merge through the gate, then execute the exact-SHA release rehearsal before canonical branch bootstrap |
+| [#198](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/198) | Encounter estimate conversion and medication charge handoff | Conflicting; 19 files | `recover` | Re-prove conversion, charge ownership, idempotency, and tenant boundaries separately |
+| [#199](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/199) | Auditable medication charge workflow | Stacked on #198; 39 files | `recover` | Extract only after #198 concepts are mapped; do not merge the stack base-to-tip |
+| [#200](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/200) | Onboarding conversion funnel | Conflicting; 16 files | `recover` | Reconcile with #221 and current analytics/privacy contracts |
+| [#202](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/202) | Subscription conversion lifecycle | Draft, conflicting; 15 files | `recover` | Reconcile with current billing and webhook idempotency code |
+| [#203](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/203) | First-clinic-win subscription conversion | Draft, stacked on #202; 58 files | `recover` | Separate product behavior from generated or fixture-heavy changes |
+| [#204](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/204) | SMS pilot activation preflight | Draft, conflicting; 13 files | `recover` | Security/operations review; preserve all default-off and fee-bearing interlocks |
+| [#205](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/205) | Clinic-launch integration stack | Draft, conflicting; 130 files | `evidence-only` | Umbrella branch contains the component stack; use it to trace provenance and tests, never as a wholesale merge |
+| [#219](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/219) | Patient merge and migration safety | Draft, conflicting; 13 files | `recover` | Database/RLS specialist review and fresh real-Postgres evidence required |
+| [#220](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/220) | pnpm/action-setup update | Behind; 2 files | `recreate` | Re-run Dependabot after governance baseline; retain pinning and supply-chain checks |
+| [#221](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/221) | Privacy-safe acquisition reporting | Draft, behind; 7 files | `recover` | Reconcile overlap with #200 and re-review reporting privacy |
+| [#222](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/222) | P0 one-click billing integration | Draft, conflicting; 136 files | `evidence-only` | High-risk integration aggregate; decompose billing, auth, migration, and operational changes into independently testable recoveries |
+| [#224](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/224) | Development dependency group | Behind; 7 files | `recreate` | Regenerate after baseline and review breaking toolchain changes separately |
+| [#230](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/230) | Production dependency group | Behind; 4 files | `recreate` | Split security fixes from broad upgrades and prove runtime compatibility |
+| [#240](https://github.com/vetclicklab-cloud/vpm.vetclicklab/pull/240) | Repository governance | Draft; core checks pass | `governance` | Complete final review, merge through the gate, then execute the exact-SHA release rehearsal before canonical branch bootstrap |
 
 The stacked work represented by #198-#205 has one integration tip in #205.
 That containment is a preservation fact only; it does not make #205 a safe

@@ -263,8 +263,21 @@ export default function DashboardPage() {
       chartData.revenueByDay.some((d) => d.revenue > 0) ||
       chartData.productionByDoctor.some((d) => d.production > 0));
 
+  const todayLabel = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    timeZone: dashboardTimeZone ?? undefined,
+  }).format(new Date());
+
   return (
     <div className="space-y-8">
+      <div>
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">Today</h2>
+        <p className="mt-1 text-sm text-muted-foreground" suppressHydrationWarning>
+          {todayLabel}
+        </p>
+      </div>
       <ActivationChecklist />
       <UnfinishedFieldVisits />
       {/* KPI Cards */}
@@ -326,7 +339,7 @@ export default function DashboardPage() {
             </p>
           </div>
           {pendingFollowUps.data?.length ? (
-            <span className="rounded-full bg-amber-500/15 px-2.5 py-1 text-xs font-medium text-amber-700 dark:text-amber-300">
+            <span className="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-medium text-warning">
               {pendingFollowUps.data.length} open
             </span>
           ) : null}

@@ -4,7 +4,7 @@
  * screenshots, and callouts all point at something real.
  *
  * Body text supports a small inline markup:
- *   [[Save]]           a button or label in OpenVPM
+ *   [[Save]]           a button or label in VetClickLab
  *   **bold**           emphasis
  *   [text](/guides/x)  a link
  *   ((2))              a numbered callout on the step's screenshot
@@ -20,7 +20,7 @@ export type CategoryId =
   | "client-care"
   | "administration";
 
-/** One per item in the OpenVPM sidebar. */
+/** One per item in the VetClickLab sidebar. */
 export type AreaId =
   | "dashboard"
   | "patients"
@@ -95,7 +95,7 @@ export interface Training {
 export interface ScreenTour {
   area: AreaId;
   title: string;
-  /** Label in the OpenVPM sidebar. */
+  /** Label in the VetClickLab sidebar. */
   navLabel: string;
   summary: string;
   shot: ShotRef;

@@ -18,7 +18,7 @@ export function teamInviteSubject(practiceName: string): string {
 }
 
 /**
- * One nudge for a clinic that is using OpenVPM alone a few days into its
+ * One nudge for a clinic that is using VetClickLab alone a few days into its
  * trial. Shared screens are where the product earns its keep.
  */
 export function TeamInviteEmail({
@@ -33,17 +33,17 @@ export function TeamInviteEmail({
   return (
     <PersonalNote
       brand={brand}
-      preview="Staff accounts are free, and OpenVPM works best when everyone is in it."
+      preview="Staff accounts are free, and VetClickLab works best when everyone is in it."
       greetingName={greetingName}
       senderName={senderName}
       unsubscribeUrl={unsubscribeUrl}
-      recipientReason={`You're receiving this because you run ${practiceName} on OpenVPM.`}
+      recipientReason={`You're receiving this because you run ${practiceName} on VetClickLab.`}
     >
       <P>
         {appointments > 0
           ? `You've booked ${appointments} appointment${appointments === 1 ? "" : "s"} in ${practiceName} so far, all from your own login.`
           : `You've been setting up ${practiceName} on your own so far.`}{" "}
-        OpenVPM gets a lot more useful once the front desk and your techs are
+        VetClickLab gets a lot more useful once the front desk and your techs are
         in it too: everyone sees the same schedule, who&apos;s checked in, and
         what&apos;s due next.
       </P>

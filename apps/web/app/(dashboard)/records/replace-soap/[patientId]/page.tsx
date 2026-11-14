@@ -1,5 +1,7 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
+import { guardedSoapNavigationDestination } from "@/lib/records/soap-navigation";
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -46,6 +48,14 @@ function canReplaceSoap(role?: string | null): boolean {
 function fingerprint(reason: string, sections: Sections): string {
   return JSON.stringify({ reason, ...sections });
 }
+
+const confirmDiscard = () =>
+  confirmAction({
+    title: "Discard replacement changes?",
+    description: "The replacement SOAP changes on this page will be lost.",
+    confirmLabel: "Discard changes",
+    destructive: true,
+  });
 
 export default function ReplaceSoapNotePage() {
   const params = useParams<{ patientId: string }>();
@@ -116,19 +126,34 @@ export default function ReplaceSoapNotePage() {
       if (
         !initialized ||
         fingerprint(reason, sections) === initialFingerprint.current ||
-        !(event.target instanceof Element) ||
-        !event.target.closest("a[href]")
+        !(event.target instanceof Element)
       ) {
         return;
       }
-      if (!window.confirm("Discard the replacement SOAP changes on this page?")) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
+      const anchor = event.target.closest<HTMLAnchorElement>("a[href]");
+      if (!anchor) return;
+      const destination = guardedSoapNavigationDestination({
+        href: anchor.href,
+        currentHref: window.location.href,
+        button: event.button,
+        defaultPrevented: event.defaultPrevented,
+        metaKey: event.metaKey,
+        ctrlKey: event.ctrlKey,
+        shiftKey: event.shiftKey,
+        altKey: event.altKey,
+        target: anchor.getAttribute("target"),
+        download: anchor.hasAttribute("download"),
+      });
+      if (!destination) return;
+      event.preventDefault();
+      event.stopPropagation();
+      void confirmDiscard().then((ok) => {
+        if (ok) router.push(destination);
+      });
     };
     document.addEventListener("click", guardLinkNavigation, true);
     return () => document.removeEventListener("click", guardLinkNavigation, true);
-  }, [initialized, reason, sections]);
+  }, [initialized, reason, sections, router]);
 
   const replace = trpc.records.replaceSoapNote.useMutation({
     onSuccess: async (replacement) => {
@@ -151,11 +176,11 @@ export default function ReplaceSoapNotePage() {
     Object.values(sections).every(
       (value) => value.length <= SOAP_SECTION_MAX_LENGTH,
     );
-  const leaveEditor = () => {
+  const leaveEditor = async () => {
     if (
       initialized &&
       fingerprint(reason, sections) !== initialFingerprint.current &&
-      !window.confirm("Discard the replacement SOAP changes on this page?")
+      !(await confirmDiscard())
     ) {
       return;
     }
@@ -309,11 +334,14 @@ export default function ReplaceSoapNotePage() {
         </Button>
         <Button
           disabled={!valid || replace.isPending}
-          onClick={() => {
+          onClick={async () => {
             if (
-              !window.confirm(
-                "Finalize this replacement SOAP now? It cannot be edited after signing; later clarification requires an attributed addendum.",
-              )
+              !(await confirmAction({
+                title: "Finalize and sign the replacement?",
+                description:
+                  "It cannot be edited after signing; later clarification requires an attributed addendum.",
+                confirmLabel: "Finalize and sign",
+              }))
             ) {
               return;
             }

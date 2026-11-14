@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -87,13 +88,16 @@ export default function VaccinationRecallsPage() {
     onError: (error) => toast.error(error.message),
   });
 
-  const sendPatients = (patientIds: string[]) => {
+  const sendPatients = async (patientIds: string[]) => {
     if (patientIds.length === 0 || sendReminders.isPending) return;
     const count = patientIds.length;
     if (
-      !window.confirm(
-        `Send vaccination reminders to ${count} ${count === 1 ? "patient" : "patients"} now? Delivery will use each client's eligible channel and will be logged in Communications.`
-      )
+      !(await confirmAction({
+        title: `Send ${count} vaccination ${count === 1 ? "reminder" : "reminders"}?`,
+        description:
+          "Delivery uses each client's eligible channel and is logged in Communications.",
+        confirmLabel: "Send reminders",
+      }))
     ) {
       return;
     }
@@ -144,7 +148,7 @@ export default function VaccinationRecallsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">
             Vaccination recalls
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">

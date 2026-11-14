@@ -405,7 +405,7 @@ describe("runAgent rate limiting", () => {
     mocks.readHostedAiAccess.mockResolvedValueOnce({
       allowed: false,
       reason: "billing_setup_required",
-      message: "Add a card to your trial to try OpenVPM AI.",
+      message: "Add a card to your trial to try VetClickLab AI.",
     });
 
     await expect(

@@ -154,7 +154,7 @@ describe("data import duplicate handling", () => {
     ).rejects.toMatchObject({
       code: "BAD_REQUEST",
       message:
-        "This onboarding import session is out of date. Refresh OpenVPM to check clients before pets.",
+        "This onboarding import session is out of date. Refresh VetClickLab to check clients before pets.",
     });
 
     expect(select).not.toHaveBeenCalled();

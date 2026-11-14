@@ -1391,7 +1391,7 @@ describe("migration archive preflight", () => {
 
   it("links the operator preflight without expanding self-serve migration scope", async () => {
     const migrationGuide = await readFile(
-      join(process.cwd(), "../../docs/migrating-to-openvpm.md"),
+      join(process.cwd(), "../../docs/migrating-to-vetclicklab.md"),
       "utf8",
     );
     expect(migrationGuide).toContain(

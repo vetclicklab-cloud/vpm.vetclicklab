@@ -97,7 +97,7 @@ function queue(...results: unknown[][]) {
 }
 
 function request() {
-  return new Request("https://app.openvpm.com/api/cron/customer-lifecycle");
+  return new Request("https://app.vetclicklab.com/api/cron/customer-lifecycle");
 }
 
 beforeEach(() => {

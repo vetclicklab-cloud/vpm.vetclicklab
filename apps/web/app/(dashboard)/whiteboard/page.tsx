@@ -292,7 +292,7 @@ function WhiteboardCard({
       <div className="mt-2 flex items-center justify-between">
         {appointment.typeName && (
           <span
-            className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium"
+            className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
             style={{
               backgroundColor: appointment.typeColor
                 ? `${appointment.typeColor}20`
@@ -303,7 +303,7 @@ function WhiteboardCard({
             {appointment.typeName}
           </span>
         )}
-        <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+        <span className="text-xs text-muted-foreground flex items-center gap-1">
           <Clock className="h-2.5 w-2.5" />
           {getTimeAgo(appointment.startTime)}
         </span>
@@ -677,7 +677,7 @@ export default function WhiteboardPage() {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-3">
-            <h2 className="font-heading text-xl font-semibold">
+            <h2 className="font-heading text-2xl font-semibold tracking-tight">
               Practice Whiteboard
             </h2>
             <LiveIndicator />

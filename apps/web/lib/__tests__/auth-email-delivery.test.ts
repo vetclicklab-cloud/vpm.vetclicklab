@@ -130,9 +130,9 @@ function webhookEvent(input?: {
     data: {
       email_id: input?.providerMessageId ?? "provider-email-1",
       created_at: "2026-08-09T11:59:59.000Z",
-      from: "OpenVPM <noreply@mail.openvpm.com>",
+      from: "VetClickLab <noreply@mail.vetclicklab.com>",
       to: ["owner@example.com"],
-      subject: "Verify your OpenVPM email",
+      subject: "Verify your VetClickLab email",
       ...(input?.tags ? { tags: input.tags } : {}),
     },
   } as never;
@@ -145,7 +145,7 @@ function trackedInput(db: unknown) {
     source: "registration" as const,
     to: "owner@example.com",
     name: "Dr Owner",
-    verifyUrl: "https://app.openvpm.com/verify-email?token=never-persist-this",
+    verifyUrl: "https://app.vetclicklab.com/verify-email?token=never-persist-this",
     db: db as never,
   };
 }
@@ -531,7 +531,7 @@ describe("auth verification delivery evidence", () => {
     });
     const persisted = JSON.stringify(insertedValues[0]);
     expect(persisted).not.toContain("owner@example.com");
-    expect(persisted).not.toContain("Verify your OpenVPM email");
+    expect(persisted).not.toContain("Verify your VetClickLab email");
     expect(persisted).not.toContain("openvpm_attempt_id");
   });
 

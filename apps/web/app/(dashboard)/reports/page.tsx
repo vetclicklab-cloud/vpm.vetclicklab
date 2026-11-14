@@ -513,7 +513,7 @@ function AppointmentsTab({ dateRange }: { dateRange: DateRange }) {
         </div>
         <div className="h-3 w-full overflow-hidden rounded-full bg-muted">
           <div
-            className="h-full rounded-full bg-teal-600 transition-all"
+            className="h-full rounded-full bg-primary transition-all"
             style={{ width: `${Math.min(data.fillRate, 100)}%` }}
           />
         </div>
@@ -924,7 +924,7 @@ function ReportsDashboard() {
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Reports</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Reports</h2>
           <p className="text-sm text-muted-foreground">
             Practice analytics and insights
           </p>

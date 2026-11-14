@@ -715,7 +715,7 @@ export function messagingCampaignCopy(input: {
     sample1: `${input.displayName}: Reminder—your pet's appointment is tomorrow at 10:00 AM. Call ${input.businessPhone} if you need to reschedule. Reply STOP to opt out or HELP for help.`,
     sample2: `${input.displayName}: Your pet's care instructions are ready. Reply here with questions or call ${input.businessPhone}. Reply STOP to opt out or HELP for help.`,
     sample3: `${input.displayName}: Clinic text messaging information: ${input.programUrl} Reply STOP to opt out or HELP for help.`,
-    messageFlow: `Clients opt in during phone or in-person intake. Clinic staff read or show the exact disclosure at ${input.optInUrl}, ask for an explicit choice, and record the consent decision, timestamp, disclosure, consent source, and mobile number in OpenVPM. The consent control is optional and unchecked by default. No SMS is sent before consent is recorded. Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase. Reply STOP to opt out or HELP for help. Privacy: ${input.privacyPolicyUrl} Terms: ${input.termsUrl}`,
+    messageFlow: `Clients opt in during phone or in-person intake. Clinic staff read or show the exact disclosure at ${input.optInUrl}, ask for an explicit choice, and record the consent decision, timestamp, disclosure, consent source, and mobile number in VetClickLab. The consent control is optional and unchecked by default. No SMS is sent before consent is recorded. Message frequency varies. Message and data rates may apply. Consent is not a condition of purchase. Reply STOP to opt out or HELP for help. Privacy: ${input.privacyPolicyUrl} Terms: ${input.termsUrl}`,
     helpMessage: `Contact ${input.displayName} at ${input.businessPhone} or ${input.website}. Reply STOP to opt out.`,
     optinMessage: `${input.displayName}: You agreed to receive clinic service texts. Frequency varies. Msg & data rates may apply. Consent is not a condition of purchase. Reply HELP for help or STOP to opt out.`,
     optoutMessage: `${input.displayName}: You have been unsubscribed and will receive no further SMS messages. Reply START to opt back in.`,
@@ -758,7 +758,7 @@ async function claimRegistrationOperation(opts: {
         submissionLockId: lockId,
         submissionLockAt: new Date(),
         status: "pending",
-        statusDetail: `OpenVPM is submitting the ${opts.operation} step to the carrier.`,
+        statusDetail: `VetClickLab is submitting the ${opts.operation} step to the carrier.`,
         attemptCount: sql`${messagingRegistrations.attemptCount} + 1`,
         lastSubmittedAt: new Date(),
         lastError: null,
@@ -870,7 +870,7 @@ async function failRegistrationOperation(opts: {
     lockId: opts.lockId,
     values: {
       status: "action_required",
-      statusDetail: "Carrier registration needs OpenVPM operator review.",
+      statusDetail: "Carrier registration needs VetClickLab operator review.",
       lastError: detail,
     },
     operation: opts.operation,
@@ -1591,8 +1591,8 @@ export const adminRouter = createRouter({
               row.actorType === "clinic_user"
                 ? "Clinic admin"
                 : row.actorType === "platform_operator"
-                  ? row.actorIdentity || "OpenVPM operator"
-                  : "OpenVPM system",
+                  ? row.actorIdentity || "VetClickLab operator"
+                  : "VetClickLab system",
             operationId: row.operationId,
             reasonCode: row.reasonCode,
           })),
@@ -1745,7 +1745,7 @@ export const adminRouter = createRouter({
             await updateMessagingSenderDisabled({
               ...input,
               detail:
-                "OpenVPM disabled the provider profile. Clinic sending remains off.",
+                "VetClickLab disabled the provider profile. Clinic sending remains off.",
               syncedAt: null,
             });
             try {
@@ -1780,7 +1780,7 @@ export const adminRouter = createRouter({
               await recordMessagingProfileDisabled({
                 ...input,
                 detail:
-                  "OpenVPM disabled the provider profile. Clinic sending remains off.",
+                  "VetClickLab disabled the provider profile. Clinic sending remains off.",
                 expected: {
                   messagingProfileId: targetSender.messagingProfileId,
                   senderE164: targetSender.senderE164,
@@ -1811,7 +1811,7 @@ export const adminRouter = createRouter({
           await updateMessagingSenderDisabled({
             ...input,
             detail:
-              "OpenVPM is verifying the provider profile. Clinic sending remains off.",
+              "VetClickLab is verifying the provider profile. Clinic sending remains off.",
             syncedAt: null,
           });
 
@@ -1977,7 +1977,7 @@ export const adminRouter = createRouter({
                   : "pending",
               statusDetail:
                 brand.identityStatus === "UNVERIFIED"
-                  ? "Carrier could not verify the clinic identity; OpenVPM review is required."
+                  ? "Carrier could not verify the clinic identity; VetClickLab review is required."
                   : "Carrier brand submitted. Waiting for identity verification.",
               lastError: brand.failureReasons,
               lastSyncedAt: new Date(),
@@ -2716,7 +2716,7 @@ export const adminRouter = createRouter({
             providerCampaignStatus: null,
             status: "pending",
             statusDetail:
-              "Provider IDs recovered by an OpenVPM operator; refresh status next.",
+              "Provider IDs recovered by an VetClickLab operator; refresh status next.",
             submissionLockId: null,
             submissionLockAt: null,
             lastError: null,
@@ -2771,7 +2771,7 @@ export const adminRouter = createRouter({
             enabled: false,
             registrationStatus: "pending",
             registrationDetail:
-              "Provider IDs changed. OpenVPM must reconcile carrier and provider-profile state again.",
+              "Provider IDs changed. VetClickLab must reconcile carrier and provider-profile state again.",
             providerProfileReady: false,
             providerProfileSyncedAt: null,
             updatedAt: new Date(),
@@ -2850,7 +2850,7 @@ export const adminRouter = createRouter({
             submissionLockAt: null,
             status: "action_required",
             statusDetail:
-              "OpenVPM confirmed no provider object exists; a reviewed retry is available.",
+              "VetClickLab confirmed no provider object exists; a reviewed retry is available.",
             lastError: `Operator cleared a stale ${input.providerObject} lock after confirming no provider object exists.`,
             updatedAt: new Date(),
           })
@@ -2889,7 +2889,7 @@ export const adminRouter = createRouter({
           .set({
             enabled: false,
             registrationStatus: "action_required",
-            registrationDetail: "Carrier registration needs OpenVPM review.",
+            registrationDetail: "Carrier registration needs VetClickLab review.",
             providerProfileReady: false,
             providerProfileSyncedAt: null,
             updatedAt: new Date(),
@@ -3211,7 +3211,7 @@ export const adminRouter = createRouter({
                   : next === "action_required" ||
                       next === "failed" ||
                       next === "suspended"
-                    ? "Carrier registration needs OpenVPM operator review."
+                    ? "Carrier registration needs VetClickLab operator review."
                     : "Carrier registration is still processing.",
               lastError: failureDetail || null,
               lastSyncedAt: new Date(),
@@ -3254,7 +3254,7 @@ export const adminRouter = createRouter({
                   : next === "action_required" ||
                       next === "failed" ||
                       next === "suspended"
-                    ? "Carrier registration needs OpenVPM review."
+                    ? "Carrier registration needs VetClickLab review."
                     : "Carrier registration is pending.",
               ...(next === "active" && !input.remediation
                 ? {}

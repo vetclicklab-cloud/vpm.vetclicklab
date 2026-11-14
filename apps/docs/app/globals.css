@@ -2,33 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* OpenVPM tokens, kept in step with apps/web/styles/globals.css. */
+/* VetClickLab tokens, kept in step with apps/web/styles/globals.css. */
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 216.5 32.4% 13.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 216.5 32.4% 13.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 166 91% 32%;
+    --popover-foreground: 216.5 32.4% 13.9%;
+    --primary: 175.3 77.4% 26.1%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 14% 96%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 220 14% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-foreground: 210.9 16.8% 38.6%;
     --accent: 220 14% 96%;
     --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 73.7% 41.8%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 13% 91%;
+    --border: 208 23.8% 87.6%;
     --input: 220 13% 91%;
-    --ring: 166 91% 32%;
+    --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
-    --surface: 225 20% 98%;
+    --surface: 210 28.6% 97.3%;
 
-    --ink: #0f172a;
-    --mark: #0d9488;
+    --ink: #18212f;
+    --mark: #0f766e;
     --teal-50: #f0fdfa;
     --teal-100: #ccfbf1;
     --teal-200: #99f6e4;

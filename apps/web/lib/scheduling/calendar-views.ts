@@ -24,6 +24,18 @@ export function startOfCalendarDay(date: Date): Date {
   return d;
 }
 
+/**
+ * Today's calendar day in the practice time zone, as a local-midnight Date
+ * (the schedule's day model). Without a zone it falls back to the device day.
+ */
+export function practiceToday(timeZone?: string | null, now = new Date()): Date {
+  if (!timeZone) return startOfCalendarDay(now);
+  const [y, m, d] = formatDateInputForTimeZone(now, timeZone)
+    .split("-")
+    .map(Number);
+  return new Date(y!, m! - 1, d!);
+}
+
 export function endOfCalendarDay(date: Date): Date {
   const d = new Date(date);
   d.setHours(23, 59, 59, 999);

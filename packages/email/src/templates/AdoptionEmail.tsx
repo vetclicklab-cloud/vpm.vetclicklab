@@ -43,10 +43,10 @@ export function AdoptionEmail({
       greetingName={greetingName}
       senderName={senderName}
       unsubscribeUrl={unsubscribeUrl}
-      recipientReason={`You're receiving this because you run ${practiceName} on OpenVPM.`}
+      recipientReason={`You're receiving this because you run ${practiceName} on VetClickLab.`}
     >
       <P>
-        Thanks for running {practiceName} on OpenVPM. A few things clinics
+        Thanks for running {practiceName} on VetClickLab. A few things clinics
         usually turn on in their first month, which {practiceName} hasn&apos;t
         yet:
       </P>

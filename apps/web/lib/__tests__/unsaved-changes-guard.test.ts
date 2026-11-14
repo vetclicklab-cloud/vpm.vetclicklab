@@ -91,11 +91,11 @@ describe("unsaved changes history guard", () => {
 
   it("replaces the active sentinel for same-document hashes instead of pushing above it", () => {
     const current =
-      "https://app.openvpm.com/encounters/visit-1?payment=success";
+      "https://app.vetclicklab.com/encounters/visit-1?payment=success";
     expect(isSameDocumentHashNavigation("#visit-closeout", current)).toBe(true);
     expect(
       isSameDocumentHashNavigation(
-        "https://app.openvpm.com/encounters/visit-2#visit-closeout",
+        "https://app.vetclicklab.com/encounters/visit-2#visit-closeout",
         current,
       ),
     ).toBe(false);

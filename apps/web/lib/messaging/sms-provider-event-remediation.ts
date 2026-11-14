@@ -915,7 +915,7 @@ export async function loadSmsProviderEventResolutionHistory(
         resolution: row.resolution,
         reasonCode: row.reasonCode,
         operatorLabel:
-          row.resolvedByIdentity || row.resolvedByName || "OpenVPM operator",
+          row.resolvedByIdentity || row.resolvedByName || "VetClickLab operator",
         evidenceType: row.externalEvidenceReference
           ? "external_attestation"
           : row.messagingRegistrationEventId

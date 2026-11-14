@@ -81,7 +81,7 @@ describe("messaging settings UI", () => {
     expect(tabSource).toContain("data.launch.setupAvailable");
     expect(tabSource).toContain("Texting is a controlled clinic pilot");
     expect(tabSource).toContain(
-      "OpenVPM will not\n            search for or purchase a number",
+      "VetClickLab will not\n            search for or purchase a number",
     );
     expect(tabSource).toContain(
       "Email appointment reminders remain\n            available",
@@ -106,7 +106,7 @@ describe("messaging settings UI", () => {
       "data.launch.setupAvailable ||\n      locations.some((location) => location.messaging)",
     );
     expect(tabSource).toContain(
-      "Number setup is disabled by your OpenVPM administrator",
+      "Number setup is disabled by your VetClickLab administrator",
     );
     expect(tabSource).toContain("hosted={data.launch.hosted}");
     expect(wizardSource).toContain("hosted: boolean");
@@ -114,7 +114,7 @@ describe("messaging settings UI", () => {
       "<ConfirmStep\n                hosted={hosted}",
     );
     expect(wizardSource).toContain(
-      'hosted\n          ? "OpenVPM reviews them."\n          : "your administrator finishes provider activation."',
+      'hosted\n          ? "VetClickLab reviews them."\n          : "your administrator finishes provider activation."',
     );
     expect(wizardSource).toContain(
       "Your administrator must finish provider activation",
@@ -126,9 +126,9 @@ describe("messaging settings UI", () => {
     expect(registrationSource).toContain(
       "your messaging administrator reviews it first.",
     );
-    expect(registrationSource).not.toContain("an OpenVPM operator reviews it");
+    expect(registrationSource).not.toContain("an VetClickLab operator reviews it");
     expect(tabSource).toContain(
-      "OpenVPM support must review this failed pilot setup",
+      "VetClickLab support must review this failed pilot setup",
     );
     expect(routerSource).toContain(
       "!existing && !provisioningAvailableForPractice(ctx.practiceId)",
@@ -149,7 +149,7 @@ describe("messaging settings UI", () => {
     expect(tabSource).toContain("setAppointmentReminderSettings");
     expect(tabSource).toContain("Off by default");
     expect(tabSource).toContain("confirmReminderCatchUp");
-    expect(tabSource).toContain('!confirmReminderCatchUp("expand", leadHours)');
+    expect(tabSource).toContain('!(await confirmReminderCatchUp("expand", leadHours))');
     expect(tabSource).toContain(
       "Enabling reminders or increasing this window may send reminders for",
     );
@@ -235,7 +235,7 @@ describe("messaging settings UI", () => {
     expect(onboardingSource).toContain("setupDisabled && !messaging");
     expect(onboardingSource).toContain('href="/settings?tab=messaging"');
     expect(onboardingSource).toContain(
-      'href="mailto:support@openvpm.com?subject=OpenVPM%20texting%20pilot"',
+      'href="mailto:support@vetclicklab.com?subject=VetClickLab%20texting%20pilot"',
     );
     expect(onboardingSource).toContain("setupAvailable === false || messaging");
     expect(onboardingSource).toContain(

@@ -70,7 +70,7 @@ export default function PatientsPage() {
     <div>
       <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Patients</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Patients</h2>
           <p className="text-sm text-muted-foreground">
             Manage patient records
           </p>
@@ -102,6 +102,7 @@ export default function PatientsPage() {
         <div className="relative w-full min-w-0 sm:max-w-sm sm:flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
+            aria-label="Search patients or owners"
             placeholder="Search patients or owners..."
             value={search}
             maxLength={PATIENT_SEARCH_MAX_LENGTH}
@@ -110,6 +111,7 @@ export default function PatientsPage() {
           />
         </div>
         <select
+          aria-label="Filter by species"
           value={species}
           onChange={(e) => setSpecies(e.target.value as SpeciesFilter)}
           className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:h-10 sm:w-auto"
@@ -266,7 +268,7 @@ export default function PatientsPage() {
           description={
             hasFilters
               ? "Clear the search or species filter to broaden the list."
-              : "Create a patient record once the owner client is in OpenVPM."
+              : "Create a patient record once the owner client is in VetClickLab."
           }
           action={
             !hasFilters && canManagePatients

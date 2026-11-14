@@ -6,6 +6,7 @@ import { httpBatchLink, splitLink } from "@trpc/client";
 import { SessionProvider, getSession, signOut } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
+import { ConfirmActionHost } from "@/components/common/action-confirmation-dialog";
 import superjson from "superjson";
 import { Analytics } from "@vercel/analytics/next";
 import { filterVercelAnalyticsEvent } from "./analytics-privacy";
@@ -72,6 +73,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           >
             {children}
             <Toaster richColors position="bottom-right" />
+            <ConfirmActionHost />
             <Analytics beforeSend={filterVercelAnalyticsEvent} />
           </ThemeProvider>
         </SessionProvider>

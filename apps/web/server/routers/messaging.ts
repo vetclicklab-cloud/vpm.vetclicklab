@@ -68,15 +68,15 @@ import { loadSmsProviderEventGateSummaryInTransaction } from "@/lib/messaging/sm
 
 const adminOnly = protectedProcedure.use(requireRole("admin"));
 const MESSAGING_NUMBER_ORDERED_DETAIL =
-  "Number order accepted. The provider may still be activating it, and sending is off. Complete the clinic carrier details; OpenVPM will review them before registration submission.";
+  "Number order accepted. The provider may still be activating it, and sending is off. Complete the clinic carrier details; VetClickLab will review them before registration submission.";
 const MESSAGING_PROVISIONING_FAILED_DETAIL =
-  "Number setup did not finish. No sending was enabled. Reconcile the saved provider setup from this location, or contact OpenVPM support.";
+  "Number setup did not finish. No sending was enabled. Reconcile the saved provider setup from this location, or contact VetClickLab support.";
 const MESSAGING_PROVISIONING_PREPARED_DETAIL =
-  "Number setup is reserved but not complete. No sending was enabled. Reconcile this saved setup; OpenVPM will not create another provider profile or purchase another number automatically.";
+  "Number setup is reserved but not complete. No sending was enabled. Reconcile this saved setup; VetClickLab will not create another provider profile or purchase another number automatically.";
 const EXISTING_NUMBER_UNAVAILABLE_DETAIL =
-  "Texting from your clinic's existing phone number is not supported yet. OpenVPM has not ported or changed that number. Choose a new local texting number instead.";
+  "Texting from your clinic's existing phone number is not supported yet. VetClickLab has not ported or changed that number. Choose a new local texting number instead.";
 const INCONCLUSIVE_ORDER_DETAIL =
-  "OpenVPM could not conclusively reconcile the earlier number order. No additional purchase was attempted. Contact OpenVPM support before trying another number.";
+  "VetClickLab could not conclusively reconcile the earlier number order. No additional purchase was attempted. Contact VetClickLab support before trying another number.";
 const HOSTED_PROVIDER_PROFILE_ATTESTATION_MAX_AGE_MS = 15 * 60 * 1000;
 const appointmentReminderLeadHoursInput = z.union([
   z.literal(24),
@@ -204,7 +204,7 @@ function provisioningError(e: unknown): TRPCError {
   return new TRPCError({
     code: "INTERNAL_SERVER_ERROR",
     message:
-      "Texting setup could not be completed safely. No additional purchase was attempted. Retry reconciliation or contact OpenVPM support.",
+      "Texting setup could not be completed safely. No additional purchase was attempted. Retry reconciliation or contact VetClickLab support.",
   });
 }
 
@@ -303,7 +303,7 @@ function assertProvisioningPracticeAllowed(practiceId: string): void {
     throw new TRPCError({
       code: "PRECONDITION_FAILED",
       message:
-        "Texting number setup is available only to approved pilot clinics. Contact OpenVPM support.",
+        "Texting number setup is available only to approved pilot clinics. Contact VetClickLab support.",
     });
   }
 }
@@ -345,7 +345,7 @@ function provisioningOperationReference(
 }
 
 function provisioningProfileName(locationId: string): string {
-  return `OpenVPM provision ${locationId}`;
+  return `VetClickLab provision ${locationId}`;
 }
 
 function provisioningConflict(message: string): TRPCError {
@@ -532,8 +532,8 @@ export const messagingRouter = createRouter({
           throw new TRPCError({
             code: "PRECONDITION_FAILED",
             message: billingEnforced()
-              ? "Carrier registration is available only to approved texting pilot clinics. Contact OpenVPM support."
-              : "Carrier registration is disabled by this OpenVPM deployment.",
+              ? "Carrier registration is available only to approved texting pilot clinics. Contact VetClickLab support."
+              : "Carrier registration is disabled by this VetClickLab deployment.",
           });
         }
       }
@@ -542,7 +542,7 @@ export const messagingRouter = createRouter({
         throw new TRPCError({
           code: "PRECONDITION_FAILED",
           message:
-            "Carrier registration has been submitted. Contact OpenVPM support before changing legal details.",
+            "Carrier registration has been submitted. Contact VetClickLab support before changing legal details.",
         });
       }
       if (existing?.submissionLockId) {
@@ -569,7 +569,7 @@ export const messagingRouter = createRouter({
             throw new TRPCError({
               code: "PRECONDITION_FAILED",
               message:
-                "Secure carrier registration storage is not configured. Contact OpenVPM support.",
+                "Secure carrier registration storage is not configured. Contact VetClickLab support.",
             });
           }
           throw error;
@@ -580,7 +580,7 @@ export const messagingRouter = createRouter({
         throw new TRPCError({
           code: "PRECONDITION_FAILED",
           message:
-            "Secure tax ID storage is incomplete. Contact OpenVPM support.",
+            "Secure tax ID storage is incomplete. Contact VetClickLab support.",
         });
       }
 
@@ -611,7 +611,7 @@ export const messagingRouter = createRouter({
             provider: "telnyx",
             campaignUsecase: "MIXED",
             status: "not_started",
-            statusDetail: "Ready for OpenVPM carrier review.",
+            statusDetail: "Ready for VetClickLab carrier review.",
           })
           .onConflictDoUpdate({
             target: messagingRegistrations.practiceId,
@@ -622,7 +622,7 @@ export const messagingRouter = createRouter({
               complianceAttestedAt: new Date(),
               complianceAttestedBy: ctx.user.id,
               status: "not_started",
-              statusDetail: "Ready for OpenVPM carrier review.",
+              statusDetail: "Ready for VetClickLab carrier review.",
               lastError: null,
               deletedAt: null,
               updatedAt: new Date(),
@@ -1140,7 +1140,7 @@ export const messagingRouter = createRouter({
 
           if (input.action === "start" && !existing && !preparedThisRequest) {
             throw provisioningConflict(
-              "OpenVPM could not reserve a durable texting setup attempt. No provider profile or number was created; refresh and try again.",
+              "VetClickLab could not reserve a durable texting setup attempt. No provider profile or number was created; refresh and try again.",
             );
           }
 
@@ -1153,7 +1153,7 @@ export const messagingRouter = createRouter({
               !existing.senderE164
             ) {
               throw provisioningConflict(
-                "There is no failed number setup to reconcile for this location. Start a new setup or contact OpenVPM support.",
+                "There is no failed number setup to reconcile for this location. Start a new setup or contact VetClickLab support.",
               );
             }
             e164 = existing.senderE164;
@@ -1177,7 +1177,7 @@ export const messagingRouter = createRouter({
               (existing.senderE164 && existing.senderE164 !== e164)
             ) {
               throw provisioningConflict(
-                "This location already has a different texting setup. Contact OpenVPM support before changing numbers.",
+                "This location already has a different texting setup. Contact VetClickLab support before changing numbers.",
               );
             }
             if (
@@ -1194,7 +1194,7 @@ export const messagingRouter = createRouter({
             }
             if (input.action === "start" && !isThisRequestPreparedGate) {
               throw provisioningConflict(
-                "This location has an incomplete number setup. Use Reconcile provider setup; OpenVPM will not purchase another number automatically.",
+                "This location has an incomplete number setup. Use Reconcile provider setup; VetClickLab will not purchase another number automatically.",
               );
             }
             profileId = existing.messagingProfileId;
@@ -1204,7 +1204,7 @@ export const messagingRouter = createRouter({
           const profiles = await findMessagingProfilesByName(profileName);
           if (profiles.length > 1) {
             throw provisioningConflict(
-              "OpenVPM found more than one incomplete provider setup for this location. No number was purchased; contact support to reconcile it.",
+              "VetClickLab found more than one incomplete provider setup for this location. No number was purchased; contact support to reconcile it.",
             );
           }
           const recoveredProfile = profiles[0];
@@ -1214,7 +1214,7 @@ export const messagingRouter = createRouter({
               recoveredProfile.enabled !== false)
           ) {
             throw provisioningConflict(
-              "OpenVPM found an incomplete provider profile with unsafe settings. No number was purchased; contact support to reconcile it.",
+              "VetClickLab found an incomplete provider profile with unsafe settings. No number was purchased; contact support to reconcile it.",
             );
           }
           if (
@@ -1233,7 +1233,7 @@ export const messagingRouter = createRouter({
             await findNumberOrdersByCustomerReference(customerReference);
           if (orders.length > 1) {
             throw provisioningConflict(
-              "OpenVPM found duplicate provider orders for this location. No additional purchase was attempted; contact support to reconcile them.",
+              "VetClickLab found duplicate provider orders for this location. No additional purchase was attempted; contact support to reconcile them.",
             );
           }
           const recoveredOrder = orders[0];
@@ -1244,7 +1244,7 @@ export const messagingRouter = createRouter({
             !recoveredOrder
           ) {
             throw provisioningConflict(
-              "The earlier provider profile outcome is still uncertain. OpenVPM will not create another profile automatically; review the carrier account before retrying.",
+              "The earlier provider profile outcome is still uncertain. VetClickLab will not create another profile automatically; review the carrier account before retrying.",
             );
           }
 
@@ -1260,7 +1260,7 @@ export const messagingRouter = createRouter({
             }
             if (isFailedOrderStatus(recoveredOrder.status)) {
               throw provisioningConflict(
-                "The earlier provider order is in a failed or cancelled state. No additional purchase was attempted; contact OpenVPM support.",
+                "The earlier provider order is in a failed or cancelled state. No additional purchase was attempted; contact VetClickLab support.",
               );
             }
             if (!isRecoverableOrderStatus(recoveredOrder.status)) {
@@ -1309,7 +1309,7 @@ export const messagingRouter = createRouter({
           const activeProfileId = profileId;
           if (!activeProfileId) {
             throw new Error(
-              "The provider setup did not return a durable profile identity. Retry setup or contact OpenVPM support.",
+              "The provider setup did not return a durable profile identity. Retry setup or contact VetClickLab support.",
             );
           }
 
@@ -1706,7 +1706,7 @@ export const messagingRouter = createRouter({
           throw new TRPCError({
             code: "PRECONDITION_FAILED",
             message: billingEnforced()
-              ? "OpenVPM must freshly verify the active provider profile before enabling hosted SMS sending."
+              ? "VetClickLab must freshly verify the active provider profile before enabling hosted SMS sending."
               : "Carrier registration must be active before enabling SMS sending.",
           });
         }
@@ -1865,7 +1865,7 @@ export const messagingRouter = createRouter({
 
       const result = await sendSms({
         to: input.to,
-        body: "OpenVPM test message — your texting is set up correctly.",
+        body: "VetClickLab test message — your texting is set up correctly.",
         practiceId: ctx.practiceId,
         locationId: input.locationId,
         source: "self_host_test",

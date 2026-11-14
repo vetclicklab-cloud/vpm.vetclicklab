@@ -3,7 +3,7 @@ import { AI_SOURCE_MAX_LENGTH } from "@/lib/ai/soap";
 import { SOAP_SECTION_MAX_LENGTH } from "@/lib/records/soap-content";
 
 /**
- * The PUBLIC, frozen contract for the OpenVPM v1 REST API. These shapes are
+ * The PUBLIC, frozen contract for the VetClickLab v1 REST API. These shapes are
  * owned by this file and are deliberately decoupled from the internal Drizzle
  * schema — internal columns may change without breaking integrators, as long as
  * the mappers (mappers.ts) keep producing these shapes.

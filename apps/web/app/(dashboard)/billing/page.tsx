@@ -58,7 +58,7 @@ const STATUS_STYLES: Record<string, string> = {
   overdue: "bg-red-100 text-red-700",
   void: "bg-gray-100 text-gray-500",
   partial: "bg-amber-100 text-amber-700",
-  settled: "bg-teal-100 text-teal-700",
+  settled: "bg-primary/10 text-primary",
   estimate: "bg-purple-100 text-purple-700",
 };
 
@@ -283,7 +283,7 @@ export default function BillingPage() {
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Billing</h2>
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">Billing</h2>
           <p className="text-sm text-muted-foreground">
             Invoices and payments
           </p>
@@ -876,7 +876,7 @@ function WellnessBillingPanel({
             </p>
             {!dueMembershipsUnavailable && !dueQuery.isLoading && (
               <p className="mt-1 text-xs text-muted-foreground">
-                OpenVPM generates invoices for each billing date; staff still
+                VetClickLab generates invoices for each billing date; staff still
                 collect payment on each invoice.
               </p>
             )}
@@ -1069,8 +1069,10 @@ function InvoiceRow({
                 disabled={isMutating}
                 onClick={(e) => onConvertEstimate(e, invoice.id)}
                 title="Convert to Invoice"
+                className="gap-1.5"
               >
                 <ArrowRightLeft className="h-3.5 w-3.5" />
+                Convert
               </Button>
             )}
             {canManageBilling &&
@@ -1082,8 +1084,10 @@ function InvoiceRow({
                 disabled={isMutating}
                 onClick={(e) => onStatusChange(e, invoice.id, "sent")}
                 title="Mark as Sent"
+                className="gap-1.5"
               >
                 <Send className="h-3.5 w-3.5" />
+                Mark sent
               </Button>
             )}
             {canManageBilling &&
@@ -1097,8 +1101,10 @@ function InvoiceRow({
                       disabled={isMutating}
                       onClick={(e) => onStatusChange(e, invoice.id, "sent")}
                       title="Mark as Sent"
+                      className="gap-1.5"
                     >
                       <Send className="h-3.5 w-3.5" />
+                      Mark sent
                     </Button>
                   )}
                 </>
@@ -1112,8 +1118,10 @@ function InvoiceRow({
                   disabled={isMutating}
                   onClick={(e) => onVoidInvoice(e, invoice.id)}
                   title="Void Invoice"
+                  className="gap-1.5 text-destructive hover:bg-destructive/5 hover:text-destructive"
                 >
                   <Ban className="h-3.5 w-3.5" />
+                  Void
                 </Button>
               )}
           </div>
@@ -1323,7 +1331,7 @@ function InvoiceRow({
                       {Number(detail.data.adjustedAmount ?? 0) > 0 && (
                         <span>
                           Adjusted:{" "}
-                          <span className="font-semibold text-teal-600">
+                          <span className="font-semibold text-primary">
                             {formatCurrency(detail.data.adjustedAmount)}
                           </span>
                         </span>
@@ -1997,7 +2005,7 @@ function PaymentSection({
                 <td className="py-2 capitalize text-muted-foreground">
                   {adjustment.type.replace(/_/g, " ")}
                 </td>
-                <td className="py-2 text-right tabular-nums font-medium text-teal-600">
+                <td className="py-2 text-right tabular-nums font-medium text-primary">
                   {formatCurrency(adjustment.amount)}
                 </td>
                 <td className="py-2 text-muted-foreground">

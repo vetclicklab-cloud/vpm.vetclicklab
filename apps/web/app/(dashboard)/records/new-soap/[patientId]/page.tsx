@@ -1,5 +1,6 @@
 "use client";
 
+import { confirmAction } from "@/components/common/action-confirmation-dialog";
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -387,7 +388,7 @@ export default function NewSoapNotePage() {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [editorNeedsLeaveGuard]);
 
-  // AI draft availability mirrors the OpenVPM Agent (same key + model config).
+  // AI draft availability mirrors the VetClickLab Agent (same key + model config).
   const agentStatus = trpc.agent.status.useQuery(undefined, {
     enabled: canCreateSoapNote && !!appointmentId,
   });
@@ -406,7 +407,7 @@ export default function NewSoapNotePage() {
     onError: (err) => toast.error(err.message),
   });
 
-  function handleDraftWithAi() {
+  async function handleDraftWithAi() {
     if (
       finalizedElsewhereRef.current ||
       !params.patientId ||
@@ -415,7 +416,12 @@ export default function NewSoapNotePage() {
       return;
     if (
       canSave &&
-      !window.confirm("Replace what you typed with the AI draft?")
+      !(await confirmAction({
+        title: "Replace with the AI draft?",
+        description: "What you typed in this note will be replaced by the AI draft.",
+        confirmLabel: "Replace text",
+        destructive: true,
+      }))
     ) {
       return;
     }
@@ -443,9 +449,12 @@ export default function NewSoapNotePage() {
     const saved = await persistDraft();
     if (!saved) return;
     if (
-      !window.confirm(
-        "Finalize this SOAP note? The signed note cannot be edited; later clarification must be an attributed addendum.",
-      )
+      !(await confirmAction({
+        title: "Finalize and sign this SOAP note?",
+        description:
+          "The signed note cannot be edited; later clarification must be an attributed addendum.",
+        confirmLabel: "Finalize and sign",
+      }))
     ) {
       return;
     }
@@ -505,9 +514,13 @@ export default function NewSoapNotePage() {
   async function overwriteServerDraft() {
     if (finalizedElsewhereRef.current || !conflictDraft) return;
     if (
-      !window.confirm(
-        "Replace the newer server draft with the version in this editor?",
-      )
+      !(await confirmAction({
+        title: "Overwrite the newer draft?",
+        description:
+          "The newer saved draft will be replaced with the version in this editor.",
+        confirmLabel: "Overwrite draft",
+        destructive: true,
+      }))
     )
       return;
     draftIdRef.current = conflictDraft.id;
@@ -528,9 +541,12 @@ export default function NewSoapNotePage() {
     if (finalizedElsewhereRef.current || !appointmentId || !draftIdRef.current)
       return;
     if (
-      !window.confirm(
-        "Discard this unfinished SOAP draft? This cannot be undone.",
-      )
+      !(await confirmAction({
+        title: "Discard this SOAP draft?",
+        description: "This unfinished draft will be deleted. This cannot be undone.",
+        confirmLabel: "Discard draft",
+        destructive: true,
+      }))
     )
       return;
     try {
@@ -597,13 +613,20 @@ export default function NewSoapNotePage() {
         }),
         persistDraft,
         confirmFinalizedLocalTextLeave: () =>
-          window.confirm(
-            "Your local SOAP text was not included in the finalized note and has not been copied. Leave anyway?",
-          ),
+          confirmAction({
+            title: "Leave without your local text?",
+            description:
+              "Your local SOAP text was not included in the finalized note and has not been copied.",
+            confirmLabel: "Leave anyway",
+            destructive: true,
+          }),
         confirmUnsavedLeave: () =>
-          window.confirm(
-            "The latest draft changes could not be saved. Leave the editor anyway?",
-          ),
+          confirmAction({
+            title: "Leave with unsaved changes?",
+            description: "The latest draft changes could not be saved.",
+            confirmLabel: "Leave anyway",
+            destructive: true,
+          }),
         navigate: () => router.push(destination),
       });
 
@@ -675,7 +698,7 @@ export default function NewSoapNotePage() {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-center">
         <ShieldAlert className="h-12 w-12 text-muted-foreground mb-4" />
-        <h2 className="font-heading text-xl font-semibold">Access Denied</h2>
+        <h2 className="font-heading text-2xl font-semibold tracking-tight">Access Denied</h2>
         <p className="text-sm text-muted-foreground mt-1">
           Only veterinarians and administrators can create SOAP notes.
         </p>
@@ -781,7 +804,7 @@ export default function NewSoapNotePage() {
           <div className="flex items-start gap-3">
             <AlertCircle className="mt-0.5 h-6 w-6 shrink-0 text-destructive" />
             <div>
-              <h2 className="font-heading text-xl font-semibold text-destructive">
+              <h2 className="font-heading text-2xl font-semibold tracking-tight text-destructive">
                 SOAP note finalized in another session
               </h2>
               <p className="mt-2 font-medium">
@@ -871,7 +894,7 @@ export default function NewSoapNotePage() {
 
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="font-heading text-xl font-semibold">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight">
             SOAP Documentation
           </h2>
           {patient && (
@@ -1004,7 +1027,7 @@ export default function NewSoapNotePage() {
             className="rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-100"
           >
             Keep this tab open. New SOAP changes remain only in this tab, and
-            OpenVPM will retry the same revision-checked draft automatically
+            VetClickLab will retry the same revision-checked draft automatically
             when the connection returns.
           </div>
         ) : null}

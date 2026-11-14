@@ -196,7 +196,7 @@ function NewClientForm({ firstClinicDay }: { firstClinicDay: boolean }) {
         Back to Clients
       </Button>
 
-      <h2 className="font-heading text-xl font-semibold">New Client</h2>
+      <h2 className="font-heading text-2xl font-semibold tracking-tight">New Client</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         {firstClinicDay
           ? "First clinic day, step 1 of 3: add one real owner. Their pet is next."

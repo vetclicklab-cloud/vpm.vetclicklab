@@ -16,7 +16,7 @@ const RECOMMENDATION_TONES: Record<
   { picture: string; tag: string }
 > = {
   primary: {
-    picture: "from-emerald-50 to-teal-50",
+    picture: "from-emerald-50 to-primary/5",
     tag: "bg-primary/10 text-primary",
   },
   violet: {
@@ -58,10 +58,10 @@ const FIRST_GOAL_RECOMMENDATIONS: Record<
     rowLabel: "Guided visit",
   },
   self_host: {
-    title: "Review the self-hosted path",
-    body: "Confirm deployment and data-ownership controls before moving any live work.",
-    pictureLabel: "Self-hosted setup",
-    rowLabel: "Deployment plan",
+    title: "Review your rollout plan",
+    body: "Confirm data-ownership controls before moving any live work.",
+    pictureLabel: "Rollout plan",
+    rowLabel: "Rollout plan",
   },
 };
 
@@ -104,7 +104,7 @@ function RecommendationCard({
       <p className="mt-1 text-xs leading-5 text-slate-600">{body}</p>
       <span
         className={cn(
-          "mt-3 w-fit rounded-full px-2.5 py-1 text-[10px] font-semibold",
+          "mt-3 w-fit rounded-full px-2.5 py-1 text-xs font-semibold",
           palette.tag,
         )}
       >
@@ -170,7 +170,7 @@ export function FirstDayRecommendations({
               <span>Invoice total</span>
               <span className="font-semibold text-slate-900">$68.00</span>
             </div>
-            <div className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-violet-700">
+            <div className="mt-2 flex items-center gap-1.5 text-xs font-medium text-violet-700">
               <CreditCard className="h-3.5 w-3.5" /> Pay securely online
             </div>
           </div>
@@ -194,7 +194,7 @@ export function FirstDayRecommendations({
               <p className="text-xs font-semibold text-slate-900">
                 Everything in one link
               </p>
-              <p className="text-[10px] text-slate-500">
+              <p className="text-xs text-slate-500">
                 Visits · Vaccines · Bills
               </p>
             </div>

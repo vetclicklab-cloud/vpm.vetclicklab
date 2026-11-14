@@ -48,13 +48,13 @@ describe("onboarding UI states", () => {
   const dataRouter = readFileSync("server/routers/data.ts", "utf8");
 
   it("retires the standalone onboarding page as a redirect to the dashboard", () => {
-    // The static "Your OpenVPM workspace is ready" page was replaced by the
+    // The static "Your VetClickLab workspace is ready" page was replaced by the
     // auto-opening setup wizard; this route is now just a redirect stub.
     expect(onboardingPage).toContain(
       'import { redirect } from "next/navigation"',
     );
     expect(onboardingPage).toContain('redirect("/")');
-    expect(onboardingPage).not.toContain("Your OpenVPM workspace is ready");
+    expect(onboardingPage).not.toContain("Your VetClickLab workspace is ready");
     expect(onboardingPage).not.toContain("Setup before first charge");
     expect(onboardingPage).not.toContain("function AdminOnboardingPage");
   });
@@ -91,7 +91,7 @@ describe("onboarding UI states", () => {
     expect(choosePath).toContain("clinicModel: state.clinicModel");
     expect(choosePath).toContain("firstGoal: state.firstGoal");
     expect(choosePath).toContain("Build my first day");
-    expect(clinicIntentBuilder).toContain("Your first OpenVPM day");
+    expect(clinicIntentBuilder).toContain("Your first VetClickLab day");
     expect(choosePath).toContain("journeyDismissed: false");
     expect(settingsRouter).toContain("onboardingIntentSelectedAt");
     expect(settingsRouter).toContain("clinicModelSelectedAt");
@@ -109,7 +109,7 @@ describe("onboarding UI states", () => {
     expect(choosePath).toContain("FUNNEL_EVENTS.onboardingPlanBuilt");
   });
 
-  it("uses the canonical OpenVPM mark, typography, and primary color tokens", () => {
+  it("uses the canonical VetClickLab mark, typography, and primary color tokens", () => {
     expect(journeyOverlay).toContain("import { BrandBadge }");
     expect(journeyOverlay).toContain("<BrandBadge");
     expect(journeyOverlay).toContain("font-heading text-[2.15rem]");

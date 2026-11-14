@@ -210,7 +210,7 @@ describe("activation digest cron", () => {
   });
 
   it("emails the 7-day and 30-day funnel to every platform admin", async () => {
-    vi.stubEnv("PLATFORM_ADMIN_EMAILS", "founder@openvpm.com, ops@openvpm.com");
+    vi.stubEnv("PLATFORM_ADMIN_EMAILS", "founder@vetclicklab.com, ops@vetclicklab.com");
     mocks.computeActivationFunnel.mockImplementation(
       async (_db: unknown, days: number) => funnel(days),
     );
@@ -251,8 +251,8 @@ describe("activation digest cron", () => {
     expect(mocks.sendEmail).toHaveBeenCalledTimes(2);
     expect(mocks.sendEmail).toHaveBeenCalledWith(
       expect.objectContaining({
-        to: "founder@openvpm.com",
-        subject: "OpenVPM trial funnel: 5 signups, 2 activated this week",
+        to: "founder@vetclicklab.com",
+        subject: "VetClickLab trial funnel: 5 signups, 2 activated this week",
         html: expect.stringContaining("Past 30 days"),
       }),
     );
@@ -296,7 +296,7 @@ describe("activation digest cron", () => {
     expect(html).not.toContain("North <Clinic>");
     expect(html).toContain("aggregate-only");
     expect(mocks.sendEmail).toHaveBeenCalledWith(
-      expect.objectContaining({ to: "ops@openvpm.com" }),
+      expect.objectContaining({ to: "ops@vetclicklab.com" }),
     );
     expect(mocks.reportCronHeartbeat).toHaveBeenCalledWith({
       job: "activation-digest",
@@ -308,7 +308,7 @@ describe("activation digest cron", () => {
   });
 
   it("counts send failures, alerts ops, and reports a degraded heartbeat", async () => {
-    vi.stubEnv("PLATFORM_ADMIN_EMAILS", "founder@openvpm.com");
+    vi.stubEnv("PLATFORM_ADMIN_EMAILS", "founder@vetclicklab.com");
     mocks.computeActivationFunnel.mockImplementation(
       async (_db: unknown, days: number) => funnel(days),
     );
@@ -342,7 +342,7 @@ describe("activation digest cron", () => {
   });
 
   it("never throws when the funnel query fails; it alerts ops instead", async () => {
-    vi.stubEnv("PLATFORM_ADMIN_EMAILS", "founder@openvpm.com");
+    vi.stubEnv("PLATFORM_ADMIN_EMAILS", "founder@vetclicklab.com");
     mocks.computeActivationFunnel.mockRejectedValue(
       new Error("relation practices does not exist"),
     );

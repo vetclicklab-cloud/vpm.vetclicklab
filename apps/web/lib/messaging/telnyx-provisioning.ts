@@ -36,7 +36,7 @@ export class TelnyxNotConfiguredError extends Error {
 }
 
 /**
- * A mutating request may have reached Telnyx even though OpenVPM did not
+ * A mutating request may have reached Telnyx even though VetClickLab did not
  * receive a durable response. Callers must reconcile provider state before
  * considering another mutation.
  */
@@ -297,12 +297,12 @@ export type MessagingProfileAutoresponsePolicy = ReturnType<
 
 export const OPENVPM_MESSAGING_PROFILE_AUTORESPONSES =
   messagingProfileAutoresponsesForClinic({
-    displayName: "OpenVPM test clinic",
+    displayName: "VetClickLab test clinic",
     businessPhone: "+1 202 555 0100",
   });
 
 export function openVpmMessagingProfileName(locationId: string): string {
-  return `OpenVPM provision ${locationId}`;
+  return `VetClickLab provision ${locationId}`;
 }
 
 function parseMessagingProfileDetail(
@@ -611,7 +611,7 @@ export async function ensureMessagingProfileAutoresponses(
         !sameKeywords(existing[0]?.keywords ?? [], expected.keywords)
       ) {
         throw new TelnyxError(
-          `The provider ${autoresponsePolicyLabel(expected.operation)} auto-response does not match OpenVPM policy.`,
+          `The provider ${autoresponsePolicyLabel(expected.operation)} auto-response does not match VetClickLab policy.`,
           409,
         );
       }
@@ -870,9 +870,9 @@ export async function createMessagingProfile(opts: {
       webhook_url: opts.webhookUrl,
       webhook_api_version: "2",
       // Telnyx rejects new profiles without an explicit destination allowlist.
-      // OpenVPM's supported hosted launch market is the United States.
+      // VetClickLab's supported hosted launch market is the United States.
       whitelisted_destinations: ["US"],
-      // Bound pilot blast radius at the provider as well as in OpenVPM. Smart
+      // Bound pilot blast radius at the provider as well as in VetClickLab. Smart
       // encoding keeps common punctuation from unexpectedly multiplying parts.
       daily_spend_limit_enabled: true,
       daily_spend_limit: OPENVPM_MESSAGING_PROFILE_DAILY_SPEND_LIMIT,
@@ -982,7 +982,7 @@ export async function buyNumber(opts: {
   return { orderId: json.data.id, status: json.data.status ?? null };
 }
 
-/** Release a purchased number that could not be durably attached in OpenVPM. */
+/** Release a purchased number that could not be durably attached in VetClickLab. */
 export async function deleteOwnedPhoneNumber(
   phoneNumberId: string,
 ): Promise<void> {

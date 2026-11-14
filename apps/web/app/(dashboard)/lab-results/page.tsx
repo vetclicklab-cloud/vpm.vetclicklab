@@ -1,5 +1,6 @@
 "use client";
 
+import { FilterChips } from "@/components/ui/filter-chips";
 import Link from "next/link";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -298,7 +299,17 @@ function LabResultsInboxContent() {
               : "One clinic-wide queue for pending values, clinical review, and owned follow-up."}
           </p>
         </div>
-        <Badge variant={actionCount > 0 ? "destructive" : "secondary"} className="w-fit">
+        {/* Red is reserved for patient risk: only critical results turn it red. */}
+        <Badge
+          variant={
+            rows.some((row) => row.resultFlag === "critical")
+              ? "destructive"
+              : actionCount > 0
+                ? "warning"
+                : "secondary"
+          }
+          className="w-fit"
+        >
           {actionCount} action {actionCount === 1 ? "item" : "items"} shown
         </Badge>
       </div>
@@ -313,25 +324,12 @@ function LabResultsInboxContent() {
       ) : null}
 
       {!isFrontDesk && !selectedResultId ? (
-        <div
-          className="flex gap-2 overflow-x-auto pb-1"
-          role="group"
-          aria-label="Filter lab results"
-        >
-          {FILTERS.map((item) => (
-            <Button
-              key={item.value}
-              type="button"
-              size="sm"
-              variant={filter === item.value ? "default" : "outline"}
-              aria-pressed={filter === item.value}
-              onClick={() => setFilter(item.value)}
-              className="shrink-0"
-            >
-              {item.label}
-            </Button>
-          ))}
-        </div>
+        <FilterChips
+          label="Filter lab results"
+          value={filter}
+          onChange={setFilter}
+          options={FILTERS}
+        />
       ) : null}
 
       {inbox.error ? (

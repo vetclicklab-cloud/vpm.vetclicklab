@@ -54,7 +54,7 @@ export function AllSetStep({
           </span>
           <div className="max-w-3xl text-sm leading-6 text-slate-700">
             <p className="font-medium text-slate-900">
-              This is your clinic in OpenVPM. Ready to run it for real?
+              This is your clinic in VetClickLab. Ready to run it for real?
             </p>
             <p className="mt-1">
               {`Start your ${TRIAL_DAYS}-day free trial to email and text clients, use the AI assistant, and invite your team. No charge until the trial ends, and everything you set up stays. Prefer to keep exploring? The trial button stays in the top bar.`}

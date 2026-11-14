@@ -61,7 +61,7 @@ export async function renderWelcomeEmail(
   p: WelcomeEmailProps,
 ): Promise<RenderedEmail> {
   return {
-    subject: `Welcome to OpenVPM, ${p.practiceName}`,
+    subject: `Welcome to VetClickLab, ${p.practiceName}`,
     html: await render(<WelcomeEmail {...p} />),
   };
 }
@@ -71,7 +71,7 @@ export async function renderTrialEndingEmail(
 ): Promise<RenderedEmail> {
   const when = p.daysLeft <= 1 ? "tomorrow" : `in ${p.daysLeft} days`;
   return {
-    subject: `Your OpenVPM trial ends ${when}`,
+    subject: `Your VetClickLab trial ends ${when}`,
     html: await render(<TrialEndingEmail {...p} />),
   };
 }
@@ -92,7 +92,7 @@ export async function renderPaymentReceiptEmail(
   p: PaymentReceiptEmailProps,
 ): Promise<RenderedEmail> {
   return {
-    subject: `Your OpenVPM receipt — ${p.amount}`,
+    subject: `Your VetClickLab receipt — ${p.amount}`,
     html: await render(<PaymentReceiptEmail {...p} />),
   };
 }
@@ -101,7 +101,7 @@ export async function renderPaymentFailedEmail(
   p: PaymentFailedEmailProps,
 ): Promise<RenderedEmail> {
   return {
-    subject: "Action needed: your OpenVPM payment didn't go through",
+    subject: "Action needed: your VetClickLab payment didn't go through",
     html: await render(<PaymentFailedEmail {...p} />),
   };
 }
@@ -110,7 +110,7 @@ export async function renderFirstClinicWinEmail(
   p: FirstClinicWinEmailProps,
 ): Promise<RenderedEmail> {
   return {
-    subject: "Your first real OpenVPM visit is complete",
+    subject: "Your first real VetClickLab visit is complete",
     html: await render(<FirstClinicWinEmail {...p} />),
   };
 }

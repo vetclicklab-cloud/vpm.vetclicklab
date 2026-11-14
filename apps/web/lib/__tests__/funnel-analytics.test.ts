@@ -38,11 +38,11 @@ describe("buildCloudSignupUrl", () => {
 
   it("prefixes an absolute app origin when provided", () => {
     const url = buildCloudSignupUrl({
-      appOrigin: "https://app.openvpm.com/",
+      appOrigin: "https://app.vetclicklab.com/",
       campaign: "demo_login",
     });
     expect(url).toBe(
-      "https://app.openvpm.com/register?intent=cloud&source=demo&utm_source=demo&utm_medium=product&utm_campaign=demo_login",
+      "https://app.vetclicklab.com/register?intent=cloud&source=demo&utm_source=demo&utm_medium=product&utm_campaign=demo_login",
     );
   });
 
@@ -76,7 +76,7 @@ describe("buildClinicFitSignupUrl", () => {
         utm_campaign: "clinic_launch-2026",
       }),
     );
-    const params = new URL(url, "https://app.openvpm.com").searchParams;
+    const params = new URL(url, "https://app.vetclicklab.com").searchParams;
 
     expect(url.startsWith("/register?")).toBe(true);
     expect(Object.fromEntries(params)).toEqual({
@@ -107,7 +107,7 @@ describe("buildClinicFitSignupUrl", () => {
         redirect: "/dashboard",
       }),
     );
-    const params = new URL(url, "https://app.openvpm.com").searchParams;
+    const params = new URL(url, "https://app.vetclicklab.com").searchParams;
 
     expect(Object.fromEntries(params)).toEqual({
       intent: "cloud",
@@ -129,10 +129,11 @@ describe("buildClinicFitSignupUrl", () => {
           next: "https://attacker.example",
         }),
       ),
+      "https://app.vetclicklab.com",
     );
 
     expect(`${url.origin}${url.pathname}`).toBe(
-      "https://demo.openvpm.com/login",
+      "https://app.vetclicklab.com/login",
     );
     expect(Object.fromEntries(url.searchParams)).toEqual({
       source: "homepage_pricing",

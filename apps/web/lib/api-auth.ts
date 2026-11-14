@@ -250,7 +250,7 @@ export async function authenticateApiKey(
       )
     ) {
       return err(
-        "OpenVPM Cloud is read-only until your trial or subscription is active.",
+        "VetClickLab Cloud is read-only until your trial or subscription is active.",
         403,
       );
     }
@@ -269,7 +269,7 @@ export async function authenticateApiKey(
         return err("Invalid API key.", 401);
       }
       if (!aiAccess.allowed) {
-        return err(aiAccess.message ?? "OpenVPM AI is not available.", 403);
+        return err(aiAccess.message ?? "VetClickLab AI is not available.", 403);
       }
     }
   }

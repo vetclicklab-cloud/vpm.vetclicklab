@@ -168,7 +168,7 @@ export async function GET(
     headers: {
       "Content-Type": "text/calendar; charset=utf-8",
       "Cache-Control": "private, max-age=900",
-      "Content-Disposition": 'inline; filename="openvpm-schedule.ics"',
+      "Content-Disposition": 'inline; filename="vetclicklab-schedule.ics"',
     },
   });
 }

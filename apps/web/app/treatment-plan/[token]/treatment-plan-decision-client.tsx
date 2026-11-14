@@ -128,7 +128,7 @@ export function TreatmentPlanDecisionClient({ token }: { token: string }) {
   if (state.kind === "complete") {
     return (
       <div className="flex flex-col items-center gap-3 py-20 text-center">
-        <CheckCircle2 className="h-10 w-10 text-teal-600" />
+        <CheckCircle2 className="h-10 w-10 text-primary" />
         <h1 className="text-lg font-semibold text-gray-900">Plan signed</h1>
         <p className="text-sm text-gray-600">
           The clinic has your decisions and signed document.
@@ -232,7 +232,7 @@ export function TreatmentPlanDecisionClient({ token }: { token: string }) {
                     className={`rounded-lg border px-3 py-2 text-sm font-medium ${
                       choice?.decision === decision
                         ? decision === "accepted"
-                          ? "border-teal-600 bg-teal-50 text-teal-800"
+                          ? "border-primary bg-primary/5 text-primary"
                           : "border-gray-700 bg-gray-100 text-gray-900"
                         : "border-gray-300 bg-white text-gray-700"
                     }`}
@@ -322,7 +322,7 @@ export function TreatmentPlanDecisionClient({ token }: { token: string }) {
         type="button"
         disabled={!allDecided || submitting}
         onClick={() => void continueToSignature()}
-        className="w-full rounded-lg bg-teal-600 px-4 py-3 text-sm font-semibold text-white hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-white hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {submitting ? "Saving decisions…" : "Continue to signature"}
       </button>

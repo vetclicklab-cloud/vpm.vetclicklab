@@ -84,7 +84,7 @@ type VaccinationImportRow = Omit<
   "practiceId"
 >;
 // authorId is stamped in the mutation (the importing admin); historical
-// imports have no OpenVPM author of their own.
+// imports have no VetClickLab author of their own.
 type SoapNoteImportRow = {
   patientId: string;
   appointmentId: null;
@@ -374,7 +374,7 @@ function requireValidImportIntent(input: CsvImportIntent): void {
     throw new TRPCError({
       code: "BAD_REQUEST",
       message:
-        "This import session is out of date. Refresh OpenVPM and check the file again.",
+        "This import session is out of date. Refresh VetClickLab and check the file again.",
     });
   }
   if (input.dryRun && input.previewToken) {
@@ -1293,7 +1293,7 @@ function planPatientCsvImport(
           reviewedDisposition(index, "patient", "error"),
         );
         errors.push(
-          `Row ${index + 1}: An existing patient may match this external ID, but a microchip or date of birth is needed before OpenVPM can connect it safely.`,
+          `Row ${index + 1}: An existing patient may match this external ID, but a microchip or date of birth is needed before VetClickLab can connect it safely.`,
         );
         return;
       }
@@ -1328,7 +1328,7 @@ function planPatientCsvImport(
       errors.push(
         weakIdentityMatch === "ambiguous"
           ? `Row ${index + 1}: More than one existing patient may match this external ID. Add a microchip or date of birth, or resolve the duplicate charts before importing.`
-          : `Row ${index + 1}: An existing patient may match this external ID, but a microchip or date of birth is needed before OpenVPM can connect it safely.`,
+          : `Row ${index + 1}: An existing patient may match this external ID, but a microchip or date of birth is needed before VetClickLab can connect it safely.`,
       );
       return;
     }
@@ -1779,7 +1779,7 @@ function dedupeVaccinationImport(
       nextDueDate: record.nextDueDate ?? null,
       lotNumber: record.lotNumber?.trim() || null,
       manufacturer: record.manufacturer?.trim() || null,
-      // Historical import: no OpenVPM user administered this dose.
+      // Historical import: no VetClickLab user administered this dose.
       administeredBy: null,
       importFingerprint: migrationImportFingerprint("vaccinations", [
         patientId,
@@ -3243,7 +3243,7 @@ export const dataRouter = createRouter({
         throw new TRPCError({
           code: "BAD_REQUEST",
           message:
-            "This onboarding import session is out of date. Refresh OpenVPM to check clients before pets.",
+            "This onboarding import session is out of date. Refresh VetClickLab to check clients before pets.",
         });
       }
       const { records, errors } = csvToPatientRecords(input.csv);
@@ -3580,7 +3580,7 @@ export const dataRouter = createRouter({
    * saved as a SOAP note and linked by external patient ID or owner reference
    * + pet name, so run it after clients and patients. The visit date is preserved (the
    * history reads in order) and the note is attributed to the importing admin,
-   * since historical records have no OpenVPM author. Re-running a file is
+   * since historical records have no VetClickLab author. Re-running a file is
    * safe: the same pet + date + note text is skipped as a duplicate.
    */
   importSoapNotesCsv: adminProcedure
@@ -3739,7 +3739,7 @@ export const dataRouter = createRouter({
 
   /**
    * General internal care reminders. Importing creates no communications and
-   * never changes SMS/email consent; staff must review each task in OpenVPM.
+   * never changes SMS/email consent; staff must review each task in VetClickLab.
    */
   importCareRemindersCsv: adminProcedure
     .input(importCsvInput)
